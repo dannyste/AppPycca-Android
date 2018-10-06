@@ -3,6 +3,12 @@
 
     <!-- SignUpActivity -->
 
+    <!-- LoginActivity -->
+    <string name="email">Correo electrónico</string>
+    <string name="forgot_password">¿Olvidaste la contraseña?</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="password">Contraseña</string>
+
     <!-- HomeActivity -->
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

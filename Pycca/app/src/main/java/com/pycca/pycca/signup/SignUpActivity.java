@@ -1,7 +1,9 @@
-package com.pycca.pycca;
+package com.pycca.pycca.signup;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.pycca.pycca.R;
 
 public class SignUpActivity extends AppCompatActivity {
 
