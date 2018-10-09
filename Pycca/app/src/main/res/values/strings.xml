@@ -2,6 +2,7 @@
     <string name="app_name">Pycca</string>
 
     <!-- SignUpActivity -->
+    <string name="sign_in">Registrarse</string>
 
     <!-- LoginActivity -->
     <string name="email">Correo electrónico</string>
