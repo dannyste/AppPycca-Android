@@ -24,7 +24,8 @@
         </activity>
         <activity
             android:name=".multilogin.MultiLoginActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
         <activity
             android:name=".signup.SignUpActivity"
             android:screenOrientation="portrait"
