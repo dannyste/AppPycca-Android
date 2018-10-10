@@ -6,6 +6,9 @@
     <string name="login_facebook">Inicia sesión con Facebook</string>
     <string name="login_google">Inicia sesión con Google</string>
     <string name="login_instagram">Inicia sesión con Instagram</string>
+    <string name="new_here">¿Eres nuevo aquí?</string>
+    <string name="or">o</string>
+    <string name="register_now">Regístrate ahora</string>
     <string name="terms_use">Condiciones de uso</string>
 
     <!-- SignUpActivity -->

@@ -33,6 +33,7 @@
                 android:id="@+id/btn_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:paddingStart="@dimen/activity_vertical_margin"
                 android:paddingEnd="@dimen/activity_vertical_margin"
@@ -53,7 +54,7 @@
                 <View
                     android:background="@android:color/black"
                     android:layout_width="0dp"
-                    android:layout_height="1dp"
+                    android:layout_height="0.5dp"
                     android:layout_weight="1.40" />
 
                 <TextView
@@ -61,14 +62,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.20"
-                    android:text="o"
+                    android:text="@string/or"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@android:color/black" />
 
                 <View
                     android:background="@android:color/black"
                     android:layout_width="0dp"
-                    android:layout_height="1dp"
+                    android:layout_height="0.5dp"
                     android:layout_weight="1.40" />
 
             </LinearLayout>
@@ -106,6 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:background="@android:color/white"
                 android:drawableStart="@drawable/ic_instagram"
                 android:paddingStart="@dimen/activity_vertical_margin"
@@ -114,6 +116,32 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@android:color/black"
                 android:textStyle="bold" />
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:text="@string/new_here"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register_now"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -126,7 +154,7 @@
             android:paddingBottom="@dimen/activity_horizontal_margin">
 
             <TextView
-                android:id="@+id/tv_forgot_password"
+                android:id="@+id/tv_terms_use"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/terms_use"
