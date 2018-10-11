@@ -14,6 +14,8 @@ import javax.inject.Inject;
 
 public class LoginActivity extends AppCompatActivity implements LoginActivityMVP.View {
 
+    private static final String TAG = LoginActivity.class.getName();
+
     @Inject
     public LoginActivityMVP.Presenter presenter;
 
