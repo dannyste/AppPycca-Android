@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".home.HomeFragment"
+    android:layout_marginTop="?attr/actionBarSize">
+
+    <com.ritesh.ratiolayout.RatioRelativeLayout
+        android:id="@+id/ratio_layout_banner_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:fixed_attribute="WIDTH"
+        app:horizontal_ratio="16"
+        app:vertical_ratio="9">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avliv_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            style="@style/AVLoadingIndicatorView.Large"
+            app:indicatorName="TriangleSkewSpinIndicator"
+            app:indicatorColor="@color/colorRed" />
+
+        <com.glide.slider.library.SliderLayout
+            android:id="@+id/sl_home_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.ritesh.ratiolayout.RatioRelativeLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="5"
+        android:layout_marginBottom="60dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_divisions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+</LinearLayout>
