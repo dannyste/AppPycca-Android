@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "584085401307",
+    "firebase_url": "https://pycca-29357.firebaseio.com",
+    "project_id": "pycca-29357",
+    "storage_bucket": "pycca-29357.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584085401307:android:ea44bb33c88cc2a8",
+        "android_client_info": {
+          "package_name": "com.pycca.pycca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584085401307-tdhaaqdobqot1btfuh0fg9u42iq1bce7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pycca.pycca",
+            "certificate_hash": "d385bd377fb5ba370f2a1d67412ed0af7cdcb58e"
+          }
+        },
+        {
+          "client_id": "584085401307-4ls05h3ssvam41rbn7ptooki08gai573.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpcNS5zHb__7e_xWNsm9n81zgJnz6GsGo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584085401307-4ls05h3ssvam41rbn7ptooki08gai573.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
