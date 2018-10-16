@@ -18,6 +18,15 @@ public interface LoginActivityMVP {
 
         void goToForgotPasswordActivity();
 
+        void disableWidgets();
+
+        void enableWidgets();
+
+        void showProgress();
+
+        void hideProgress();
+
+        void showErrorMessage(int errorCode);
     }
 
     interface Presenter {
@@ -32,6 +41,15 @@ public interface LoginActivityMVP {
 
     interface Model {
 
+        void doLogin(String email, String password, TaskListener listener);
+
+    }
+
+    interface TaskListener{
+
+        void onSucess();
+
+        void onError(int errorCode);
     }
 
 }

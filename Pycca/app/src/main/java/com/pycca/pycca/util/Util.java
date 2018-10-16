@@ -1,6 +1,7 @@
 package com.pycca.pycca.util;
 
 import android.support.design.widget.Snackbar;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.pycca.pycca.pojo.Division;
@@ -33,6 +34,14 @@ public class Util {
 
         });
         return list;
+    }
+
+    public static boolean checkValidEmail(String email){
+        if (TextUtils.isEmpty(email)) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        }
     }
 
 }

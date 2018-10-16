@@ -14,6 +14,8 @@ import com.pycca.pycca.R;
 import com.pycca.pycca.forgotpassword.ForgotPasswordActivity;
 import com.pycca.pycca.host.HostActivity;
 import com.pycca.pycca.root.App;
+import com.pycca.pycca.util.Util;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import javax.inject.Inject;
 
@@ -28,17 +30,20 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     private TextInputEditText tiet_email, tiet_password;
     private Button btn_login;
     private TextView tv_forgot_password;
+    private AVLoadingIndicatorView avliv_loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ((App) getApplication()).getApplicationComponent().inject(LoginActivity.this);
-        ll_root_view      = findViewById(R.id.ll_root_view);
-        tiet_email        = findViewById(R.id.tiet_email);
-        tiet_password     = findViewById(R.id.tiet_password);
-        btn_login         = findViewById(R.id.btn_login);
-        tv_forgot_password = findViewById(R.id.tv_forgot_password);
+        ll_root_view        = findViewById(R.id.ll_root_view);
+        tiet_email          = findViewById(R.id.tiet_email);
+        tiet_password       = findViewById(R.id.tiet_password);
+        btn_login           = findViewById(R.id.btn_login);
+        tv_forgot_password  = findViewById(R.id.tv_forgot_password);
+        avliv_loading       = findViewById(R.id.avliv_loading);
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,17 +70,17 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
 
     @Override
     public void showInvalidEmail() {
-        Snackbar.make(ll_root_view, R.string.invalid_email, Snackbar.LENGTH_SHORT).show();
+        Util.showMessage(ll_root_view, getResources().getString(R.string.invalid_email));
     }
 
     @Override
     public void showEmailRequired() {
-        Snackbar.make(ll_root_view, R.string.email_required, Snackbar.LENGTH_SHORT).show();
+        Util.showMessage(ll_root_view, getResources().getString(R.string.email_required));
     }
 
     @Override
     public void showPasswordRequired() {
-        Snackbar.make(ll_root_view, R.string.password_required, Snackbar.LENGTH_SHORT).show();
+        Util.showMessage(ll_root_view, getResources().getString(R.string.password_required));
     }
 
     @Override
@@ -93,9 +98,45 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     }
 
     @Override
+    public void disableWidgets() {
+        setEnableWidgets(false);
+    }
+
+    @Override
+    public void enableWidgets() {
+        setEnableWidgets(true);
+    }
+
+    @Override
+    public void showProgress() {
+        avliv_loading.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        avliv_loading.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showErrorMessage(int errorCode) {
+        Util.showMessage(ll_root_view, getResources().getString(errorCode));
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         presenter.setView(LoginActivity.this);
+    }
+
+    private void setEnableWidgets(boolean enable){
+        tiet_email.setEnabled(enable);
+        tiet_password.setEnabled(enable);
+        btn_login.setEnabled(enable);
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
     }
 
 }
