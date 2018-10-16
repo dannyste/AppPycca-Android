@@ -1,4 +1,4 @@
-package com.pycca.pycca.login;
+package com.pycca.pycca.pojo;
 
 public class User {
 

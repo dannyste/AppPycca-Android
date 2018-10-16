@@ -34,13 +34,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".home.HomeActivity"
+            android:name=".host.HostActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".clubpycca.ClubPyccaActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges= "keyboard|keyboardHidden|screenLayout|screenSize|orientation"

@@ -1,5 +1,7 @@
 package com.pycca.pycca.login;
 
+import com.pycca.pycca.pojo.User;
+
 public class FirebaseRepository implements LoginRepository {
 
     @Override

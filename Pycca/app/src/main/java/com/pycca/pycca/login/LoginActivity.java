@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pycca.pycca.R;
-import com.pycca.pycca.home.HomeActivity;
+import com.pycca.pycca.host.HostActivity;
 import com.pycca.pycca.root.App;
 
 import javax.inject.Inject;
@@ -79,8 +79,8 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
 
     @Override
     public void goToHomeActivity() {
-        Intent homeActivity = new Intent(LoginActivity.this, HomeActivity.class);
-        startActivity(homeActivity);
+        Intent hostActivity = new Intent(LoginActivity.this, HostActivity.class);
+        startActivity(hostActivity);
         finish();
     }
 
