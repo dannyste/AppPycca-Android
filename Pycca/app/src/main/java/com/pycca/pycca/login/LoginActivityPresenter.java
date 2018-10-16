@@ -5,7 +5,7 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter {
     private LoginActivityMVP.View view;
     private LoginActivityMVP.Model model;
 
-    public LoginActivityPresenter(LoginActivityMVP.Model model) {
+    LoginActivityPresenter(LoginActivityMVP.Model model) {
         this.model = model;
     }
 
@@ -16,12 +16,12 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter {
 
     @Override
     public void loginClicked() {
-        view.goToHomeActivity();
+        view.goToHostActivity();
     }
 
     @Override
     public void forgotPasswordClicked() {
-
+        view.goToForgotPasswordActivity();
     }
 
 }

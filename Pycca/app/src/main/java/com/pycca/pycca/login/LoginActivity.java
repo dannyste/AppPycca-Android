@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pycca.pycca.R;
+import com.pycca.pycca.forgotpassword.ForgotPasswordActivity;
 import com.pycca.pycca.host.HostActivity;
 import com.pycca.pycca.root.App;
 
@@ -78,9 +79,16 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     }
 
     @Override
-    public void goToHomeActivity() {
+    public void goToHostActivity() {
         Intent hostActivity = new Intent(LoginActivity.this, HostActivity.class);
         startActivity(hostActivity);
+        finish();
+    }
+
+    @Override
+    public void goToForgotPasswordActivity() {
+        Intent forgotPasswordActivity = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+        startActivity(forgotPasswordActivity);
         finish();
     }
 

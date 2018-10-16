@@ -10,15 +10,17 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Util {
+
     public static void showMessage(View view, String text){
         Snackbar.make(view, text, Snackbar.LENGTH_LONG).show();
     }
 
     public static int getOrder(String filename){
-        try{
+        try {
             String orderString = filename.substring(0,filename.lastIndexOf('.'));
             return Integer.valueOf(orderString);
-        }catch (Exception e){
+        }
+        catch (Exception e){
             return 0;
         }
     }

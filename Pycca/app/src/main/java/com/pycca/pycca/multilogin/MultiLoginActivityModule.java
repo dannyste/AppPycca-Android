@@ -4,7 +4,7 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class MultiLoginModule {
+public class MultiLoginActivityModule {
 
     @Provides
     public MultiLoginActivityMVP.Presenter provideMultiLoginActivityPresenter(MultiLoginActivityMVP.Model model) {

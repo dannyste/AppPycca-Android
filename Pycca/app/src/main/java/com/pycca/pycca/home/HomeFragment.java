@@ -1,5 +1,6 @@
 package com.pycca.pycca.home;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,10 +27,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-
 public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
+
+    private static final String TAG = HomeFragment.class.getName();
+
     @Inject
-    HomeFragmentMVP.Presenter presenter;
+    public HomeFragmentMVP.Presenter presenter;
 
     private RecyclerView rvDivisions;
     private SliderLayout sl_promotions;
@@ -37,19 +40,17 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
     private HomeFragmentAdapter homeFragmentAdapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View v          = inflater.inflate(R.layout.fragment_home, container, false);
-        sl_promotions   = v.findViewById(R.id.sl_home_fragment);
-        rvDivisions     = v.findViewById(R.id.rv_divisions);
-
-        ((App) getActivity().getApplication()).getApplicationComponent().inject(this);
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view      = inflater.inflate(R.layout.fragment_home, container, false);
+        sl_promotions  = view.findViewById(R.id.sl_home_fragment);
+        rvDivisions    = view.findViewById(R.id.rv_divisions);
+        ((App) getActivity().getApplication()).getApplicationComponent().inject(HomeFragment.this);
         initRecyclerView();
-        return v;
+        return view;
     }
 
 
+    @SuppressLint("CheckResult")
     @Override
     public void setDataToBanner(ArrayList<Promotion> promotions) {
         RequestOptions requestOptions = new RequestOptions();
@@ -95,7 +96,7 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
     @Override
     public void onResume() {
         super.onResume();
-        presenter.setView(this);
+        presenter.setView(HomeFragment.this);
         presenter.loadPromotions(sl_promotions);
         presenter.loadDivisions(rvDivisions);
     }
@@ -109,7 +110,7 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
 
     private void initRecyclerView(){
         divisions = new ArrayList<>();
-        homeFragmentAdapter = new HomeFragmentAdapter(divisions, getActivity());
+        homeFragmentAdapter = new HomeFragmentAdapter(getActivity(), divisions);
 
         rvDivisions.setAdapter(homeFragmentAdapter);
         rvDivisions.setItemAnimator(new DefaultItemAnimator());

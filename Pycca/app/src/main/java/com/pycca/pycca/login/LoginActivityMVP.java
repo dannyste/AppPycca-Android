@@ -14,7 +14,9 @@ public interface LoginActivityMVP {
 
         void showPasswordRequired();
 
-        void goToHomeActivity();
+        void goToHostActivity();
+
+        void goToForgotPasswordActivity();
 
     }
 

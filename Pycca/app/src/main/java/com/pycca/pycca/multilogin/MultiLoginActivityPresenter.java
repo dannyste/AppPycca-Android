@@ -5,7 +5,7 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     private MultiLoginActivityMVP.View view;
     private MultiLoginActivityMVP.Model model;
 
-    public MultiLoginActivityPresenter(MultiLoginActivityMVP.Model model) {
+    MultiLoginActivityPresenter(MultiLoginActivityMVP.Model model) {
         this.model = model;
     }
 
