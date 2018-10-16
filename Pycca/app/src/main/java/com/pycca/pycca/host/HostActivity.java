@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.pycca.pycca.R;
+import com.pycca.pycca.clubpycca.ClubPyccaFragment;
 import com.pycca.pycca.home.HomeFragment;
 
 import java.util.HashMap;
@@ -21,8 +22,7 @@ public class HostActivity extends AppCompatActivity {
     private HashMap<Integer, Fragment> fragments;
     private int menuItem;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -30,6 +30,7 @@ public class HostActivity extends AppCompatActivity {
             selectFragment();
             return false;
         }
+
     };
 
     @Override
@@ -51,18 +52,18 @@ public class HostActivity extends AppCompatActivity {
 
     private HashMap<Integer, Fragment> addFragments(){
         fragments.put(R.id.mi_home, new HomeFragment());
+        fragments.put(R.id.mi_club_pycca, new ClubPyccaFragment());
         return fragments;
     }
 
     private void selectFragment(){
         Fragment fragment = fragments.get(menuItem);
-        if(fragment != null){
+        if (fragment != null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.container, fragment);
             transaction.addToBackStack(null);
             transaction.commit();
         }
-
     }
 
 }

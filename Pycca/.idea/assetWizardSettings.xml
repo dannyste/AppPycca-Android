@@ -14,16 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-<<<<<<< HEAD
-                            <entry key="outputName" value="ic_email" />
-                            <entry key="sourceFile" value="$USER_HOME$/Downloads/envelope.svg" />
-=======
-                            <entry key="height" value="48" />
-                            <entry key="outputName" value="ic_logo" />
-                            <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="$USER_HOME$/Documents/PYCCA/APP 2/LOGO/LOGO-APP.svg" />
-                            <entry key="width" value="163" />
->>>>>>> b70e6c3be5a96efccefd28326c5d0da967013906
+                            <entry key="outputName" value="ic_6_26" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/CLUB PYCCA/6-26.svg" />
                           </map>
                         </option>
                       </PersistentState>
