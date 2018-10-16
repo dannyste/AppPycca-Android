@@ -4,9 +4,9 @@ public class ClubPycca {
 
     private int color;
     private int image;
-    private String name;
+    private int name;
 
-    public ClubPycca(int color, int image, String name) {
+    public ClubPycca(int color, int image, int name) {
         this.color = color;
         this.image = image;
         this.name = name;
@@ -28,11 +28,11 @@ public class ClubPycca {
         this.image = image;
     }
 
-    public String getName() {
+    public int getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(int name) {
         this.name = name;
     }
 

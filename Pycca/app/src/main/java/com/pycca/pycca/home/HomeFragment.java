@@ -41,10 +41,10 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view      = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        ((App) getActivity().getApplication()).getApplicationComponent().inject(HomeFragment.this);
         sl_promotions  = view.findViewById(R.id.sl_home_fragment);
         rvDivisions    = view.findViewById(R.id.rv_divisions);
-        ((App) getActivity().getApplication()).getApplicationComponent().inject(HomeFragment.this);
         initRecyclerView();
         return view;
     }
@@ -93,6 +93,17 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
         return getActivity().getApplicationContext();
     }
 
+    private void initRecyclerView(){
+        divisions = new ArrayList<>();
+        homeFragmentAdapter = new HomeFragmentAdapter(getActivity(), divisions);
+
+        rvDivisions.setAdapter(homeFragmentAdapter);
+        rvDivisions.setItemAnimator(new DefaultItemAnimator());
+        LinearLayoutManager llm = new LinearLayoutManager(getAppContext());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        rvDivisions.setLayoutManager(llm);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -108,14 +119,4 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
         homeFragmentAdapter.notifyDataSetChanged();
     }
 
-    private void initRecyclerView(){
-        divisions = new ArrayList<>();
-        homeFragmentAdapter = new HomeFragmentAdapter(getActivity(), divisions);
-
-        rvDivisions.setAdapter(homeFragmentAdapter);
-        rvDivisions.setItemAnimator(new DefaultItemAnimator());
-        LinearLayoutManager llm = new LinearLayoutManager(getAppContext());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        rvDivisions.setLayoutManager(llm);
-    }
 }

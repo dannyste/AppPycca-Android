@@ -12,8 +12,13 @@ public class ClubPyccaFragmentModule {
     }
 
     @Provides
-    public ClubPyccaFragmentMVP.Model provideClubPyccaFragmentModel() {
-        return new ClubPyccaFragmentModel();
+    public ClubPyccaFragmentMVP.Model provideClubPyccaFragmentModel(ClubPyccaFragmentRepository clubPyccaFragmentRepository) {
+        return new ClubPyccaFragmentModel(clubPyccaFragmentRepository);
+    }
+
+    @Provides
+    public ClubPyccaFragmentRepository provideClubPyccaFragmentRepository(){
+        return new ClubPyccaRepository();
     }
 
 }

@@ -30,13 +30,18 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <!-- ClubPyccaFragment -->
+    <string name="account_status">Estado de cuenta</string>
+    <string name="card_blocking">Bloquear tarjeta</string>
+    <string name="get_balance">Consulta de saldos</string>
+    <string name="quota_calculator">Calculadora de cuotas</string>
+    <string name="quota_increase">Incremento de cupo</string>
+    <string name="virtual_card">Tarjeta virtual</string>
+
     <!-- Facebook -->
     <string name="facebook_app_id">1892974167406914</string>
     <string name="fb_login_protocol_scheme">fb1892974167406914</string>
 
     <!-- Messages -->
     <string name="error_message_load_images">Ha ocurrido un error al cargar las imágenes</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
