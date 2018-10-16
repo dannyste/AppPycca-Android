@@ -16,7 +16,7 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter {
 
     @Override
     public void loginClicked() {
-
+        view.goToHomeActivity();
     }
 
     @Override

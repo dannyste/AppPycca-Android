@@ -1,4 +1,8 @@
 package com.pycca.pycca.multilogin;
 
-public class MultiLoginActivityModel {
+public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
+
+    public MultiLoginActivityModel() {
+    }
+
 }

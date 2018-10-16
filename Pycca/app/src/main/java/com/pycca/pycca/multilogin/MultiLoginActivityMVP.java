@@ -4,7 +4,17 @@ public interface MultiLoginActivityMVP {
 
     interface View {
 
+        void loginEmail();
+
         void loginGoogle();
+
+        void loginFacebook();
+
+        void loginInstagram();
+
+        void registerNow();
+
+        void termsUse();
 
     }
 

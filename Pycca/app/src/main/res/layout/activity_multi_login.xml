@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background_splash"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,18 +29,18 @@
             android:orientation="vertical">
 
             <Button
-                android:background="@android:color/white"
+                android:background="@drawable/button_default_style"
                 android:drawableStart="@drawable/ic_email"
                 android:id="@+id/btn_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                android:paddingStart="@dimen/activity_vertical_margin"
-                android:paddingEnd="@dimen/activity_vertical_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:text="@string/login_email"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@android:color/black"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -49,72 +50,92 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                android:weightSum="3">
+                android:weightSum="5">
 
                 <View
                     android:background="@android:color/black"
                     android:layout_width="0dp"
                     android:layout_height="0.5dp"
-                    android:layout_weight="1.40" />
+                    android:layout_weight="2" />
 
-                <TextView
-                    android:gravity="center"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.20"
-                    android:text="@string/or"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@android:color/black" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/short_separation"
+                        android:text="@string/or"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@android:color/black" />
+
+                </LinearLayout>
 
                 <View
                     android:background="@android:color/black"
                     android:layout_width="0dp"
                     android:layout_height="0.5dp"
-                    android:layout_weight="1.40" />
+                    android:layout_weight="2" />
 
             </LinearLayout>
 
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btn_google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
             <Button
-                android:background="@android:color/white"
+                android:background="@drawable/button_google_style"
                 android:drawableStart="@drawable/ic_google"
                 android:id="@+id/btn_login_google"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:paddingStart="@dimen/activity_vertical_margin"
-                android:paddingEnd="@dimen/activity_vertical_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:text="@string/login_google"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/btn_facebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
             <Button
-                android:background="@android:color/white"
+                android:background="@drawable/button_facebook_style"
                 android:drawableStart="@drawable/ic_facebook"
                 android:id="@+id/btn_login_facebook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:paddingStart="@dimen/activity_vertical_margin"
-                android:paddingEnd="@dimen/activity_vertical_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:text="@string/login_facebook"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@android:color/black"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
 
             <Button
+                android:background="@drawable/button_instagram_style"
+                android:drawableStart="@drawable/ic_instagram"
                 android:id="@+id/btn_login_instagram"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                android:background="@android:color/white"
-                android:drawableStart="@drawable/ic_instagram"
-                android:paddingStart="@dimen/activity_vertical_margin"
-                android:paddingEnd="@dimen/activity_vertical_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:text="@string/login_instagram"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@android:color/black"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -127,10 +148,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="4dp"
-                    android:paddingEnd="4dp"
+                    android:paddingStart="@dimen/short_separation"
+                    android:paddingEnd="@dimen/short_separation"
                     android:text="@string/new_here"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@android:color/black" />
 
                 <TextView
@@ -138,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/register_now"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />
 

@@ -10,11 +10,11 @@ public interface LoginActivityMVP {
 
         void showInvalidEmail();
 
-        void showRequiredEmail();
+        void showEmailRequired();
 
-        void showRequiredPassword();
+        void showPasswordRequired();
 
-        void showIncorrectCredentials();
+        void goToHomeActivity();
 
     }
 
@@ -29,10 +29,6 @@ public interface LoginActivityMVP {
     }
 
     interface Model {
-
-        void setUser(String email, String password);
-
-        User getUser();
 
     }
 

@@ -10,10 +10,10 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {ApplicationModule.class, LoginModule.class})
+@Component(modules = {ApplicationModule.class, MultiLoginModule.class, LoginModule.class})
 public interface ApplicationComponent {
 
-    //void inject(MultiLoginActivity multiLoginActivity);
+    void inject(MultiLoginActivity multiLoginActivity);
 
     void inject(LoginActivity loginActivity);
 

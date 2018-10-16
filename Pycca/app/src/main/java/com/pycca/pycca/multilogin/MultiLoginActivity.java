@@ -12,7 +12,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 import com.pycca.pycca.R;
+import com.pycca.pycca.login.LoginActivity;
+import com.pycca.pycca.root.App;
+import com.pycca.pycca.signup.SignUpActivity;
 
 import javax.inject.Inject;
 
@@ -36,6 +40,7 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multi_login);
+        ((App) getApplication()).getApplicationComponent().inject(MultiLoginActivity.this);
         btn_login_email     = findViewById(R.id.btn_login_email);
         btn_login_google    = findViewById(R.id.btn_login_google);
         btn_login_facebook  = findViewById(R.id.btn_login_facebook);
@@ -45,37 +50,37 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
         btn_login_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                presenter.loginEmailClicked();
             }
         });
         btn_login_google.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                presenter.loginGoogleClicked();
             }
         });
         btn_login_facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                presenter.loginFacebookClicked();
             }
         });
         btn_login_instagram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                presenter.loginInstagramClicked();
             }
         });
         tv_register_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                presenter.registerNowClicked();
             }
         });
         tv_terms_use.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                presenter.termsUseClicked();
             }
         });
         firebaseAuth = FirebaseAuth.getInstance();
@@ -87,9 +92,36 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
     }
 
     @Override
+    public void loginEmail() {
+        Intent loginActivity = new Intent(MultiLoginActivity.this, LoginActivity.class);
+        startActivity(loginActivity);
+    }
+
+    @Override
     public void loginGoogle() {
         Intent signInIntent = googleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, LOGIN_GOOGLE);
+    }
+
+    @Override
+    public void loginFacebook() {
+
+    }
+
+    @Override
+    public void loginInstagram() {
+
+    }
+
+    @Override
+    public void registerNow() {
+        Intent signUpActivity = new Intent(MultiLoginActivity.this, SignUpActivity.class);
+        startActivity(signUpActivity);
+    }
+
+    @Override
+    public void termsUse() {
+
     }
 
     @Override
@@ -97,5 +129,11 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
         super.onStart();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         //updateUI(currentUser);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.setView(MultiLoginActivity.this);
     }
 }

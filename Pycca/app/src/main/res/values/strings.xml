@@ -1,4 +1,5 @@
 <resources>
+    <!-- App -->
     <string name="app_name">Pycca</string>
 
     <!-- MultiLoginActivity -->
@@ -19,9 +20,17 @@
     <string name="forgot_password">¿Olvidaste la contraseña?</string>
     <string name="login">Iniciar sesión</string>
     <string name="password">Contraseña</string>
+    <!-- Validations -->
+    <string name="email_required">Correo electrónico requerido</string>
+    <string name="invalid_email">Correo electrónico inválido</string>
+    <string name="password_required">Contraseña requerida</string>
 
     <!-- HomeActivity -->
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <!-- Facebook -->
+    <string name="facebook_app_id">1892974167406914</string>
+    <string name="fb_login_protocol_scheme">fb1892974167406914</string>
 </resources>
