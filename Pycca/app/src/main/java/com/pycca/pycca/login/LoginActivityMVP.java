@@ -41,11 +41,11 @@ public interface LoginActivityMVP {
 
     interface Model {
 
-        void doLogin(String email, String password, TaskListener listener);
+        void firebaseAuthWithEmailAndPassword(String email, String password, TaskListener listener);
 
     }
 
-    interface TaskListener{
+    interface TaskListener {
 
         void onSucess();
 

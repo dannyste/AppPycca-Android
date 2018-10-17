@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/background_splash"
     android:orientation="vertical"
@@ -9,6 +10,7 @@
     tools:context=".multilogin.MultiLoginActivity">
 
     <LinearLayout
+        android:id="@+id/ll_root_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -82,12 +84,6 @@
                     android:layout_weight="2" />
 
             </LinearLayout>
-
-            <com.google.android.gms.common.SignInButton
-                android:id="@+id/btn_google"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone" />
 
             <Button
                 android:background="@drawable/button_google_style"
@@ -184,6 +180,44 @@
                 android:textColor="@android:color/black" />
 
         </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_loading"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lav_loading"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            app:lottie_autoPlay="false"
+            app:lottie_fileName="loading_animation.json"
+            app:lottie_imageAssetsFolder="assets"
+            app:lottie_loop="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_done"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lav_done"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            app:lottie_autoPlay="false"
+            app:lottie_fileName="done_animation.json"
+            app:lottie_imageAssetsFolder="assets"
+            app:lottie_loop="false" />
 
     </LinearLayout>
 

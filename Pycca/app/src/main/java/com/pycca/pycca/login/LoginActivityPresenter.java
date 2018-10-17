@@ -21,7 +21,7 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter, Login
         if(validate()){
             view.disableWidgets();
             view.showProgress();
-            model.doLogin(view.getEmail(), view.getPassword(), this);
+            model.firebaseAuthWithEmailAndPassword(view.getEmail(), view.getPassword(), this);
         }
     }
 
@@ -58,6 +58,6 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter, Login
         view.enableWidgets();
         view.hideProgress();
         view.showErrorMessage(errorCode);
-
     }
+
 }

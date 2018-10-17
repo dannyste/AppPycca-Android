@@ -1,7 +1,6 @@
 package com.pycca.pycca.login;
 
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,7 +42,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
         btn_login           = findViewById(R.id.btn_login);
         tv_forgot_password  = findViewById(R.id.tv_forgot_password);
         avliv_loading       = findViewById(R.id.avliv_loading);
-
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

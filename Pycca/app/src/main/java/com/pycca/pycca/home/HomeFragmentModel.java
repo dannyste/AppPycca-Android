@@ -28,8 +28,9 @@ public class HomeFragmentModel implements HomeFragmentMVP.Model {
                         jsonImageInfo.get("date").getAsString());
                 promotionList.add(promotion);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        }
+        catch (Exception exception) {
+            exception.printStackTrace();
         }
         return promotionList;
     }
@@ -53,4 +54,5 @@ public class HomeFragmentModel implements HomeFragmentMVP.Model {
         }
         return Util.orderDivisionList(divisionList);
     }
+
 }

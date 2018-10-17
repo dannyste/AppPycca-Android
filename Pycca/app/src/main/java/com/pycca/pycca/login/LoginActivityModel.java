@@ -12,25 +12,27 @@ import com.pycca.pycca.R;
 
 public class LoginActivityModel implements LoginActivityMVP.Model {
 
-    private FirebaseAuth auth;
+    private FirebaseAuth firebaseAuth;
 
     public LoginActivityModel() {
-        auth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     @Override
-    public void doLogin(String email, String password, final LoginActivityMVP.TaskListener listener) {
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    public void firebaseAuthWithEmailAndPassword(String email, String password, final LoginActivityMVP.TaskListener listener) {
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     listener.onSucess();
-                }else{
-                    if (task.getException() != null){
+                }
+                else {
+                    if (task.getException() != null) {
                         int errorMsg = R.string.error_default;
                         if (task.getException() instanceof FirebaseAuthInvalidUserException){
                             errorMsg = R.string.error_user_not_exist;
-                        }else if (task.getException() instanceof FirebaseAuthInvalidCredentialsException){
+                        }
+                        else if (task.getException() instanceof FirebaseAuthInvalidCredentialsException){
                             errorMsg = R.string.error_invalid_credentials;
                         }
                         listener.onError(errorMsg);
