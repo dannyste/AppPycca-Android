@@ -100,7 +100,7 @@
                 android:textStyle="bold" />
 
             <com.facebook.login.widget.LoginButton
-                android:id="@+id/btn_facebook"
+                android:id="@+id/lb_facebook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="gone" />
