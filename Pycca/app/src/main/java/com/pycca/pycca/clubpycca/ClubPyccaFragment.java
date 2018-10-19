@@ -1,5 +1,7 @@
 package com.pycca.pycca.clubpycca;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,9 +11,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import com.pycca.pycca.R;
-import com.pycca.pycca.home.HomeFragment;
 import com.pycca.pycca.pojo.ClubPycca;
 import com.pycca.pycca.root.App;
 
@@ -21,7 +23,7 @@ import javax.inject.Inject;
 
 public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.View {
 
-    private static final String TAG = HomeFragment.class.getName();
+    private static final String TAG = ClubPyccaFragment.class.getName();
 
     @Inject
     public ClubPyccaFragmentMVP.Presenter presenter;
@@ -35,9 +37,11 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
 
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_club_pycca, container, false);
+        //getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         ((App) getActivity().getApplication()).getApplicationComponent().inject(ClubPyccaFragment.this);
         rv_club_pycca = view.findViewById(R.id.rv_club_pycca);
         initRecyclerView();

@@ -4,21 +4,21 @@
     <item
         android:id="@+id/mi_home"
         android:icon="@drawable/ic_home"
-        android:title="@string/title_home" />
+        android:title="@string/home" />
 
     <item
         android:id="@+id/mi_promotion"
         android:icon="@drawable/ic_promotion"
-        android:title="@string/title_dashboard" />
+        android:title="@string/promotion" />
 
     <item
         android:id="@+id/mi_club_pycca"
         android:icon="@drawable/ic_club_pycca"
-        android:title="@string/title_notifications" />
+        android:title="@string/club_pycca" />
 
     <item
         android:id="@+id/mi_more"
         android:icon="@drawable/ic_more"
-        android:title="@string/title_notifications" />
+        android:title="@string/more" />
 
 </menu>

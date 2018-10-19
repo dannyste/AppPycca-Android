@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background_splash"
+    android:background="@drawable/background_multi_login"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,6 +25,7 @@
             android:orientation="vertical" />
 
         <LinearLayout
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"
@@ -36,7 +37,6 @@
                 android:id="@+id/btn_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:paddingEnd="@dimen/activity_horizontal_margin"
@@ -55,7 +55,7 @@
                 android:weightSum="5">
 
                 <View
-                    android:background="@android:color/black"
+                    android:background="@color/colorAccent"
                     android:layout_width="0dp"
                     android:layout_height="0.5dp"
                     android:layout_weight="2" />
@@ -73,12 +73,12 @@
                         android:paddingBottom="@dimen/short_separation"
                         android:text="@string/or"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@color/colorAccent" />
 
                 </LinearLayout>
 
                 <View
-                    android:background="@android:color/black"
+                    android:background="@color/colorAccent"
                     android:layout_width="0dp"
                     android:layout_height="0.5dp"
                     android:layout_weight="2" />
@@ -148,7 +148,7 @@
                     android:paddingEnd="@dimen/short_separation"
                     android:text="@string/new_here"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@color/colorAccent" />
 
                 <TextView
                     android:id="@+id/tv_register_now"
@@ -156,7 +156,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/register_now"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorAccent"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -177,7 +177,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/terms_use"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@android:color/black" />
+                android:textColor="@color/colorAccent" />
 
         </LinearLayout>
 

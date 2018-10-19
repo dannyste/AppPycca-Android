@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
@@ -42,6 +43,7 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        //getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         ((App) getActivity().getApplication()).getApplicationComponent().inject(HomeFragment.this);
         sl_promotions  = view.findViewById(R.id.sl_home_fragment);
         rvDivisions    = view.findViewById(R.id.rv_divisions);
@@ -81,11 +83,7 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
                 .image(imageURL)
                 .setRequestOption(requestOptions)
                 .setProgressBarVisible(true);
-                //.setOnSliderClickListener(MainActivity.this);
-        //sliderView.bundle(new Bundle());
-        //sliderView.getBundle().putInt("position", i);
         sl_promotions.addSlider(sliderView);
-
     }
 
     @Override

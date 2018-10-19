@@ -4,7 +4,11 @@
     <color name="colorPrimaryDark">#052A4F</color>
     <color name="colorAccent">#FFFFFF</color>
 
-    <color name="colorBlack">#000000</color>
-    <color name="colorGray">#7E7E7E</color>
-    <color name="colorRed">#EB3C47</color>
+    <!-- ClubPyccaFragment, MoreFragment -->
+    <color name="colorOptionOne">#D79BF1</color>
+    <color name="colorOptionTwo">#ABC3FE</color>
+    <color name="colorOptionThree">#FDC57C</color>
+    <color name="colorOptionFour">#FF89AA</color>
+    <color name="colorOptionFive">#89A8FE</color>
+    <color name="colorOptionSix">#58DFF4</color>
 </resources>

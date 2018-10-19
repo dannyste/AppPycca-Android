@@ -8,7 +8,7 @@ public class ClubPyccaFragmentModel implements ClubPyccaFragmentMVP.Model {
 
     private ClubPyccaFragmentRepository clubPyccaFragmentRepository;
 
-    public ClubPyccaFragmentModel(ClubPyccaFragmentRepository clubPyccaFragmentRepository) {
+    ClubPyccaFragmentModel(ClubPyccaFragmentRepository clubPyccaFragmentRepository) {
         this.clubPyccaFragmentRepository = clubPyccaFragmentRepository;
     }
 

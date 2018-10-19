@@ -1,5 +1,6 @@
 package com.pycca.pycca.host;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,21 +14,21 @@ import android.widget.TextView;
 import com.pycca.pycca.R;
 import com.pycca.pycca.clubpycca.ClubPyccaFragment;
 import com.pycca.pycca.home.HomeFragment;
+import com.pycca.pycca.more.MoreFragment;
+import com.pycca.pycca.promotion.PromotionFragment;
 
 import java.util.HashMap;
 
 public class HostActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
     private HashMap<Integer, Fragment> fragments;
-    private int menuItem;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            menuItem = item.getItemId();
-            selectFragment();
+            item.setChecked(true);
+            selectFragment(item.getItemId());
             return false;
         }
 
@@ -40,29 +41,29 @@ public class HostActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        fragments = new HashMap<>();
         addFragments();
-        menuItem = R.id.mi_home;
-        selectFragment();
+        selectFragment(R.id.mi_home);
     }
 
-    private HashMap<Integer, Fragment> addFragments(){
+    @SuppressLint("UseSparseArrays")
+    private void addFragments(){
+        fragments = new HashMap<>();
         fragments.put(R.id.mi_home, new HomeFragment());
+        fragments.put(R.id.mi_promotion, new PromotionFragment());
         fragments.put(R.id.mi_club_pycca, new ClubPyccaFragment());
-        return fragments;
+        fragments.put(R.id.mi_more, new MoreFragment());
     }
 
-    private void selectFragment(){
+    private void selectFragment(int menuItem){
         Fragment fragment = fragments.get(menuItem);
         if (fragment != null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.container, fragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.container, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         }
     }
 

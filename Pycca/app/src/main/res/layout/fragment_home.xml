@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             app:indicatorName="TriangleSkewSpinIndicator"
-            app:indicatorColor="@color/colorRed"
+            app:indicatorColor="@android:color/holo_red_dark"
             style="@style/AVLoadingIndicatorView.Large" />
 
         <com.glide.slider.library.SliderLayout
@@ -41,7 +41,7 @@
             android:id="@+id/rv_divisions"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+            android:layout_marginTop="@dimen/activity_vertical_margin" />
 
     </LinearLayout>
 
