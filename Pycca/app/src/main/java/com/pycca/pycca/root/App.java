@@ -5,6 +5,7 @@ import android.app.Application;
 import com.pycca.pycca.clubpycca.ClubPyccaFragmentModule;
 import com.pycca.pycca.home.HomeFragmentModule;
 import com.pycca.pycca.login.LoginActivityModule;
+import com.pycca.pycca.more.MoreFragmentModule;
 import com.pycca.pycca.multilogin.MultiLoginActivityModule;
 import com.pycca.pycca.signup.SignUpActivityModel;
 import com.pycca.pycca.signup.SignUpActivityModule;
@@ -23,6 +24,7 @@ public class App extends Application {
                 .homeFragmentModule(new HomeFragmentModule())
                 .clubPyccaFragmentModule(new ClubPyccaFragmentModule())
                 .signUpActivityModule(new SignUpActivityModule())
+                .moreFragmentModule(new MoreFragmentModule())
                 .build();
     }
 

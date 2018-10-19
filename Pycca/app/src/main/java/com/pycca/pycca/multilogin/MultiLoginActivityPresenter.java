@@ -3,6 +3,12 @@ package com.pycca.pycca.multilogin;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -19,8 +25,10 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
 
     private GoogleSignInClient googleSignInClient;
 
+    private LoginButton loginButton;
+    private CallbackManager callbackManager;
+
     private static final int RC_LOGIN_GOOGLE = 9001;
-    private static final int RC_LOGIN_FACEBOOK = 9002;
 
     MultiLoginActivityPresenter(MultiLoginActivityMVP.Model model) {
         this.model = model;
@@ -52,7 +60,7 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
 
     @Override
     public void loginFacebookClicked() {
-        this.view.loginFacebook();
+        loginButton.performClick();
     }
 
     @Override
@@ -80,9 +88,32 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     }
 
     @Override
+    public void configureFacebookSignIn(final MultiLoginActivity multiLoginActivity, LoginButton loginButton) {
+        callbackManager = CallbackManager.Factory.create();
+        this.loginButton = loginButton;
+        this.loginButton.setReadPermissions("email", "public_profile");
+        this.loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                model.firebaseAuthWithFacebook(multiLoginActivity, loginResult.getAccessToken(), MultiLoginActivityPresenter.this);
+            }
+
+            @Override
+            public void onCancel() {
+                view.hideLoadingAnimation();
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                view.hideLoadingAnimation();
+            }
+        });
+    }
+
+    @Override
     public void onActivityResultGoogle(MultiLoginActivity multiLoginActivity, int requestCode, int resultCode, @Nullable Intent data) {
-        view.showLoadingAnimation();
         if (requestCode == RC_LOGIN_GOOGLE) {
+            view.showLoadingAnimation();
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount googleSignInAccount = task.getResult(ApiException.class);
@@ -96,7 +127,10 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
 
     @Override
     public void onActivityResultFacebook(int requestCode, int resultCode, @Nullable Intent data) {
-
+        if (FacebookSdk.isFacebookRequestCode(requestCode)) {
+            view.showLoadingAnimation();
+            callbackManager.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     @Override

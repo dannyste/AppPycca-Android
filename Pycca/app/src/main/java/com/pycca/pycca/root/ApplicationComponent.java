@@ -6,6 +6,8 @@ import com.pycca.pycca.home.HomeFragment;
 import com.pycca.pycca.home.HomeFragmentModule;
 import com.pycca.pycca.login.LoginActivity;
 import com.pycca.pycca.login.LoginActivityModule;
+import com.pycca.pycca.more.MoreFragment;
+import com.pycca.pycca.more.MoreFragmentModule;
 import com.pycca.pycca.multilogin.MultiLoginActivity;
 import com.pycca.pycca.multilogin.MultiLoginActivityModule;
 import com.pycca.pycca.signup.SignUpActivity;
@@ -16,7 +18,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {ApplicationModule.class, MultiLoginActivityModule.class, LoginActivityModule.class, HomeFragmentModule.class, ClubPyccaFragmentModule.class,
+@Component(modules = {ApplicationModule.class, MultiLoginActivityModule.class, LoginActivityModule.class, HomeFragmentModule.class, ClubPyccaFragmentModule.class, MoreFragmentModule.class,
 SignUpActivityModule.class})
 public interface ApplicationComponent {
 
@@ -29,5 +31,7 @@ public interface ApplicationComponent {
     void inject(ClubPyccaFragment clubPyccaFragment);
 
     void inject(SignUpActivity signUpActivity);
+
+    void inject(MoreFragment moreFragment);
 
 }

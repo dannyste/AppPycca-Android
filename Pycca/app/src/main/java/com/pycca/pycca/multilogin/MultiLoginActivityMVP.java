@@ -3,6 +3,8 @@ package com.pycca.pycca.multilogin;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 
+import com.facebook.AccessToken;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -11,8 +13,6 @@ public interface MultiLoginActivityMVP {
     interface View {
 
         void loginEmail();
-
-        void loginFacebook();
 
         void loginInstagram();
 
@@ -50,6 +50,8 @@ public interface MultiLoginActivityMVP {
 
         void configureGoogleSignIn(MultiLoginActivity multiLoginActivity);
 
+        void configureFacebookSignIn(MultiLoginActivity multiLoginActivity, LoginButton loginButton);
+
         void onActivityResultGoogle(MultiLoginActivity multiLoginActivity, int requestCode, int resultCode, @Nullable Intent data);
 
         void onActivityResultFacebook(int requestCode, int resultCode, @Nullable Intent data);
@@ -64,7 +66,7 @@ public interface MultiLoginActivityMVP {
 
         void firebaseAuthWithGoogle(MultiLoginActivity multiLoginActivity, GoogleSignInAccount googleSignInAccount, MultiLoginActivityMVP.TaskListener taskListener);
 
-        void firebaseAuthWithFacebook();
+        void firebaseAuthWithFacebook(MultiLoginActivity multiLoginActivity, AccessToken accessToken, MultiLoginActivityMVP.TaskListener taskListener);
 
     }
 

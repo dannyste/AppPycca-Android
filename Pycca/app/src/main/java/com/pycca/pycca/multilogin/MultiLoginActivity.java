@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.facebook.login.widget.LoginButton;
 import com.pycca.pycca.R;
 import com.pycca.pycca.host.HostActivity;
 import com.pycca.pycca.login.LoginActivity;
@@ -28,6 +29,7 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
 
     private LinearLayout ll_root_view, ll_loading, ll_done;
     private Button btn_login_email, btn_login_google, btn_login_facebook, btn_login_instagram;
+    private LoginButton lb_facebook;
     private TextView tv_register_now, tv_terms_use;
     private LottieAnimationView lav_loading, lav_done;
 
@@ -39,6 +41,7 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
         ll_root_view        = findViewById(R.id.ll_root_view);
         btn_login_email     = findViewById(R.id.btn_login_email);
         btn_login_google    = findViewById(R.id.btn_login_google);
+        lb_facebook         = findViewById(R.id.lb_facebook);
         btn_login_facebook  = findViewById(R.id.btn_login_facebook);
         btn_login_instagram = findViewById(R.id.btn_login_instagram);
         tv_register_now     = findViewById(R.id.tv_register_now);
@@ -84,17 +87,13 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
             }
         });
         presenter.configureGoogleSignIn(MultiLoginActivity.this);
+        presenter.configureFacebookSignIn(MultiLoginActivity.this, lb_facebook);
     }
 
     @Override
     public void loginEmail() {
         Intent loginActivity = new Intent(MultiLoginActivity.this, LoginActivity.class);
         startActivity(loginActivity);
-    }
-
-    @Override
-    public void loginFacebook() {
-
     }
 
     @Override

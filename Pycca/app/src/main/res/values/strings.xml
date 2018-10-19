@@ -32,9 +32,10 @@
     <string name="card_number_required">Número de tarjeta requerida</string>
 
     <!-- HostActivity -->
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="home">Home</string>
+    <string name="promotion">Promociones</string>
+    <string name="club_pycca">ClubPycca</string>
+    <string name="more">Más</string>
 
     <!-- ClubPyccaFragment -->
     <string name="account_status">Estado de cuenta</string>
@@ -43,6 +44,10 @@
     <string name="quota_calculator">Calculadora de cuotas</string>
     <string name="quota_increase">Incremento de cupo</string>
     <string name="virtual_card">Tarjeta virtual</string>
+
+    <!-- MoreFragment -->
+    <string name="my_profile">Mi perfil</string>
+    <string name="purchases">Compras</string>
 
     <!-- Facebook -->
     <string name="facebook_app_id">1892974167406914</string>
