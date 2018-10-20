@@ -7,15 +7,13 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.pycca.pycca.R;
 import com.pycca.pycca.clubpycca.ClubPyccaFragment;
 import com.pycca.pycca.home.HomeFragment;
 import com.pycca.pycca.more.MoreFragment;
-import com.pycca.pycca.promotion.PromotionFragment;
+import com.pycca.pycca.promotions.PromotionsFragment;
 
 import java.util.HashMap;
 
@@ -38,8 +36,6 @@ public class HostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -52,7 +48,7 @@ public class HostActivity extends AppCompatActivity {
     private void addFragments(){
         fragments = new HashMap<>();
         fragments.put(R.id.mi_home, new HomeFragment());
-        fragments.put(R.id.mi_promotion, new PromotionFragment());
+        fragments.put(R.id.mi_promotions, new PromotionsFragment());
         fragments.put(R.id.mi_club_pycca, new ClubPyccaFragment());
         fragments.put(R.id.mi_more, new MoreFragment());
     }

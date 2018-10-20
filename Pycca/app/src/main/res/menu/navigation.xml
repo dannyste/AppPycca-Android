@@ -7,9 +7,9 @@
         android:title="@string/home" />
 
     <item
-        android:id="@+id/mi_promotion"
-        android:icon="@drawable/ic_promotion"
-        android:title="@string/promotion" />
+        android:id="@+id/mi_promotions"
+        android:icon="@drawable/ic_promotions"
+        android:title="@string/promotions" />
 
     <item
         android:id="@+id/mi_club_pycca"

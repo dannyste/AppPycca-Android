@@ -1,6 +1,7 @@
 package com.pycca.pycca.restApi.model;
 
 public class BaseResponse {
+
     private boolean status;
     private String message;
     private Object data;
@@ -34,4 +35,5 @@ public class BaseResponse {
     public void setData(Object data) {
         this.data = data;
     }
+
 }

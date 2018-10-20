@@ -8,6 +8,10 @@
     android:orientation="vertical"
     tools:context=".home.HomeFragment">
 
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar" />
+
     <com.ritesh.ratiolayout.RatioRelativeLayout
         android:id="@+id/ratio_layout_banner_home"
         android:layout_width="match_parent"

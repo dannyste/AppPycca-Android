@@ -54,9 +54,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityM
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 isClubPyccaMember = b;
-                if(b){
+                if (b) {
                     Util.expand(ll_club_pycca_member);
-                }else {
+                }
+                else {
                     Util.collapse(ll_club_pycca_member);
                 }
 
@@ -185,4 +186,5 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityM
         super.onResume();
         presenter.setView(SignUpActivity.this);
     }
+
 }

@@ -7,6 +7,10 @@
     android:orientation="vertical"
     tools:context=".more.MoreFragment">
 
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_more"
         android:layout_width="match_parent"

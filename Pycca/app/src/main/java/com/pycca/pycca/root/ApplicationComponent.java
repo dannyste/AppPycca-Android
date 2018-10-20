@@ -18,19 +18,18 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {ApplicationModule.class, MultiLoginActivityModule.class, LoginActivityModule.class, HomeFragmentModule.class, ClubPyccaFragmentModule.class, MoreFragmentModule.class,
-SignUpActivityModule.class})
+@Component(modules = {ApplicationModule.class, MultiLoginActivityModule.class, SignUpActivityModule.class, LoginActivityModule.class, HomeFragmentModule.class, ClubPyccaFragmentModule.class, MoreFragmentModule.class})
 public interface ApplicationComponent {
 
     void inject(MultiLoginActivity multiLoginActivity);
+
+    void inject(SignUpActivity signUpActivity);
 
     void inject(LoginActivity loginActivity);
 
     void inject(HomeFragment homeFragment);
 
     void inject(ClubPyccaFragment clubPyccaFragment);
-
-    void inject(SignUpActivity signUpActivity);
 
     void inject(MoreFragment moreFragment);
 

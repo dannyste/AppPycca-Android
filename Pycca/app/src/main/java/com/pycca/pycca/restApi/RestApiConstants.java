@@ -4,7 +4,10 @@ public final class RestApiConstants {
 
     public static final String SERVER_ROOT_URL = "http://pagos.pycca.com:7654/";
 
-    public static final String SERVER_URL_GET_IMAGES_LIST = "content/list_image/";
+    public static final String SERVER_URL_GET_CLIENT = "client/";
+    public static final String ACTION_VALIDATE_CLIENT = "validate_client";
+
+    static final String SERVER_URL_GET_IMAGES_LIST = "content/list_image/";
     public static final String ACTION_PROMOTION = "promotion";
     public static final String ACTION_DIVISION = "division";
 

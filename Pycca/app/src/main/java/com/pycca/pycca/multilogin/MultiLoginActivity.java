@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,6 +39,7 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multi_login);
         ((App) getApplication()).getApplicationComponent().inject(MultiLoginActivity.this);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         ll_root_view        = findViewById(R.id.ll_root_view);
         btn_login_email     = findViewById(R.id.btn_login_email);
         btn_login_google    = findViewById(R.id.btn_login_google);
