@@ -11,7 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textStyle="bold"
-        android:text="@string/login_facebook"/>
+        android:text="Chupalo de nuevo KEVIN"
+        android:textColor="@color/colorPrimary"
+        android:textAllCaps="true"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_coupon"
