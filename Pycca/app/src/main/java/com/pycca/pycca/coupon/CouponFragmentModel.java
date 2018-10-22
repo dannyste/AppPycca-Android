@@ -17,7 +17,7 @@ public class CouponFragmentModel implements CouponFragmentMVP.Model {
             JsonArray filesjson = jsonObject.getAsJsonArray("files");
             for (int i = 0; i < filesjson.size(); i++) {
                 JsonObject jsonImageInfo = filesjson.get(i).getAsJsonObject();
-                Coupon coupon = new Coupon(RestApiConstants.SERVER_ROOT_URL.concat(RestApiConstants.SERVER_URL_GET_IMAGE).concat(RestApiConstants.ACTION_PROMOTION).concat("/").concat(jsonImageInfo.get("name").getAsString()),
+                Coupon coupon = new Coupon(RestApiConstants.SERVER_ROOT_URL.concat(RestApiConstants.SERVER_URL_GET_IMAGE).concat(RestApiConstants.ACTION_COUPON).concat("/").concat(jsonImageInfo.get("name").getAsString()),
                         jsonImageInfo.get("date").getAsString());
                 couponList.add(coupon);
             }
