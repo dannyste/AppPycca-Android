@@ -24,7 +24,7 @@ public class Util {
             String orderString = filename.substring(0,filename.lastIndexOf('.'));
             return Integer.valueOf(orderString);
         }
-        catch (Exception e){
+        catch (Exception exception){
             return 0;
         }
     }
@@ -42,7 +42,8 @@ public class Util {
     public static boolean checkValidEmail(String email){
         if (TextUtils.isEmpty(email)) {
             return false;
-        } else {
+        }
+        else {
             return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
         }
     }

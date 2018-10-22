@@ -1,7 +1,6 @@
 package com.pycca.pycca.signup;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -14,10 +13,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.User;
-import com.pycca.pycca.restApi.RestApiConstants;
 import com.pycca.pycca.util.Constants;
-
-import java.util.concurrent.Executor;
 
 public class SignUpActivityModel implements SignUpActivityMVP.Model {
 
