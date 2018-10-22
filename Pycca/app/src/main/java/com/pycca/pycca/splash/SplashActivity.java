@@ -10,7 +10,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.pycca.pycca.R;
-import com.pycca.pycca.login.LoginActivity;
 import com.pycca.pycca.multilogin.MultiLoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
@@ -27,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         iv_pycca = findViewById(R.id.iv_pycca);
-        Animation animation = AnimationUtils.loadAnimation(SplashActivity.this, R.anim.animation);
+        Animation animation = AnimationUtils.loadAnimation(SplashActivity.this, R.anim.animation_pycca);
         iv_pycca.startAnimation(animation);
         new Handler().postDelayed(new Runnable() {
             @Override

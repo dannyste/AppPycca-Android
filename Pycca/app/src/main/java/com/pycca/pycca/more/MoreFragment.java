@@ -16,6 +16,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.CycleInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -68,11 +72,13 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
         moreFragmentAdapter = new MoreFragmentAdapter(getActivity(), moreArrayList, new MoreFragmentAdapter.OnItemClickListener() {
             @Override
             public void onClick(MoreFragmentAdapter.MoreViewHolder moreViewHolder, final int position, ImageView imageView) {
-                ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(imageView, "rotation", 0f, 360f);
-                objectAnimator.setDuration(Constants.ANIMATION_DURATION);
-                AnimatorSet animatorSet = new AnimatorSet();
-                animatorSet.playTogether(objectAnimator);
-                animatorSet.start();
+
+
+                TranslateAnimation shake = new TranslateAnimation(0, 10, 0, 0);
+                shake.setDuration(Constants.ANIMATION_DURATION);
+                shake.setInterpolator(new CycleInterpolator(7));
+                imageView.startAnimation(shake);
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {

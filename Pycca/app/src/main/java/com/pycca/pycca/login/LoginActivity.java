@@ -2,9 +2,12 @@ package com.pycca.pycca.login;
 
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.CycleInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,6 +16,7 @@ import com.pycca.pycca.R;
 import com.pycca.pycca.forgotpassword.ForgotPasswordActivity;
 import com.pycca.pycca.host.HostActivity;
 import com.pycca.pycca.root.App;
+import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.util.Util;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -26,6 +30,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     public LoginActivityMVP.Presenter presenter;
 
     private LinearLayout ll_root_view;
+    private TextInputLayout til_email, til_password;
     private TextInputEditText tiet_email, tiet_password;
     private Button btn_login;
     private TextView tv_forgot_password;
@@ -37,7 +42,9 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
         setContentView(R.layout.activity_login);
         ((App) getApplication()).getApplicationComponent().inject(LoginActivity.this);
         ll_root_view        = findViewById(R.id.ll_root_view);
+        til_email           = findViewById(R.id.til_email);
         tiet_email          = findViewById(R.id.tiet_email);
+        til_password        = findViewById(R.id.til_password);
         tiet_password       = findViewById(R.id.tiet_password);
         btn_login           = findViewById(R.id.btn_login);
         tv_forgot_password  = findViewById(R.id.tv_forgot_password);
@@ -68,16 +75,28 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
 
     @Override
     public void showInvalidEmail() {
+        TranslateAnimation shake = new TranslateAnimation(0, 10, 0, 0);
+        shake.setDuration(Constants.ANIMATION_DURATION);
+        shake.setInterpolator(new CycleInterpolator(7));
+        til_email.startAnimation(shake);
         Util.showMessage(ll_root_view, getResources().getString(R.string.invalid_email));
     }
 
     @Override
     public void showEmailRequired() {
+        TranslateAnimation shake = new TranslateAnimation(0, 10, 0, 0);
+        shake.setDuration(Constants.ANIMATION_DURATION);
+        shake.setInterpolator(new CycleInterpolator(7));
+        til_email.startAnimation(shake);
         Util.showMessage(ll_root_view, getResources().getString(R.string.email_required));
     }
 
     @Override
     public void showPasswordRequired() {
+        TranslateAnimation shake = new TranslateAnimation(0, 10, 0, 0);
+        shake.setDuration(Constants.ANIMATION_DURATION);
+        shake.setInterpolator(new CycleInterpolator(7));
+        til_password.startAnimation(shake);
         Util.showMessage(ll_root_view, getResources().getString(R.string.password_required));
     }
 

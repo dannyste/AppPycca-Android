@@ -24,7 +24,7 @@ public class SignUpActivityModel implements SignUpActivityMVP.Model {
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
 
-    public SignUpActivityModel() {
+    SignUpActivityModel() {
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
     }
@@ -41,14 +41,17 @@ public class SignUpActivityModel implements SignUpActivityMVP.Model {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            saveUserFirestore(user,listener);
-                        }else{
+                            saveUserFirestore(user, listener);
+                        }
+                        else{
                             int errorCode;
-                            if(task.getException() instanceof FirebaseAuthWeakPasswordException){
+                            if (task.getException() instanceof FirebaseAuthWeakPasswordException) {
                                 errorCode = R.string.error_password_weak;
-                            }else if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                            }
+                            else if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                                 errorCode = R.string.error_email_exist;
-                            }else{
+                            }
+                            else {
                                 errorCode = R.string.error_create_new_user;
                             }
                             listener.onError(errorCode);
