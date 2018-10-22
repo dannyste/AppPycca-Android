@@ -5,6 +5,7 @@ public interface FotgotPasswordActivityMVP {
     interface View {
 
 
+
     }
 
     interface Presenter {

@@ -10,6 +10,7 @@ import com.pycca.pycca.R;
 
 public class CouponFragment extends Fragment {
 
+    private static final String TAG = CouponFragment.class.getName();
 
     public CouponFragment() {
 
