@@ -12,30 +12,6 @@
         android:id="@+id/action_bar"
         layout="@layout/action_bar" />
 
-    <com.ritesh.ratiolayout.RatioRelativeLayout
-        android:id="@+id/ratio_layout_banner_home"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:fixed_attribute="WIDTH"
-        app:horizontal_ratio="16"
-        app:vertical_ratio="9">
-
-        <com.wang.avi.AVLoadingIndicatorView
-            android:id="@+id/avliv_loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            app:indicatorName="TriangleSkewSpinIndicator"
-            app:indicatorColor="@android:color/holo_red_dark"
-            style="@style/AVLoadingIndicatorView.Large" />
-
-        <com.glide.slider.library.SliderLayout
-            android:id="@+id/sl_home_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </com.ritesh.ratiolayout.RatioRelativeLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -44,8 +20,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_divisions"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/activity_vertical_margin" />
+            android:layout_height="match_parent"/>
 
     </LinearLayout>
 

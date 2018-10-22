@@ -1,8 +1,10 @@
 <resources>
     <dimen name="action_bar_elevation">4dp</dimen>
     <dimen name="activity_horizontal_margin">20dp</dimen>
+    <dimen name="activity_horizontal_margin2">40dp</dimen>
     <dimen name="activity_vertical_margin">8dp</dimen>
     <dimen name="corner_radius">4dp</dimen>
+    <dimen name="corner_radius2">10dp</dimen>
     <dimen name="image_margin">12dp</dimen>
     <dimen name="short_separation">4dp</dimen>
 </resources>

@@ -7,17 +7,9 @@
     android:orientation="vertical"
     tools:context=".promotion.PromotionFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textStyle="bold"
-        android:text="Chúpalo KEVIN \n00=================D"
-        android:textColor="@color/colorPrimary"
-        android:textAllCaps="true"/>
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_promotion"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

@@ -18,6 +18,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.glide.slider.library.Animations.DescriptionAnimation;
 import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.SliderTypes.DefaultSliderView;
+import com.poliveira.parallaxrecyclerview.ParallaxRecyclerAdapter;
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.Division;
 import com.pycca.pycca.pojo.Promotion;
@@ -29,8 +30,6 @@ import javax.inject.Inject;
 
 public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
 
-    private static final String TAG = HomeFragment.class.getName();
-
     @Inject
     public HomeFragmentMVP.Presenter presenter;
 
@@ -38,14 +37,16 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
     private SliderLayout sl_promotions;
     private ArrayList<Division> divisions;
     private HomeFragmentAdapter homeFragmentAdapter;
+    private View view2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        view2 = inflater.inflate(R.layout.home_header, container, false);
         ((App) getActivity().getApplication()).getApplicationComponent().inject(HomeFragment.this);
         Toolbar toolbar = view.findViewById(R.id.action_bar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        sl_promotions  = view.findViewById(R.id.sl_home_fragment);
+        sl_promotions  = view2.findViewById(R.id.sl_home_fragment);
         rvDivisions    = view.findViewById(R.id.rv_divisions);
         initRecyclerView();
         return view;
@@ -100,6 +101,8 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
         LinearLayoutManager llm = new LinearLayoutManager(getAppContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rvDivisions.setLayoutManager(llm);
+
+        homeFragmentAdapter.setParallaxHeader(view2, rvDivisions);
     }
 
     @Override

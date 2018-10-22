@@ -3,6 +3,7 @@
     <color name="colorPrimary">#00529F</color>
     <color name="colorPrimaryDark">#00529F</color>
     <color name="colorAccent">#FFFFFF</color>
+    <color name="colorGray">#DEDFE0</color>
 
     <!-- ClubPyccaFragment, MoreFragment -->
     <color name="colorOptionOne">#D79BF1</color>

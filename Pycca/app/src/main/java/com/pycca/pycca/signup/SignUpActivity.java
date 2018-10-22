@@ -28,7 +28,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityM
 
     private TextInputEditText tiet_email, tiet_password, tiet_identity_card_number, tiet_club_pycca_card_number;
     private Switch s_club_pycca_member;
-    private LinearLayout ll_club_pycca_member, ll_root_view, ll_loading, ll_done;;
+    private LinearLayout ll_club_pycca_member, ll_root_view, ll_loading, ll_done;
     private Button btn_sign_up;
     private LottieAnimationView lav_loading, lav_done;
     private boolean isClubPyccaMember = false;

@@ -3,14 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
-    cardview:cardCornerRadius="@dimen/corner_radius"
+    cardview:cardCornerRadius="@dimen/corner_radius2"
+    app:cardElevation="12dp"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
-    android:layout_marginBottom="@dimen/activity_vertical_margin"
+    android:layout_height="280dp"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
     android:layout_marginLeft="@dimen/activity_horizontal_margin"
     android:layout_marginRight="@dimen/activity_horizontal_margin">
 
     <LinearLayout
+        android:id="@+id/ll_item"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

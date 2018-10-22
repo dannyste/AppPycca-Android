@@ -12,7 +12,7 @@ public class HomeFragmentModule {
     }
 
     @Provides
-    public HomeFragmentMVP.Model provideLoginActivityModel(){
+    public HomeFragmentMVP.Model provideHomeFragmentModel(){
         return new HomeFragmentModel();
     }
 

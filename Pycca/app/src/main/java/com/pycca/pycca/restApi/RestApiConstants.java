@@ -10,6 +10,7 @@ public final class RestApiConstants {
     static final String SERVER_URL_GET_IMAGES_LIST = "content/list_image/";
     public static final String ACTION_PROMOTION = "promotion";
     public static final String ACTION_DIVISION = "division";
+    public static final String ACTION_COUPON= "coupon";
 
     public static final String SERVER_URL_GET_IMAGE = "content/image/";
 

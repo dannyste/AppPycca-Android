@@ -18,4 +18,7 @@ public interface EndpointsApi {
     @GET(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_GET_IMAGES_LIST + RestApiConstants.ACTION_DIVISION)
     Call<BaseResponse> getDivisionsList();
 
+    @GET(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_GET_IMAGES_LIST + RestApiConstants.ACTION_COUPON)
+    Call<BaseResponse> getCouponsList();
+
 }
