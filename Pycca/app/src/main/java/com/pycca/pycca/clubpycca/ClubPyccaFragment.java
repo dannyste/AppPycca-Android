@@ -1,7 +1,10 @@
 package com.pycca.pycca.clubpycca;
 
-import android.annotation.SuppressLint;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -12,10 +15,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.ClubPycca;
 import com.pycca.pycca.root.App;
+import com.pycca.pycca.util.Constants;
+import com.pycca.pycca.virtualcard.VirtualCardActivity;
 
 import java.util.ArrayList;
 
@@ -37,7 +43,6 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
 
     }
 
-    @SuppressLint("ResourceAsColor")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_club_pycca, container, false);
@@ -58,7 +63,37 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
 
     public void initRecyclerView() {
         clubPyccaArrayList = new ArrayList<>();
-        clubPyccaFragmentAdapter = new ClubPyccaFragmentAdapter(getActivity(), clubPyccaArrayList);
+        clubPyccaFragmentAdapter = new ClubPyccaFragmentAdapter(getActivity(), clubPyccaArrayList, new ClubPyccaFragmentAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(ClubPyccaFragmentAdapter.ClubPyccaViewHolder clubPyccaViewHolder, final int position, ImageView imageView) {
+                ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(imageView, "rotation", 0f, 360f);
+                objectAnimator.setDuration(Constants.ANIMATION_DURATION);
+                AnimatorSet animatorSet = new AnimatorSet();
+                animatorSet.playTogether(objectAnimator);
+                animatorSet.start();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        switch (position) {
+                            case 0:
+                                break;
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                Intent virtualCardActivity = new Intent(getActivity(), VirtualCardActivity.class);
+                                startActivity(virtualCardActivity);
+                                break;
+                            case 5:
+                                break;
+                        }
+                    }
+                }, Constants.ANIMATION_DURATION);
+            }
+        });
         rv_club_pycca.setAdapter(clubPyccaFragmentAdapter);
         rv_club_pycca.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.HORIZONTAL));
         rv_club_pycca.setItemAnimator(new DefaultItemAnimator());

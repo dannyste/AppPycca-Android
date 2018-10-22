@@ -19,10 +19,12 @@ public class ClubPyccaFragmentAdapter extends RecyclerView.Adapter<ClubPyccaFrag
 
     private Activity activity;
     private ArrayList<ClubPycca> clubPyccaArrayList;
+    private OnItemClickListener onItemClickListener;
 
-    public ClubPyccaFragmentAdapter(Activity activity, ArrayList<ClubPycca> clubPyccaArrayList) {
+    ClubPyccaFragmentAdapter(Activity activity, ArrayList<ClubPycca> clubPyccaArrayList, OnItemClickListener onItemClickListener) {
         this.activity = activity;
         this.clubPyccaArrayList = clubPyccaArrayList;
+        this.onItemClickListener = onItemClickListener;
     }
 
     @NonNull
@@ -45,7 +47,7 @@ public class ClubPyccaFragmentAdapter extends RecyclerView.Adapter<ClubPyccaFrag
         return clubPyccaArrayList.size();
     }
 
-    static class ClubPyccaViewHolder extends RecyclerView.ViewHolder {
+    public class ClubPyccaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private LinearLayout ll_item;
         private ImageView iv_image;
@@ -56,7 +58,18 @@ public class ClubPyccaFragmentAdapter extends RecyclerView.Adapter<ClubPyccaFrag
             ll_item   =  view.findViewById(R.id.ll_item);
             iv_image  =  view.findViewById(R.id.iv_image);
             tv_name   =  view.findViewById(R.id.tv_name);
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            onItemClickListener.onClick(ClubPyccaViewHolder.this, getAdapterPosition(), iv_image);
         }
 
     }
+
+    public interface OnItemClickListener {
+        void onClick(ClubPyccaViewHolder clubPyccaViewHolder, int position, ImageView imageView);
+    }
+
 }

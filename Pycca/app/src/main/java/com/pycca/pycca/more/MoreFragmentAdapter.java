@@ -19,10 +19,12 @@ public class MoreFragmentAdapter extends RecyclerView.Adapter<MoreFragmentAdapte
 
     private Activity activity;
     private ArrayList<More> MoreArrayList;
+    private OnItemClickListener onItemClickListener;
 
-    public MoreFragmentAdapter(Activity activity, ArrayList<More> MoreArrayList) {
+    MoreFragmentAdapter(Activity activity, ArrayList<More> MoreArrayList, OnItemClickListener onItemClickListener) {
         this.activity = activity;
         this.MoreArrayList = MoreArrayList;
+        this.onItemClickListener = onItemClickListener;
     }
 
     @NonNull
@@ -45,7 +47,7 @@ public class MoreFragmentAdapter extends RecyclerView.Adapter<MoreFragmentAdapte
         return MoreArrayList.size();
     }
 
-    static class MoreViewHolder extends RecyclerView.ViewHolder {
+    class MoreViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private LinearLayout ll_item;
         private ImageView iv_image;
@@ -56,7 +58,17 @@ public class MoreFragmentAdapter extends RecyclerView.Adapter<MoreFragmentAdapte
             ll_item   =  view.findViewById(R.id.ll_item);
             iv_image  =  view.findViewById(R.id.iv_image);
             tv_name   =  view.findViewById(R.id.tv_name);
+            view.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View view) {
+            onItemClickListener.onClick(MoreViewHolder.this, getAdapterPosition(), iv_image);
+        }
+
+    }
+
+    public interface OnItemClickListener {
+        void onClick(MoreViewHolder moreViewHolder, int position, ImageView imageView);
     }
 }

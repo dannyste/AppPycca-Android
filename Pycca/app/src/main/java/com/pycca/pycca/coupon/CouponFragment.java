@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+
 public class CouponFragment extends Fragment implements CouponFragmentMVP.View {
 
     @Inject
