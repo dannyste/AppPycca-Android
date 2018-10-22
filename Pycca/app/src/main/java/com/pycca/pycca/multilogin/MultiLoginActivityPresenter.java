@@ -147,4 +147,5 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     public void onError() {
         view.hideLoadingAnimation();
     }
+
 }

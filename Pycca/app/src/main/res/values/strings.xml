@@ -39,7 +39,7 @@
     <string name="virtual_card">Tarjeta virtual</string>
 
     <!-- MoreFragment -->
-    <string name="my_profile">Mi perfil</string>
+    <string name="profile">Perfil</string>
     <string name="purchases">Compras</string>
 
     <!-- ProfileActivity -->

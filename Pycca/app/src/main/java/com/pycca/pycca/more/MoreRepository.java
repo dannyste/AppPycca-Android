@@ -12,9 +12,9 @@ public class MoreRepository implements MoreFragmentRepository {
     @Override
     public ArrayList<More> getMoreArrayList() {
         moreArrayList = new ArrayList<>();
-        moreArrayList.add(new More(R.color.colorOptionOne, R.drawable.ic_get_balance, R.string.my_profile));
-        moreArrayList.add(new More(R.color.colorOptionTwo, R.drawable.ic_account_status, R.string.purchases));
-        moreArrayList.add(new More(R.color.colorOptionThree, R.drawable.ic_account_status, R.string.logout));
+        moreArrayList.add(new More(R.color.colorOptionOne, R.drawable.ic_profile, R.string.profile));
+        moreArrayList.add(new More(R.color.colorOptionTwo, R.drawable.ic_purchases, R.string.purchases));
+        moreArrayList.add(new More(R.color.colorOptionThree, R.drawable.ic_logout, R.string.logout));
         return moreArrayList;
     }
 

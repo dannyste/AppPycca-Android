@@ -3,6 +3,7 @@ package com.pycca.pycca.more;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -79,6 +80,10 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
                             case 0:
                                 break;
                             case 1:
+                                String url = "http://www.pycca.com";
+                                Intent intent = new Intent(Intent.ACTION_VIEW);
+                                intent.setData(Uri.parse(url));
+                                startActivity(intent);
                                 break;
                             case 2:
                                 FirebaseAuth.getInstance().signOut();

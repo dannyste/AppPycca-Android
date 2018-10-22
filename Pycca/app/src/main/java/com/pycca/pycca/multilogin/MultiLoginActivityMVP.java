@@ -75,6 +75,7 @@ public interface MultiLoginActivityMVP {
         void onSuccess();
 
         void onError();
+
     }
 
 }
