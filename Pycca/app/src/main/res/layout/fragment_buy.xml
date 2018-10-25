@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".more.MoreFragment">
+    tools:context=".clubpycca.ClubPyccaFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_more"
+        android:id="@+id/rv_buy"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -7,10 +7,6 @@
     android:orientation="vertical"
     tools:context=".clubpycca.ClubPyccaFragment">
 
-    <include
-        android:id="@+id/action_bar"
-        layout="@layout/action_bar" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_club_pycca"
         android:layout_width="match_parent"

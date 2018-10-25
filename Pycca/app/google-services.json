@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "584085401307",
-    "firebase_url": "https://pycca-29357.firebaseio.com",
-    "project_id": "pycca-29357",
-    "storage_bucket": "pycca-29357.appspot.com"
+    "project_number": "730328305634",
+    "firebase_url": "https://pycca-55f13.firebaseio.com",
+    "project_id": "pycca-55f13",
+    "storage_bucket": "pycca-55f13.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:584085401307:android:ea44bb33c88cc2a8",
+        "mobilesdk_app_id": "1:730328305634:android:ea44bb33c88cc2a8",
         "android_client_info": {
           "package_name": "com.pycca.pycca"
         }
       },
       "oauth_client": [
         {
-          "client_id": "584085401307-tdhaaqdobqot1btfuh0fg9u42iq1bce7.apps.googleusercontent.com",
+          "client_id": "730328305634-u4tuoh8ug52l93st8qj2j6skemg42ncn.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.pycca.pycca",
@@ -23,13 +23,21 @@
           }
         },
         {
-          "client_id": "584085401307-4ls05h3ssvam41rbn7ptooki08gai573.apps.googleusercontent.com",
+          "client_id": "730328305634-ak68qeu7uofo99ts3bcchhalamddf7ad.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pycca.pycca",
+            "certificate_hash": "220569a151c554cb6613af260706aca040b43f06"
+          }
+        },
+        {
+          "client_id": "730328305634-ttd60qkotr25n4ilio96p32r0htpa5tr.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBpcNS5zHb__7e_xWNsm9n81zgJnz6GsGo"
+          "current_key": "AIzaSyCY5FnlvjNBxbgiht1nVPI54Eo5fUeHQm0"
         }
       ],
       "services": {
@@ -40,7 +48,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "584085401307-4ls05h3ssvam41rbn7ptooki08gai573.apps.googleusercontent.com",
+              "client_id": "730328305634-ttd60qkotr25n4ilio96p32r0htpa5tr.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -16,7 +16,7 @@
         android:orientation="vertical"
         android:paddingStart="@dimen/activity_horizontal_margin"
         android:paddingEnd="@dimen/activity_horizontal_margin"
-        android:weightSum="5">
+        android:weightSum="10">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +28,23 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin">
+
+            <ImageView
+                android:id="@+id/iv_pycca"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_pycca" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.25"
             android:orientation="vertical">
 
             <Button
@@ -37,7 +53,6 @@
                 android:id="@+id/btn_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:text="@string/login_email"
@@ -45,59 +60,14 @@
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                android:weightSum="5">
+        </LinearLayout>
 
-                <View
-                    android:background="@color/colorAccent"
-                    android:layout_width="0dp"
-                    android:layout_height="0.5dp"
-                    android:layout_weight="2" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="@dimen/short_separation"
-                        android:text="@string/or"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="@color/colorAccent" />
-
-                </LinearLayout>
-
-                <View
-                    android:background="@color/colorAccent"
-                    android:layout_width="0dp"
-                    android:layout_height="0.5dp"
-                    android:layout_weight="2" />
-
-            </LinearLayout>
-
-            <Button
-                android:background="@drawable/button_google_style"
-                android:drawableStart="@drawable/ic_google"
-                android:id="@+id/btn_login_google"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:paddingStart="@dimen/activity_horizontal_margin"
-                android:paddingEnd="@dimen/activity_horizontal_margin"
-                android:text="@string/login_google"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.25"
+            android:orientation="vertical">
 
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/lb_facebook"
@@ -106,12 +76,11 @@
                 android:visibility="gone" />
 
             <Button
+                android:id="@+id/btn_login_facebook"
                 android:background="@drawable/button_facebook_style"
                 android:drawableStart="@drawable/ic_facebook"
-                android:id="@+id/btn_login_facebook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:text="@string/login_facebook"
@@ -119,14 +88,21 @@
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.25"
+            android:orientation="vertical">
+
             <Button
+                android:id="@+id/btn_login_instagram"
                 android:background="@drawable/button_instagram_style"
                 android:drawableStart="@drawable/ic_instagram"
-                android:id="@+id/btn_login_instagram"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:text="@string/login_instagram"
@@ -134,32 +110,54 @@
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:gravity="center"
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.25"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_login_google"
+                android:background="@drawable/button_google_style"
+                android:drawableStart="@drawable/ic_google"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:orientation="horizontal">
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:text="@string/login_google"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/short_separation"
-                    android:paddingEnd="@dimen/short_separation"
-                    android:text="@string/new_here"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@color/colorAccent" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_register_now"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/register_now"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold" />
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/short_separation"
+                android:paddingEnd="@dimen/short_separation"
+                android:text="@string/new_here"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/tv_register_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_now"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -167,9 +165,8 @@
             android:gravity="center|bottom"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/activity_horizontal_margin">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_terms_use"
@@ -180,6 +177,12 @@
                 android:textColor="@color/colorAccent" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:orientation="vertical" />
 
     </LinearLayout>
 

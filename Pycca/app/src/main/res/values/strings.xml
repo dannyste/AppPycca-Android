@@ -26,8 +26,9 @@
 
     <!-- HostActivity -->
     <string name="home">Home</string>
-    <string name="promotions">Promociones</string>
+    <string name="coupon">Cupones</string>
     <string name="club_pycca">ClubPycca</string>
+    <string name="buy">Comprar</string>
     <string name="more">Más</string>
 
     <!-- ForgotPasswordActivity -->
@@ -69,5 +70,8 @@
     <string name="identification_required">Identificación requerida</string>
     <string name="card_number_required">Número de tarjeta requerida</string>
     <string name="error_reset_password">Ocurrió un error al restablecer la contraseña</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

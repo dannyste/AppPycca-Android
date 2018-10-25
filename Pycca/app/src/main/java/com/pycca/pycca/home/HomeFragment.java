@@ -44,8 +44,6 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         view2 = inflater.inflate(R.layout.home_header, container, false);
         ((App) getActivity().getApplication()).getApplicationComponent().inject(HomeFragment.this);
-        Toolbar toolbar = view.findViewById(R.id.action_bar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         sl_promotions  = view2.findViewById(R.id.sl_home_fragment);
         rvDivisions    = view.findViewById(R.id.rv_divisions);
         initRecyclerView();

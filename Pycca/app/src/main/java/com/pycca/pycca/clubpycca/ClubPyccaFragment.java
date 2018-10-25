@@ -6,12 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,8 +45,6 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_club_pycca, container, false);
         ((App) getActivity().getApplication()).getApplicationComponent().inject(ClubPyccaFragment.this);
-        Toolbar toolbar = view.findViewById(R.id.action_bar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         rv_club_pycca = view.findViewById(R.id.rv_club_pycca);
         initRecyclerView();
         return view;

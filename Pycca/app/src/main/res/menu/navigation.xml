@@ -7,14 +7,19 @@
         android:title="@string/home" />
 
     <item
-        android:id="@+id/mi_promotions"
-        android:icon="@drawable/ic_promotions"
-        android:title="@string/promotions" />
+        android:id="@+id/mi_coupon"
+        android:icon="@drawable/ic_coupon"
+        android:title="@string/coupon" />
 
     <item
         android:id="@+id/mi_club_pycca"
         android:icon="@drawable/ic_club_pycca"
         android:title="@string/club_pycca" />
+
+    <item
+        android:id="@+id/mi_buy"
+        android:icon="@drawable/ic_buy"
+        android:title="@string/buy" />
 
     <item
         android:id="@+id/mi_more"

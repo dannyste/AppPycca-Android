@@ -28,7 +28,6 @@ public class App extends Application {
                 .clubPyccaFragmentModule(new ClubPyccaFragmentModule())
                 .signUpActivityModule(new SignUpActivityModule())
                 .moreFragmentModule(new MoreFragmentModule())
-                .promotionFragmentModule(new PromotionFragmentModule())
                 .couponFragmentModule(new CouponFragmentModule())
                 .forgotPasswordActivityModule(new ForgotPasswordActivityModule())
                 .build();

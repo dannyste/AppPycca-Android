@@ -45,7 +45,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".virtualcard.VirtualCardActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="landscape"
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".profile.ProfileActivity"

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
-    cardview:cardCornerRadius="@dimen/corner_radius2"
+    cardview:cardCornerRadius="@dimen/corner_radius"
     app:cardElevation="12dp"
     android:layout_width="match_parent"
     android:layout_height="280dp"
