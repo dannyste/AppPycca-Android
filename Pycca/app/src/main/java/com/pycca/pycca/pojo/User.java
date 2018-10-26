@@ -1,43 +1,31 @@
 package com.pycca.pycca.pojo;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class User {
 
-    private String photo_url;
+    private String photoUrl;
     private String name;
-    private String identification;
-    private String card_number;
-    private String launching_date;
     private String email;
     private String password;
-    private String register_origin;
+    private String identificationCard;
+    private String clubPyccaCardNumber;
+    private String registrationProvider;
+    private String token;
+    private Date creationDate;
 
-    public User(){}
+    public User() {
 
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
     }
 
-    public User(String photo_url, String name, String identification, String card_number, String launching_date, String email, String password, String register_origin) {
-        this.photo_url = photo_url;
-        this.name = name;
-        this.identification = identification;
-        this.card_number = card_number;
-        this.launching_date = launching_date;
-        this.email = email;
-        this.password = password;
-        this.register_origin = register_origin;
+    public String getPhotoUrl() {
+        return photoUrl;
     }
 
-    public String getPhoto_url() {
-        return photo_url;
-    }
-
-    public void setPhoto_url(String photo_url) {
-        this.photo_url = photo_url;
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
     public String getName() {
@@ -46,30 +34,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getIdentification() {
-        return identification;
-    }
-
-    public void setIdentification(String identification) {
-        this.identification = identification;
-    }
-
-    public String getCard_number() {
-        return card_number;
-    }
-
-    public void setCard_number(String card_number) {
-        this.card_number = card_number;
-    }
-
-    public String getLaunching_date() {
-        return launching_date;
-    }
-
-    public void setLaunching_date(String launching_date) {
-        this.launching_date = launching_date;
     }
 
     public String getEmail() {
@@ -88,24 +52,56 @@ public class User {
         this.password = password;
     }
 
-    public String getRegister_origin() {
-        return register_origin;
+    public String getIdentificationCard() {
+        return identificationCard;
     }
 
-    public void setRegister_origin(String register_origin) {
-        this.register_origin = register_origin;
+    public void setIdentificationCard(String identificationCard) {
+        this.identificationCard = identificationCard;
+    }
+
+    public String getClubPyccaCardNumber() {
+        return clubPyccaCardNumber;
+    }
+
+    public void setClubPyccaCardNumber(String clubPyccaCardNumber) {
+        this.clubPyccaCardNumber = clubPyccaCardNumber;
+    }
+
+    public String getRegistrationProvider() {
+        return registrationProvider;
+    }
+
+    public void setRegistrationProvider(String registrationProvider) {
+        this.registrationProvider = registrationProvider;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
     public Map<String, Object> getMap(){
         Map<String, Object> map = new HashMap<>();
+        map.put("photoUrl", this.photoUrl);
         map.put("name", this.name);
         map.put("email", this.email);
-        map.put("card_number", this.card_number);
-        map.put("identification", this.identification);
-        map.put("launching_date", this.launching_date);
-        map.put("photo_url", this.photo_url);
         map.put("password", this.password);
-        map.put("register_origin", this.register_origin);
+        map.put("identificationCard", this.identificationCard);
+        map.put("clubPyccaCardNumber", this.clubPyccaCardNumber);
+        map.put("token", this.token);
+        map.put("creationDate", this.creationDate);
         return map;
     }
 

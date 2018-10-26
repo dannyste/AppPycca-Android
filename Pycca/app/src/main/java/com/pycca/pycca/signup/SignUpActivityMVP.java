@@ -53,15 +53,13 @@ public interface SignUpActivityMVP {
 
     interface Model {
 
-        void saveUserFirestore(User user, TaskListener listener);
-
-        void saveUserAuthentication(String email, String password, String identification, String card_number, TaskListener listener, SignUpActivity signUpActivity);
+        void saveUserAuthentication(String email, String password, String identificationCard, String clubPyccaCardNumber, TaskListener listener, SignUpActivity signUpActivity);
 
     }
 
     interface TaskListener {
 
-        void onSucess();
+        void onSuccess();
 
         void onError(int errorCode);
     }

@@ -12,9 +12,9 @@ public interface MultiLoginActivityMVP {
 
     interface View {
 
-        void loginEmail();
-
         void loginInstagram();
+
+        void loginEmail();
 
         void registerNow();
 
@@ -36,25 +36,25 @@ public interface MultiLoginActivityMVP {
 
         void currentFirebaseUser();
 
-        void loginEmailClicked();
-
-        void loginGoogleClicked(MultiLoginActivity multiLoginActivity);
-
         void loginFacebookClicked();
 
         void loginInstagramClicked();
+
+        void loginGoogleClicked(MultiLoginActivity multiLoginActivity);
+
+        void loginEmailClicked();
 
         void registerNowClicked();
 
         void termsUseClicked();
 
-        void configureGoogleSignIn(MultiLoginActivity multiLoginActivity);
-
         void configureFacebookSignIn(MultiLoginActivity multiLoginActivity, LoginButton loginButton);
 
-        void onActivityResultGoogle(MultiLoginActivity multiLoginActivity, int requestCode, int resultCode, @Nullable Intent data);
+        void configureGoogleSignIn(MultiLoginActivity multiLoginActivity);
 
         void onActivityResultFacebook(int requestCode, int resultCode, @Nullable Intent data);
+
+        void onActivityResultGoogle(MultiLoginActivity multiLoginActivity, int requestCode, int resultCode, @Nullable Intent data);
 
         void finishedDoneAnimation();
 
@@ -64,9 +64,9 @@ public interface MultiLoginActivityMVP {
 
         FirebaseUser getCurrentFirebaseUser();
 
-        void firebaseAuthWithGoogle(MultiLoginActivity multiLoginActivity, GoogleSignInAccount googleSignInAccount, MultiLoginActivityMVP.TaskListener taskListener);
-
         void firebaseAuthWithFacebook(MultiLoginActivity multiLoginActivity, AccessToken accessToken, MultiLoginActivityMVP.TaskListener taskListener);
+
+        void firebaseAuthWithGoogle(MultiLoginActivity multiLoginActivity, GoogleSignInAccount googleSignInAccount, MultiLoginActivityMVP.TaskListener taskListener);
 
     }
 
@@ -74,7 +74,7 @@ public interface MultiLoginActivityMVP {
 
         void onSuccess();
 
-        void onError();
+        void onError(int error);
 
     }
 

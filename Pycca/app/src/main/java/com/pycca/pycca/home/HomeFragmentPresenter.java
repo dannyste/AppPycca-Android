@@ -1,14 +1,11 @@
 package com.pycca.pycca.home;
 
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 
-import com.google.gson.Gson;
 import com.pycca.pycca.R;
 import com.pycca.pycca.restApi.EndpointsApi;
 import com.pycca.pycca.restApi.RestApiAdapter;
-import com.pycca.pycca.restApi.RestApiConstants;
 import com.pycca.pycca.restApi.model.BaseResponse;
 import com.pycca.pycca.util.Util;
 
@@ -45,17 +42,17 @@ public class HomeFragmentPresenter implements HomeFragmentMVP.Presenter {
                     if(baseResponse.getStatus()){
                         view.setDataToBanner(model.castPromotionList(baseResponse.getData()));
                     }else {
-                        Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_message_load_images));
+                        Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
                     }
                 }else {
-                    Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_message_load_images));
+                    Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
                 }
 
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_message_load_images));
+                Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
 
             }
         });
@@ -77,17 +74,17 @@ public class HomeFragmentPresenter implements HomeFragmentMVP.Presenter {
                     if(baseResponse.getStatus()){
                         view.updateDataRecyclerView(model.castDivisionList((baseResponse.getData())));
                     }else {
-                        Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_message_load_images));
+                        Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
                     }
                 }else {
-                    Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_message_load_images));
+                    Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
                 }
 
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_message_load_images));
+                Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
 
             }
         });

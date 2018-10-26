@@ -43,17 +43,17 @@ public class CouponFragmentPresenter implements CouponFragmentMVP.Presenter {
                     if(baseResponse.getStatus()){
                         view.updateDataRecyclerView(model.castCouponList(baseResponse.getData()));
                     }else {
-                        Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_message_load_images));
+                        Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
                     }
                 }else {
-                    Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_message_load_images));
+                    Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
                 }
 
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_message_load_images));
+                Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
 
             }
         });

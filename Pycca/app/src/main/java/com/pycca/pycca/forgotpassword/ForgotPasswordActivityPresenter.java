@@ -44,7 +44,7 @@ public class ForgotPasswordActivityPresenter implements ForgotPasswordActivityMV
 
     @Override
     public void onSuccess() {
-        view.showMessage(R.string.reset_password_email_sended);
+        view.showMessage(R.string.confirmation_link_email_sent);
         view.showDoneAnimation();
     }
 

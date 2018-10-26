@@ -42,8 +42,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorAccent"
-        app:labelVisibilityMode="labeled"
+        android:background="@color/colorPrimary"
+        app:itemTextColor="@color/colorAccent"
+        app:itemIconTint="@color/colorAccent"
         app:menu="@menu/navigation" />
 
 </RelativeLayout>

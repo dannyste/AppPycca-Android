@@ -48,17 +48,6 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     }
 
     @Override
-    public void loginEmailClicked() {
-        this.view.loginEmail();
-    }
-
-    @Override
-    public void loginGoogleClicked(MultiLoginActivity multiLoginActivity) {
-        Intent signInIntent = googleSignInClient.getSignInIntent();
-        multiLoginActivity.startActivityForResult(signInIntent, RC_LOGIN_GOOGLE);
-    }
-
-    @Override
     public void loginFacebookClicked() {
         loginButton.performClick();
     }
@@ -69,6 +58,17 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     }
 
     @Override
+    public void loginGoogleClicked(MultiLoginActivity multiLoginActivity) {
+        Intent signInIntent = googleSignInClient.getSignInIntent();
+        multiLoginActivity.startActivityForResult(signInIntent, RC_LOGIN_GOOGLE);
+    }
+
+    @Override
+    public void loginEmailClicked() {
+        this.view.loginEmail();
+    }
+
+    @Override
     public void registerNowClicked() {
         this.view.registerNow();
     }
@@ -76,15 +76,6 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     @Override
     public void termsUseClicked() {
         this.view.termsUse();
-    }
-
-    @Override
-    public void configureGoogleSignIn(MultiLoginActivity multiLoginActivity) {
-        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(multiLoginActivity.getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        googleSignInClient = GoogleSignIn.getClient(multiLoginActivity, googleSignInOptions);
     }
 
     @Override
@@ -111,6 +102,23 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     }
 
     @Override
+    public void configureGoogleSignIn(MultiLoginActivity multiLoginActivity) {
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(multiLoginActivity.getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        googleSignInClient = GoogleSignIn.getClient(multiLoginActivity, googleSignInOptions);
+    }
+
+    @Override
+    public void onActivityResultFacebook(int requestCode, int resultCode, @Nullable Intent data) {
+        if (FacebookSdk.isFacebookRequestCode(requestCode)) {
+            view.showLoadingAnimation();
+            callbackManager.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    @Override
     public void onActivityResultGoogle(MultiLoginActivity multiLoginActivity, int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == RC_LOGIN_GOOGLE) {
             view.showLoadingAnimation();
@@ -126,14 +134,6 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     }
 
     @Override
-    public void onActivityResultFacebook(int requestCode, int resultCode, @Nullable Intent data) {
-        if (FacebookSdk.isFacebookRequestCode(requestCode)) {
-            view.showLoadingAnimation();
-            callbackManager.onActivityResult(requestCode, resultCode, data);
-        }
-    }
-
-    @Override
     public void finishedDoneAnimation() {
         view.goToHostActivity();
     }
@@ -144,7 +144,7 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     }
 
     @Override
-    public void onError() {
+    public void onError(int error) {
         view.hideLoadingAnimation();
     }
 

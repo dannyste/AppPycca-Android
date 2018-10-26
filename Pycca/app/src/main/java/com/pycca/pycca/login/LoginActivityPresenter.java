@@ -30,16 +30,18 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter, Login
         view.goToForgotPasswordActivity();
     }
 
-    public boolean validate (){
+    public boolean validate () {
         String email = view.getEmail();
         String password = view.getPassword();
-        if(email.isEmpty()){
+        if(email.isEmpty()) {
             view.showEmailRequired();
             return false;
-        }else if (!Util.checkValidEmail(email)){
+        }
+        else if (!Util.checkValidEmail(email)) {
             view.showInvalidEmail();
             return false;
-        }else if (password.isEmpty()){
+        }
+        else if (password.isEmpty()) {
             view.showPasswordRequired();
             return false;
         }
@@ -47,7 +49,7 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter, Login
     }
 
     @Override
-    public void onSucess() {
+    public void onSuccess() {
         view.enableWidgets();
         view.hideProgress();
         view.goToHostActivity();

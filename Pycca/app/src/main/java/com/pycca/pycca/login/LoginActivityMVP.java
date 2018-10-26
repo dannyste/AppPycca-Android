@@ -47,7 +47,7 @@ public interface LoginActivityMVP {
 
     interface TaskListener {
 
-        void onSucess();
+        void onSuccess();
 
         void onError(int errorCode);
     }

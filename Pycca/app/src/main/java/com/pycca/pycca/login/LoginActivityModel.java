@@ -24,7 +24,7 @@ public class LoginActivityModel implements LoginActivityMVP.Model {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    listener.onSucess();
+                    listener.onSuccess();
                 }
                 else {
                     if (task.getException() != null) {

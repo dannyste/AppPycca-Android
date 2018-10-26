@@ -17,22 +17,22 @@ import com.pycca.pycca.util.Constants;
 
 public class SignUpActivityModel implements SignUpActivityMVP.Model {
 
-    private FirebaseFirestore db;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firebaseFirestore;
 
     SignUpActivityModel() {
-        db = FirebaseFirestore.getInstance();
-        mAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
     @Override
-    public void saveUserAuthentication(String email, String password, String identification, String card_number, final SignUpActivityMVP.TaskListener listener, SignUpActivity signUpActivity) {
+    public void saveUserAuthentication(String email, String password, String identificationCard, String clubPyccaCardNumber, final SignUpActivityMVP.TaskListener listener, SignUpActivity signUpActivity) {
         final User user = new User();
         user.setEmail(email);
         user.setPassword(password);
-        user.setIdentification(identification);
-        user.setCard_number(card_number);
-        mAuth.createUserWithEmailAndPassword(email, password)
+        user.setIdentificationCard(identificationCard);
+        user.setClubPyccaCardNumber(clubPyccaCardNumber);
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(signUpActivity, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -42,10 +42,10 @@ public class SignUpActivityModel implements SignUpActivityMVP.Model {
                         else{
                             int errorCode;
                             if (task.getException() instanceof FirebaseAuthWeakPasswordException) {
-                                errorCode = R.string.error_password_weak;
+                                errorCode = R.string.error_password_least_six_characters;
                             }
                             else if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                                errorCode = R.string.error_email_exist;
+                                errorCode = R.string.error_email_already_use;
                             }
                             else {
                                 errorCode = R.string.error_create_new_user;
@@ -56,14 +56,12 @@ public class SignUpActivityModel implements SignUpActivityMVP.Model {
                 });
     }
 
-    @Override
-    public void saveUserFirestore(User user, final SignUpActivityMVP.TaskListener listener) {
-        db.collection(Constants.FIRESTORE_USER_TABLE).document(user.getEmail())
-                .set(user.getMap())
+    private void saveUserFirestore(User user, final SignUpActivityMVP.TaskListener listener) {
+        firebaseFirestore.collection(Constants.FIRESTORE_USER_TABLE).document(user.getEmail()).set(user.getMap())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        listener.onSucess();
+                        listener.onSuccess();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

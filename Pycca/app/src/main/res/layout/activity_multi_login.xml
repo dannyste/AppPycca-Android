@@ -47,28 +47,6 @@
             android:layout_weight="1.25"
             android:orientation="vertical">
 
-            <Button
-                android:background="@drawable/button_default_style"
-                android:drawableStart="@drawable/ic_email"
-                android:id="@+id/btn_login_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/activity_horizontal_margin"
-                android:paddingEnd="@dimen/activity_horizontal_margin"
-                android:text="@string/login_email"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.25"
-            android:orientation="vertical">
-
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/lb_facebook"
                 android:layout_width="wrap_content"
@@ -130,6 +108,28 @@
                 android:text="@string/login_google"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.25"
+            android:orientation="vertical">
+
+            <Button
+                android:background="@drawable/button_default_style"
+                android:drawableStart="@drawable/ic_email"
+                android:id="@+id/btn_login_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:text="@string/login_email"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
 
         </LinearLayout>

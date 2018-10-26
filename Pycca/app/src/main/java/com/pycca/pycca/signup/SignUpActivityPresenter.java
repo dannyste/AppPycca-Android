@@ -7,7 +7,7 @@ public class SignUpActivityPresenter implements SignUpActivityMVP.Presenter, Sig
     private SignUpActivityMVP.View view;
     private SignUpActivityMVP.Model model;
 
-    public SignUpActivityPresenter(SignUpActivityMVP.Model model){
+    SignUpActivityPresenter(SignUpActivityMVP.Model model){
         this.model = model;
     }
 
@@ -30,7 +30,7 @@ public class SignUpActivityPresenter implements SignUpActivityMVP.Presenter, Sig
     }
 
     @Override
-    public void onSucess() {
+    public void onSuccess() {
         view.showDoneAnimation();
     }
 
@@ -40,22 +40,25 @@ public class SignUpActivityPresenter implements SignUpActivityMVP.Presenter, Sig
         view.showErrorMessage(errorCode);
     }
 
-    public boolean validate (){
+    private boolean validate(){
         String email = view.getEmail();
         String password = view.getPassword();
         String identification = view.getIdentification();
         String clubPyccaCardNumber = view.getCardNumber();
-        if(email.isEmpty()){
+        if(email.isEmpty()) {
             view.showEmailRequired();
             return false;
-        }else if (!Util.checkValidEmail(email)){
+        }
+        else if (!Util.checkValidEmail(email)) {
             view.showInvalidEmail();
             return false;
-        }else if (password.isEmpty()){
+        }
+        else if (password.isEmpty()) {
             view.showPasswordRequired();
             return false;
-        }else if (view.isClubPyccaMember()){
-            if (identification.isEmpty()){
+        }
+        else if (view.isClubPyccaMember()) {
+            if (identification.isEmpty()) {
                 view.showIdentificationRequired();
                 return false;
             }else if(clubPyccaCardNumber.isEmpty()){

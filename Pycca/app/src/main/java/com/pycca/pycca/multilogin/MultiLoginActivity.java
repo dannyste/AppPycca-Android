@@ -93,14 +93,14 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
     }
 
     @Override
-    public void loginEmail() {
-        Intent loginActivity = new Intent(MultiLoginActivity.this, LoginActivity.class);
-        startActivity(loginActivity);
+    public void loginInstagram() {
+
     }
 
     @Override
-    public void loginInstagram() {
-
+    public void loginEmail() {
+        Intent loginActivity = new Intent(MultiLoginActivity.this, LoginActivity.class);
+        startActivity(loginActivity);
     }
 
     @Override
@@ -166,8 +166,8 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        presenter.onActivityResultGoogle(MultiLoginActivity.this, requestCode, resultCode, data);
         presenter.onActivityResultFacebook(requestCode, resultCode, data);
+        presenter.onActivityResultGoogle(MultiLoginActivity.this, requestCode, resultCode, data);
     }
 
     @Override

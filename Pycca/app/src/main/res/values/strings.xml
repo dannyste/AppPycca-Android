@@ -8,15 +8,14 @@
     <string name="login_google">Inicia sesión con Google</string>
     <string name="login_instagram">Inicia sesión con Instagram</string>
     <string name="new_here">¿Eres nuevo aquí?</string>
-    <string name="or">o</string>
     <string name="register_now">Regístrate ahora</string>
     <string name="terms_use">Condiciones de uso</string>
 
     <!-- SignUpActivity -->
     <string name="sign_in">Registrarse</string>
-    <string name="club_pycca_member">¿Eres Socio ClubPycca?</string>
-    <string name="club_pycca_identity">Identificación</string>
-    <string name="club_pycca_card_number">Número de tarjeta</string>
+    <string name="club_pycca_partner">¿Eres socio ClubPycca?</string>
+    <string name="identification_card">Cédula</string>
+    <string name="club_pycca_card_number">Número de tarjeta ClubPycca</string>
 
     <!-- LoginActivity -->
     <string name="email">Correo electrónico</string>
@@ -49,29 +48,30 @@
     <!-- ProfileActivity -->
     <string name="logout">Cerrar sesión</string>
 
+    <!-- Error Messages -->
+    <string name="error_create_new_user">Ocurrió un error al guardar el nuevo usuario.</string>
+    <string name="error_default">Ha ocurrido un error.</string>
+    <string name="error_email_already_use">El email ya se encuentra en uso.</string>
+    <string name="error_invalid_credentials">Las credenciales son inválidas.</string>
+    <string name="error_load_images">Ocurrió un error al cargar las imágenes.</string>
+    <string name="error_login_facebook">Ocurrió un error al iniciar sesión con facebook.</string>
+    <string name="error_login_google">Ocurrió un error al iniciar sesión con google.</string>
+    <string name="error_login_instagram">Ocurrió un error al iniciar sesión con instagram.</string>
+    <string name="error_password_least_six_characters">La contraseña debe tener mínimo seis caracteres.</string>
+    <string name="error_user_not_exist">El usuario no existe.</string>
+
+    <!-- Confirmation Messages-->
+    <string name="confirmation_link_email_sent">Se ha enviado un enlace a su correo electrónico.</string>
+
+    <!-- Validations -->
+    <string name="card_number_required">Número de tarjeta requerida.</string>
+    <string name="email_required">Correo electrónico requerido.</string>
+    <string name="error_reset_password">Ocurrió un error al restablecer la contraseña.</string>
+    <string name="identification_required">Identificación requerida.</string>
+    <string name="invalid_email">Correo electrónico inválido.</string>
+    <string name="password_required">Contraseña requerida.</string>
+
     <!-- Facebook -->
     <string name="facebook_app_id">1892974167406914</string>
     <string name="fb_login_protocol_scheme">fb1892974167406914</string>
-
-    <!-- Messages -->
-    <string name="error_message_load_images">Ha ocurrido un error al cargar las imágenes</string>
-    <string name="error_default">Ha ocurrido un error</string>
-    <string name="error_invalid_credentials">Las credenciales son inválidas</string>
-    <string name="error_user_not_exist">El usuario no existe</string>
-    <string name="error_create_new_user">Ocurrió un error al guardar el nuevo usuario</string>
-    <string name="error_email_exist">El email ya se encuentra en uso</string>
-    <string name="error_password_weak">La contraseña debe tener mínimo 6 caracteres</string>
-    <string name="reset_password_email_sended">Se ha enviado un enlace a su correo electrónico</string>
-
-    <!-- Validations -->
-    <string name="email_required">Correo electrónico requerido</string>
-    <string name="invalid_email">Correo electrónico inválido</string>
-    <string name="password_required">Contraseña requerida</string>
-    <string name="identification_required">Identificación requerida</string>
-    <string name="card_number_required">Número de tarjeta requerida</string>
-    <string name="error_reset_password">Ocurrió un error al restablecer la contraseña</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 </resources>
