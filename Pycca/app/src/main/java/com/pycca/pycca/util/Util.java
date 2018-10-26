@@ -101,7 +101,7 @@ public class Util {
         v.startAnimation(a);
     }
 
-    public enum Provider {
+    public enum RegistrationProvider {
         EMAIL,
         FACEBOOK,
         GOOGLE,

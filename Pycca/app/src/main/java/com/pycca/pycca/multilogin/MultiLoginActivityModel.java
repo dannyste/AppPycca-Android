@@ -14,10 +14,14 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.User;
 import com.pycca.pycca.util.Constants;
+
+import java.util.Date;
 
 public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
 
@@ -26,6 +30,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
 
     MultiLoginActivityModel() {
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
     @Override
@@ -42,10 +47,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                            final User user = new User();
-                            user.setEmail(firebaseUser.getEmail());
-
-                            taskListener.onSuccess();
+                            getUserFirebaseFirestore(firebaseUser, taskListener);
                         }
                         else {
                             taskListener.onError(R.string.error_login_facebook);
@@ -62,9 +64,8 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                            taskListener.onSuccess();
+                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                            getUserFirebaseFirestore(firebaseUser, taskListener);
                         }
                         else {
                             taskListener.onError(R.string.error_login_google);
@@ -73,11 +74,34 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                 });
     }
 
-    private User getUserFirebaseFirestore() {
-        return new User();
+    private void getUserFirebaseFirestore(final FirebaseUser firebaseUser, final MultiLoginActivityMVP.TaskListener taskListener) {
+        DocumentReference documentReference = firebaseFirestore.collection(Constants.FIRESTORE_USER_TABLE).document(firebaseUser.getEmail());
+        documentReference.get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot documentSnapshot = task.getResult();
+                            if (documentSnapshot.exists()) {
+                                taskListener.onSuccess();
+                            }
+                            else {
+                                User user = new User();
+                                user.setPhotoUrl(firebaseUser.getPhotoUrl().toString());
+                                user.setName(firebaseUser.getDisplayName());
+                                user.setEmail(firebaseUser.getEmail());
+                                user.setCreationDate(new Date());
+                                createUserFirebaseFirestore(user, taskListener);
+                            }
+                        }
+                        else {
+                            taskListener.onError(R.string.error_get_user);
+                        }
+                    }
+                });
     }
 
-    private void saveUserFirebaseFirestore(User user, final MultiLoginActivityMVP.TaskListener taskListener) {
+    private void createUserFirebaseFirestore(User user, final MultiLoginActivityMVP.TaskListener taskListener) {
         firebaseFirestore.collection(Constants.FIRESTORE_USER_TABLE).document(user.getEmail()).set(user.getMap())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -88,11 +112,9 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        taskListener.onError(R.string.error_create_new_user);
+                        taskListener.onError(R.string.error_create_user);
                     }
                 });
-
     }
-
 
 }

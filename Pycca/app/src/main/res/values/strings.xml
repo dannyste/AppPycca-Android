@@ -49,9 +49,10 @@
     <string name="logout">Cerrar sesión</string>
 
     <!-- Error Messages -->
-    <string name="error_create_new_user">Ocurrió un error al guardar el nuevo usuario.</string>
+    <string name="error_create_user">Ocurrió un error al guardar un usuario.</string>
     <string name="error_default">Ha ocurrido un error.</string>
     <string name="error_email_already_use">El email ya se encuentra en uso.</string>
+    <string name="error_get_user">Ocurrió un error al consultar un usuario.</string>
     <string name="error_invalid_credentials">Las credenciales son inválidas.</string>
     <string name="error_load_images">Ocurrió un error al cargar las imágenes.</string>
     <string name="error_login_facebook">Ocurrió un error al iniciar sesión con facebook.</string>
