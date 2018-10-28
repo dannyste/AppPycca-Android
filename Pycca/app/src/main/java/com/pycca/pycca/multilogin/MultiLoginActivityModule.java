@@ -7,12 +7,12 @@ import dagger.Provides;
 public class MultiLoginActivityModule {
 
     @Provides
-    public MultiLoginActivityMVP.Presenter provideMultiLoginActivityPresenter(MultiLoginActivityMVP.Model model) {
+    MultiLoginActivityMVP.Presenter provideMultiLoginActivityPresenter(MultiLoginActivityMVP.Model model) {
         return new MultiLoginActivityPresenter(model);
     }
 
     @Provides
-    public MultiLoginActivityMVP.Model provideMultiLoginActivityModel() {
+    MultiLoginActivityMVP.Model provideMultiLoginActivityModel() {
         return new MultiLoginActivityModel();
     }
 

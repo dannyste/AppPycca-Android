@@ -59,6 +59,7 @@
     <string name="error_login_google">Ocurrió un error al iniciar sesión con google.</string>
     <string name="error_login_instagram">Ocurrió un error al iniciar sesión con instagram.</string>
     <string name="error_password_least_six_characters">La contraseña debe tener mínimo seis caracteres.</string>
+    <string name="error_update_user">Ocurrió un error al actualizar un usuario.</string>
     <string name="error_user_not_exist">El usuario no existe.</string>
 
     <!-- Confirmation Messages-->

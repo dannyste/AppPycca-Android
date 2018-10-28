@@ -19,10 +19,11 @@ import javax.inject.Inject;
 
 public class ForgotPasswordActivity extends AppCompatActivity implements ForgotPasswordActivityMVP.View {
 
+    private static final String TAG = ForgotPasswordActivity.class.getName();
+
     @Inject
     public ForgotPasswordActivityMVP.Presenter presenter;
 
-    private static final String TAG = ForgotPasswordActivity.class.getName();
     private TextInputEditText tiet_email;
     private Button btn_reset_password;
     private LottieAnimationView lav_loading, lav_done;

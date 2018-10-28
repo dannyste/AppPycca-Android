@@ -4,11 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +16,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.glide.slider.library.Animations.DescriptionAnimation;
 import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.SliderTypes.DefaultSliderView;
-import com.poliveira.parallaxrecyclerview.ParallaxRecyclerAdapter;
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.Division;
 import com.pycca.pycca.pojo.Promotion;
@@ -29,6 +26,8 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 
 public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
+
+    private static final String TAG = HomeFragment.class.getName();
 
     @Inject
     public HomeFragmentMVP.Presenter presenter;
