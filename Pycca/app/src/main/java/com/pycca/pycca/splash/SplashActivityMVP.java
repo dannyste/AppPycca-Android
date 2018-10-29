@@ -6,8 +6,6 @@ public interface SplashActivityMVP {
 
     interface View {
 
-
-
     }
 
     interface Presenter {

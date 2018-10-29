@@ -1,7 +1,6 @@
 package com.pycca.pycca.multilogin;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.facebook.AccessToken;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;

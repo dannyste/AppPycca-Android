@@ -19,27 +19,58 @@
             android:src="@drawable/virtual_card" />
 
         <LinearLayout
+            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:paddingStart="@dimen/activity_horizontal_margin">
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_club_pycca_card_number"
                 android:fontFamily="@font/orbitron"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5463-3726-1098-2387"
+                android:text="XXXX-XXXX-XXXX-XXXX"
                 android:textAllCaps="true"
                 android:textAppearance="@android:style/TextAppearance.Large"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tv_name"
                 android:fontFamily="@font/orbitron"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NOMBRE Y APELLIDO"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:text="NOMBRE"
+                android:textAllCaps="true"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/activity_horizontal_margin">
+
+            <TextView
+                android:fontFamily="@font/orbitron"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/client_since"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_client_since"
+                android:fontFamily="@font/orbitron"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DD/MM/YYYY"
                 android:textAllCaps="true"
                 android:textAppearance="@android:style/TextAppearance.Large"
                 android:textStyle="bold" />

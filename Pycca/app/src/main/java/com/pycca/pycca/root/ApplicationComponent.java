@@ -18,15 +18,26 @@ import com.pycca.pycca.promotion.PromotionFragment;
 import com.pycca.pycca.promotion.PromotionFragmentModule;
 import com.pycca.pycca.signup.SignUpActivity;
 import com.pycca.pycca.signup.SignUpActivityModule;
+import com.pycca.pycca.virtualcard.VirtualCardActivity;
+import com.pycca.pycca.virtualcard.VirtualCardActivityModule;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
 
 @Singleton
-@Component(modules = {ApplicationModule.class, MultiLoginActivityModule.class, SignUpActivityModule.class, LoginActivityModule.class,
-        HomeFragmentModule.class, ClubPyccaFragmentModule.class, MoreFragmentModule.class, PromotionFragmentModule.class,
-        CouponFragmentModule.class, ForgotPasswordActivityModule.class})
+@Component(modules = {
+                            ApplicationModule.class,
+                            MultiLoginActivityModule.class,
+                            SignUpActivityModule.class,
+                            LoginActivityModule.class,
+                            ForgotPasswordActivityModule.class,
+                            HomeFragmentModule.class,
+                            CouponFragmentModule.class,
+                            ClubPyccaFragmentModule.class,
+                            MoreFragmentModule.class,
+                            VirtualCardActivityModule.class
+                     })
 public interface ApplicationComponent {
 
     void inject(MultiLoginActivity multiLoginActivity);
@@ -35,16 +46,16 @@ public interface ApplicationComponent {
 
     void inject(LoginActivity loginActivity);
 
+    void inject(ForgotPasswordActivity forgotPasswordActivity);
+
     void inject(HomeFragment homeFragment);
+
+    void inject(CouponFragment couponFragment);
 
     void inject(ClubPyccaFragment clubPyccaFragment);
 
     void inject(MoreFragment moreFragment);
 
-    void inject(PromotionFragment promotionFragment);
-
-    void inject(CouponFragment couponFragment);
-
-    void inject(ForgotPasswordActivity forgotPasswordActivity);
+    void inject(VirtualCardActivity virtualCardActivity);
 
 }

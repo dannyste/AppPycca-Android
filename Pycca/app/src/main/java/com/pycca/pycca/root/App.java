@@ -12,6 +12,7 @@ import com.pycca.pycca.multilogin.MultiLoginActivityModule;
 import com.pycca.pycca.promotion.PromotionFragmentModule;
 import com.pycca.pycca.signup.SignUpActivityModel;
 import com.pycca.pycca.signup.SignUpActivityModule;
+import com.pycca.pycca.virtualcard.VirtualCardActivityModule;
 
 public class App extends Application {
 
@@ -23,13 +24,14 @@ public class App extends Application {
         applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .multiLoginActivityModule(new MultiLoginActivityModule())
-                .loginActivityModule(new LoginActivityModule())
-                .homeFragmentModule(new HomeFragmentModule())
-                .clubPyccaFragmentModule(new ClubPyccaFragmentModule())
                 .signUpActivityModule(new SignUpActivityModule())
-                .moreFragmentModule(new MoreFragmentModule())
-                .couponFragmentModule(new CouponFragmentModule())
+                .loginActivityModule(new LoginActivityModule())
                 .forgotPasswordActivityModule(new ForgotPasswordActivityModule())
+                .homeFragmentModule(new HomeFragmentModule())
+                .couponFragmentModule(new CouponFragmentModule())
+                .clubPyccaFragmentModule(new ClubPyccaFragmentModule())
+                .moreFragmentModule(new MoreFragmentModule())
+                .virtualCardActivityModule(new VirtualCardActivityModule())
                 .build();
     }
 

@@ -6,10 +6,10 @@
     <color name="colorGray">#DEDFE0</color>
 
     <!-- ClubPyccaFragment, MoreFragment -->
-    <color name="colorOptionOne">#D79BF1</color>
-    <color name="colorOptionTwo">#ABC3FE</color>
-    <color name="colorOptionThree">#FDC57C</color>
-    <color name="colorOptionFour">#FF89AA</color>
-    <color name="colorOptionFive">#89A8FE</color>
-    <color name="colorOptionSix">#58DFF4</color>
+    <color name="colorOptionOne">#58B1A5</color>
+    <color name="colorOptionTwo">#EE008C</color>
+    <color name="colorOptionThree">#FFC20E</color>
+    <color name="colorOptionFour">#D4DF22</color>
+    <color name="colorOptionFive">#00AEEF</color>
+    <color name="colorOptionSix">#A7ABAC</color>
 </resources>

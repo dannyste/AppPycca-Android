@@ -36,7 +36,7 @@ public class PromotionFragment extends Fragment implements PromotionFragmentMVP.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_promotion, container, false);
-        ((App) getActivity().getApplication()).getApplicationComponent().inject(PromotionFragment.this);
+        //(App) getActivity().getApplication()).getApplicationComponent().inject(PromotionFragment.this);
         rvPromotions    = view.findViewById(R.id.rv_promotion);
         initRecyclerView();
         return view;
