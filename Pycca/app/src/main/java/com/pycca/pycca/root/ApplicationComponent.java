@@ -18,6 +18,8 @@ import com.pycca.pycca.promotion.PromotionFragment;
 import com.pycca.pycca.promotion.PromotionFragmentModule;
 import com.pycca.pycca.signup.SignUpActivity;
 import com.pycca.pycca.signup.SignUpActivityModule;
+import com.pycca.pycca.splash.SplashActivity;
+import com.pycca.pycca.splash.SplashActivityModule;
 import com.pycca.pycca.virtualcard.VirtualCardActivity;
 import com.pycca.pycca.virtualcard.VirtualCardActivityModule;
 
@@ -28,6 +30,7 @@ import dagger.Component;
 @Singleton
 @Component(modules = {
                             ApplicationModule.class,
+                            SplashActivityModule.class,
                             MultiLoginActivityModule.class,
                             SignUpActivityModule.class,
                             LoginActivityModule.class,
@@ -39,6 +42,8 @@ import dagger.Component;
                             VirtualCardActivityModule.class
                      })
 public interface ApplicationComponent {
+
+    void inject(SplashActivity splashActivity);
 
     void inject(MultiLoginActivity multiLoginActivity);
 

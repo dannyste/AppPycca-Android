@@ -174,7 +174,6 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
     protected void onResume() {
         super.onResume();
         presenter.setView(MultiLoginActivity.this);
-        presenter.currentFirebaseUser();
     }
 
 }

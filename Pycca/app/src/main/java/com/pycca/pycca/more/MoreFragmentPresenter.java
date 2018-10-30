@@ -9,7 +9,7 @@ public class MoreFragmentPresenter implements MoreFragmentMVP.Presenter {
     private MoreFragmentMVP.View view;
     private MoreFragmentMVP.Model model;
 
-    public MoreFragmentPresenter(MoreFragmentMVP.Model model) {
+    MoreFragmentPresenter(MoreFragmentMVP.Model model) {
         this.model = model;
     }
 

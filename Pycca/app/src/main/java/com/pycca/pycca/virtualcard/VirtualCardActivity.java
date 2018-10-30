@@ -6,6 +6,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.pycca.pycca.R;
+import com.pycca.pycca.root.App;
 
 import javax.inject.Inject;
 
@@ -22,6 +23,7 @@ public class VirtualCardActivity extends AppCompatActivity implements VirtualCar
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_virtual_card);
+        ((App) getApplication()).getApplicationComponent().inject(VirtualCardActivity.this);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         tv_club_pycca_card_number = findViewById(R.id.tv_club_pycca_card_number);
         tv_name                   = findViewById(R.id.tv_name);

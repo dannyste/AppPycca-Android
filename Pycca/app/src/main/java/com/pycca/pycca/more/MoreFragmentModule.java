@@ -7,17 +7,17 @@ import dagger.Provides;
 public class MoreFragmentModule {
 
     @Provides
-    public MoreFragmentMVP.Presenter provideMoreFragmentPresenter(MoreFragmentMVP.Model model) {
+    MoreFragmentMVP.Presenter provideMoreFragmentPresenter(MoreFragmentMVP.Model model) {
         return new MoreFragmentPresenter(model);
     }
 
     @Provides
-    public MoreFragmentMVP.Model provideMoreFragmentModel(MoreFragmentRepository moreFragmentRepository) {
+    MoreFragmentMVP.Model provideMoreFragmentModel(MoreFragmentRepository moreFragmentRepository) {
         return new MoreFragmentModel(moreFragmentRepository);
     }
 
     @Provides
-    public MoreFragmentRepository provideMoreFragmentRepository(){
+    MoreFragmentRepository provideMoreFragmentRepository(){
         return new MoreRepository();
     }
 

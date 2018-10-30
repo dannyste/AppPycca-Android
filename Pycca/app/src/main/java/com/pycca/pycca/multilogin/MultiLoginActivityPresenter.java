@@ -40,14 +40,6 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     }
 
     @Override
-    public void currentFirebaseUser() {
-        FirebaseUser firebaseUser = model.getCurrentFirebaseUser();
-        if (firebaseUser != null) {
-            view.goToHostActivity();
-        }
-    }
-
-    @Override
     public void loginFacebookClicked() {
         loginButton.performClick();
     }

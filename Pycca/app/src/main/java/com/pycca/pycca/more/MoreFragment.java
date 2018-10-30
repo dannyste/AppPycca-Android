@@ -1,5 +1,7 @@
 package com.pycca.pycca.more;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,8 +14,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.CycleInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +39,8 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
     private ArrayList<More> moreArrayList ;
     private MoreFragmentAdapter moreFragmentAdapter;
 
+    private boolean animationRunning = false;
+
     public MoreFragment() {
 
     }
@@ -52,45 +54,36 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
         return view;
     }
 
-    @Override
-    public void updateDataRecyclerView(ArrayList<More> moreArrayList) {
-        this.moreArrayList.clear();
-        this.moreArrayList.addAll(moreArrayList);
-        moreFragmentAdapter.notifyDataSetChanged();
-    }
-
     public void initRecyclerView() {
         moreArrayList = new ArrayList<>();
         moreFragmentAdapter = new MoreFragmentAdapter(getActivity(), moreArrayList, new MoreFragmentAdapter.OnItemClickListener() {
             @Override
             public void onClick(MoreFragmentAdapter.MoreViewHolder moreViewHolder, final int position, ImageView imageView) {
-
-
-                TranslateAnimation shake = new TranslateAnimation(0, 10, 0, 0);
-                shake.setDuration(Constants.ANIMATION_DURATION);
-                shake.setInterpolator(new CycleInterpolator(7));
-                imageView.startAnimation(shake);
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        switch (position) {
-                            case 0:
-                                break;
-                            case 1:
-                                String url = "http://www.pycca.com";
-                                Intent intent = new Intent(Intent.ACTION_VIEW);
-                                intent.setData(Uri.parse(url));
-                                startActivity(intent);
-                                break;
-                            case 2:
-                                FirebaseAuth.getInstance().signOut();
-                                Intent multiLoginActivity = new Intent(getActivity(), MultiLoginActivity.class);
-                                startActivity(multiLoginActivity);
-                                break;
+                if (animationRunning) {
+                    ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(imageView, "rotation", 0f, 360f);
+                    objectAnimator.setDuration(Constants.ANIMATION_DURATION);
+                    AnimatorSet animatorSet = new AnimatorSet();
+                    animatorSet.playTogether(objectAnimator);
+                    animatorSet.start();
+                    animationRunning = true;
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            switch (position) {
+                                case 0:
+                                    break;
+                                case 1:
+                                    String url = "http://www.pycca.com";
+                                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                                    intent.setData(Uri.parse(url));
+                                    startActivity(intent);
+                                    break;
+                                case 2:
+                                    break;
+                            }
                         }
-                    }
-                }, Constants.ANIMATION_DURATION);
+                    }, Constants.ANIMATION_DURATION);
+                }
             }
         });
         rv_more.setAdapter(moreFragmentAdapter);
@@ -98,6 +91,13 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
         rv_more.setItemAnimator(new DefaultItemAnimator());
         rv_more.setHasFixedSize(false);
         rv_more.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
+
+    @Override
+    public void updateDataRecyclerView(ArrayList<More> moreArrayList) {
+        this.moreArrayList.clear();
+        this.moreArrayList.addAll(moreArrayList);
+        moreFragmentAdapter.notifyDataSetChanged();
     }
 
     @Override
