@@ -45,6 +45,7 @@
         android:background="@color/colorPrimary"
         app:itemTextColor="@color/colorAccent"
         app:itemIconTint="@color/colorAccent"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/navigation" />
 
 </RelativeLayout>

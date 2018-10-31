@@ -1,7 +1,6 @@
 package com.pycca.pycca.multilogin;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.facebook.AccessToken;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -30,18 +29,13 @@ import java.util.Date;
 public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
 
     private FirebaseAuth firebaseAuth;
-    private FirebaseFirestore firebaseFirestore;
     private FirebaseInstanceId firebaseInstanceId;
+    private FirebaseFirestore firebaseFirestore;
 
     MultiLoginActivityModel() {
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseInstanceId = FirebaseInstanceId.getInstance();
-    }
-
-    @Override
-    public FirebaseUser getCurrentFirebaseUser() {
-        return firebaseAuth.getCurrentUser();
+        firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
     @Override

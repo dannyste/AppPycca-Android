@@ -34,8 +34,6 @@ public interface MultiLoginActivityMVP {
 
         void setView(MultiLoginActivityMVP.View view);
 
-        void currentFirebaseUser();
-
         void loginFacebookClicked();
 
         void loginInstagramClicked();
@@ -61,8 +59,6 @@ public interface MultiLoginActivityMVP {
     }
 
     interface Model {
-
-        FirebaseUser getCurrentFirebaseUser();
 
         void firebaseAuthWithFacebook(MultiLoginActivity multiLoginActivity, AccessToken accessToken, MultiLoginActivityMVP.TaskListener taskListener);
 

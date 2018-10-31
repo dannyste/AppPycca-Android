@@ -1,12 +1,16 @@
 package com.pycca.pycca.splash;
 
-import com.google.firebase.auth.FirebaseUser;
+import com.pycca.pycca.pojo.User;
 
 public interface SplashActivityMVP {
 
     interface View {
 
+        void showPyccaAnimation();
 
+        void goToMultiLoginActivity();
+
+        void goToHostActivity();
 
     }
 
@@ -14,19 +18,15 @@ public interface SplashActivityMVP {
 
         void setView(SplashActivityMVP.View view);
 
+        void startPyccaAnimation();
+
+        void getCurrentUser(SplashActivity splashActivity);
+
     }
 
     interface Model {
 
-        FirebaseUser getCurrentFirebaseUser();
-
-    }
-
-    interface TaskListener {
-
-        void onSuccess();
-
-        void onError(int error);
+        User getUser(SplashActivity splashActivity);
 
     }
 

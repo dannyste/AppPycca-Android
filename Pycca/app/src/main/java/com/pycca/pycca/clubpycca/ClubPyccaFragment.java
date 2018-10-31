@@ -37,6 +37,8 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
     private ArrayList<ClubPycca> clubPyccaArrayList ;
     private ClubPyccaFragmentAdapter clubPyccaFragmentAdapter;
 
+    private boolean animationRunning = false;
+
     public ClubPyccaFragment() {
 
     }
@@ -62,32 +64,36 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
         clubPyccaFragmentAdapter = new ClubPyccaFragmentAdapter(getActivity(), clubPyccaArrayList, new ClubPyccaFragmentAdapter.OnItemClickListener() {
             @Override
             public void onClick(ClubPyccaFragmentAdapter.ClubPyccaViewHolder clubPyccaViewHolder, final int position, ImageView imageView) {
-                ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(imageView, "rotation", 0f, 360f);
-                objectAnimator.setDuration(Constants.ANIMATION_DURATION);
-                AnimatorSet animatorSet = new AnimatorSet();
-                animatorSet.playTogether(objectAnimator);
-                animatorSet.start();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        switch (position) {
-                            case 0:
-                                break;
-                            case 1:
-                                break;
-                            case 2:
-                                break;
-                            case 3:
-                                break;
-                            case 4:
-                                Intent virtualCardActivity = new Intent(getActivity(), VirtualCardActivity.class);
-                                startActivity(virtualCardActivity);
-                                break;
-                            case 5:
-                                break;
+                if (animationRunning) {
+                    ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(imageView, "rotation", 0f, 360f);
+                    objectAnimator.setDuration(Constants.ANIMATION_DURATION);
+                    AnimatorSet animatorSet = new AnimatorSet();
+                    animatorSet.playTogether(objectAnimator);
+                    animatorSet.start();
+                    animationRunning = true;
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            switch (position) {
+                                case 0:
+                                    break;
+                                case 1:
+                                    break;
+                                case 2:
+                                    break;
+                                case 3:
+                                    break;
+                                case 4:
+                                    Intent virtualCardActivity = new Intent(getActivity(), VirtualCardActivity.class);
+                                    startActivity(virtualCardActivity);
+                                    break;
+                                case 5:
+                                    break;
+                            }
+                            animationRunning = false;
                         }
-                    }
-                }, Constants.ANIMATION_DURATION);
+                    }, Constants.ANIMATION_DURATION);
+                }
             }
         });
         rv_club_pycca.setAdapter(clubPyccaFragmentAdapter);

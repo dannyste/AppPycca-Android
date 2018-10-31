@@ -12,6 +12,8 @@ public class User {
     private String password;
     private String identificationCard;
     private String clubPyccaCardNumber;
+    private int accountNumber;
+    private String clientSince;
     private String registrationProvider;
     private String token;
     private Date creationDate;
@@ -68,6 +70,22 @@ public class User {
         this.clubPyccaCardNumber = clubPyccaCardNumber;
     }
 
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public String getClientSince() {
+        return clientSince;
+    }
+
+    public void setClientSince(String clientSince) {
+        this.clientSince = clientSince;
+    }
+
     public String getRegistrationProvider() {
         return registrationProvider;
     }
@@ -100,6 +118,8 @@ public class User {
         map.put("password", this.password);
         map.put("identificationCard", this.identificationCard);
         map.put("clubPyccaCardNumber", this.clubPyccaCardNumber);
+        map.put("accountNumber", this.accountNumber);
+        map.put("clientSince", this.clientSince);
         map.put("token", this.token);
         map.put("creationDate", this.creationDate);
         return map;

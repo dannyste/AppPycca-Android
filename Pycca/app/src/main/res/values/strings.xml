@@ -41,6 +41,9 @@
     <string name="quota_increase">Incremento de cupo</string>
     <string name="virtual_card">Tarjeta virtual</string>
 
+    <!-- VirtualCardActivity -->
+    <string name="client_since">Cliente desde:</string>
+
     <!-- MoreFragment -->
     <string name="profile">Perfil</string>
     <string name="purchases">Compras</string>

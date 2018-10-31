@@ -14,7 +14,7 @@ public class LoginActivityModel implements LoginActivityMVP.Model {
 
     private FirebaseAuth firebaseAuth;
 
-    public LoginActivityModel() {
+    LoginActivityModel() {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
