@@ -3,17 +3,22 @@ package com.pycca.pycca.home;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.pycca.pycca.R;
+import com.pycca.pycca.pojo.ImageResource;
 import com.pycca.pycca.restApi.EndpointsApi;
 import com.pycca.pycca.restApi.RestApiAdapter;
 import com.pycca.pycca.restApi.model.BaseResponse;
 import com.pycca.pycca.util.Util;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragmentPresenter implements HomeFragmentMVP.Presenter {
+public class HomeFragmentPresenter implements HomeFragmentMVP.Presenter, HomeFragmentMVP.TaskListener {
 
     @Nullable
     private HomeFragmentMVP.View view;
@@ -29,64 +34,18 @@ public class HomeFragmentPresenter implements HomeFragmentMVP.Presenter {
     }
 
     @Override
-    public void loadPromotions(final View view1) {
-        RestApiAdapter restApiAdapter = new RestApiAdapter();
-        EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
-        Call<BaseResponse> getListResponseCall = endpointsApi.getPromotionsList();
-
-        getListResponseCall.enqueue(new Callback<BaseResponse>() {
-            @Override
-            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if(response.isSuccessful()){
-                    BaseResponse baseResponse = response.body();
-                    if(baseResponse.getStatus()){
-                        view.setDataToBanner(model.castPromotionList(baseResponse.getData()));
-                    }else {
-                        Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
-                    }
-                }else {
-                    Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
-
-            }
-        });
-
-
+    public void loadImages() {
+        model.getHeaderImages(this);
+        model.getContentImages(this);
     }
 
     @Override
-    public void loadDivisions(final View view1) {
-        RestApiAdapter restApiAdapter = new RestApiAdapter();
-        EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
-        Call<BaseResponse> getListResponseCall = endpointsApi.getDivisionsList();
+    public void onSuccess(ArrayList<ImageResource> list, boolean isHeader) {
+        if(isHeader){
+            view.setDataToBanner(list);
+        }else {
+            view.updateDataRecyclerView(list);
+        }
 
-        getListResponseCall.enqueue(new Callback<BaseResponse>() {
-            @Override
-            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if(response.isSuccessful()){
-                    BaseResponse baseResponse = response.body();
-                    if(baseResponse.getStatus()){
-                        view.updateDataRecyclerView(model.castDivisionList((baseResponse.getData())));
-                    }else {
-                        Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
-                    }
-                }else {
-                    Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Util.showMessage(view1, view.getAppContext().getResources().getString(R.string.error_load_images));
-
-            }
-        });
     }
 }

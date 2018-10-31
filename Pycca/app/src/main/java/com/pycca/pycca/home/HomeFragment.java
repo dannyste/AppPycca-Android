@@ -18,6 +18,7 @@ import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.SliderTypes.DefaultSliderView;
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.Division;
+import com.pycca.pycca.pojo.ImageResource;
 import com.pycca.pycca.pojo.Promotion;
 import com.pycca.pycca.root.App;
 
@@ -34,7 +35,7 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
 
     private RecyclerView rvDivisions;
     private SliderLayout sl_promotions;
-    private ArrayList<Division> divisions;
+    private ArrayList<ImageResource> divisions;
     private HomeFragmentAdapter homeFragmentAdapter;
     private View view2;
 
@@ -50,17 +51,17 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
     }
 
 
-    @SuppressLint("CheckResult")
+
     @Override
-    public void setDataToBanner(ArrayList<Promotion> promotions) {
+    public void setDataToBanner(ArrayList<ImageResource> imageResources){
         RequestOptions requestOptions = new RequestOptions();
         requestOptions
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .error(R.drawable.ic_broken_image);
         sl_promotions.removeAllSliders();
-        for (int i = 0; i < promotions.size(); i++) {
-            addPageToSlider(promotions.get(i).getImageLink(), requestOptions, i);
+        for (int i = 0; i < imageResources.size(); i++) {
+            addPageToSlider(imageResources.get(i).getPath(), requestOptions, i);
         }
         sl_promotions.setPresetTransformer(SliderLayout.Transformer.Accordion);
         sl_promotions.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
@@ -69,9 +70,9 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
     }
 
     @Override
-    public void updateDataRecyclerView(ArrayList<Division> divisions) {
+    public void updateDataRecyclerView(ArrayList<ImageResource> imageResources) {
         this.divisions.clear();
-        this.divisions.addAll(divisions);
+        this.divisions.addAll(imageResources);
         homeFragmentAdapter.notifyDataSetChanged();
     }
 
@@ -106,8 +107,7 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
     public void onResume() {
         super.onResume();
         presenter.setView(HomeFragment.this);
-        presenter.loadPromotions(sl_promotions);
-        presenter.loadDivisions(rvDivisions);
+        presenter.loadImages();
     }
 
     @Override

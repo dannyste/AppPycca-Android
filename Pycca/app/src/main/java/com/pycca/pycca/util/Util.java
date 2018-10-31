@@ -8,6 +8,7 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
 import com.pycca.pycca.pojo.Division;
+import com.pycca.pycca.pojo.ImageResource;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -99,6 +100,18 @@ public class Util {
 
         a.setDuration((int) (v.getLayoutParams().height + 500));
         v.startAnimation(a);
+    }
+
+    public static boolean containImageResourceInList(ArrayList<ImageResource> list, ImageResource imageResource){
+        for (ImageResource imgRsc: list) {
+            if(imageResource.getDescription().equals(imgRsc.getDescription()) &&
+                    imageResource.getName().equals(imgRsc.getName()) &&
+                    imageResource.getPath().equals(imgRsc.getPath()) &&
+                    imageResource.getUrl().equals(imgRsc.getUrl())){
+                return true;
+            }
+        }
+        return false;
     }
 
     public enum RegistrationProvider {

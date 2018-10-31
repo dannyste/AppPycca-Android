@@ -3,6 +3,7 @@ package com.pycca.pycca.home;
 import android.content.Context;
 
 import com.pycca.pycca.pojo.Division;
+import com.pycca.pycca.pojo.ImageResource;
 import com.pycca.pycca.pojo.Promotion;
 
 import java.util.ArrayList;
@@ -11,9 +12,9 @@ public interface HomeFragmentMVP {
 
     interface View {
 
-        void setDataToBanner(ArrayList<Promotion> promotions);
+        void setDataToBanner(ArrayList<ImageResource> imageResources);
 
-        void updateDataRecyclerView(ArrayList<Division> divisions);
+        void updateDataRecyclerView(ArrayList<ImageResource> imageResources);
 
         Context getAppContext();
 
@@ -23,18 +24,21 @@ public interface HomeFragmentMVP {
 
         void setView(View view);
 
-        void loadPromotions(final android.view.View view1);
-
-        void loadDivisions(final android.view.View view1);
+        void loadImages();
 
     }
 
     interface Model {
 
-        ArrayList<Promotion> castPromotionList(Object objectList);
+        void getHeaderImages(HomeFragmentMVP.TaskListener listener);
 
-        ArrayList<Division> castDivisionList(Object objectList);
+        void getContentImages(HomeFragmentMVP.TaskListener listener);
 
+    }
+
+    interface TaskListener {
+
+        void onSuccess(ArrayList<ImageResource> list, boolean isHeader);
     }
 
 }

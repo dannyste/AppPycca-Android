@@ -22,7 +22,7 @@ ext {
     daggerVersion = '2.16'
     firebaseVersion = '16.0.4'
     firebaseAuthVersion = '16.0.5'
-    firebasefirestoreVersion = '17.1.1'
+    firebasefirestoreVersion = '17.1.2'
     firebaseMessagingVersion = '17.3.4'
     lottieVersion = '2.7.0'
     retrofitVersion = '2.4.0'
