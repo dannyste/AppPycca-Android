@@ -1,9 +1,6 @@
 package com.pycca.pycca.home;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +13,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.poliveira.parallaxrecyclerview.ParallaxRecyclerAdapter;
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.Division;
-import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomeFragmentAdapter extends ParallaxRecyclerAdapter<Division> {
 
@@ -41,7 +36,6 @@ public class HomeFragmentAdapter extends ParallaxRecyclerAdapter<Division> {
                 .centerInside()
                 .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .error(R.drawable.ic_broken_image);
-        promotionViewHolder.avliv_loading.setVisibility(View.GONE);
         promotionViewHolder.iv_image.setVisibility(View.VISIBLE);
         Glide.with(activity)
                 .load(division.getImageLink())
@@ -69,12 +63,10 @@ public class HomeFragmentAdapter extends ParallaxRecyclerAdapter<Division> {
     static class PromotionViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView iv_image;
-        private AVLoadingIndicatorView avliv_loading;
 
         PromotionViewHolder(View view) {
             super(view);
             iv_image      = itemView.findViewById(R.id.iv_image);
-            avliv_loading = itemView.findViewById(R.id.avliv_loading);
         }
     }
 }

@@ -8,14 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.Promotion;
-import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 
@@ -44,7 +42,6 @@ public class PromotionFragmentAdapter extends RecyclerView.Adapter<PromotionFrag
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .error(R.drawable.ic_broken_image);
-        promotionViewHolder.avliv_loading.setVisibility(View.GONE);
         promotionViewHolder.iv_image.setVisibility(View.VISIBLE);
         Glide.with(activity)
                 .load(promotion.getImageLink())
@@ -67,13 +64,11 @@ public class PromotionFragmentAdapter extends RecyclerView.Adapter<PromotionFrag
 
         private LinearLayout ll_item;
         private ImageView iv_image;
-        private AVLoadingIndicatorView avliv_loading;
 
         PromotionViewHolder(View view) {
             super(view);
             ll_item       =  view.findViewById(R.id.ll_item);
             iv_image      =  view.findViewById(R.id.iv_image);
-            avliv_loading = itemView.findViewById(R.id.avliv_loading);
         }
 
     }

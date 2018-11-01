@@ -23,15 +23,15 @@
     <string name="login">Iniciar sesión</string>
     <string name="password">Contraseña</string>
 
+    <!-- ForgotPasswordActivity -->
+    <string name="reset_password">Restablecer contraseña</string>
+
     <!-- HostActivity -->
     <string name="home">Home</string>
     <string name="coupon">Cupones</string>
     <string name="club_pycca">ClubPycca</string>
     <string name="buy">Comprar</string>
     <string name="more">Más</string>
-
-    <!-- ForgotPasswordActivity -->
-    <string name="reset_password">Restablecer contraseña</string>
 
     <!-- ClubPyccaFragment -->
     <string name="account_status">Estado de cuenta</string>
@@ -50,6 +50,10 @@
 
     <!-- ProfileActivity -->
     <string name="logout">Cerrar sesión</string>
+
+    <!-- AlertDialogClubPyccaPartner -->
+    <string name="check">Verificar</string>
+    <string name="information_club_pycca_partner">Para acceder a la opción de ClubPycca por favor ingresar la siguiente información:</string>
 
     <!-- Error Messages -->
     <string name="error_create_user">Ocurrió un error al guardar un usuario.</string>

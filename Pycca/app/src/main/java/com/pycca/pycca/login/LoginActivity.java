@@ -18,7 +18,6 @@ import com.pycca.pycca.host.HostActivity;
 import com.pycca.pycca.root.App;
 import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.util.Util;
-import com.wang.avi.AVLoadingIndicatorView;
 
 import javax.inject.Inject;
 
@@ -34,7 +33,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     private TextInputEditText tiet_email, tiet_password;
     private Button btn_login;
     private TextView tv_forgot_password;
-    private AVLoadingIndicatorView avliv_loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +46,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
         tiet_password       = findViewById(R.id.tiet_password);
         btn_login           = findViewById(R.id.btn_login);
         tv_forgot_password  = findViewById(R.id.tv_forgot_password);
-        avliv_loading       = findViewById(R.id.avliv_loading);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,12 +123,12 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
 
     @Override
     public void showProgress() {
-        avliv_loading.setVisibility(View.VISIBLE);
+
     }
 
     @Override
     public void hideProgress() {
-        avliv_loading.setVisibility(View.GONE);
+
     }
 
     @Override

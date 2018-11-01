@@ -14,7 +14,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.Coupon;
-import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 
@@ -43,7 +42,6 @@ public class CouponFragmentAdapter extends RecyclerView.Adapter<CouponFragmentAd
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .error(R.drawable.ic_broken_image);
-        couponViewHolder.avliv_loading.setVisibility(View.GONE);
         couponViewHolder.iv_image.setVisibility(View.VISIBLE);
         Glide.with(activity)
                 .load(coupon.getImageLink())
@@ -66,13 +64,11 @@ public class CouponFragmentAdapter extends RecyclerView.Adapter<CouponFragmentAd
 
         private LinearLayout ll_item;
         private ImageView iv_image;
-        private AVLoadingIndicatorView avliv_loading;
 
         CouponViewHolder(View view) {
             super(view);
             ll_item       =  view.findViewById(R.id.ll_item);
             iv_image      =  view.findViewById(R.id.iv_image);
-            avliv_loading = itemView.findViewById(R.id.avliv_loading);
         }
 
     }
