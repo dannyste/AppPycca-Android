@@ -2,10 +2,8 @@ package com.pycca.pycca.profile;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.WindowManager;
 
 import com.pycca.pycca.R;
-import com.pycca.pycca.forgotpassword.ForgotPasswordActivity;
 
 public class ProfileActivity extends AppCompatActivity {
 

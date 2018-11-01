@@ -37,7 +37,7 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
     private ArrayList<ClubPycca> clubPyccaArrayList ;
     private ClubPyccaFragmentAdapter clubPyccaFragmentAdapter;
 
-    private boolean animationRunning = false;
+    private boolean animationRunning = true;
 
     public ClubPyccaFragment() {
 
@@ -70,7 +70,7 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
                     AnimatorSet animatorSet = new AnimatorSet();
                     animatorSet.playTogether(objectAnimator);
                     animatorSet.start();
-                    animationRunning = true;
+                    animationRunning = false;
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -90,7 +90,7 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
                                 case 5:
                                     break;
                             }
-                            animationRunning = false;
+                            animationRunning = true;
                         }
                     }, Constants.ANIMATION_DURATION);
                 }

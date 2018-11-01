@@ -12,25 +12,25 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.poliveira.parallaxrecyclerview.ParallaxRecyclerAdapter;
 import com.pycca.pycca.R;
-import com.pycca.pycca.pojo.Division;
+import com.pycca.pycca.pojo.ImageResource;
 
 import java.util.ArrayList;
 
-public class HomeFragmentAdapter extends ParallaxRecyclerAdapter<Division> {
+public class HomeFragmentAdapter extends ParallaxRecyclerAdapter<ImageResource> {
 
     private Activity activity;
-    private ArrayList<Division> divisionArrayList;
+    private ArrayList<ImageResource> divisionArrayList;
 
-    public HomeFragmentAdapter(Activity activity, ArrayList<Division> divisionArrayList) {
+    HomeFragmentAdapter(Activity activity, ArrayList<ImageResource> divisionArrayList) {
         super(divisionArrayList);
         this.activity = activity;
         this.divisionArrayList = divisionArrayList;
     }
 
     @Override
-    public void onBindViewHolderImpl(RecyclerView.ViewHolder viewHolder, ParallaxRecyclerAdapter<Division> parallaxRecyclerAdapter, int position) {
+    public void onBindViewHolderImpl(RecyclerView.ViewHolder viewHolder, ParallaxRecyclerAdapter<ImageResource> parallaxRecyclerAdapter, int position) {
         final PromotionViewHolder promotionViewHolder = (PromotionViewHolder)viewHolder;
-        final Division division = divisionArrayList.get(position);
+        final ImageResource division = divisionArrayList.get(position);
         RequestOptions requestOptions = new RequestOptions();
         requestOptions
                 .centerInside()
@@ -38,7 +38,7 @@ public class HomeFragmentAdapter extends ParallaxRecyclerAdapter<Division> {
                 .error(R.drawable.ic_broken_image);
         promotionViewHolder.iv_image.setVisibility(View.VISIBLE);
         Glide.with(activity)
-                .load(division.getImageLink())
+                .load(division.getPath())
                 .apply(requestOptions)
                 .into(promotionViewHolder.iv_image);
         promotionViewHolder.iv_image.setOnClickListener(new View.OnClickListener() {
@@ -50,13 +50,13 @@ public class HomeFragmentAdapter extends ParallaxRecyclerAdapter<Division> {
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolderImpl(ViewGroup viewGroup, ParallaxRecyclerAdapter<Division> parallaxRecyclerAdapter, int i) {
+    public RecyclerView.ViewHolder onCreateViewHolderImpl(ViewGroup viewGroup, ParallaxRecyclerAdapter<ImageResource> parallaxRecyclerAdapter, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list_fragment_home, viewGroup, false);
         return new PromotionViewHolder(view);
     }
 
     @Override
-    public int getItemCountImpl(ParallaxRecyclerAdapter<Division> parallaxRecyclerAdapter) {
+    public int getItemCountImpl(ParallaxRecyclerAdapter<ImageResource> parallaxRecyclerAdapter) {
         return divisionArrayList.size();
     }
 

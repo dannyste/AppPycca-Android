@@ -1,11 +1,27 @@
 package com.pycca.pycca.home;
 
+
+import android.support.annotation.NonNull;
+import android.util.Log;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.pycca.pycca.pojo.Division;
+import com.pycca.pycca.pojo.ImageResource;
 import com.pycca.pycca.pojo.Promotion;
 import com.pycca.pycca.restApi.RestApiConstants;
+import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.util.Util;
 
 import org.json.JSONArray;
@@ -14,45 +30,63 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import javax.annotation.Nullable;
+
 public class HomeFragmentModel implements HomeFragmentMVP.Model {
 
+    FirebaseFirestore db;
+
+    public HomeFragmentModel(){
+       db = FirebaseFirestore.getInstance();
+    }
+
+
     @Override
-    public ArrayList<Promotion> castPromotionList(Object objectList) {
-        ArrayList<Promotion> promotionList = new ArrayList<>();
-        try {
-            JsonObject jsonObject = new Gson().toJsonTree(objectList).getAsJsonObject();
-            JsonArray filesjson = jsonObject.getAsJsonArray("files");
-            for (int i = 0; i < filesjson.size(); i++) {
-                JsonObject jsonImageInfo = filesjson.get(i).getAsJsonObject();
-                Promotion promotion = new Promotion(RestApiConstants.SERVER_ROOT_URL.concat(RestApiConstants.SERVER_URL_GET_IMAGE).concat(RestApiConstants.ACTION_PROMOTION).concat("/").concat(jsonImageInfo.get("name").getAsString()),
-                        jsonImageInfo.get("date").getAsString());
-                promotionList.add(promotion);
+    public void getHeaderImages(final HomeFragmentMVP.TaskListener listener) {
+        final ArrayList<ImageResource> list = new ArrayList<>();
+        CollectionReference crContent = db.collection(Constants.FIRESTORE_CONTENT_TABLE);
+        DocumentReference drHome = crContent.document(Constants.FIRESTORE_HOME_TABLE);
+        CollectionReference crHeader = drHome.collection(Constants.FIRESTORE_HOME_HEADER_TABLE);
+        crHeader.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                list.clear();
+                if (!queryDocumentSnapshots.isEmpty()) {
+                    for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
+                        ImageResource imageResource = document.toObject(ImageResource.class);
+                        if(!Util.containImageResourceInList(list, imageResource)){
+                            list.add(imageResource);
+                        }
+                    }
+                }
+                listener.onSuccess(list, true);
             }
-        }
-        catch (Exception exception) {
-            exception.printStackTrace();
-        }
-        return promotionList;
+
+        });
     }
 
     @Override
-    public ArrayList<Division> castDivisionList(Object objectList) {
-        ArrayList<Division> divisionList = new ArrayList<>();
-        try {
-            JsonObject jsonObject = new Gson().toJsonTree(objectList).getAsJsonObject();
-            JsonArray filesjson = jsonObject.getAsJsonArray("files");
-            for (int i = 0; i < filesjson.size(); i++) {
-                JsonObject jsonImageInfo = filesjson.get(i).getAsJsonObject();
-                Division division = new Division(
-                        RestApiConstants.SERVER_ROOT_URL.concat(RestApiConstants.SERVER_URL_GET_IMAGE).concat(RestApiConstants.ACTION_DIVISION).concat("/").concat(jsonImageInfo.get("name").getAsString()),
-                        jsonImageInfo.get("date").getAsString(),
-                        Util.getOrder(jsonImageInfo.get("name").getAsString()));
-                divisionList.add(division);
+    public void getContentImages(final HomeFragmentMVP.TaskListener listener) {
+        final ArrayList<ImageResource> list = new ArrayList<>();
+        CollectionReference crContent = db.collection(Constants.FIRESTORE_CONTENT_TABLE);
+        DocumentReference drHome = crContent.document(Constants.FIRESTORE_HOME_TABLE);
+        CollectionReference crContentHome = drHome.collection(Constants.FIRESTORE_HOME_CONTENT_TABLE);
+        crContentHome.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                list.clear();
+                if (!queryDocumentSnapshots.isEmpty()) {
+                    for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
+                        ImageResource imageResource = document.toObject(ImageResource.class);
+                        if(!Util.containImageResourceInList(list, imageResource)){
+                            list.add(imageResource);
+                        }
+                    }
+                }
+                listener.onSuccess(list, false);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return Util.orderDivisionList(divisionList);
+
+        });
     }
 
 }

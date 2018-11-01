@@ -54,6 +54,8 @@
     <!-- AlertDialogClubPyccaPartner -->
     <string name="check">Verificar</string>
     <string name="information_club_pycca_partner">Para acceder a la opción de ClubPycca por favor ingresar la siguiente información:</string>
+    <string name="not_partner">¿No eres socio?</string>
+    <string name="request_now">Solicítalo ahora</string>
 
     <!-- Error Messages -->
     <string name="error_create_user">Ocurrió un error al guardar un usuario.</string>

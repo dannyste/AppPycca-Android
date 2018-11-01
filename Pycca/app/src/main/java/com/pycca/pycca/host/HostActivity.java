@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -64,7 +65,14 @@ public class HostActivity extends AppCompatActivity {
         fragments.put(R.id.mi_more, new MoreFragment());
     }
 
-    private void selectFragment(int menuItem){
+    private void selectFragment(int menuItem) {
+        if (menuItem == R.id.mi_club_pycca) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(HostActivity.this);
+            builder.setView(getLayoutInflater().inflate(R.layout.alert_dialog_club_pycca_partner, null));
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+            return;
+        }
         Fragment fragment = fragments.get(menuItem);
         if (fragment != null) {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
