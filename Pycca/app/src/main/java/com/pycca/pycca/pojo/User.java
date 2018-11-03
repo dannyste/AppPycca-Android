@@ -10,6 +10,7 @@ public class User {
     private String name;
     private String email;
     private String password;
+    private boolean clubPyccaPartner;
     private String identificationCard;
     private String clubPyccaCardNumber;
     private int accountNumber;
@@ -52,6 +53,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isClubPyccaPartner() {
+        return clubPyccaPartner;
+    }
+
+    public void setClubPyccaPartner(boolean clubPyccaPartner) {
+        this.clubPyccaPartner = clubPyccaPartner;
     }
 
     public String getIdentificationCard() {
@@ -116,6 +125,7 @@ public class User {
         map.put("name", this.name);
         map.put("email", this.email);
         map.put("password", this.password);
+        map.put("clubPyccaPartner", this.clubPyccaPartner);
         map.put("identificationCard", this.identificationCard);
         map.put("clubPyccaCardNumber", this.clubPyccaCardNumber);
         map.put("accountNumber", this.accountNumber);

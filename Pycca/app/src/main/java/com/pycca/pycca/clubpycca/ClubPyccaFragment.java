@@ -59,6 +59,12 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
         clubPyccaFragmentAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void goToVirtualCardActivity() {
+        Intent virtualCardActivity = new Intent(getActivity(), VirtualCardActivity.class);
+        startActivity(virtualCardActivity);
+    }
+
     public void initRecyclerView() {
         clubPyccaArrayList = new ArrayList<>();
         clubPyccaFragmentAdapter = new ClubPyccaFragmentAdapter(getActivity(), clubPyccaArrayList, new ClubPyccaFragmentAdapter.OnItemClickListener() {
@@ -76,18 +82,22 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
                         public void run() {
                             switch (position) {
                                 case 0:
+                                    presenter.firstItemClicked();
                                     break;
                                 case 1:
+                                    presenter.secondItemClicked();
                                     break;
                                 case 2:
+                                    presenter.thirdItemClicked();
                                     break;
                                 case 3:
+                                    presenter.fourthItemClicked();
                                     break;
                                 case 4:
-                                    Intent virtualCardActivity = new Intent(getActivity(), VirtualCardActivity.class);
-                                    startActivity(virtualCardActivity);
+                                    presenter.fifthItemClicked();
                                     break;
                                 case 5:
+                                    presenter.sixthItemClicked();
                                     break;
                             }
                             animationRunning = true;

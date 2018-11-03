@@ -10,6 +10,8 @@ public interface ClubPyccaFragmentMVP {
 
         void updateDataRecyclerView(ArrayList<ClubPycca> clubPyccaArrayList);
 
+        void goToVirtualCardActivity();
+
     }
 
     interface Presenter {
@@ -17,6 +19,18 @@ public interface ClubPyccaFragmentMVP {
         void setView(ClubPyccaFragmentMVP.View view);
 
         void loadClubPyccaArrayList();
+
+        void firstItemClicked();
+
+        void secondItemClicked();
+
+        void thirdItemClicked();
+
+        void fourthItemClicked();
+
+        void fifthItemClicked();
+
+        void sixthItemClicked();
 
     }
 

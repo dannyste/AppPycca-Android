@@ -10,6 +10,8 @@ public interface MoreFragmentMVP {
 
         void updateDataRecyclerView(ArrayList<More> moreArrayList);
 
+        void goToProfileActivity();
+
     }
 
     interface Presenter {
@@ -17,6 +19,18 @@ public interface MoreFragmentMVP {
         void setView(MoreFragmentMVP.View view);
 
         void loadMoreArrayList();
+
+        void firstItemClicked();
+
+        void secondItemClicked();
+
+        void thirdItemClicked();
+
+        void fourthItemClicked();
+
+        void fifthItemClicked();
+
+        void sixthItemClicked();
 
     }
 
