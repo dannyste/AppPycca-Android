@@ -2,7 +2,8 @@ package com.pycca.pycca.coupon;
 
 import android.content.Context;
 
-import com.pycca.pycca.pojo.Coupon;
+import com.pycca.pycca.pojo.CouponImageResource;
+import com.pycca.pycca.pojo.ImageResource;
 
 import java.util.ArrayList;
 
@@ -10,9 +11,11 @@ public interface CouponFragmentMVP {
 
     interface View {
 
-        void updateDataRecyclerView(ArrayList<Coupon> coupons);
+        void updateDataRecyclerView(ArrayList<CouponImageResource> coupons);
 
         Context getAppContext();
+
+        void showMessage(int errorCode);
 
     }
 
@@ -20,13 +23,18 @@ public interface CouponFragmentMVP {
 
         void setView(View view);
 
-        void loadCoupons(final android.view.View view1);
+        void loadCoupons();
 
     }
 
     interface Model {
 
-        ArrayList<Coupon> castCouponList(Object objectList);
+        void getContentImages(CouponFragmentMVP.TaskListener listener);
 
+    }
+
+    interface TaskListener {
+
+        void onSuccess(ArrayList<CouponImageResource> list);
     }
 }

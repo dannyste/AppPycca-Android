@@ -2,9 +2,7 @@ package com.pycca.pycca.home;
 
 import android.content.Context;
 
-import com.pycca.pycca.pojo.Division;
 import com.pycca.pycca.pojo.ImageResource;
-import com.pycca.pycca.pojo.Promotion;
 
 import java.util.ArrayList;
 

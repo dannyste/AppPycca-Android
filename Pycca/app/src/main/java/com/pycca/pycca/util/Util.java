@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
-import com.pycca.pycca.pojo.Division;
+import com.pycca.pycca.pojo.CouponImageResource;
+import com.pycca.pycca.pojo.DivisionImageResource;
 import com.pycca.pycca.pojo.ImageResource;
 
 import java.util.ArrayList;
@@ -30,10 +31,10 @@ public class Util {
         }
     }
 
-    public static ArrayList<Division> orderDivisionList(ArrayList<Division> list){
-        Collections.sort(list, new Comparator<Division>() {
-            @Override public int compare(Division d1, Division d2) {
-                return d1.getOrder() - d2.getOrder(); // Ascending
+    public static ArrayList<DivisionImageResource> orderDivisionList(ArrayList<DivisionImageResource> list){
+        Collections.sort(list, new Comparator<DivisionImageResource>() {
+            @Override public int compare(DivisionImageResource d1, DivisionImageResource d2) {
+                return Integer.valueOf(d1.getOrder()) - Integer.valueOf(d2.getOrder()); // Ascending
             }
 
         });
@@ -108,6 +109,32 @@ public class Util {
                     imageResource.getName().equals(imgRsc.getName()) &&
                     imageResource.getPath().equals(imgRsc.getPath()) &&
                     imageResource.getUrl().equals(imgRsc.getUrl())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean containCouponResourceInList(ArrayList<CouponImageResource> list, CouponImageResource imageResource){
+        for (CouponImageResource imgRsc: list) {
+            if(imageResource.getDescription().equals(imgRsc.getDescription()) &&
+                    imageResource.getName().equals(imgRsc.getName()) &&
+                    imageResource.getPath().equals(imgRsc.getPath()) &&
+                    imageResource.getUrl().equals(imgRsc.getUrl()) &&
+                    imageResource.getCode().equals(imgRsc.getCode())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean containDivisionResourceInList(ArrayList<DivisionImageResource> list, DivisionImageResource imageResource){
+        for (DivisionImageResource imgRsc: list) {
+            if(imageResource.getDescription().equals(imgRsc.getDescription()) &&
+                    imageResource.getName().equals(imgRsc.getName()) &&
+                    imageResource.getPath().equals(imgRsc.getPath()) &&
+                    imageResource.getUrl().equals(imgRsc.getUrl()) &&
+                    imageResource.getOrder().equals(imgRsc.getOrder())){
                 return true;
             }
         }

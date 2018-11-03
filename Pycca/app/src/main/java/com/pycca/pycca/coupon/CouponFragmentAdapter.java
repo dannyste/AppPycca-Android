@@ -1,6 +1,8 @@
 package com.pycca.pycca.coupon;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,17 +15,18 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.pycca.pycca.R;
-import com.pycca.pycca.pojo.Coupon;
+import com.pycca.pycca.pojo.CouponImageResource;
+import com.pycca.pycca.pojo.ImageResource;
 
 import java.util.ArrayList;
 
 public class CouponFragmentAdapter extends RecyclerView.Adapter<CouponFragmentAdapter.CouponViewHolder> {
 
-    private Activity activity;
-    private ArrayList<Coupon> couponArrayList;
+    private CouponFragment fragment;
+    private ArrayList<CouponImageResource> couponArrayList;
 
-    public CouponFragmentAdapter(Activity activity, ArrayList<Coupon> couponArrayList) {
-        this.activity = activity;
+    public CouponFragmentAdapter(CouponFragment fragment, ArrayList<CouponImageResource> couponArrayList) {
+        this.fragment = fragment;
         this.couponArrayList = couponArrayList;
     }
 
@@ -36,21 +39,27 @@ public class CouponFragmentAdapter extends RecyclerView.Adapter<CouponFragmentAd
 
     @Override
     public void onBindViewHolder(@NonNull CouponViewHolder couponViewHolder, int position) {
-        final Coupon coupon = couponArrayList.get(position);
+        final CouponImageResource coupon = couponArrayList.get(position);
         RequestOptions requestOptions = new RequestOptions();
         requestOptions
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .error(R.drawable.ic_broken_image);
         couponViewHolder.iv_image.setVisibility(View.VISIBLE);
-        Glide.with(activity)
-                .load(coupon.getImageLink())
+        Glide.with(fragment)
+                .load(coupon.getPath())
                 .apply(requestOptions)
                 .into(couponViewHolder.iv_image);
         couponViewHolder.iv_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(coupon.getUrl().trim() != null && !coupon.getUrl().trim().isEmpty()){
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(coupon.getUrl().trim()));
+                    fragment.startActivity(i);
+                }else {
+                    fragment.showMessage(R.string.link_not_found);
+                }
             }
         });
     }

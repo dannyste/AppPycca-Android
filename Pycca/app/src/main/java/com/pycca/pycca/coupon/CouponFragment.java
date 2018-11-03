@@ -9,10 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.pycca.pycca.R;
-import com.pycca.pycca.pojo.Coupon;
+import com.pycca.pycca.pojo.CouponImageResource;
+import com.pycca.pycca.pojo.ImageResource;
 import com.pycca.pycca.root.App;
+import com.pycca.pycca.util.Util;
 
 import java.util.ArrayList;
 
@@ -24,20 +27,22 @@ public class CouponFragment extends Fragment implements CouponFragmentMVP.View {
     public CouponFragmentMVP.Presenter presenter;
 
     private RecyclerView rvCoupon;
-    private ArrayList<Coupon> coupons;
+    private ArrayList<CouponImageResource> coupons;
     private CouponFragmentAdapter couponFragmentAdapter;
+    private LinearLayout ll_root_view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_coupon, container, false);
         ((App) getActivity().getApplication()).getApplicationComponent().inject(CouponFragment.this);
         rvCoupon    = view.findViewById(R.id.rv_coupon);
+        ll_root_view = view.findViewById(R.id.ll_root_view);
         initRecyclerView();
         return view;
     }
 
     @Override
-    public void updateDataRecyclerView(ArrayList<Coupon> coupons) {
+    public void updateDataRecyclerView(ArrayList<CouponImageResource> coupons) {
         this.coupons.clear();
         this.coupons.addAll(coupons);
         couponFragmentAdapter.notifyDataSetChanged();
@@ -50,7 +55,7 @@ public class CouponFragment extends Fragment implements CouponFragmentMVP.View {
 
     private void initRecyclerView(){
         coupons = new ArrayList<>();
-        couponFragmentAdapter = new CouponFragmentAdapter(getActivity(), coupons);
+        couponFragmentAdapter = new CouponFragmentAdapter(this, coupons);
 
         rvCoupon.setAdapter(couponFragmentAdapter);
         rvCoupon.setItemAnimator(new DefaultItemAnimator());
@@ -64,7 +69,7 @@ public class CouponFragment extends Fragment implements CouponFragmentMVP.View {
     public void onResume() {
         super.onResume();
         presenter.setView(CouponFragment.this);
-        presenter.loadCoupons(rvCoupon);
+        presenter.loadCoupons();
     }
 
     @Override
@@ -72,5 +77,10 @@ public class CouponFragment extends Fragment implements CouponFragmentMVP.View {
         super.onStop();
         coupons.clear();
         couponFragmentAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showMessage(int errorCode) {
+        Util.showMessage(ll_root_view, getResources().getString(errorCode));
     }
 }

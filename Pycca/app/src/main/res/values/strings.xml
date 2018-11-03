@@ -81,6 +81,7 @@
     <string name="identification_required">Identificación requerida.</string>
     <string name="invalid_email">Correo electrónico inválido.</string>
     <string name="password_required">Contraseña requerida.</string>
+    <string name="link_not_found">No se ha encontrado una url asociada.</string>
 
     <!-- Facebook -->
     <string name="facebook_app_id">1892974167406914</string>

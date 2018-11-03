@@ -1,6 +1,5 @@
 package com.pycca.pycca.home;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,9 +16,7 @@ import com.glide.slider.library.Animations.DescriptionAnimation;
 import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.SliderTypes.DefaultSliderView;
 import com.pycca.pycca.R;
-import com.pycca.pycca.pojo.Division;
 import com.pycca.pycca.pojo.ImageResource;
-import com.pycca.pycca.pojo.Promotion;
 import com.pycca.pycca.root.App;
 
 import java.util.ArrayList;
@@ -37,14 +34,14 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
     private SliderLayout sl_promotions;
     private ArrayList<ImageResource> divisions;
     private HomeFragmentAdapter homeFragmentAdapter;
-    private View view2;
+    private View home_header;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        view2 = inflater.inflate(R.layout.home_header, container, false);
+        home_header = inflater.inflate(R.layout.home_header, container, false);
         ((App) getActivity().getApplication()).getApplicationComponent().inject(HomeFragment.this);
-        sl_promotions  = view2.findViewById(R.id.sl_home_fragment);
+        sl_promotions  = home_header.findViewById(R.id.sl_home_fragment);
         rvDivisions    = view.findViewById(R.id.rv_divisions);
         initRecyclerView();
         return view;
@@ -100,7 +97,7 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rvDivisions.setLayoutManager(llm);
 
-        homeFragmentAdapter.setParallaxHeader(view2, rvDivisions);
+        homeFragmentAdapter.setParallaxHeader(home_header, rvDivisions);
     }
 
     @Override
