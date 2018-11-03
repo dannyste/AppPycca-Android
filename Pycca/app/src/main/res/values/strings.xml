@@ -13,7 +13,7 @@
 
     <!-- SignUpActivity -->
     <string name="sign_in">Registrarse</string>
-    <string name="club_pycca_partner">¿Eres socio ClubPycca?</string>
+    <string name="are_you_club_pycca_partner">¿Eres socio ClubPycca?</string>
     <string name="identification_card">Cédula</string>
     <string name="club_pycca_card_number">Número de tarjeta ClubPycca</string>
 
@@ -45,8 +45,12 @@
     <string name="client_since">Cliente desde:</string>
 
     <!-- MoreFragment -->
+    <string name="club_pycca_partner">Socio ClubPycca</string>
     <string name="profile">Perfil</string>
-    <string name="purchases">Compras</string>
+    <string name="contact_call">Contáctanos por llamada.</string>
+    <string name="contact_email">Contáctanos por correo electrónico</string>
+    <string name="nearest_shop">Tienda más cercana</string>
+    <string name="our_shops">Nuestras tiendas</string>
 
     <!-- ProfileActivity -->
     <string name="logout">Cerrar sesión</string>
@@ -54,7 +58,7 @@
     <!-- AlertDialogClubPyccaPartner -->
     <string name="check">Verificar</string>
     <string name="information_club_pycca_partner">Para acceder a la opción de ClubPycca por favor ingresar la siguiente información:</string>
-    <string name="not_partner">¿No eres socio?</string>
+    <string name="are_you_not_partner">¿No eres socio?</string>
     <string name="request_now">Solicítalo ahora</string>
 
     <!-- Error Messages -->
@@ -84,6 +88,6 @@
     <string name="link_not_found">No se ha encontrado una url asociada.</string>
 
     <!-- Facebook -->
-    <string name="facebook_app_id">1892974167406914</string>
-    <string name="fb_login_protocol_scheme">fb1892974167406914</string>
+    <string name="facebook_app_id">1854965214584839</string>
+    <string name="fb_login_protocol_scheme">fb1854965214584839</string>
 </resources>

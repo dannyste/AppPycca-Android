@@ -1,6 +1,7 @@
 package com.pycca.pycca.host;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -23,6 +24,8 @@ import java.util.HashMap;
 
 public class HostActivity extends AppCompatActivity {
 
+    public static Activity activity;
+
     private BottomNavigationView bottomNavigationView;
 
     private HashMap<Integer, Fragment> fragments;
@@ -43,6 +46,8 @@ public class HostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
+
+        activity = HostActivity.this;
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

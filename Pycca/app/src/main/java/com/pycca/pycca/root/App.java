@@ -10,7 +10,7 @@ import com.pycca.pycca.home.HomeFragmentModule;
 import com.pycca.pycca.login.LoginActivityModule;
 import com.pycca.pycca.more.MoreFragmentModule;
 import com.pycca.pycca.multilogin.MultiLoginActivityModule;
-import com.pycca.pycca.signup.SignUpActivityModel;
+import com.pycca.pycca.profile.ProfileActivityModule;
 import com.pycca.pycca.signup.SignUpActivityModule;
 import com.pycca.pycca.splash.SplashActivityModule;
 import com.pycca.pycca.virtualcard.VirtualCardActivityModule;
@@ -32,9 +32,10 @@ public class App extends Application {
                 .homeFragmentModule(new HomeFragmentModule())
                 .couponFragmentModule(new CouponFragmentModule())
                 .clubPyccaFragmentModule(new ClubPyccaFragmentModule())
-                .moreFragmentModule(new MoreFragmentModule())
                 .virtualCardActivityModule(new VirtualCardActivityModule())
                 .buyFragmentModule(new BuyFragmentModule())
+                .moreFragmentModule(new MoreFragmentModule())
+                .profileActivityModule(new ProfileActivityModule())
                 .build();
     }
 

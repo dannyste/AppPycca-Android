@@ -24,4 +24,34 @@ public class MoreFragmentPresenter implements MoreFragmentMVP.Presenter {
         view.updateDataRecyclerView(moreArrayList);
     }
 
+    @Override
+    public void firstItemClicked() {
+
+    }
+
+    @Override
+    public void secondItemClicked() {
+
+    }
+
+    @Override
+    public void thirdItemClicked() {
+
+    }
+
+    @Override
+    public void fourthItemClicked() {
+
+    }
+
+    @Override
+    public void fifthItemClicked() {
+
+    }
+
+    @Override
+    public void sixthItemClicked() {
+
+    }
+
 }

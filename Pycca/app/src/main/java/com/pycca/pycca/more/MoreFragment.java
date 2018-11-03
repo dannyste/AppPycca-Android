@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.pycca.pycca.R;
 import com.pycca.pycca.multilogin.MultiLoginActivity;
 import com.pycca.pycca.pojo.More;
+import com.pycca.pycca.profile.ProfileActivity;
 import com.pycca.pycca.root.App;
 import com.pycca.pycca.util.Constants;
 
@@ -39,7 +40,7 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
     private ArrayList<More> moreArrayList ;
     private MoreFragmentAdapter moreFragmentAdapter;
 
-    private boolean animationRunning = false;
+    private boolean animationRunning = true;
 
     public MoreFragment() {
 
@@ -65,22 +66,31 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
                     AnimatorSet animatorSet = new AnimatorSet();
                     animatorSet.playTogether(objectAnimator);
                     animatorSet.start();
-                    animationRunning = true;
+                    animationRunning = false;
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             switch (position) {
                                 case 0:
+                                    presenter.firstItemClicked();
                                     break;
                                 case 1:
-                                    String url = "http://www.pycca.com";
-                                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                                    intent.setData(Uri.parse(url));
-                                    startActivity(intent);
+                                    presenter.secondItemClicked();
                                     break;
                                 case 2:
+                                    presenter.thirdItemClicked();
+                                    break;
+                                case 3:
+                                    presenter.fourthItemClicked();
+                                    break;
+                                case 4:
+                                    presenter.fifthItemClicked();
+                                    break;
+                                case 5:
+                                    presenter.sixthItemClicked();
                                     break;
                             }
+                            animationRunning = true;
                         }
                     }, Constants.ANIMATION_DURATION);
                 }
@@ -98,6 +108,12 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
         this.moreArrayList.clear();
         this.moreArrayList.addAll(moreArrayList);
         moreFragmentAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void goToProfileActivity() {
+        Intent profileActivity = new Intent(getActivity(), ProfileActivity.class);
+        startActivity(profileActivity);
     }
 
     @Override

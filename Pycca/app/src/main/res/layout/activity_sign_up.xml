@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
-                android:text="@string/club_pycca_partner"
+                android:text="@string/are_you_club_pycca_partner"
                 android:textColor="@android:color/black"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
