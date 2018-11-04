@@ -18,6 +18,7 @@ public class User {
     private String registrationProvider;
     private String token;
     private Date creationDate;
+    private Date modificationDate;
 
     public User() {
 
@@ -119,6 +120,14 @@ public class User {
         this.creationDate = creationDate;
     }
 
+    public Date getModificationDate() {
+        return modificationDate;
+    }
+
+    public void setModificationDate(Date modificationDate) {
+        this.modificationDate = modificationDate;
+    }
+
     public Map<String, Object> getMap(){
         Map<String, Object> map = new HashMap<>();
         map.put("photoUrl", this.photoUrl);
@@ -132,6 +141,7 @@ public class User {
         map.put("clientSince", this.clientSince);
         map.put("token", this.token);
         map.put("creationDate", this.creationDate);
+        map.put("modificationDate", this.modificationDate);
         return map;
     }
 

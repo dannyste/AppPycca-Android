@@ -53,7 +53,7 @@ public class CouponFragmentAdapter extends RecyclerView.Adapter<CouponFragmentAd
         couponViewHolder.iv_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(coupon.getUrl().trim() != null && !coupon.getUrl().trim().isEmpty()){
+                if(coupon.getUrl() != null && !coupon.getUrl().trim().isEmpty()){
                     Intent i = new Intent(Intent.ACTION_VIEW);
                     i.setData(Uri.parse(coupon.getUrl().trim()));
                     fragment.startActivity(i);

@@ -11,8 +11,7 @@ public class SplashActivityModel implements SplashActivityMVP.Model {
 
     @Override
     public User getUser(SplashActivity splashActivity) {
-        User user = SharedPreferencesManager.getInstance(splashActivity).getUser();
-        return user;
+        return SharedPreferencesManager.getInstance(splashActivity).getUser();
     }
 
 }

@@ -111,12 +111,12 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityM
 
     @Override
     public void showIdentificationRequired() {
-        Util.showMessage(ll_root_view, getResources().getString(R.string.identification_required));
+        Util.showMessage(ll_root_view, getResources().getString(R.string.identification_card_required));
     }
 
     @Override
     public void showCardNumberRequired() {
-        Util.showMessage(ll_root_view, getResources().getString(R.string.card_number_required));
+        Util.showMessage(ll_root_view, getResources().getString(R.string.club_pycca_card_number_required));
     }
 
     @Override

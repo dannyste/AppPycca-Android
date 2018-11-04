@@ -72,28 +72,19 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
 
     @Override
     public void showInvalidEmail() {
-        TranslateAnimation shake = new TranslateAnimation(0, 10, 0, 0);
-        shake.setDuration(Constants.ANIMATION_DURATION);
-        shake.setInterpolator(new CycleInterpolator(7));
-        til_email.startAnimation(shake);
+        til_email.startAnimation(Util.getTranslateAnimation());
         Util.showMessage(ll_root_view, getResources().getString(R.string.invalid_email));
     }
 
     @Override
     public void showEmailRequired() {
-        TranslateAnimation shake = new TranslateAnimation(0, 10, 0, 0);
-        shake.setDuration(Constants.ANIMATION_DURATION);
-        shake.setInterpolator(new CycleInterpolator(7));
-        til_email.startAnimation(shake);
+        til_email.startAnimation(Util.getTranslateAnimation());
         Util.showMessage(ll_root_view, getResources().getString(R.string.email_required));
     }
 
     @Override
     public void showPasswordRequired() {
-        TranslateAnimation shake = new TranslateAnimation(0, 10, 0, 0);
-        shake.setDuration(Constants.ANIMATION_DURATION);
-        shake.setInterpolator(new CycleInterpolator(7));
-        til_password.startAnimation(shake);
+        til_password.startAnimation(Util.getTranslateAnimation());
         Util.showMessage(ll_root_view, getResources().getString(R.string.password_required));
     }
 

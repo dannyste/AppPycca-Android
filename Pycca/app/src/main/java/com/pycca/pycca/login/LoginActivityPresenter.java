@@ -18,7 +18,7 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter, Login
 
     @Override
     public void loginClicked() {
-        if(validate()){
+        if (validate()) {
             view.disableWidgets();
             view.showProgress();
             model.firebaseAuthWithEmailAndPassword(view.getEmail(), view.getPassword(), this);

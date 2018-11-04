@@ -20,8 +20,5 @@ public class Constants {
     public static String FIRESTORE_COUPON_TABLE           = "Coupon";
     public static String FIRESTORE_COUPON_CONTENT_TABLE   = "Content";
 
-
-
-
 }
 

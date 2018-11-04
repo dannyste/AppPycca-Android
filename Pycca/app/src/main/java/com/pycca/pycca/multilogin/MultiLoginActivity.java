@@ -156,6 +156,7 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
         });
         lav_done.playAnimation();
     }
+
     @Override
     public void goToHostActivity() {
         Intent hostActivity = new Intent(MultiLoginActivity.this, HostActivity.class);

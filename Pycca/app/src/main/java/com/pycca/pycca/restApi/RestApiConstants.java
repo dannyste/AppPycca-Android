@@ -1,17 +1,13 @@
 package com.pycca.pycca.restApi;
 
-public final class RestApiConstants {
+final class RestApiConstants {
 
-    public static final String SERVER_ROOT_URL = "http://pagos.pycca.com:7654/";
+    static final String SERVER_ROOT_URL = "http://pagos.pycca.com:7654/";
 
-    public static final String SERVER_URL_GET_CLIENT = "client/";
-    public static final String ACTION_VALIDATE_CLIENT = "validate_client";
+    private static final String CLIENT                          = "client/";
+    private static final String ACTION_VALIDATE_CLIENT          = "validate_client/";
+    private static final String PARAMETER_VALIDATE_CLIENT       = "{documentType}/{identificationCard}/{clubPyccaCardNumber}";
 
-    static final String SERVER_URL_GET_IMAGES_LIST = "content/list_image/";
-    public static final String ACTION_PROMOTION = "promotion";
-    public static final String ACTION_DIVISION = "division";
-    public static final String ACTION_COUPON= "coupon";
-
-    public static final String SERVER_URL_GET_IMAGE = "content/image/";
+    static final String SERVER_URL_GET_VALIDATE_CLIENT = CLIENT + ACTION_VALIDATE_CLIENT + PARAMETER_VALIDATE_CLIENT;
 
 }

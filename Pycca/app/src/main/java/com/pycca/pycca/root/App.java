@@ -7,6 +7,7 @@ import com.pycca.pycca.clubpycca.ClubPyccaFragmentModule;
 import com.pycca.pycca.coupon.CouponFragmentModule;
 import com.pycca.pycca.forgotpassword.ForgotPasswordActivityModule;
 import com.pycca.pycca.home.HomeFragmentModule;
+import com.pycca.pycca.host.HostActivityModule;
 import com.pycca.pycca.login.LoginActivityModule;
 import com.pycca.pycca.more.MoreFragmentModule;
 import com.pycca.pycca.multilogin.MultiLoginActivityModule;
@@ -29,6 +30,7 @@ public class App extends Application {
                 .signUpActivityModule(new SignUpActivityModule())
                 .loginActivityModule(new LoginActivityModule())
                 .forgotPasswordActivityModule(new ForgotPasswordActivityModule())
+                .hostActivityModule(new HostActivityModule())
                 .homeFragmentModule(new HomeFragmentModule())
                 .couponFragmentModule(new CouponFragmentModule())
                 .clubPyccaFragmentModule(new ClubPyccaFragmentModule())
