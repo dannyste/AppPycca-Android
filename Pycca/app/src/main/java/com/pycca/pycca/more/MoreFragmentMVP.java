@@ -10,6 +10,8 @@ public interface MoreFragmentMVP {
 
         void updateDataRecyclerView(ArrayList<More> moreArrayList);
 
+        void goToClubPyccaPartner();
+
         void goToProfileActivity();
 
     }

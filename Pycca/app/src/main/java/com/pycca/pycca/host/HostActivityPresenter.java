@@ -78,7 +78,7 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
         }
     }
 
-    public boolean validateFields() {
+    private boolean validateFields() {
         String identificationCard = view.getIdentificationCard();
         String clubPyccaCardNumber = view.getClubPyccaCardNumber();
         if (identificationCard.isEmpty()) {
@@ -93,14 +93,14 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
     }
 
     @Override
-    public void requestNowClicked() {
-        view.goToClubPyccaPartnerActivity();
-    }
-
-    @Override
     public void finishedDoneAnimation(MenuItem menuItem) {
         view.hideAlertDialog();
         view.showFragment(menuItem);
+    }
+
+    @Override
+    public void requestNowClicked() {
+        view.goToClubPyccaPartnerActivity();
     }
 
     @Override

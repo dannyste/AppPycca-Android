@@ -73,11 +73,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
     }
 
     @Override
-    public void setVisibilityClubPyccaPartner() {
-        ll_club_pycca_partner.setVisibility(View.VISIBLE);
-    }
-
-    @Override
     public void setIdentificationCard(String identificationCard) {
         tv_identification_card.setText(identificationCard);
     }
@@ -85,6 +80,11 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
     @Override
     public void setClubPyccaCardNumber(String clubPyccaCardNumber) {
         tv_club_pycca_card_number.setText(clubPyccaCardNumber);
+    }
+
+    @Override
+    public void setVisibilityClubPyccaPartner() {
+        ll_club_pycca_partner.setVisibility(View.VISIBLE);
     }
 
     @Override

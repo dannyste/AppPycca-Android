@@ -61,16 +61,6 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     }
 
     @Override
-    public void registerNowClicked() {
-        this.view.registerNow();
-    }
-
-    @Override
-    public void termsUseClicked() {
-        this.view.termsUse();
-    }
-
-    @Override
     public void configureFacebookSignIn(final MultiLoginActivity multiLoginActivity, LoginButton loginButton) {
         callbackManager = CallbackManager.Factory.create();
         this.loginButton = loginButton;
@@ -128,6 +118,16 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     @Override
     public void finishedDoneAnimation() {
         view.goToHostActivity();
+    }
+
+    @Override
+    public void registerNowClicked() {
+        this.view.registerNow();
+    }
+
+    @Override
+    public void termsUseClicked() {
+        this.view.termsUse();
     }
 
     @Override

@@ -43,9 +43,9 @@ public interface HostActivityMVP {
 
         void validateClicked(HostActivity hostActivity);
 
-        void requestNowClicked();
-
         void finishedDoneAnimation(MenuItem menuItem);
+
+        void requestNowClicked();
 
     }
 

@@ -19,21 +19,15 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter, Login
     @Override
     public void loginClicked() {
         if (validate()) {
-            view.disableWidgets();
-            view.showProgress();
-            model.firebaseAuthWithEmailAndPassword(view.getEmail(), view.getPassword(), this);
+            view.showLoadingAnimation();
+            model.firebaseAuthWithEmailAndPassword(view.getEmail(), view.getPassword(), LoginActivityPresenter.this);
         }
-    }
-
-    @Override
-    public void forgotPasswordClicked() {
-        view.goToForgotPasswordActivity();
     }
 
     public boolean validate () {
         String email = view.getEmail();
         String password = view.getPassword();
-        if(email.isEmpty()) {
+        if (email.isEmpty()) {
             view.showEmailRequired();
             return false;
         }
@@ -49,17 +43,24 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter, Login
     }
 
     @Override
-    public void onSuccess() {
-        view.enableWidgets();
-        view.hideProgress();
+    public void finishedDoneAnimation() {
         view.goToHostActivity();
     }
 
     @Override
-    public void onError(int errorCode) {
-        view.enableWidgets();
-        view.hideProgress();
-        view.showErrorMessage(errorCode);
+    public void forgotPasswordClicked() {
+        view.goToForgotPasswordActivity();
+    }
+
+    @Override
+    public void onSuccess() {
+        view.showDoneAnimation();
+    }
+
+    @Override
+    public void onError(int error) {
+        view.hideLoadingAnimation();
+        view.showErrorMessage(error);
     }
 
 }

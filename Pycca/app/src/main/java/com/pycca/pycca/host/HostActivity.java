@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -53,6 +54,7 @@ public class HostActivity extends AppCompatActivity implements HostActivityMVP.V
     private AlertDialog alertDialog;
 
     private LinearLayout ll_root_view, ll_loading, ll_done;
+    private TextInputLayout til_identification_card, til_club_pycca_card_number;
     private TextInputEditText tiet_identification_card, tiet_club_pycca_card_number;
     private LottieAnimationView lav_loading, lav_done;
 
@@ -154,7 +156,9 @@ public class HostActivity extends AppCompatActivity implements HostActivityMVP.V
         alertDialog                 = builder.create();
         ll_root_view                = viewAlertDialog.findViewById(R.id.ll_root_view);
         ImageView iv_close          = viewAlertDialog.findViewById(R.id.iv_close);
+        til_identification_card     = viewAlertDialog.findViewById(R.id.til_identification_card);
         tiet_identification_card    = viewAlertDialog.findViewById(R.id.tiet_identification_card);
+        til_club_pycca_card_number  = viewAlertDialog.findViewById(R.id.til_club_pycca_card_number);
         tiet_club_pycca_card_number = viewAlertDialog.findViewById(R.id.tiet_club_pycca_card_number);
         Button btn_validate         = viewAlertDialog.findViewById(R.id.btn_validate);
         TextView tv_request_now     = viewAlertDialog.findViewById(R.id.tv_request_now);
@@ -196,13 +200,13 @@ public class HostActivity extends AppCompatActivity implements HostActivityMVP.V
 
     @Override
     public void showIdentificationCardRequired() {
-        tiet_identification_card.startAnimation(Util.getTranslateAnimation());
+        til_identification_card.startAnimation(Util.getTranslateAnimation());
         Util.showMessage(viewAlertDialog, getString(R.string.identification_card_required));
     }
 
     @Override
     public void clubPyccaCardNumberRequired() {
-        tiet_club_pycca_card_number.startAnimation(Util.getTranslateAnimation());
+        til_club_pycca_card_number.startAnimation(Util.getTranslateAnimation());
         Util.showMessage(viewAlertDialog, getString(R.string.club_pycca_card_number_required));
     }
 
