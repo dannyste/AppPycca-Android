@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import com.facebook.AccessToken;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.auth.FirebaseUser;
 
 public interface MultiLoginActivityMVP {
 
@@ -16,10 +15,6 @@ public interface MultiLoginActivityMVP {
 
         void loginEmail();
 
-        void registerNow();
-
-        void termsUse();
-
         void showLoadingAnimation();
 
         void hideLoadingAnimation();
@@ -27,6 +22,10 @@ public interface MultiLoginActivityMVP {
         void showDoneAnimation();
 
         void goToHostActivity();
+
+        void registerNow();
+
+        void termsUse();
 
     }
 
@@ -42,10 +41,6 @@ public interface MultiLoginActivityMVP {
 
         void loginEmailClicked();
 
-        void registerNowClicked();
-
-        void termsUseClicked();
-
         void configureFacebookSignIn(MultiLoginActivity multiLoginActivity, LoginButton loginButton);
 
         void configureGoogleSignIn(MultiLoginActivity multiLoginActivity);
@@ -55,6 +50,10 @@ public interface MultiLoginActivityMVP {
         void onActivityResultGoogle(MultiLoginActivity multiLoginActivity, int requestCode, int resultCode, @Nullable Intent data);
 
         void finishedDoneAnimation();
+
+        void registerNowClicked();
+
+        void termsUseClicked();
 
     }
 

@@ -1,22 +1,21 @@
 package com.pycca.pycca.login;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.CycleInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.pycca.pycca.R;
 import com.pycca.pycca.forgotpassword.ForgotPasswordActivity;
 import com.pycca.pycca.host.HostActivity;
 import com.pycca.pycca.root.App;
-import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.util.Util;
 
 import javax.inject.Inject;
@@ -28,11 +27,12 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     @Inject
     public LoginActivityMVP.Presenter presenter;
 
-    private LinearLayout ll_root_view;
+    private LinearLayout ll_root_view, ll_loading, ll_done;
     private TextInputLayout til_email, til_password;
     private TextInputEditText tiet_email, tiet_password;
     private Button btn_login;
     private TextView tv_forgot_password;
+    private LottieAnimationView lav_loading, lav_done;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,10 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
         tiet_password       = findViewById(R.id.tiet_password);
         btn_login           = findViewById(R.id.btn_login);
         tv_forgot_password  = findViewById(R.id.tv_forgot_password);
+        ll_loading          = findViewById(R.id.ll_loading);
+        lav_loading         = findViewById(R.id.lav_loading);
+        ll_done             = findViewById(R.id.ll_done);
+        lav_done            = findViewById(R.id.lav_done);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,30 +75,64 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     }
 
     @Override
-    public void showInvalidEmail() {
-        TranslateAnimation shake = new TranslateAnimation(0, 10, 0, 0);
-        shake.setDuration(Constants.ANIMATION_DURATION);
-        shake.setInterpolator(new CycleInterpolator(7));
-        til_email.startAnimation(shake);
-        Util.showMessage(ll_root_view, getResources().getString(R.string.invalid_email));
+    public void showEmailRequired() {
+        til_email.startAnimation(Util.getTranslateAnimation());
+        Util.showMessage(ll_root_view, getString(R.string.email_required));
     }
 
     @Override
-    public void showEmailRequired() {
-        TranslateAnimation shake = new TranslateAnimation(0, 10, 0, 0);
-        shake.setDuration(Constants.ANIMATION_DURATION);
-        shake.setInterpolator(new CycleInterpolator(7));
-        til_email.startAnimation(shake);
-        Util.showMessage(ll_root_view, getResources().getString(R.string.email_required));
+    public void showInvalidEmail() {
+        til_email.startAnimation(Util.getTranslateAnimation());
+        Util.showMessage(ll_root_view, getString(R.string.invalid_email));
     }
 
     @Override
     public void showPasswordRequired() {
-        TranslateAnimation shake = new TranslateAnimation(0, 10, 0, 0);
-        shake.setDuration(Constants.ANIMATION_DURATION);
-        shake.setInterpolator(new CycleInterpolator(7));
-        til_password.startAnimation(shake);
-        Util.showMessage(ll_root_view, getResources().getString(R.string.password_required));
+        til_password.startAnimation(Util.getTranslateAnimation());
+        Util.showMessage(ll_root_view, getString(R.string.password_required));
+    }
+
+    @Override
+    public void showLoadingAnimation() {
+        ll_root_view.setVisibility(View.GONE);
+        ll_loading.setVisibility(View.VISIBLE);
+        lav_loading.playAnimation();
+    }
+
+    @Override
+    public void hideLoadingAnimation() {
+        lav_loading.pauseAnimation();
+        ll_loading.setVisibility(View.GONE);
+        ll_root_view.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showDoneAnimation() {
+        lav_loading.pauseAnimation();
+        ll_loading.setVisibility(View.GONE);
+        ll_done.setVisibility(View.VISIBLE);
+        lav_done.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                presenter.finishedDoneAnimation();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+        lav_done.playAnimation();
     }
 
     @Override
@@ -112,45 +150,14 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     }
 
     @Override
-    public void disableWidgets() {
-        setEnableWidgets(false);
-    }
-
-    @Override
-    public void enableWidgets() {
-        setEnableWidgets(true);
-    }
-
-    @Override
-    public void showProgress() {
-
-    }
-
-    @Override
-    public void hideProgress() {
-
-    }
-
-    @Override
-    public void showErrorMessage(int errorCode) {
-        Util.showMessage(ll_root_view, getResources().getString(errorCode));
+    public void showErrorMessage(int error) {
+        Util.showMessage(ll_root_view, getString(error));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         presenter.setView(LoginActivity.this);
-    }
-
-    private void setEnableWidgets(boolean enable){
-        tiet_email.setEnabled(enable);
-        tiet_password.setEnabled(enable);
-        btn_login.setEnabled(enable);
-    }
-
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
     }
 
 }

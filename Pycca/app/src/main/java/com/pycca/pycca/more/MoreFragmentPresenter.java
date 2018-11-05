@@ -26,12 +26,12 @@ public class MoreFragmentPresenter implements MoreFragmentMVP.Presenter {
 
     @Override
     public void firstItemClicked() {
-
+        view.goToClubPyccaPartner();
     }
 
     @Override
     public void secondItemClicked() {
-
+        view.goToProfileActivity();
     }
 
     @Override

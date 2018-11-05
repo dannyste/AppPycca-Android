@@ -5,11 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".promotion.PromotionFragment">
+    tools:context=".clubpyccapartner.ClubPyccaPartnerActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_promotion"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
 </LinearLayout>

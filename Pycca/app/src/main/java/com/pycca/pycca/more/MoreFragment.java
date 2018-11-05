@@ -18,6 +18,7 @@ import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.pycca.pycca.R;
+import com.pycca.pycca.clubpyccapartner.ClubPyccaPartnerActivity;
 import com.pycca.pycca.multilogin.MultiLoginActivity;
 import com.pycca.pycca.pojo.More;
 import com.pycca.pycca.profile.ProfileActivity;
@@ -108,6 +109,12 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
         this.moreArrayList.clear();
         this.moreArrayList.addAll(moreArrayList);
         moreFragmentAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void goToClubPyccaPartner() {
+        Intent clubPyccaPartnerActivity = new Intent(getActivity(), ClubPyccaPartnerActivity.class);
+        startActivity(clubPyccaPartnerActivity);
     }
 
     @Override

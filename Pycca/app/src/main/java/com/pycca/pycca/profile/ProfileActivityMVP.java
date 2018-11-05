@@ -14,11 +14,11 @@ public interface ProfileActivityMVP {
 
         void setEmail(String email);
 
-        void setVisibilityClubPyccaPartner();
-
         void setIdentificationCard(String identificationCard);
 
         void setClubPyccaCardNumber(String clubPyccaCardNumber);
+
+        void setVisibilityClubPyccaPartner();
 
     }
 

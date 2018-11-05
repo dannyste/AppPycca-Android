@@ -46,7 +46,7 @@ public class ClubPyccaFragmentPresenter implements ClubPyccaFragmentMVP.Presente
 
     @Override
     public void fifthItemClicked() {
-
+        view.goToVirtualCardActivity();
     }
 
     @Override

@@ -8,6 +8,8 @@ public interface SplashActivityMVP {
 
         void showPyccaAnimation();
 
+        void checkPermission();
+
         void goToMultiLoginActivity();
 
         void goToHostActivity();
@@ -19,6 +21,8 @@ public interface SplashActivityMVP {
         void setView(SplashActivityMVP.View view);
 
         void startPyccaAnimation();
+
+        void finishedPyccaAnimation();
 
         void getCurrentUser(SplashActivity splashActivity);
 

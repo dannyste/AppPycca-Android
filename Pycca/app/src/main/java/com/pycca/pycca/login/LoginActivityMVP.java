@@ -8,25 +8,24 @@ public interface LoginActivityMVP {
 
         String getPassword();
 
-        void showInvalidEmail();
-
         void showEmailRequired();
 
+        void showInvalidEmail();
+
         void showPasswordRequired();
+
+        void showLoadingAnimation();
+
+        void hideLoadingAnimation();
+
+        void showDoneAnimation();
 
         void goToHostActivity();
 
         void goToForgotPasswordActivity();
 
-        void disableWidgets();
+        void showErrorMessage(int error);
 
-        void enableWidgets();
-
-        void showProgress();
-
-        void hideProgress();
-
-        void showErrorMessage(int errorCode);
     }
 
     interface Presenter {
@@ -34,6 +33,8 @@ public interface LoginActivityMVP {
         void setView(LoginActivityMVP.View view);
 
         void loginClicked();
+
+        void finishedDoneAnimation();
 
         void forgotPasswordClicked();
 

@@ -88,8 +88,6 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
                 presenter.termsUseClicked();
             }
         });
-        presenter.configureGoogleSignIn(MultiLoginActivity.this);
-        presenter.configureFacebookSignIn(MultiLoginActivity.this, lb_facebook);
     }
 
     @Override
@@ -101,17 +99,6 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
     public void loginEmail() {
         Intent loginActivity = new Intent(MultiLoginActivity.this, LoginActivity.class);
         startActivity(loginActivity);
-    }
-
-    @Override
-    public void registerNow() {
-        Intent signUpActivity = new Intent(MultiLoginActivity.this, SignUpActivity.class);
-        startActivity(signUpActivity);
-    }
-
-    @Override
-    public void termsUse() {
-
     }
 
     @Override
@@ -156,11 +143,23 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
         });
         lav_done.playAnimation();
     }
+
     @Override
     public void goToHostActivity() {
         Intent hostActivity = new Intent(MultiLoginActivity.this, HostActivity.class);
         startActivity(hostActivity);
         finish();
+    }
+
+    @Override
+    public void registerNow() {
+        Intent signUpActivity = new Intent(MultiLoginActivity.this, SignUpActivity.class);
+        startActivity(signUpActivity);
+    }
+
+    @Override
+    public void termsUse() {
+
     }
 
     @Override
@@ -174,6 +173,13 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
     protected void onResume() {
         super.onResume();
         presenter.setView(MultiLoginActivity.this);
+        presenter.configureFacebookSignIn(MultiLoginActivity.this, lb_facebook);
+        presenter.configureGoogleSignIn(MultiLoginActivity.this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
 }

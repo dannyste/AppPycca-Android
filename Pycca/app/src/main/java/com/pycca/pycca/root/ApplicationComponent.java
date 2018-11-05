@@ -10,6 +10,8 @@ import com.pycca.pycca.forgotpassword.ForgotPasswordActivity;
 import com.pycca.pycca.forgotpassword.ForgotPasswordActivityModule;
 import com.pycca.pycca.home.HomeFragment;
 import com.pycca.pycca.home.HomeFragmentModule;
+import com.pycca.pycca.host.HostActivity;
+import com.pycca.pycca.host.HostActivityModule;
 import com.pycca.pycca.login.LoginActivity;
 import com.pycca.pycca.login.LoginActivityModule;
 import com.pycca.pycca.more.MoreFragment;
@@ -39,6 +41,7 @@ import dagger.Component;
                             SignUpActivityModule.class,
                             LoginActivityModule.class,
                             ForgotPasswordActivityModule.class,
+                            HostActivityModule.class,
                             HomeFragmentModule.class,
                             CouponFragmentModule.class,
                             ClubPyccaFragmentModule.class,
@@ -60,6 +63,8 @@ public interface ApplicationComponent {
     void inject(LoginActivity loginActivity);
 
     void inject(ForgotPasswordActivity forgotPasswordActivity);
+
+    void inject(HostActivity hostActivity);
 
     void inject(HomeFragment homeFragment);
 

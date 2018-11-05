@@ -52,6 +52,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                             user.setName(firebaseUser.getDisplayName());
                             user.setEmail(firebaseUser.getEmail());
                             user.setCreationDate(new Date());
+                            user.setModificationDate(new Date());
                             getToken(multiLoginActivity, user, taskListener);
                         }
                         else {
@@ -75,6 +76,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                             user.setName(firebaseUser.getDisplayName());
                             user.setEmail(firebaseUser.getEmail());
                             user.setCreationDate(new Date());
+                            user.setModificationDate(new Date());
                             getToken(multiLoginActivity, user, taskListener);
                         }
                         else {

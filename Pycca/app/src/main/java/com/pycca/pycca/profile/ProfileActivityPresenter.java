@@ -22,12 +22,10 @@ public class ProfileActivityPresenter implements ProfileActivityMVP.Presenter {
         view.setPhotoUrl(user.getPhotoUrl());
         view.setName(user.getName());
         view.setEmail(user.getEmail());
-        if (!user.isClubPyccaPartner()) {
-            view.setVisibilityClubPyccaPartner();
-        }
-        else {
+        if (user.isClubPyccaPartner()) {
             view.setIdentificationCard(user.getIdentificationCard());
             view.setClubPyccaCardNumber(user.getClubPyccaCardNumber());
+            view.setVisibilityClubPyccaPartner();
         }
     }
 

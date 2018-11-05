@@ -56,7 +56,7 @@
     <string name="logout">Cerrar sesión</string>
 
     <!-- AlertDialogClubPyccaPartner -->
-    <string name="check">Verificar</string>
+    <string name="validate">Validar</string>
     <string name="information_club_pycca_partner">Para acceder a la opción de ClubPycca por favor ingresar la siguiente información:</string>
     <string name="are_you_not_partner">¿No eres socio?</string>
     <string name="request_now">Solicítalo ahora</string>
@@ -79,10 +79,10 @@
     <string name="confirmation_link_email_sent">Se ha enviado un enlace a su correo electrónico.</string>
 
     <!-- Validations -->
-    <string name="card_number_required">Número de tarjeta requerida.</string>
+    <string name="club_pycca_card_number_required">Número de tarjeta ClubPycca requerida.</string>
     <string name="email_required">Correo electrónico requerido.</string>
     <string name="error_reset_password">Ocurrió un error al restablecer la contraseña.</string>
-    <string name="identification_required">Identificación requerida.</string>
+    <string name="identification_card_required">Cédula requerida.</string>
     <string name="invalid_email">Correo electrónico inválido.</string>
     <string name="password_required">Contraseña requerida.</string>
     <string name="link_not_found">No se ha encontrado una url asociada.</string>

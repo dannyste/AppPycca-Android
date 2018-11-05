@@ -19,23 +19,23 @@ public class LoginActivityModel implements LoginActivityMVP.Model {
     }
 
     @Override
-    public void firebaseAuthWithEmailAndPassword(String email, String password, final LoginActivityMVP.TaskListener listener) {
+    public void firebaseAuthWithEmailAndPassword(String email, String password, final LoginActivityMVP.TaskListener taskListener) {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    listener.onSuccess();
+                    taskListener.onSuccess();
                 }
                 else {
                     if (task.getException() != null) {
-                        int errorMsg = R.string.error_default;
-                        if (task.getException() instanceof FirebaseAuthInvalidUserException){
-                            errorMsg = R.string.error_user_not_exist;
+                        int error = R.string.error_default;
+                        if (task.getException() instanceof FirebaseAuthInvalidUserException) {
+                            error = R.string.error_user_not_exist;
                         }
-                        else if (task.getException() instanceof FirebaseAuthInvalidCredentialsException){
-                            errorMsg = R.string.error_invalid_credentials;
+                        else if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                            error = R.string.error_invalid_credentials;
                         }
-                        listener.onError(errorMsg);
+                        taskListener.onError(error);
                     }
                 }
             }

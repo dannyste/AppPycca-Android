@@ -5,7 +5,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.CycleInterpolator;
 import android.view.animation.Transformation;
+import android.view.animation.TranslateAnimation;
 
 import com.pycca.pycca.pojo.CouponImageResource;
 import com.pycca.pycca.pojo.DivisionImageResource;
@@ -19,26 +21,6 @@ public class Util {
 
     public static void showMessage(View view, String text){
         Snackbar.make(view, text, Snackbar.LENGTH_LONG).show();
-    }
-
-    public static int getOrder(String filename){
-        try {
-            String orderString = filename.substring(0,filename.lastIndexOf('.'));
-            return Integer.valueOf(orderString);
-        }
-        catch (Exception exception){
-            return 0;
-        }
-    }
-
-    public static ArrayList<DivisionImageResource> orderDivisionList(ArrayList<DivisionImageResource> list){
-        Collections.sort(list, new Comparator<DivisionImageResource>() {
-            @Override public int compare(DivisionImageResource d1, DivisionImageResource d2) {
-                return Integer.valueOf(d1.getOrder()) - Integer.valueOf(d2.getOrder()); // Ascending
-            }
-
-        });
-        return list;
     }
 
     public static boolean checkValidEmail(String email){
@@ -146,6 +128,13 @@ public class Util {
         FACEBOOK,
         GOOGLE,
         INSTAGRAM
+    }
+
+    public static TranslateAnimation getTranslateAnimation() {
+        TranslateAnimation translateAnimation = new TranslateAnimation(0, 10, 0, 0);
+        translateAnimation.setDuration(Constants.ANIMATION_DURATION);
+        translateAnimation.setInterpolator(new CycleInterpolator(7));
+        return translateAnimation;
     }
 
 }
