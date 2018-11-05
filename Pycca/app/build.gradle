@@ -79,6 +79,8 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     //Recyclerview with Header
     implementation 'com.github.kanytu:android-parallax-recyclerview:v1.7'
+    //Zoom in photo
+    implementation 'com.github.chrisbanes:PhotoView:2.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

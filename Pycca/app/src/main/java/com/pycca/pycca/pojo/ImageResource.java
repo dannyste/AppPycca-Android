@@ -1,6 +1,11 @@
 package com.pycca.pycca.pojo;
 
-public class ImageResource {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class ImageResource implements Serializable {
     private String name;
     private String description;
     private String path;
@@ -47,4 +52,6 @@ public class ImageResource {
     public void setUrl(String url) {
         this.url = url;
     }
+
+
 }

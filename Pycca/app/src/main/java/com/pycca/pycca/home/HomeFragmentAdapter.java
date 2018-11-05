@@ -1,6 +1,8 @@
 package com.pycca.pycca.home;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.poliveira.parallaxrecyclerview.ParallaxRecyclerAdapter;
 import com.pycca.pycca.R;
+import com.pycca.pycca.picture.PictureActivity;
 import com.pycca.pycca.pojo.ImageResource;
 
 import java.util.ArrayList;
@@ -30,7 +33,7 @@ public class HomeFragmentAdapter extends ParallaxRecyclerAdapter<ImageResource> 
     @Override
     public void onBindViewHolderImpl(RecyclerView.ViewHolder viewHolder, ParallaxRecyclerAdapter<ImageResource> parallaxRecyclerAdapter, int position) {
         final PromotionViewHolder promotionViewHolder = (PromotionViewHolder)viewHolder;
-        final ImageResource division = divisionArrayList.get(position);
+        final ImageResource imageResource = divisionArrayList.get(position);
         RequestOptions requestOptions = new RequestOptions();
         requestOptions
                 .centerInside()
@@ -38,13 +41,18 @@ public class HomeFragmentAdapter extends ParallaxRecyclerAdapter<ImageResource> 
                 .error(R.drawable.ic_broken_image);
         promotionViewHolder.iv_image.setVisibility(View.VISIBLE);
         Glide.with(activity)
-                .load(division.getPath())
+                .load(imageResource.getPath())
                 .apply(requestOptions)
                 .into(promotionViewHolder.iv_image);
         promotionViewHolder.iv_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(activity, PictureActivity.class);
+                intent.putExtra("object", imageResource);
+                ActivityOptions activityOptions =
+                        ActivityOptions.makeSceneTransitionAnimation(
+                                activity, promotionViewHolder.iv_image, "img");
+                view.getContext().startActivity(intent, activityOptions.toBundle());
             }
         });
     }

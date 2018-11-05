@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#00529F</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="colorGray">#DEDFE0</color>
+    <color name="colorBlack">#000000</color>
 
     <!-- ClubPyccaFragment, MoreFragment -->
     <color name="colorOptionOne">#58B1A5</color>
