@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.pycca.pycca.R;
 import com.pycca.pycca.host.HostActivity;
 import com.pycca.pycca.multilogin.MultiLoginActivity;
@@ -59,7 +62,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
 
     @Override
     public void setPhotoUrl(String photoUrl) {
-
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.centerInside().diskCacheStrategy(DiskCacheStrategy.DATA).placeholder(R.drawable.photo).error(R.drawable.photo);
+        Glide.with(ProfileActivity.this).load(photoUrl).apply(requestOptions).into(civ_photo);
     }
 
     @Override
