@@ -17,7 +17,7 @@ public class MoreRepository implements MoreFragmentRepository {
         moreArrayList.add(new More(R.color.colorOptionThree, R.drawable.ic_contact_call, R.string.contact_call));
         moreArrayList.add(new More(R.color.colorOptionFour, R.drawable.ic_contact_email, R.string.contact_email));
         moreArrayList.add(new More(R.color.colorOptionFive, R.drawable.ic_nearest_shop, R.string.nearest_shop));
-        moreArrayList.add(new More(R.color.colorOptionSix, R.drawable.ic_our_shops, R.string.our_shops));
+        moreArrayList.add(new More(R.color.colorOptionSix, R.drawable.ic_our_shop, R.string.our_shop));
         return moreArrayList;
     }
 

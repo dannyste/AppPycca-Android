@@ -37,9 +37,9 @@
 
             <TextView
                 android:id="@+id/tv_name"
-                android:fontFamily="@font/orbitron"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/orbitron"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:text="NOMBRE"
                 android:textAllCaps="true"
@@ -58,9 +58,9 @@
             android:paddingEnd="@dimen/activity_horizontal_margin">
 
             <TextView
-                android:fontFamily="@font/orbitron"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/orbitron"
                 android:text="@string/client_since"
                 android:textAppearance="@android:style/TextAppearance.Large"
                 android:textStyle="bold" />

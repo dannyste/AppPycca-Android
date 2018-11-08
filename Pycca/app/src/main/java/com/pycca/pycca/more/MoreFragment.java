@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.pycca.pycca.R;
 import com.pycca.pycca.clubpyccapartner.ClubPyccaPartnerActivity;
 import com.pycca.pycca.multilogin.MultiLoginActivity;
+import com.pycca.pycca.ourshop.OurShopActivity;
 import com.pycca.pycca.pojo.More;
 import com.pycca.pycca.profile.ProfileActivity;
 import com.pycca.pycca.root.App;
@@ -121,6 +122,12 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
     public void goToProfileActivity() {
         Intent profileActivity = new Intent(getActivity(), ProfileActivity.class);
         startActivity(profileActivity);
+    }
+
+    @Override
+    public void goToOurShopActivity() {
+        Intent ourShopActivity = new Intent(getActivity(), OurShopActivity.class);
+        startActivity(ourShopActivity);
     }
 
     @Override

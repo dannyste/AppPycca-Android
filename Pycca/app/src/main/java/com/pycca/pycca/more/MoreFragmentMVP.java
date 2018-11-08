@@ -14,6 +14,8 @@ public interface MoreFragmentMVP {
 
         void goToProfileActivity();
 
+        void goToOurShopActivity();
+
     }
 
     interface Presenter {

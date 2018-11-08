@@ -7,9 +7,16 @@
     android:orientation="vertical"
     tools:context=".clubpycca.ClubPyccaFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_club_pycca"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_club_pycca"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
 </LinearLayout>

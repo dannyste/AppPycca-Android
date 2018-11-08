@@ -6,4 +6,7 @@
     <dimen name="corner_radius">10dp</dimen>
     <dimen name="image_margin">12dp</dimen>
     <dimen name="text_margin">4dp</dimen>
+    <dimen name="text_small">14sp</dimen>
+    <dimen name="text_medium">20sp</dimen>
+    <dimen name="text_large">30sp</dimen>
 </resources>
