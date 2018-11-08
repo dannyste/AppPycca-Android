@@ -52,19 +52,6 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
         return view;
     }
 
-    @Override
-    public void updateDataRecyclerView(ArrayList<ClubPycca> clubPyccaArrayList) {
-        this.clubPyccaArrayList.clear();
-        this.clubPyccaArrayList.addAll(clubPyccaArrayList);
-        clubPyccaFragmentAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void goToVirtualCardActivity() {
-        Intent virtualCardActivity = new Intent(getActivity(), VirtualCardActivity.class);
-        startActivity(virtualCardActivity);
-    }
-
     public void initRecyclerView() {
         clubPyccaArrayList = new ArrayList<>();
         clubPyccaFragmentAdapter = new ClubPyccaFragmentAdapter(getActivity(), clubPyccaArrayList, new ClubPyccaFragmentAdapter.OnItemClickListener() {
@@ -111,6 +98,19 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
         rv_club_pycca.setItemAnimator(new DefaultItemAnimator());
         rv_club_pycca.setHasFixedSize(false);
         rv_club_pycca.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
+
+    @Override
+    public void updateDataRecyclerView(ArrayList<ClubPycca> clubPyccaArrayList) {
+        this.clubPyccaArrayList.clear();
+        this.clubPyccaArrayList.addAll(clubPyccaArrayList);
+        clubPyccaFragmentAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void goToVirtualCardActivity() {
+        Intent virtualCardActivity = new Intent(getActivity(), VirtualCardActivity.class);
+        startActivity(virtualCardActivity);
     }
 
     @Override

@@ -36,6 +36,8 @@ public class OurShopsDetailsActivityAdapter extends RecyclerView.Adapter<OurShop
     public void onBindViewHolder(@NonNull OurShopsDetailsActivityAdapter.OurShopsDetailsViewHolder ourShopsDetailsViewHolder, int position) {
         final OurShopsDetails ourShopsDetails = ourShopsDetailsArrayList.get(position);
         ourShopsDetailsViewHolder.tv_name.setText(ourShopsDetails.getName());
+        ourShopsDetailsViewHolder.tv_address.setText(ourShopsDetails.getAddress());
+        ourShopsDetailsViewHolder.tv_opening_hours.setText(ourShopsDetails.getOpeningHours());
     }
 
     @Override
@@ -59,13 +61,27 @@ public class OurShopsDetailsActivityAdapter extends RecyclerView.Adapter<OurShop
 
         @Override
         public void onClick(View view) {
-            onItemClickListener.onClick(OurShopsDetailsViewHolder.this, getAdapterPosition());
+            onItemClickListener.onClick(OurShopsDetailsViewHolder.this, getOurShopsDetails(getAdapterPosition()));
         }
 
     }
 
+    private OurShopsDetails getOurShopsDetails(int position) {
+        if (ourShopsDetailsArrayList != null) {
+            if (ourShopsDetailsArrayList.get(position) != null) {
+                return ourShopsDetailsArrayList.get(position);
+            }
+            else {
+                return null;
+            }
+        }
+        else {
+            return null;
+        }
+    }
+
     public interface OnItemClickListener {
-        void onClick(OurShopsDetailsViewHolder ourShopsDetailsViewHolder, int position);
+        void onClick(OurShopsDetailsViewHolder ourShopsDetailsViewHolder, OurShopsDetails ourShopsDetails);
     }
 
 }

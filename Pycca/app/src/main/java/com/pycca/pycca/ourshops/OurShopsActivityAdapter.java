@@ -55,13 +55,27 @@ public class OurShopsActivityAdapter extends RecyclerView.Adapter<OurShopsActivi
 
         @Override
         public void onClick(View view) {
-            onItemClickListener.onClick(OurShopsViewHolder.this, getAdapterPosition());
+            onItemClickListener.onClick(OurShopsViewHolder.this, getOurShops(getAdapterPosition()));
         }
 
     }
 
+    private OurShops getOurShops(int position) {
+        if (ourShopsArrayList != null) {
+            if (ourShopsArrayList.get(position) != null) {
+                return ourShopsArrayList.get(position);
+            }
+            else {
+                return null;
+            }
+        }
+        else {
+            return null;
+        }
+    }
+
     public interface OnItemClickListener {
-        void onClick(OurShopsViewHolder ourShopsViewHolder, int position);
+        void onClick(OurShopsViewHolder ourShopsViewHolder, OurShops ourShops);
     }
 
 }
