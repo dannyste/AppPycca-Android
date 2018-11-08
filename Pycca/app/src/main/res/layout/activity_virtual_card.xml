@@ -27,10 +27,9 @@
 
             <TextView
                 android:id="@+id/tv_club_pycca_card_number"
-                android:fontFamily="@font/orbitron"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="XXXX-XXXX-XXXX-XXXX"
+                android:fontFamily="@font/montserrat"
                 android:textAllCaps="true"
                 android:textAppearance="@android:style/TextAppearance.Large"
                 android:textStyle="bold" />
@@ -39,9 +38,8 @@
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/orbitron"
+                android:fontFamily="@font/montserrat"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                android:text="NOMBRE"
                 android:textAllCaps="true"
                 android:textAppearance="@android:style/TextAppearance.Large"
                 android:textStyle="bold" />
@@ -60,17 +58,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/orbitron"
+                android:fontFamily="@font/montserrat"
                 android:text="@string/client_since"
                 android:textAppearance="@android:style/TextAppearance.Large"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_client_since"
-                android:fontFamily="@font/orbitron"
+                android:fontFamily="@font/montserrat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DD/MM/YYYY"
                 android:textAllCaps="true"
                 android:textAppearance="@android:style/TextAppearance.Large"
                 android:textStyle="bold" />

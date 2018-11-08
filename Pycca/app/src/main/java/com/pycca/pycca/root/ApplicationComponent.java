@@ -18,6 +18,10 @@ import com.pycca.pycca.more.MoreFragment;
 import com.pycca.pycca.more.MoreFragmentModule;
 import com.pycca.pycca.multilogin.MultiLoginActivity;
 import com.pycca.pycca.multilogin.MultiLoginActivityModule;
+import com.pycca.pycca.ourshops.OurShopsActivity;
+import com.pycca.pycca.ourshops.OurShopsActivityModule;
+import com.pycca.pycca.ourshopsdetails.OurShopsDetailsActivity;
+import com.pycca.pycca.ourshopsdetails.OurShopsDetailsActivityModule;
 import com.pycca.pycca.picture.PictureActivity;
 import com.pycca.pycca.picture.PictureActivityModule;
 import com.pycca.pycca.profile.ProfileActivity;
@@ -46,10 +50,11 @@ import dagger.Component;
                             CouponFragmentModule.class,
                             ClubPyccaFragmentModule.class,
                             VirtualCardActivityModule.class,
-                            MoreFragmentModule.class,
-                            VirtualCardActivityModule.class,
                             BuyFragmentModule.class,
+                            MoreFragmentModule.class,
                             ProfileActivityModule.class,
+                            OurShopsActivityModule.class,
+                            OurShopsDetailsActivityModule.class,
                             PictureActivityModule.class
                      })
 public interface ApplicationComponent {
@@ -74,11 +79,15 @@ public interface ApplicationComponent {
 
     void inject(VirtualCardActivity virtualCardActivity);
 
+    void inject(BuyFragment moreFragment);
+
     void inject(MoreFragment moreFragment);
 
     void inject(ProfileActivity profileActivity);
 
-    void inject(BuyFragment moreFragment);
+    void inject(OurShopsActivity ourShopsActivity);
+
+    void inject(OurShopsDetailsActivity ourShopsDetailsActivity);
 
     void inject(PictureActivity pictureActivity);
 

@@ -11,6 +11,8 @@ import com.pycca.pycca.host.HostActivityModule;
 import com.pycca.pycca.login.LoginActivityModule;
 import com.pycca.pycca.more.MoreFragmentModule;
 import com.pycca.pycca.multilogin.MultiLoginActivityModule;
+import com.pycca.pycca.ourshops.OurShopsActivityModule;
+import com.pycca.pycca.ourshopsdetails.OurShopsDetailsActivityModule;
 import com.pycca.pycca.picture.PictureActivityModule;
 import com.pycca.pycca.profile.ProfileActivityModule;
 import com.pycca.pycca.signup.SignUpActivityModule;
@@ -39,6 +41,8 @@ public class App extends Application {
                 .buyFragmentModule(new BuyFragmentModule())
                 .moreFragmentModule(new MoreFragmentModule())
                 .profileActivityModule(new ProfileActivityModule())
+                .ourShopsActivityModule(new OurShopsActivityModule())
+                .ourShopsDetailsActivityModule(new OurShopsDetailsActivityModule())
                 .pictureActivityModule(new PictureActivityModule())
                 .build();
     }

@@ -62,7 +62,7 @@
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/carrois_gothic_sc"
+                        android:fontFamily="@font/montserrat"
                         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
                         android:textColor="@color/colorAccent"
                         android:textStyle="bold" />
@@ -78,7 +78,7 @@
                     android:padding="@dimen/activity_horizontal_margin">
 
                     <TextView
-                        android:fontFamily="@font/carrois_gothic_sc"
+                        android:fontFamily="@font/montserrat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/email"
@@ -88,14 +88,14 @@
 
                     <TextView
                         android:id="@+id/tv_email"
-                        android:fontFamily="@font/carrois_gothic_sc"
+                        android:fontFamily="@font/montserrat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@android:color/black" />
 
                     <TextView
-                        android:fontFamily="@font/carrois_gothic_sc"
+                        android:fontFamily="@font/montserrat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_horizontal_margin"
@@ -106,14 +106,14 @@
 
                     <TextView
                         android:id="@+id/tv_identification_card"
-                        android:fontFamily="@font/carrois_gothic_sc"
+                        android:fontFamily="@font/montserrat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@android:color/black" />
 
                     <TextView
-                        android:fontFamily="@font/carrois_gothic_sc"
+                        android:fontFamily="@font/montserrat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_horizontal_margin"
@@ -124,7 +124,7 @@
 
                     <TextView
                         android:id="@+id/tv_club_pycca_card_number"
-                        android:fontFamily="@font/carrois_gothic_sc"
+                        android:fontFamily="@font/montserrat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"

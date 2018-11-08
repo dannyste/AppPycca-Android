@@ -86,7 +86,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tv_schedule_attention"
+                    android:id="@+id/tv_opening_hours"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/text_margin"

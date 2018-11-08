@@ -1,4 +1,9 @@
 package com.pycca.pycca.ourshopsdetails;
 
-public class OurShopsDetailsActivityModel {
+public class OurShopsDetailsActivityModel implements OurShopsDetailsActivityMVP.Model {
+
+    OurShopsDetailsActivityModel() {
+
+    }
+
 }

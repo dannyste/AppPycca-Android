@@ -40,7 +40,7 @@
                 android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/concert_one"
+                android:fontFamily="@font/montserrat"
                 android:gravity="center"
                 android:text="Name"
                 android:textAllCaps="true"
