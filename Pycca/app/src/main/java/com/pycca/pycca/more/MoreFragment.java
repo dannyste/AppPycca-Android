@@ -3,7 +3,6 @@ package com.pycca.pycca.more;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -16,11 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.pycca.pycca.R;
 import com.pycca.pycca.clubpyccapartner.ClubPyccaPartnerActivity;
-import com.pycca.pycca.multilogin.MultiLoginActivity;
-import com.pycca.pycca.ourshop.OurShopActivity;
+import com.pycca.pycca.ourshops.OurShopsActivity;
 import com.pycca.pycca.pojo.More;
 import com.pycca.pycca.profile.ProfileActivity;
 import com.pycca.pycca.root.App;
@@ -126,7 +123,7 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
 
     @Override
     public void goToOurShopActivity() {
-        Intent ourShopActivity = new Intent(getActivity(), OurShopActivity.class);
+        Intent ourShopActivity = new Intent(getActivity(), OurShopsActivity.class);
         startActivity(ourShopActivity);
     }
 

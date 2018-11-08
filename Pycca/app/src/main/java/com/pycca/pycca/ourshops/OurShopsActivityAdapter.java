@@ -1,4 +1,4 @@
-package com.pycca.pycca.ourshop;
+package com.pycca.pycca.ourshops;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -13,13 +13,13 @@ import com.pycca.pycca.pojo.OurShop;
 
 import java.util.ArrayList;
 
-public class OurShopActivityAdapter extends RecyclerView.Adapter<OurShopActivityAdapter.OurShopViewHolder> {
+public class OurShopsActivityAdapter extends RecyclerView.Adapter<OurShopsActivityAdapter.OurShopViewHolder> {
 
     private Activity activity;
     private ArrayList<OurShop> ourShopArrayList;
     private OnItemClickListener onItemClickListener;
 
-    OurShopActivityAdapter(Activity activity, ArrayList<OurShop> ourShopArrayList, OnItemClickListener onItemClickListener) {
+    OurShopsActivityAdapter(Activity activity, ArrayList<OurShop> ourShopArrayList, OnItemClickListener onItemClickListener) {
         this.activity = activity;
         this.ourShopArrayList = ourShopArrayList;
         this.onItemClickListener = onItemClickListener;
@@ -27,13 +27,13 @@ public class OurShopActivityAdapter extends RecyclerView.Adapter<OurShopActivity
 
     @NonNull
     @Override
-    public OurShopActivityAdapter.OurShopViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_activity_our_shop, parent, false);
+    public OurShopsActivityAdapter.OurShopViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_activity_our_shops, parent, false);
         return new OurShopViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OurShopActivityAdapter.OurShopViewHolder ourShopViewHolder, int position) {
+    public void onBindViewHolder(@NonNull OurShopsActivityAdapter.OurShopViewHolder ourShopViewHolder, int position) {
         final OurShop ourShop = ourShopArrayList.get(position);
         ourShopViewHolder.tv_name.setText(ourShop.getName());
     }

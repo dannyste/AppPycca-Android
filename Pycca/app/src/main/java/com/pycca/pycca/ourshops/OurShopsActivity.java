@@ -1,16 +1,16 @@
-package com.pycca.pycca.ourshop;
+package com.pycca.pycca.ourshops;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.pycca.pycca.R;
 
-public class OurShopActivity extends AppCompatActivity {
+public class OurShopsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_our_shop);
+        setContentView(R.layout.activity_our_shops);
     }
 
 }

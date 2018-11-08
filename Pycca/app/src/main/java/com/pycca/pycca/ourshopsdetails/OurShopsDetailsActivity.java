@@ -1,4 +1,4 @@
-package com.pycca.pycca.ourshopdetail;
+package com.pycca.pycca.ourshopsdetails;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -11,14 +11,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.pycca.pycca.R;
 
-public class OurShopDetailActivity extends FragmentActivity implements OnMapReadyCallback {
+public class OurShopsDetailsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_our_shop_detail);
+        setContentView(R.layout.activity_our_shops_details);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
