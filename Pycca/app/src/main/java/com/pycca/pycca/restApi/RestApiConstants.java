@@ -8,6 +8,11 @@ final class RestApiConstants {
     private static final String ACTION_VALIDATE_CLIENT          = "validate_client/";
     private static final String PARAMETER_VALIDATE_CLIENT       = "{documentType}/{identificationCard}/{clubPyccaCardNumber}";
 
-    static final String SERVER_URL_GET_VALIDATE_CLIENT = CLIENT + ACTION_VALIDATE_CLIENT + PARAMETER_VALIDATE_CLIENT;
+    private static final String PYCCA                           = "pycca/";
+    private static final String ACTION_OUR_SHOPS                = "our_shops";
+
+    static final String SERVER_URL_GET_VALIDATE_CLIENT          = CLIENT + ACTION_VALIDATE_CLIENT + PARAMETER_VALIDATE_CLIENT;
+
+    static final String SERVER_URL_GET_OUR_SHOPS                = PYCCA + ACTION_OUR_SHOPS;
 
 }

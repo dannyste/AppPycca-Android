@@ -61,10 +61,12 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
                         if (baseResponse.getStatus()) {
                             if (baseResponse.getData().getStatus_error().getCo_error() == 0) {
                                 model.setUser(hostActivity, identificationCard, clubPyccaCardNumber, baseResponse, HostActivityPresenter.this);
-                            } else {
+                            }
+                            else {
                                 onError(R.string.error_default);
                             }
-                        } else {
+                        }
+                        else {
                             onError(R.string.error_default);
                         }
                     }

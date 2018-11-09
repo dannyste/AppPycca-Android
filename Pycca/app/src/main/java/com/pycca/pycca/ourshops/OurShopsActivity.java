@@ -8,7 +8,10 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.LinearLayout;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.pycca.pycca.R;
 import com.pycca.pycca.ourshopsdetails.OurShopsDetailsActivity;
 import com.pycca.pycca.pojo.OurShops;
@@ -26,7 +29,9 @@ public class OurShopsActivity extends AppCompatActivity implements OurShopsActiv
     @Inject
     public OurShopsActivityMVP.Presenter presenter;
 
+    private LinearLayout ll_root_view, ll_loading, ll_error;
     private RecyclerView rv_our_shops;
+    private LottieAnimationView lav_loading, lav_error;
 
     private ArrayList<OurShops> ourShopsArrayList ;
     private OurShopsActivityAdapter ourShopsActivityAdapter;
@@ -40,7 +45,12 @@ public class OurShopsActivity extends AppCompatActivity implements OurShopsActiv
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        ll_root_view = findViewById(R.id.ll_root_view);
         rv_our_shops = findViewById(R.id.rv_club_pycca);
+        ll_loading   = findViewById(R.id.ll_loading);
+        lav_loading  = findViewById(R.id.lav_loading);
+        ll_error     = findViewById(R.id.ll_error);
+        lav_error    = findViewById(R.id.lav_error);
         initRecyclerView();
     }
 
@@ -60,6 +70,21 @@ public class OurShopsActivity extends AppCompatActivity implements OurShopsActiv
     }
 
     @Override
+    public void showLoadingAnimation() {
+        ll_root_view.setVisibility(View.GONE);
+        ll_loading.setVisibility(View.VISIBLE);
+        lav_loading.playAnimation();
+    }
+
+    @Override
+    public void showErrorAnimation() {
+        lav_loading.pauseAnimation();
+        ll_loading.setVisibility(View.GONE);
+        ll_error.setVisibility(View.VISIBLE);
+        lav_error.playAnimation();
+    }
+
+    @Override
     public void updateDataRecyclerView(ArrayList<OurShops> ourShopsArrayList) {
         this.ourShopsArrayList.clear();
         this.ourShopsArrayList.addAll(ourShopsArrayList);
@@ -67,7 +92,7 @@ public class OurShopsActivity extends AppCompatActivity implements OurShopsActiv
     }
 
     @Override
-    public void goToOurShopsDetailsActivity(ArrayList<OurShopsDetails> ourShopsDetails) {
+    public void goToOurShopsDetailsActivity(ArrayList<OurShopsDetails> ourShopsDetailsArrayList) {
         Intent ourShopsDetailsActivity = new Intent(OurShopsActivity.this, OurShopsDetailsActivity.class);
         //ourShopsDetailsActivity.putParcelableArrayListExtra("ourShopsDetails", ourShopsDetails);
         startActivity(ourShopsDetailsActivity);
