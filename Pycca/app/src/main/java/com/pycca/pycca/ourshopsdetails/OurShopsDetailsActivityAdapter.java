@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pycca.pycca.R;
@@ -50,12 +51,14 @@ public class OurShopsDetailsActivityAdapter extends RecyclerView.Adapter<OurShop
         private TextView tv_name;
         private TextView tv_address;
         private TextView tv_opening_hours;
+        private ImageView iv_how_get;
 
         OurShopsDetailsViewHolder(View view) {
             super(view);
             tv_name          =  view.findViewById(R.id.tv_name);
             tv_address       =  view.findViewById(R.id.tv_address);
             tv_opening_hours =  view.findViewById(R.id.tv_opening_hours);
+            iv_how_get       =  view.findViewById(R.id.iv_how_get);
             view.setOnClickListener(this);
         }
 

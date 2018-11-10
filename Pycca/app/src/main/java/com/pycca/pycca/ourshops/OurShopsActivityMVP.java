@@ -12,6 +12,8 @@ public interface OurShopsActivityMVP {
 
         void showLoadingAnimation();
 
+        void hideLoadingAnimation();
+
         void showErrorAnimation();
 
         void updateDataRecyclerView(ArrayList<OurShops> ourShopsArrayList);

@@ -17,7 +17,7 @@
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="7"
+            android:layout_weight="7.5"
             android:orientation="vertical">
 
             <LinearLayout
@@ -27,7 +27,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="50dp"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_pycca" />
@@ -65,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/text_margin"
                     android:text="Dirección"
-                    android:textSize="@dimen/text_small"
+                    android:textSize="@dimen/text_tiny"
                     android:textColor="@android:color/black" />
 
             </LinearLayout>
@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/text_margin"
                     android:text="Horario de atención"
-                    android:textSize="@dimen/text_small"
+                    android:textSize="@dimen/text_tiny"
                     android:textColor="@android:color/black" />
 
             </LinearLayout>
@@ -102,10 +102,11 @@
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="2.5"
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/iv_how_get"
                 android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
@@ -114,8 +115,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cómo llegar"
-                android:textSize="@dimen/text_small"
+                android:text="@string/how_get"
+                android:textSize="@dimen/text_tiny"
                 android:textColor="@android:color/black" />
 
         </LinearLayout>

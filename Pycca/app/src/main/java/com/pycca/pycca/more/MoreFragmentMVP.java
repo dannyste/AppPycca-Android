@@ -14,7 +14,7 @@ public interface MoreFragmentMVP {
 
         void goToProfileActivity();
 
-        void goToOurShopActivity();
+        void goToOurShopsActivity();
 
     }
 

@@ -29,26 +29,33 @@ public class OurShopsActivityPresenter implements OurShopsActivityMVP.Presenter,
 
     @Override
     public void loadOurShopsArrayList() {
+        view.showLoadingAnimation();
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
         Call<BaseResponse> getOurShopsCall = endpointsApi.getOurShops();
         getOurShopsCall.enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if (response.isSuccessful()) {
-                    BaseResponse baseResponse = response.body();
-                    if (baseResponse.getStatus()) {
-                        if (baseResponse.getData().getStatus_error().getCo_error() == 0) {
-                            ArrayList<OurShops> ourShopsArrayList = model.getOurShopsArrayList(baseResponse);
-                            view.updateDataRecyclerView(ourShopsArrayList);
+                try {
+                    if (response.isSuccessful()) {
+                        BaseResponse baseResponse = response.body();
+                        if (baseResponse.getStatus()) {
+                            if (baseResponse.getData().getStatus_error().getCo_error() == 0) {
+                                ArrayList<OurShops> ourShopsArrayList = model.getOurShopsArrayList(baseResponse);
+                                view.hideLoadingAnimation();
+                                view.updateDataRecyclerView(ourShopsArrayList);
+                            }
+                            else {
+                                onError(R.string.error_default);
+                            }
                         }
                         else {
                             onError(R.string.error_default);
                         }
                     }
-                    else {
-                        onError(R.string.error_default);
-                    }
+                }
+                catch (Exception exception) {
+                    onError(R.string.error_default);
                 }
             }
 

@@ -46,7 +46,7 @@ public class OurShopsActivity extends AppCompatActivity implements OurShopsActiv
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         ll_root_view = findViewById(R.id.ll_root_view);
-        rv_our_shops = findViewById(R.id.rv_club_pycca);
+        rv_our_shops = findViewById(R.id.rv_our_shops);
         ll_loading   = findViewById(R.id.ll_loading);
         lav_loading  = findViewById(R.id.lav_loading);
         ll_error     = findViewById(R.id.ll_error);
@@ -63,7 +63,7 @@ public class OurShopsActivity extends AppCompatActivity implements OurShopsActiv
             }
         });
         rv_our_shops.setAdapter(ourShopsActivityAdapter);
-        rv_our_shops.addItemDecoration(new DividerItemDecoration(OurShopsActivity.this, DividerItemDecoration.HORIZONTAL));
+        rv_our_shops.addItemDecoration(new DividerItemDecoration(OurShopsActivity.this, DividerItemDecoration.VERTICAL));
         rv_our_shops.setItemAnimator(new DefaultItemAnimator());
         rv_our_shops.setHasFixedSize(false);
         rv_our_shops.setLayoutManager(new LinearLayoutManager(OurShopsActivity.this));
@@ -74,6 +74,13 @@ public class OurShopsActivity extends AppCompatActivity implements OurShopsActiv
         ll_root_view.setVisibility(View.GONE);
         ll_loading.setVisibility(View.VISIBLE);
         lav_loading.playAnimation();
+    }
+
+    @Override
+    public void hideLoadingAnimation() {
+        lav_loading.pauseAnimation();
+        ll_loading.setVisibility(View.GONE);
+        ll_root_view.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -94,7 +101,7 @@ public class OurShopsActivity extends AppCompatActivity implements OurShopsActiv
     @Override
     public void goToOurShopsDetailsActivity(ArrayList<OurShopsDetails> ourShopsDetailsArrayList) {
         Intent ourShopsDetailsActivity = new Intent(OurShopsActivity.this, OurShopsDetailsActivity.class);
-        //ourShopsDetailsActivity.putParcelableArrayListExtra("ourShopsDetails", ourShopsDetails);
+        ourShopsDetailsActivity.putParcelableArrayListExtra("ourShopsDetailsArrayList", ourShopsDetailsArrayList);
         startActivity(ourShopsDetailsActivity);
     }
 

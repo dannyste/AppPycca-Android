@@ -122,9 +122,9 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
     }
 
     @Override
-    public void goToOurShopActivity() {
-        Intent ourShopActivity = new Intent(getActivity(), OurShopsActivity.class);
-        startActivity(ourShopActivity);
+    public void goToOurShopsActivity() {
+        Intent ourShopsActivity = new Intent(getActivity(), OurShopsActivity.class);
+        startActivity(ourShopsActivity);
     }
 
     @Override
