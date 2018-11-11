@@ -1,6 +1,8 @@
 package com.pycca.pycca.ourshopsdetails;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -39,6 +41,15 @@ public class OurShopsDetailsActivityAdapter extends RecyclerView.Adapter<OurShop
         ourShopsDetailsViewHolder.tv_name.setText(ourShopsDetails.getName());
         ourShopsDetailsViewHolder.tv_address.setText(ourShopsDetails.getAddress());
         ourShopsDetailsViewHolder.tv_opening_hours.setText(ourShopsDetails.getOpeningHours());
+        ourShopsDetailsViewHolder.iv_how_get.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("google.navigation:q=" + ourShopsDetails.getLatitude() + "," + ourShopsDetails.getLongitude() + "&mode=d");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setPackage("com.google.android.apps.maps");
+                activity.startActivity(intent);
+            }
+        });
     }
 
     @Override

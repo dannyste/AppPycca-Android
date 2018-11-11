@@ -23,7 +23,7 @@
             <LinearLayout
                 android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -36,7 +36,7 @@
                     android:id="@+id/tv_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginStart="@dimen/activity_vertical_margin"
                     android:text="Name"
                     android:textSize="@dimen/text_small"
                     android:textColor="@color/colorPrimary"
@@ -53,8 +53,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/text_margin"
-                    android:text="Direccion"
+                    android:text="@string/address"
                     android:textSize="@dimen/text_small"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
@@ -63,7 +62,6 @@
                     android:id="@+id/tv_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/text_margin"
                     android:text="Dirección"
                     android:textSize="@dimen/text_tiny"
                     android:textColor="@android:color/black" />
@@ -79,8 +77,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/text_margin"
-                    android:text="Horario de atención"
+                    android:text="@string/opening_hours"
                     android:textSize="@dimen/text_small"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
@@ -89,7 +86,6 @@
                     android:id="@+id/tv_opening_hours"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/text_margin"
                     android:text="Horario de atención"
                     android:textSize="@dimen/text_tiny"
                     android:textColor="@android:color/black" />
@@ -107,7 +103,7 @@
 
             <ImageView
                 android:id="@+id/iv_how_get"
-                android:layout_width="25dp"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/ic_navigation" />

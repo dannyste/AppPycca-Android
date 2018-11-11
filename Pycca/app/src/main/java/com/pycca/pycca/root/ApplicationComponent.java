@@ -2,8 +2,12 @@ package com.pycca.pycca.root;
 
 import com.pycca.pycca.buy.BuyFragment;
 import com.pycca.pycca.buy.BuyFragmentModule;
+import com.pycca.pycca.cardblocking.CardBlockingActivity;
+import com.pycca.pycca.cardblocking.CardBlockingActivityModule;
 import com.pycca.pycca.clubpycca.ClubPyccaFragment;
 import com.pycca.pycca.clubpycca.ClubPyccaFragmentModule;
+import com.pycca.pycca.clubpyccapartner.ClubPyccaPartnerActivity;
+import com.pycca.pycca.clubpyccapartner.ClubPyccaPartnerActivityModule;
 import com.pycca.pycca.coupon.CouponFragment;
 import com.pycca.pycca.coupon.CouponFragmentModule;
 import com.pycca.pycca.forgotpassword.ForgotPasswordActivity;
@@ -50,8 +54,10 @@ import dagger.Component;
                             CouponFragmentModule.class,
                             ClubPyccaFragmentModule.class,
                             VirtualCardActivityModule.class,
+                            CardBlockingActivityModule.class,
                             BuyFragmentModule.class,
                             MoreFragmentModule.class,
+                            ClubPyccaPartnerActivityModule.class,
                             ProfileActivityModule.class,
                             OurShopsActivityModule.class,
                             OurShopsDetailsActivityModule.class,
@@ -79,9 +85,13 @@ public interface ApplicationComponent {
 
     void inject(VirtualCardActivity virtualCardActivity);
 
-    void inject(BuyFragment moreFragment);
+    void inject(CardBlockingActivity cardBlockingActivity);
+
+    void inject(BuyFragment buyFragment);
 
     void inject(MoreFragment moreFragment);
+
+    void inject(ClubPyccaPartnerActivity clubPyccaPartnerActivity);
 
     void inject(ProfileActivity profileActivity);
 

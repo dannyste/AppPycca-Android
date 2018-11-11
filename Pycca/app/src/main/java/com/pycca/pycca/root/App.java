@@ -3,7 +3,9 @@ package com.pycca.pycca.root;
 import android.app.Application;
 
 import com.pycca.pycca.buy.BuyFragmentModule;
+import com.pycca.pycca.cardblocking.CardBlockingActivityModule;
 import com.pycca.pycca.clubpycca.ClubPyccaFragmentModule;
+import com.pycca.pycca.clubpyccapartner.ClubPyccaPartnerActivityModule;
 import com.pycca.pycca.coupon.CouponFragmentModule;
 import com.pycca.pycca.forgotpassword.ForgotPasswordActivityModule;
 import com.pycca.pycca.home.HomeFragmentModule;
@@ -38,8 +40,10 @@ public class App extends Application {
                 .couponFragmentModule(new CouponFragmentModule())
                 .clubPyccaFragmentModule(new ClubPyccaFragmentModule())
                 .virtualCardActivityModule(new VirtualCardActivityModule())
+                .cardBlockingActivityModule(new CardBlockingActivityModule())
                 .buyFragmentModule(new BuyFragmentModule())
                 .moreFragmentModule(new MoreFragmentModule())
+                .clubPyccaPartnerActivityModule(new ClubPyccaPartnerActivityModule())
                 .profileActivityModule(new ProfileActivityModule())
                 .ourShopsActivityModule(new OurShopsActivityModule())
                 .ourShopsDetailsActivityModule(new OurShopsDetailsActivityModule())

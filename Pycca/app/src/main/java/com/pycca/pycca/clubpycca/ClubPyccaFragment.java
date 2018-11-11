@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.pycca.pycca.R;
+import com.pycca.pycca.cardblocking.CardBlockingActivity;
 import com.pycca.pycca.pojo.ClubPycca;
 import com.pycca.pycca.root.App;
 import com.pycca.pycca.util.Constants;
@@ -111,6 +112,12 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
     public void goToVirtualCardActivity() {
         Intent virtualCardActivity = new Intent(getActivity(), VirtualCardActivity.class);
         startActivity(virtualCardActivity);
+    }
+
+    @Override
+    public void goToCardBlockingActivity() {
+        Intent cardBlockingActivity = new Intent(getActivity(), CardBlockingActivity.class);
+        startActivity(cardBlockingActivity);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.pycca.pycca.clubpyccapartner;
+package com.pycca.pycca.cardblocking;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,18 +9,18 @@ import com.pycca.pycca.root.App;
 
 import javax.inject.Inject;
 
-public class ClubPyccaPartnerActivity extends AppCompatActivity implements ClubPyccaPartnerActivityMVP.View {
+public class CardBlockingActivity extends AppCompatActivity implements CardBlockingActivityMVP.View {
 
-    private static final String TAG = ClubPyccaPartnerActivity.class.getName();
+    private static final String TAG = CardBlockingActivity.class.getName();
 
     @Inject
-    public ClubPyccaPartnerActivityMVP.Presenter presenter;
+    public CardBlockingActivityMVP.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_club_pycca_partner);
-        ((App) getApplication()).getApplicationComponent().inject(ClubPyccaPartnerActivity.this);
+        setContentView(R.layout.activity_card_blocking);
+        ((App) getApplication()).getApplicationComponent().inject(CardBlockingActivity.this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -30,7 +30,7 @@ public class ClubPyccaPartnerActivity extends AppCompatActivity implements ClubP
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.setView(ClubPyccaPartnerActivity.this);
+        presenter.setView(CardBlockingActivity.this);
     }
 
     @Override

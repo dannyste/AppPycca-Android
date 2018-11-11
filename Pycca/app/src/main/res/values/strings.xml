@@ -57,7 +57,9 @@
     <string name="not_registered">No registrada</string>
 
     <!-- OurShopsDetailsActivity -->
+    <string name="address">Dirección</string>
     <string name="how_get">Cómo llegar</string>
+    <string name="opening_hours">Horario de atención</string>
 
     <!-- AlertDialogClubPyccaPartner -->
     <string name="validate">Validar</string>

@@ -92,12 +92,6 @@ public class OurShopsDetailsActivity extends AppCompatActivity implements OnMapR
         MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(ourShopsDetails.getName());
         googleMap.addMarker(markerOptions);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, Constants.GOOGLE_MAP_ZOOM));
-
-        /*Uri gmmIntentUri = Uri.parse("google.navigation:q="+ourShopsDetails.getLatitude()+","+ourShopsDetails.getLongitude()+"&mode=d");
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        startActivity(mapIntent);*/
-
     }
 
     @Override
