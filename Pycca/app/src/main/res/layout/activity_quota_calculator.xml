@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".cardblocking.CardBlockingActivity">
+    tools:context=".quotacalculator.QuotaCalculatorActivity">
 
     <LinearLayout
         android:id="@+id/ll_root_view"
@@ -35,7 +35,7 @@
                     android:fontFamily="@font/montserrat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/card_blocking"
+                    android:text="@string/quota_calculator"
                     android:textAllCaps="true"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/text_medium" />

@@ -3,7 +3,7 @@ package com.pycca.pycca.restApi.model;
 public class OurShopsResponse {
 
     private String ciudad;
-    private String  descripcion;
+    private String descripcion;
     private String telefono1;
     private String telefono2;
     private String direccion;

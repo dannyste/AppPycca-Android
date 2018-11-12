@@ -17,6 +17,7 @@ import com.pycca.pycca.ourshops.OurShopsActivityModule;
 import com.pycca.pycca.ourshopsdetails.OurShopsDetailsActivityModule;
 import com.pycca.pycca.picture.PictureActivityModule;
 import com.pycca.pycca.profile.ProfileActivityModule;
+import com.pycca.pycca.quotacalculator.QuotaCalculatorActivityModule;
 import com.pycca.pycca.signup.SignUpActivityModule;
 import com.pycca.pycca.splash.SplashActivityModule;
 import com.pycca.pycca.virtualcard.VirtualCardActivityModule;
@@ -39,6 +40,7 @@ public class App extends Application {
                 .homeFragmentModule(new HomeFragmentModule())
                 .couponFragmentModule(new CouponFragmentModule())
                 .clubPyccaFragmentModule(new ClubPyccaFragmentModule())
+                .quotaCalculatorActivityModule(new QuotaCalculatorActivityModule())
                 .virtualCardActivityModule(new VirtualCardActivityModule())
                 .cardBlockingActivityModule(new CardBlockingActivityModule())
                 .buyFragmentModule(new BuyFragmentModule())
