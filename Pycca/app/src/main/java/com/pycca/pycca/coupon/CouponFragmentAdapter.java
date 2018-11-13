@@ -38,7 +38,7 @@ public class CouponFragmentAdapter extends RecyclerView.Adapter<CouponFragmentAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CouponViewHolder couponViewHolder, int position) {
+    public void onBindViewHolder(@NonNull final CouponViewHolder couponViewHolder, int position) {
         final CouponImageResource coupon = couponArrayList.get(position);
         RequestOptions requestOptions = new RequestOptions();
         requestOptions
@@ -53,12 +53,10 @@ public class CouponFragmentAdapter extends RecyclerView.Adapter<CouponFragmentAd
         couponViewHolder.iv_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(coupon.getUrl() != null && !coupon.getUrl().trim().isEmpty()){
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(coupon.getUrl().trim()));
-                    fragment.startActivity(i);
+                if(coupon.getUrl() != null){
+                    fragment.goToPictureActivity(coupon, couponViewHolder.iv_image);
                 }else {
-                    fragment.showMessage(R.string.link_not_found);
+                    fragment.showMessage(R.string.error_default);
                 }
             }
         });

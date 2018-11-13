@@ -40,6 +40,15 @@ public class HomeFragmentPresenter implements HomeFragmentMVP.Presenter, HomeFra
     }
 
     @Override
+    public void clickOnBanner(ImageResource slideImg) {
+        if(slideImg != null){
+            view.goToPictureActivity(slideImg);
+        }else {
+            view.showMessage(R.string.link_not_found);
+        }
+    }
+
+    @Override
     public void onSuccess(ArrayList<ImageResource> list, boolean isHeader) {
         if(isHeader){
             view.setDataToBanner(list);

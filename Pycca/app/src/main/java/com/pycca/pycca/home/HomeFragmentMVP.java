@@ -16,6 +16,10 @@ public interface HomeFragmentMVP {
 
         Context getAppContext();
 
+        void goToPictureActivity(ImageResource imageResource);
+
+        void showMessage(int errorCode);
+
     }
 
     interface Presenter {
@@ -23,6 +27,8 @@ public interface HomeFragmentMVP {
         void setView(View view);
 
         void loadImages();
+
+        void clickOnBanner(ImageResource slideImg);
 
     }
 

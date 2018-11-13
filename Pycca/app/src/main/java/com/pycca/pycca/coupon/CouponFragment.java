@@ -1,6 +1,8 @@
 package com.pycca.pycca.coupon;
 
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.pycca.pycca.R;
+import com.pycca.pycca.picture.PictureActivity;
 import com.pycca.pycca.pojo.CouponImageResource;
 import com.pycca.pycca.pojo.ImageResource;
 import com.pycca.pycca.root.App;
@@ -82,5 +85,15 @@ public class CouponFragment extends Fragment implements CouponFragmentMVP.View {
     @Override
     public void showMessage(int errorCode) {
         Util.showMessage(ll_root_view, getResources().getString(errorCode));
+    }
+
+    @Override
+    public void goToPictureActivity(CouponImageResource coupon, View view) {
+        Intent intent = new Intent(getActivity(), PictureActivity.class);
+        intent.putExtra("coupon", coupon);
+        ActivityOptions activityOptions =
+                ActivityOptions.makeSceneTransitionAnimation(getActivity(), view, "img");
+        startActivity(intent, activityOptions.toBundle());
+
     }
 }

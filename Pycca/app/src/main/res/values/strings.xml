@@ -36,7 +36,7 @@
     <!-- ClubPyccaFragment -->
     <string name="account_status">Estado de cuenta</string>
     <string name="card_blocking">Bloquear tarjeta</string>
-    <string name="get_balance">Consulta de saldos</string>
+    <string name="get_balance">Consulta de saldo</string>
     <string name="quota_calculator">Calculadora de cuotas</string>
     <string name="quota_increase">Incremento de cupo</string>
     <string name="virtual_card">Tarjeta virtual</string>
@@ -54,6 +54,13 @@
 
     <!-- ProfileActivity -->
     <string name="logout">Cerrar sesión</string>
+
+    <!-- BalanceActivity -->
+    <string name="card_number">Número de tarjeta</string>
+    <string name="available_credit">Crédito disponible</string>
+    <string name="used_quota">Crédito utilizado</string>
+    <string name="aproved_quota">Cupo aprobado</string>
+    <string name="pay_until">Pagar hasta</string>
 
     <!-- AlertDialogClubPyccaPartner -->
     <string name="validate">Validar</string>
