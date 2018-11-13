@@ -1,4 +1,4 @@
-package com.pycca.pycca.quotacalculator;
+package com.pycca.pycca.quotaincrease;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,18 +9,18 @@ import com.pycca.pycca.root.App;
 
 import javax.inject.Inject;
 
-public class QuotaCalculatorActivity extends AppCompatActivity implements QuotaCalculatorActivityMVP.View {
+public class QuotaIncreaseActivity extends AppCompatActivity implements QuotaIncreaseActivityMVP.View {
 
-    private static final String TAG = QuotaCalculatorActivity.class.getName();
+    private static final String TAG = QuotaIncreaseActivity.class.getName();
 
     @Inject
-    public QuotaCalculatorActivityMVP.Presenter presenter;
+    public QuotaIncreaseActivityMVP.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quota_calculator);
-        ((App) getApplication()).getApplicationComponent().inject(QuotaCalculatorActivity.this);
+        setContentView(R.layout.activity_quota_increase);
+        ((App) getApplication()).getApplicationComponent().inject(QuotaIncreaseActivity.this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -30,7 +30,7 @@ public class QuotaCalculatorActivity extends AppCompatActivity implements QuotaC
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.setView(QuotaCalculatorActivity.this);
+        presenter.setView(QuotaIncreaseActivity.this);
     }
 
     @Override

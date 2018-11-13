@@ -35,7 +35,7 @@
                     android:fontFamily="@font/montserrat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/quota_calculator"
+                    android:text="@string/quota_increase"
                     android:textAllCaps="true"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/text_medium" />

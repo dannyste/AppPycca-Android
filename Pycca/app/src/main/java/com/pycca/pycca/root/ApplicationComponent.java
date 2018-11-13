@@ -32,6 +32,8 @@ import com.pycca.pycca.profile.ProfileActivity;
 import com.pycca.pycca.profile.ProfileActivityModule;
 import com.pycca.pycca.quotacalculator.QuotaCalculatorActivity;
 import com.pycca.pycca.quotacalculator.QuotaCalculatorActivityModule;
+import com.pycca.pycca.quotaincrease.QuotaIncreaseActivity;
+import com.pycca.pycca.quotaincrease.QuotaIncreaseActivityModule;
 import com.pycca.pycca.signup.SignUpActivity;
 import com.pycca.pycca.signup.SignUpActivityModule;
 import com.pycca.pycca.splash.SplashActivity;
@@ -55,6 +57,7 @@ import dagger.Component;
                             HomeFragmentModule.class,
                             CouponFragmentModule.class,
                             ClubPyccaFragmentModule.class,
+                            QuotaIncreaseActivityModule.class,
                             QuotaCalculatorActivityModule.class,
                             VirtualCardActivityModule.class,
                             CardBlockingActivityModule.class,
@@ -85,6 +88,8 @@ public interface ApplicationComponent {
     void inject(CouponFragment couponFragment);
 
     void inject(ClubPyccaFragment clubPyccaFragment);
+
+    void inject(QuotaIncreaseActivity quotaIncreaseActivity);
 
     void inject(QuotaCalculatorActivity quotaCalculatorActivity);
 
