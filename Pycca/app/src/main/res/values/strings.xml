@@ -54,6 +54,12 @@
 
     <!-- ProfileActivity -->
     <string name="logout">Cerrar sesión</string>
+    <string name="not_registered">No registrada</string>
+
+    <!-- OurShopsDetailsActivity -->
+    <string name="address">Dirección</string>
+    <string name="how_get">Cómo llegar</string>
+    <string name="opening_hours">Horario de atención</string>
 
     <!-- BalanceActivity -->
     <string name="card_number">Número de tarjeta</string>
@@ -79,6 +85,8 @@
     <string name="error_login_google">Ocurrió un error al iniciar sesión con google.</string>
     <string name="error_login_instagram">Ocurrió un error al iniciar sesión con instagram.</string>
     <string name="error_password_least_six_characters">La contraseña debe tener mínimo seis caracteres.</string>
+    <string name="error_touch_retry">Toca para reintentar</string>
+    <string name="error_unable_connect">No se puede conectar</string>
     <string name="error_update_user">Ocurrió un error al actualizar un usuario.</string>
     <string name="error_user_not_exist">El usuario no existe.</string>
 

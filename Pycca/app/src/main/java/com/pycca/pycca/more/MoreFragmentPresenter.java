@@ -51,7 +51,7 @@ public class MoreFragmentPresenter implements MoreFragmentMVP.Presenter {
 
     @Override
     public void sixthItemClicked() {
-
+        view.goToOurShopsActivity();
     }
 
 }

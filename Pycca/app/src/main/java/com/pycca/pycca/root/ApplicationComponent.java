@@ -2,8 +2,12 @@ package com.pycca.pycca.root;
 
 import com.pycca.pycca.buy.BuyFragment;
 import com.pycca.pycca.buy.BuyFragmentModule;
+import com.pycca.pycca.cardblocking.CardBlockingActivity;
+import com.pycca.pycca.cardblocking.CardBlockingActivityModule;
 import com.pycca.pycca.clubpycca.ClubPyccaFragment;
 import com.pycca.pycca.clubpycca.ClubPyccaFragmentModule;
+import com.pycca.pycca.clubpyccapartner.ClubPyccaPartnerActivity;
+import com.pycca.pycca.clubpyccapartner.ClubPyccaPartnerActivityModule;
 import com.pycca.pycca.coupon.CouponFragment;
 import com.pycca.pycca.coupon.CouponFragmentModule;
 import com.pycca.pycca.forgotpassword.ForgotPasswordActivity;
@@ -18,10 +22,18 @@ import com.pycca.pycca.more.MoreFragment;
 import com.pycca.pycca.more.MoreFragmentModule;
 import com.pycca.pycca.multilogin.MultiLoginActivity;
 import com.pycca.pycca.multilogin.MultiLoginActivityModule;
+import com.pycca.pycca.ourshops.OurShopsActivity;
+import com.pycca.pycca.ourshops.OurShopsActivityModule;
+import com.pycca.pycca.ourshopsdetails.OurShopsDetailsActivity;
+import com.pycca.pycca.ourshopsdetails.OurShopsDetailsActivityModule;
 import com.pycca.pycca.picture.PictureActivity;
 import com.pycca.pycca.picture.PictureActivityModule;
 import com.pycca.pycca.profile.ProfileActivity;
 import com.pycca.pycca.profile.ProfileActivityModule;
+import com.pycca.pycca.quotacalculator.QuotaCalculatorActivity;
+import com.pycca.pycca.quotacalculator.QuotaCalculatorActivityModule;
+import com.pycca.pycca.quotaincrease.QuotaIncreaseActivity;
+import com.pycca.pycca.quotaincrease.QuotaIncreaseActivityModule;
 import com.pycca.pycca.signup.SignUpActivity;
 import com.pycca.pycca.signup.SignUpActivityModule;
 import com.pycca.pycca.splash.SplashActivity;
@@ -45,11 +57,16 @@ import dagger.Component;
                             HomeFragmentModule.class,
                             CouponFragmentModule.class,
                             ClubPyccaFragmentModule.class,
+                            QuotaIncreaseActivityModule.class,
+                            QuotaCalculatorActivityModule.class,
                             VirtualCardActivityModule.class,
-                            MoreFragmentModule.class,
-                            VirtualCardActivityModule.class,
+                            CardBlockingActivityModule.class,
                             BuyFragmentModule.class,
+                            MoreFragmentModule.class,
+                            ClubPyccaPartnerActivityModule.class,
                             ProfileActivityModule.class,
+                            OurShopsActivityModule.class,
+                            OurShopsDetailsActivityModule.class,
                             PictureActivityModule.class
                      })
 public interface ApplicationComponent {
@@ -72,13 +89,25 @@ public interface ApplicationComponent {
 
     void inject(ClubPyccaFragment clubPyccaFragment);
 
+    void inject(QuotaIncreaseActivity quotaIncreaseActivity);
+
+    void inject(QuotaCalculatorActivity quotaCalculatorActivity);
+
     void inject(VirtualCardActivity virtualCardActivity);
+
+    void inject(CardBlockingActivity cardBlockingActivity);
+
+    void inject(BuyFragment buyFragment);
 
     void inject(MoreFragment moreFragment);
 
+    void inject(ClubPyccaPartnerActivity clubPyccaPartnerActivity);
+
     void inject(ProfileActivity profileActivity);
 
-    void inject(BuyFragment moreFragment);
+    void inject(OurShopsActivity ourShopsActivity);
+
+    void inject(OurShopsDetailsActivity ourShopsDetailsActivity);
 
     void inject(PictureActivity pictureActivity);
 

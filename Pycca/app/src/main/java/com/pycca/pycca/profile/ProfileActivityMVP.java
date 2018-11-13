@@ -18,8 +18,6 @@ public interface ProfileActivityMVP {
 
         void setClubPyccaCardNumber(String clubPyccaCardNumber);
 
-        void setVisibilityClubPyccaPartner();
-
     }
 
     interface Presenter {

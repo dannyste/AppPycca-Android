@@ -12,6 +12,8 @@ public interface ClubPyccaFragmentMVP {
 
         void goToVirtualCardActivity();
 
+        void goToCardBlockingActivity();
+
     }
 
     interface Presenter {

@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -31,7 +29,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
 
     private CircleImageView civ_photo;
     private TextView tv_name, tv_email, tv_identification_card, tv_club_pycca_card_number;
-    private LinearLayout ll_club_pycca_partner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +42,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
         civ_photo                 = findViewById(R.id.civ_photo);
         tv_name                   = findViewById(R.id.tv_name);
         tv_email                  = findViewById(R.id.tv_email);
-        ll_club_pycca_partner     = findViewById(R.id.ll_club_pycca_partner);
         tv_identification_card    = findViewById(R.id.tv_identification_card);
         tv_club_pycca_card_number = findViewById(R.id.tv_club_pycca_card_number);
     }
@@ -85,11 +81,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
     @Override
     public void setClubPyccaCardNumber(String clubPyccaCardNumber) {
         tv_club_pycca_card_number.setText(clubPyccaCardNumber);
-    }
-
-    @Override
-    public void setVisibilityClubPyccaPartner() {
-        ll_club_pycca_partner.setVisibility(View.VISIBLE);
     }
 
     @Override

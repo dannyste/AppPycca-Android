@@ -21,7 +21,19 @@ public class User {
     private Date modificationDate;
 
     public User() {
-
+        this.photoUrl = "";
+        this.name = "";
+        this.email = "";
+        this.password = "";
+        this.clubPyccaPartner = false;
+        this.identificationCard = "";
+        this.clubPyccaCardNumber = "";
+        this.accountNumber = 0;
+        this.clientSince = "";
+        this.registrationProvider = "";
+        this.token = "";
+        this.creationDate = null;
+        this.modificationDate = null;
     }
 
     public String getPhotoUrl() {

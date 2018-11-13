@@ -6,6 +6,10 @@ public class ClubPycca {
     private int image;
     private int name;
 
+    public ClubPycca() {
+
+    }
+
     public ClubPycca(int color, int image, int name) {
         this.color = color;
         this.image = image;

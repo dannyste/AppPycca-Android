@@ -6,6 +6,10 @@ public class BaseResponse {
     private String message;
     private Data data;
 
+    public BaseResponse() {
+
+    }
+
     public BaseResponse(boolean status, String message, Data data) {
         this.status = status;
         this.message = message;

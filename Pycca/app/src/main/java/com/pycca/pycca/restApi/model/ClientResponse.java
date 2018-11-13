@@ -1,6 +1,6 @@
 package com.pycca.pycca.restApi.model;
 
-public class Client {
+public class ClientResponse {
 
     private int ma_cuenta;
     private String cl_nombres;
@@ -8,11 +8,11 @@ public class Client {
     private String no_estados;
     private String ma_fapertura;
 
-    public Client() {
+    public ClientResponse() {
 
     }
 
-    public Client(int ma_cuenta, String cl_nombres, String cl_apellidos, String no_estados, String ma_fapertura) {
+    public ClientResponse(int ma_cuenta, String cl_nombres, String cl_apellidos, String no_estados, String ma_fapertura) {
         this.ma_cuenta = ma_cuenta;
         this.cl_nombres = cl_nombres;
         this.cl_apellidos = cl_apellidos;

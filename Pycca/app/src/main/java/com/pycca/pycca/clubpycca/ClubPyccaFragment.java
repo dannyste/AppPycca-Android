@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.pycca.pycca.R;
+import com.pycca.pycca.cardblocking.CardBlockingActivity;
 import com.pycca.pycca.pojo.ClubPycca;
 import com.pycca.pycca.root.App;
 import com.pycca.pycca.util.Constants;
@@ -50,19 +51,6 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
         rv_club_pycca = view.findViewById(R.id.rv_club_pycca);
         initRecyclerView();
         return view;
-    }
-
-    @Override
-    public void updateDataRecyclerView(ArrayList<ClubPycca> clubPyccaArrayList) {
-        this.clubPyccaArrayList.clear();
-        this.clubPyccaArrayList.addAll(clubPyccaArrayList);
-        clubPyccaFragmentAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void goToVirtualCardActivity() {
-        Intent virtualCardActivity = new Intent(getActivity(), VirtualCardActivity.class);
-        startActivity(virtualCardActivity);
     }
 
     public void initRecyclerView() {
@@ -111,6 +99,25 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
         rv_club_pycca.setItemAnimator(new DefaultItemAnimator());
         rv_club_pycca.setHasFixedSize(false);
         rv_club_pycca.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
+
+    @Override
+    public void updateDataRecyclerView(ArrayList<ClubPycca> clubPyccaArrayList) {
+        this.clubPyccaArrayList.clear();
+        this.clubPyccaArrayList.addAll(clubPyccaArrayList);
+        clubPyccaFragmentAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void goToVirtualCardActivity() {
+        Intent virtualCardActivity = new Intent(getActivity(), VirtualCardActivity.class);
+        startActivity(virtualCardActivity);
+    }
+
+    @Override
+    public void goToCardBlockingActivity() {
+        Intent cardBlockingActivity = new Intent(getActivity(), CardBlockingActivity.class);
+        startActivity(cardBlockingActivity);
     }
 
     @Override

@@ -11,4 +11,7 @@ public interface EndpointsApi {
     @GET(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_GET_VALIDATE_CLIENT)
     Call<BaseResponse> getValidateClient(@Path("documentType") String documentType, @Path("identificationCard") String identificationCard, @Path("clubPyccaCardNumber") String clubPyccaCardNumber);
 
+    @GET(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_GET_OUR_SHOPS)
+    Call<BaseResponse> getOurShops();
+
 }

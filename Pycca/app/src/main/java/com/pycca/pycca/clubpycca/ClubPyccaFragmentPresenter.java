@@ -51,7 +51,7 @@ public class ClubPyccaFragmentPresenter implements ClubPyccaFragmentMVP.Presente
 
     @Override
     public void sixthItemClicked() {
-
+        view.goToCardBlockingActivity();
     }
 
 }

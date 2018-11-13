@@ -1,5 +1,6 @@
 package com.pycca.pycca.profile;
 
+import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.User;
 
 public class ProfileActivityPresenter implements ProfileActivityMVP.Presenter {
@@ -22,11 +23,8 @@ public class ProfileActivityPresenter implements ProfileActivityMVP.Presenter {
         view.setPhotoUrl(user.getPhotoUrl());
         view.setName(user.getName());
         view.setEmail(user.getEmail());
-        if (user.isClubPyccaPartner()) {
-            view.setIdentificationCard(user.getIdentificationCard());
-            view.setClubPyccaCardNumber(user.getClubPyccaCardNumber());
-            view.setVisibilityClubPyccaPartner();
-        }
+        view.setIdentificationCard(!user.getIdentificationCard().trim().isEmpty() ? user.getIdentificationCard() : profileActivity.getString(R.string.not_registered));
+        view.setClubPyccaCardNumber(!user.getClubPyccaCardNumber().trim().isEmpty() ? user.getClubPyccaCardNumber() : profileActivity.getString(R.string.not_registered));
     }
 
     @Override

@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.User;
 import com.pycca.pycca.restApi.model.BaseResponse;
-import com.pycca.pycca.restApi.model.Client;
+import com.pycca.pycca.restApi.model.ClientResponse;
 import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.util.SharedPreferencesManager;
 
@@ -32,13 +32,13 @@ public class HostActivityModel implements HostActivityMVP.Model {
     @Override
     public void setUser(HostActivity hostActivity, String identificationCard, String clubPyccaCardNumber, BaseResponse baseResponse, HostActivityMVP.TaskListener taskListener) {
         Gson gson = new Gson();
-        Client client = gson.fromJson(gson.toJson(baseResponse.getData().getResult()), Client.class);
+        ClientResponse clientResponse = gson.fromJson(gson.toJson(baseResponse.getData().getResult()), ClientResponse.class);
         User user = SharedPreferencesManager.getInstance(hostActivity).getUser();
         user.setClubPyccaPartner(true);
         user.setIdentificationCard(identificationCard);
         user.setClubPyccaCardNumber(clubPyccaCardNumber);
-        user.setAccountNumber(client.getMa_cuenta());
-        user.setClientSince(client.getMa_fapertura());
+        user.setAccountNumber(clientResponse.getMa_cuenta());
+        user.setClientSince(clientResponse.getMa_fapertura());
         user.setModificationDate(new Date());
         updateUserFirebaseFirestore(hostActivity, user, taskListener);
     }

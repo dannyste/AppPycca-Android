@@ -6,6 +6,10 @@ public class More {
     private int image;
     private int name;
 
+    public More() {
+
+    }
+
     public More(int color, int image, int name) {
         this.color = color;
         this.image = image;
