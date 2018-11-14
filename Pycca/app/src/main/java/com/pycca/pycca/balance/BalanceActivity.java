@@ -7,7 +7,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pycca.pycca.R;
-import com.pycca.pycca.root.App;
 import com.pycca.pycca.util.Util;
 
 import javax.inject.Inject;
@@ -17,8 +16,8 @@ public class BalanceActivity extends AppCompatActivity implements BalanceActivit
     @Inject
     public BalanceActivityMVP.Presenter presenter;
 
-    LinearLayout linearLayout;
-    TextView tv_card_number, tv_available_credit, tv_used_quota, tv_aproved_quota, tv_pay_until;
+    private LinearLayout linearLayout;
+    private TextView tv_card_number, tv_available_credit, tv_used_quota, tv_aproved_quota, tv_pay_until;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

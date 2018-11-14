@@ -22,6 +22,8 @@ import com.pycca.pycca.more.MoreFragment;
 import com.pycca.pycca.more.MoreFragmentModule;
 import com.pycca.pycca.multilogin.MultiLoginActivity;
 import com.pycca.pycca.multilogin.MultiLoginActivityModule;
+import com.pycca.pycca.nearestshop.NearestShopActivity;
+import com.pycca.pycca.nearestshop.NearestShopActivityModule;
 import com.pycca.pycca.ourshops.OurShopsActivity;
 import com.pycca.pycca.ourshops.OurShopsActivityModule;
 import com.pycca.pycca.ourshopsdetails.OurShopsDetailsActivity;
@@ -65,6 +67,7 @@ import dagger.Component;
                             MoreFragmentModule.class,
                             ClubPyccaPartnerActivityModule.class,
                             ProfileActivityModule.class,
+                            NearestShopActivityModule.class,
                             OurShopsActivityModule.class,
                             OurShopsDetailsActivityModule.class,
                             PictureActivityModule.class
@@ -104,6 +107,8 @@ public interface ApplicationComponent {
     void inject(ClubPyccaPartnerActivity clubPyccaPartnerActivity);
 
     void inject(ProfileActivity profileActivity);
+
+    void inject(NearestShopActivity nearestShopActivity);
 
     void inject(OurShopsActivity ourShopsActivity);
 

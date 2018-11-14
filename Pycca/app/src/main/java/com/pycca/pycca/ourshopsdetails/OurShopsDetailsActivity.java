@@ -49,7 +49,7 @@ public class OurShopsDetailsActivity extends AppCompatActivity implements OnMapR
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        mapFragment.getMapAsync(OurShopsDetailsActivity.this);
         rv_our_shops_details = findViewById(R.id.rv_our_shops_details);
         Bundle bundle = getIntent().getExtras();
         ourShopsDetailsArrayList = bundle.getParcelableArrayList("ourShopsDetailsArrayList");

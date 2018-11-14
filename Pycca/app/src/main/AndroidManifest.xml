@@ -152,6 +152,9 @@
             android:name=".balance.BalanceActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
-  </application>
+        <activity
+            android:name=".nearestshop.NearestShopActivity"
+            android:label="@string/title_activity_nearest_shop"></activity>
+    </application>
 
 </manifest>
