@@ -148,6 +148,10 @@
             </intent-filter>
         </service>
 
-    </application>
+        <activity
+            android:name=".balance.BalanceActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+  </application>
 
 </manifest>

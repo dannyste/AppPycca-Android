@@ -1,6 +1,7 @@
 package com.pycca.pycca.coupon;
 
 import android.content.Context;
+import android.view.View;
 
 import com.pycca.pycca.pojo.CouponImageResource;
 import com.pycca.pycca.pojo.ImageResource;
@@ -17,6 +18,7 @@ public interface CouponFragmentMVP {
 
         void showMessage(int errorCode);
 
+        void goToPictureActivity(CouponImageResource coupon, android.view.View view);
     }
 
     interface Presenter {

@@ -12,7 +12,7 @@ public class ClubPyccaRepository implements ClubPyccaFragmentRepository {
     @Override
     public ArrayList<ClubPycca> getClubPyccaArrayList() {
         clubPyccaArrayList = new ArrayList<>();
-        clubPyccaArrayList.add(new ClubPycca(R.color.colorOptionOne, R.drawable.ic_get_balance, R.string.get_balance));
+        clubPyccaArrayList.add(new ClubPycca(R.color.colorOptionOne, R.drawable.ic_balance, R.string.balance));
         clubPyccaArrayList.add(new ClubPycca(R.color.colorOptionTwo, R.drawable.ic_account_status, R.string.account_status));
         clubPyccaArrayList.add(new ClubPycca(R.color.colorOptionThree, R.drawable.ic_quota_increase, R.string.quota_increase));
         clubPyccaArrayList.add(new ClubPycca(R.color.colorOptionFour, R.drawable.ic_quota_calculator, R.string.quota_calculator));

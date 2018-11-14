@@ -2,6 +2,7 @@ package com.pycca.pycca.picture;
 
 import android.content.Context;
 
+import com.pycca.pycca.pojo.CouponImageResource;
 import com.pycca.pycca.pojo.ImageResource;
 
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ public interface PictureActivityMVP {
     interface View {
 
         void setData(ImageResource imageResource);
+
+        void setDataCoupon(CouponImageResource coupon);
 
         Context getAppContext();
 

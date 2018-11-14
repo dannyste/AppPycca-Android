@@ -1,6 +1,8 @@
 package com.pycca.pycca.pojo;
 
-public class CouponImageResource {
+import java.io.Serializable;
+
+public class CouponImageResource implements Serializable {
     private String name;
     private String description;
     private String path;
