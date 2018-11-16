@@ -1,5 +1,7 @@
 package com.pycca.pycca.root;
 
+import com.pycca.pycca.balance.BalanceActivity;
+import com.pycca.pycca.balance.BalanceActivityModule;
 import com.pycca.pycca.buy.BuyFragment;
 import com.pycca.pycca.buy.BuyFragmentModule;
 import com.pycca.pycca.cardblocking.CardBlockingActivity;
@@ -70,7 +72,8 @@ import dagger.Component;
                             NearestShopActivityModule.class,
                             OurShopsActivityModule.class,
                             OurShopsDetailsActivityModule.class,
-                            PictureActivityModule.class
+                            PictureActivityModule.class,
+                            BalanceActivityModule.class
                      })
 public interface ApplicationComponent {
 
@@ -115,5 +118,7 @@ public interface ApplicationComponent {
     void inject(OurShopsDetailsActivity ourShopsDetailsActivity);
 
     void inject(PictureActivity pictureActivity);
+
+    void inject(BalanceActivity balanceActivity);
 
 }

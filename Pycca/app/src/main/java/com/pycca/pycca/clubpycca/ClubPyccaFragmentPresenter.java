@@ -26,7 +26,7 @@ public class ClubPyccaFragmentPresenter implements ClubPyccaFragmentMVP.Presente
 
     @Override
     public void firstItemClicked() {
-
+        view.goToGetBalanceActivity();
     }
 
     @Override

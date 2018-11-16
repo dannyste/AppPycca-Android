@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.pycca.pycca.R;
+import com.pycca.pycca.balance.BalanceActivity;
 import com.pycca.pycca.cardblocking.CardBlockingActivity;
 import com.pycca.pycca.pojo.ClubPycca;
 import com.pycca.pycca.root.App;
@@ -106,6 +107,12 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
         this.clubPyccaArrayList.clear();
         this.clubPyccaArrayList.addAll(clubPyccaArrayList);
         clubPyccaFragmentAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void goToGetBalanceActivity() {
+        Intent getBalanceActivity = new Intent(getActivity(), BalanceActivity.class);
+        startActivity(getBalanceActivity);
     }
 
     @Override
