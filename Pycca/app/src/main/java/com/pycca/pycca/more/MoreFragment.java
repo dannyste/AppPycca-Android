@@ -17,6 +17,7 @@ import android.widget.ImageView;
 
 import com.pycca.pycca.R;
 import com.pycca.pycca.clubpyccapartner.ClubPyccaPartnerActivity;
+import com.pycca.pycca.nearestshop.NearestShopActivity;
 import com.pycca.pycca.ourshops.OurShopsActivity;
 import com.pycca.pycca.pojo.More;
 import com.pycca.pycca.profile.ProfileActivity;
@@ -69,7 +70,8 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            switch (position) {
+                            int newPosition = moreArrayList.size() < 6 ? position + 1 : position;
+                            switch (newPosition) {
                                 case 0:
                                     presenter.firstItemClicked();
                                     break;
@@ -122,6 +124,12 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
     }
 
     @Override
+    public void goToNearestShopActivity() {
+        Intent nearestShopActivity = new Intent(getActivity(), NearestShopActivity.class);
+        startActivity(nearestShopActivity);
+    }
+
+    @Override
     public void goToOurShopsActivity() {
         Intent ourShopsActivity = new Intent(getActivity(), OurShopsActivity.class);
         startActivity(ourShopsActivity);
@@ -131,7 +139,7 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
     public void onResume() {
         super.onResume();
         presenter.setView(MoreFragment.this);
-        presenter.loadMoreArrayList();
+        presenter.loadMoreArrayList(MoreFragment.this);
     }
 
 }

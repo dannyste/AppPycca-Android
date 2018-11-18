@@ -2,9 +2,11 @@ package com.pycca.pycca.util;
 
 public class Constants {
 
-    public static int ANIMATION_DURATION        = 1000;
-    public static int GOOGLE_MAP_ZOOM           = 16;
-    public static int SPLASH_TIME_OUT           = 3000;
+    public static int ANIMATION_DURATION                = 1000;
+    public static int LOCATION_REQUEST_INTERVAL         = 1000;
+    public static int LOCATION_REQUEST_FASTEST_INTERVAL = 500;
+    public static int GOOGLE_MAP_ZOOM                   = 16;
+    public static int SPLASH_TIME_OUT                   = 3000;
 
     //FIRESTORE
     public static String FIRESTORE_USER_TABLE           = "User";

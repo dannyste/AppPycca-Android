@@ -20,6 +20,7 @@ import com.pycca.pycca.host.HostActivity;
 import com.pycca.pycca.multilogin.MultiLoginActivity;
 import com.pycca.pycca.root.App;
 import com.pycca.pycca.util.Constants;
+import com.pycca.pycca.util.Util;
 
 import javax.inject.Inject;
 
@@ -30,9 +31,10 @@ public class SplashActivity extends AppCompatActivity implements SplashActivityM
     @Inject
     public SplashActivityMVP.Presenter presenter;
 
+    private LinearLayout ll_root_view;
     private ImageView iv_pycca;
 
-    private static final int PERMISSION_REQUEST = 1000;
+    private static final int RC_PERMISSION_REQUEST = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,8 @@ public class SplashActivity extends AppCompatActivity implements SplashActivityM
         setContentView(R.layout.activity_splash);
         ((App) getApplication()).getApplicationComponent().inject(SplashActivity.this);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        iv_pycca = findViewById(R.id.iv_pycca);
+        ll_root_view  = findViewById(R.id.ll_root_view);
+        iv_pycca      = findViewById(R.id.iv_pycca);
     }
 
     @Override
@@ -57,14 +60,16 @@ public class SplashActivity extends AppCompatActivity implements SplashActivityM
 
     @Override
     public void checkPermission() {
-        if (ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED ||
+        if (ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+            ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED ||
             ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this, Manifest.permission.BLUETOOTH) ||
+            if (ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) ||
+                ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this, Manifest.permission.BLUETOOTH) ||
                 ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this, Manifest.permission.CALL_PHONE)) {
-                ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.BLUETOOTH, Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST);
+                ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.CALL_PHONE}, RC_PERMISSION_REQUEST);
             }
             else {
-                ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.BLUETOOTH, Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST);
+                ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.CALL_PHONE}, RC_PERMISSION_REQUEST);
             }
         }
         else {
@@ -96,13 +101,15 @@ public class SplashActivity extends AppCompatActivity implements SplashActivityM
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
-            case PERMISSION_REQUEST: {
+            case RC_PERMISSION_REQUEST: {
                 if (grantResults.length > 0 &&
                     grantResults[0] == PackageManager.PERMISSION_GRANTED &&
-                    grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                    grantResults[1] == PackageManager.PERMISSION_GRANTED &&
+                    grantResults[2] == PackageManager.PERMISSION_GRANTED) {
                     presenter.getCurrentUser(SplashActivity.this);
                 }
                 else {
+                    Util.showMessage(ll_root_view, getString(R.string.permissions_necessary));
                     presenter.getCurrentUser(SplashActivity.this);
                 }
             }

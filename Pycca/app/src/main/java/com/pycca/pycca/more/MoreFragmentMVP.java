@@ -14,6 +14,8 @@ public interface MoreFragmentMVP {
 
         void goToProfileActivity();
 
+        void goToNearestShopActivity();
+
         void goToOurShopsActivity();
 
     }
@@ -22,7 +24,7 @@ public interface MoreFragmentMVP {
 
         void setView(MoreFragmentMVP.View view);
 
-        void loadMoreArrayList();
+        void loadMoreArrayList(MoreFragment moreFragment);
 
         void firstItemClicked();
 
@@ -40,7 +42,7 @@ public interface MoreFragmentMVP {
 
     interface Model {
 
-        ArrayList<More> getMoreArrayList();
+        ArrayList<More> getMoreArrayList(MoreFragment moreFragment);
 
     }
 

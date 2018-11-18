@@ -105,10 +105,11 @@
     <string name="identification_card_required">Cédula requerida.</string>
     <string name="invalid_email">Correo electrónico inválido.</string>
     <string name="password_required">Contraseña requerida.</string>
+    <string name="permission_necessary">El permiso es necesario para utilizar esta opción.</string>
+    <string name="permissions_necessary">Los permisos son necesarios para utilizar todas las opciones en la aplicación.</string>
     <string name="link_not_found">No se ha encontrado una url asociada.</string>
 
     <!-- Facebook -->
     <string name="facebook_app_id">1854965214584839</string>
     <string name="fb_login_protocol_scheme">fb1854965214584839</string>
-    <string name="title_activity_nearest_shop">Map</string>
 </resources>

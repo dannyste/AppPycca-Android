@@ -19,8 +19,8 @@ public class MoreFragmentPresenter implements MoreFragmentMVP.Presenter {
     }
 
     @Override
-    public void loadMoreArrayList() {
-        ArrayList<More> moreArrayList = model.getMoreArrayList();
+    public void loadMoreArrayList(MoreFragment moreFragment) {
+        ArrayList<More> moreArrayList = model.getMoreArrayList(moreFragment);
         view.updateDataRecyclerView(moreArrayList);
     }
 
@@ -46,7 +46,7 @@ public class MoreFragmentPresenter implements MoreFragmentMVP.Presenter {
 
     @Override
     public void fifthItemClicked() {
-
+        view.goToNearestShopActivity();
     }
 
     @Override
