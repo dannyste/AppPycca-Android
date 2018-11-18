@@ -19,6 +19,8 @@ import com.pycca.pycca.R;
 import com.pycca.pycca.balance.BalanceActivity;
 import com.pycca.pycca.cardblocking.CardBlockingActivity;
 import com.pycca.pycca.pojo.ClubPycca;
+import com.pycca.pycca.quotacalculator.QuotaCalculatorActivity;
+import com.pycca.pycca.quotaincrease.QuotaIncreaseActivity;
 import com.pycca.pycca.root.App;
 import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.virtualcard.VirtualCardActivity;
@@ -110,9 +112,26 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
     }
 
     @Override
-    public void goToGetBalanceActivity() {
+    public void goToBalanceActivity() {
         Intent getBalanceActivity = new Intent(getActivity(), BalanceActivity.class);
         startActivity(getBalanceActivity);
+    }
+
+    @Override
+    public void goToAccountStatusActivity() {
+
+    }
+
+    @Override
+    public void goToQuotaIncreaseActivity() {
+        Intent quotaIncreaseActivity = new Intent(getActivity(), QuotaIncreaseActivity.class);
+        startActivity(quotaIncreaseActivity);
+    }
+
+    @Override
+    public void goToQuotaCalculatorActivity() {
+        Intent quotaCalculatorActivity = new Intent(getActivity(), QuotaCalculatorActivity.class);
+        startActivity(quotaCalculatorActivity);
     }
 
     @Override

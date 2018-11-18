@@ -43,8 +43,11 @@
 
     <!-- QuotaIncreaseActivity -->
     <string name="choose_increase_apply">Escoja el incremento al que desea aplicar:</string>
+    <string name="increase">Incremento</string>
     <string name="quota_increase_club_pycca_card">Incremento de cupo tarjeta ClubPycca</string>
     <string name="quota_increase_parallel_super_credit">Incremento de cupo paralelo SúperCrédito.</string>
+    <string name="request">Solicitar</string>
+    <string name="tell_us_requested_quota">Indícanos el cupo solicitado</string>
 
     <!-- VirtualCardActivity -->
     <string name="client_since">Cliente desde:</string>

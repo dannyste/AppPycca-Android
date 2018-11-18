@@ -59,7 +59,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
     @Override
     public void setPhotoUrl(String photoUrl) {
         RequestOptions requestOptions = new RequestOptions();
-        requestOptions.centerInside().diskCacheStrategy(DiskCacheStrategy.DATA).placeholder(R.drawable.photo).error(R.drawable.photo);
+        requestOptions.centerInside().diskCacheStrategy(DiskCacheStrategy.DATA).placeholder(R.drawable.photo_profile).error(R.drawable.photo_profile);
         Glide.with(ProfileActivity.this).load(photoUrl).apply(requestOptions).into(civ_photo);
     }
 

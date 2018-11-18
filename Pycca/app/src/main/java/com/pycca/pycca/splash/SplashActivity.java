@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity implements SplashActivityM
     private LinearLayout ll_root_view;
     private ImageView iv_pycca;
 
-    private static final int RC_PERMISSION_REQUEST = 1000;
+    private static final int RC_PERMISSION = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,10 +66,10 @@ public class SplashActivity extends AppCompatActivity implements SplashActivityM
             if (ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) ||
                 ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this, Manifest.permission.BLUETOOTH) ||
                 ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this, Manifest.permission.CALL_PHONE)) {
-                ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.CALL_PHONE}, RC_PERMISSION_REQUEST);
+                ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.CALL_PHONE}, RC_PERMISSION);
             }
             else {
-                ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.CALL_PHONE}, RC_PERMISSION_REQUEST);
+                ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.CALL_PHONE}, RC_PERMISSION);
             }
         }
         else {
@@ -101,7 +101,7 @@ public class SplashActivity extends AppCompatActivity implements SplashActivityM
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
-            case RC_PERMISSION_REQUEST: {
+            case RC_PERMISSION: {
                 if (grantResults.length > 0 &&
                     grantResults[0] == PackageManager.PERMISSION_GRANTED &&
                     grantResults[1] == PackageManager.PERMISSION_GRANTED &&

@@ -1,6 +1,8 @@
 package com.pycca.pycca.nearestshop;
 
 import android.Manifest;
+import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -15,13 +17,17 @@ import android.widget.LinearLayout;
 
 import com.androidmapsextensions.utils.LatLngUtils;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,6 +36,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.OurShopsDetails;
 import com.pycca.pycca.root.App;
@@ -55,10 +63,12 @@ public class NearestShopActivity extends AppCompatActivity implements OnMapReady
     private GoogleApiClient googleApiClient;
     private LocationRequest locationRequest;
     private LocationSettingsRequest locationSettingsRequest;
+    private LocationCallback locationCallback;
 
     private LatLng centerLatLng;
 
-    private static final int RC_PERMISSION_REQUEST = 1000;
+    private static final int RC_PERMISSION = 1000;
+    private static final int RC_CHECK_SETTINGS = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +92,7 @@ public class NearestShopActivity extends AppCompatActivity implements OnMapReady
             this.googleMap.setMyLocationEnabled(true);
         }
         else {
-            ActivityCompat.requestPermissions(NearestShopActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, RC_PERMISSION_REQUEST);
+            ActivityCompat.requestPermissions(NearestShopActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, RC_PERMISSION);
         }
     }
 
@@ -100,7 +110,6 @@ public class NearestShopActivity extends AppCompatActivity implements OnMapReady
         createLocationRequest();
         buildLocationSettingsRequest();
         checkLocationSettings();
-        startLocationUpdates();
     }
 
     private void createLocationRequest() {
@@ -117,19 +126,43 @@ public class NearestShopActivity extends AppCompatActivity implements OnMapReady
     }
 
     private void checkLocationSettings() {
-        SettingsClient settingsClient = LocationServices.getSettingsClient(this);
-        settingsClient.checkLocationSettings(locationSettingsRequest);
+        SettingsClient settingsClient = LocationServices.getSettingsClient(NearestShopActivity.this);
+        Task<LocationSettingsResponse> locationSettingsResponseTask = settingsClient.checkLocationSettings(locationSettingsRequest);
+        locationSettingsResponseTask.addOnCompleteListener(new OnCompleteListener<LocationSettingsResponse>() {
+            @Override
+            public void onComplete(@NonNull Task<LocationSettingsResponse> task) {
+                try {
+                    LocationSettingsResponse locationSettingsResponse = task.getResult(ApiException.class);
+                    startLocationUpdates();
+                }
+                catch (ApiException apiException) {
+                    switch (apiException.getStatusCode()) {
+                        case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                            try {
+                                ResolvableApiException resolvableApiException = (ResolvableApiException) apiException;
+                                resolvableApiException.startResolutionForResult(NearestShopActivity.this, RC_CHECK_SETTINGS);
+                            }
+                            catch (IntentSender.SendIntentException sendIntentException) {
+                                Util.showMessage(ll_root_view, getString(R.string.error_default));
+                            }
+                            break;
+                        case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                            Util.showMessage(ll_root_view, getString(R.string.error_default));
+                            break;
+                    }
+                }
+            }
+        });
     }
 
     private void startLocationUpdates() {
-        getFusedLocationProviderClient(NearestShopActivity.this)
-                .requestLocationUpdates(locationRequest, new LocationCallback() {
-                    @Override
-                    public void onLocationResult(LocationResult locationResult) {
-                        onLocationChanged(locationResult.getLastLocation());
-                    }
-                },
-                Looper.myLooper());
+        locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                onLocationChanged(locationResult.getLastLocation());
+            }
+        };
+        getFusedLocationProviderClient(NearestShopActivity.this).requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
     }
 
     @Override
@@ -144,16 +177,39 @@ public class NearestShopActivity extends AppCompatActivity implements OnMapReady
 
     @Override
     public void onLocationChanged(Location location) {
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, Constants.GOOGLE_MAP_ZOOM));
-        getFusedLocationProviderClient(this).removeLocationUpdates(new LocationCallback());
+        centerLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(centerLatLng, Constants.GOOGLE_MAP_ZOOM_RADIUS));
+        getFusedLocationProviderClient(NearestShopActivity.this).removeLocationUpdates(locationCallback);
         presenter.loadOurShopsDetailsArrayList();
+    }
+
+    @Override
+    public void showMarkersGoogleMap(ArrayList<OurShopsDetails> ourShopsDetailsArrayList) {
+        for (OurShopsDetails ourShopsDetails: ourShopsDetailsArrayList) {
+            LatLng latLng = new LatLng(ourShopsDetails.getLatitude(), ourShopsDetails.getLongitude());
+            float distance = LatLngUtils.distanceBetween(latLng, centerLatLng);
+            if (distance < Constants.GOOGLE_MAP_RADIUS) {
+                MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(ourShopsDetails.getName()).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_google_map));
+                googleMap.addMarker(markerOptions);
+            }
+        }
+    }
+
+    @Override
+    public void showErrorMessage(int error) {
+        Util.showMessage(ll_root_view, getString(error));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.setView(NearestShopActivity.this);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
-            case RC_PERMISSION_REQUEST: {
+            case RC_PERMISSION: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     if (googleApiClient == null) {
                         buildGoogleApiClient();
@@ -168,20 +224,20 @@ public class NearestShopActivity extends AppCompatActivity implements OnMapReady
     }
 
     @Override
-    public void showMarkersGoogleMap(ArrayList<OurShopsDetails> ourShopsDetailsArrayList) {
-        for (OurShopsDetails ourShopsDetails: ourShopsDetailsArrayList) {
-            LatLng latLng = new LatLng(ourShopsDetails.getLatitude(), ourShopsDetails.getLongitude());
-            float distance = LatLngUtils.distanceBetween(latLng, centerLatLng);
-            if (distance < 2000) {
-                MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(ourShopsDetails.getName()).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_y));
-                googleMap.addMarker(markerOptions);
-            }
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        switch (requestCode) {
+            case RC_CHECK_SETTINGS:
+                switch (resultCode) {
+                    case RESULT_OK:
+                        startLocationUpdates();
+                        break;
+                    case RESULT_CANCELED:
+                        break;
+                    default:
+                        break;
+                }
+                break;
         }
-    }
-
-    @Override
-    public void showErrorMessage(int error) {
-        Util.showMessage(ll_root_view, getString(error));
     }
 
     @Override
@@ -194,12 +250,6 @@ public class NearestShopActivity extends AppCompatActivity implements OnMapReady
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        presenter.setView(NearestShopActivity.this);
     }
 
 }
