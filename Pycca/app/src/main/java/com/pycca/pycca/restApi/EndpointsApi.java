@@ -14,4 +14,7 @@ public interface EndpointsApi {
     @GET(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_GET_OUR_SHOPS)
     Call<BaseResponse> getOurShops();
 
+    @GET(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_GET_BALANCE)
+    Call<BaseResponse> getBalance(@Path("clubPyccaCardNumber") String clubPyccaCardNumber);
+
 }

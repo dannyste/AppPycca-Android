@@ -1,10 +1,14 @@
 package com.pycca.pycca.balance;
 
+import com.pycca.pycca.pojo.Balance;
+import com.pycca.pycca.pojo.User;
+import com.pycca.pycca.restApi.model.BaseResponse;
+
 public interface BalanceActivityMVP {
 
     interface View {
 
-        void setData(String cardNumber, String availableCredit, String usedCredit, String aprovedQuota, String dateForPay);
+        void setData(Balance balance, String clubPyccaNumber);
 
         void showMessage(int strCode);
 
@@ -12,7 +16,7 @@ public interface BalanceActivityMVP {
 
         void hideLoadingAnimation();
 
-        void showDoneAnimation();
+        void showErrorAnimation();
 
         void finishActivity();
 
@@ -23,23 +27,14 @@ public interface BalanceActivityMVP {
 
         void setView(BalanceActivityMVP.View view);
 
-        void loadData();
-
-        void finishedDoneAnimation();
+        void loadData(BalanceActivity activity);
 
     }
 
     interface Model {
 
-        void getBalance(TaskListener listener);
+        User getUser(BalanceActivity activity);
 
+        Balance getBalance(BaseResponse baseResponse, String clubPyccaCardNumber);
     }
-
-    interface TaskListener {
-
-        void onSuccess();
-
-        void onError(int errorCode);
-    }
-
 }

@@ -1,5 +1,6 @@
 package com.pycca.pycca.util;
 
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.text.TextUtils;
 import android.view.View;
@@ -135,6 +136,14 @@ public class Util {
         translateAnimation.setDuration(Constants.ANIMATION_DURATION);
         translateAnimation.setInterpolator(new CycleInterpolator(7));
         return translateAnimation;
+    }
+
+    @NonNull
+    public static String maskClubPyccaCardNumber(String cardNumber){
+        String subStr1 = cardNumber.substring(0,6);
+        String subStr2 = cardNumber.substring(6,14);
+        String subStr3 = cardNumber.substring(14);
+        return subStr1.concat("********").concat(subStr3);
     }
 
 }
