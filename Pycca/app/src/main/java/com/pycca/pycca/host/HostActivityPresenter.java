@@ -32,7 +32,8 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
         if (menuItem.getItemId() == R.id.mi_club_pycca) {
             User user = model.getUser(hostActivity);
             if (!user.isClubPyccaPartner()) {
-                view.showAlertDialog();
+                //view.showAlertDialog();
+                view.showFragment(menuItem);
             }
             else {
                 view.showFragment(menuItem);
