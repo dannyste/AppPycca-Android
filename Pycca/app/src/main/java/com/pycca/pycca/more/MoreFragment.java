@@ -1,11 +1,17 @@
 package com.pycca.pycca.more;
 
+import android.Manifest;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.pycca.pycca.R;
 import com.pycca.pycca.clubpyccapartner.ClubPyccaPartnerActivity;
@@ -23,6 +30,7 @@ import com.pycca.pycca.pojo.More;
 import com.pycca.pycca.profile.ProfileActivity;
 import com.pycca.pycca.root.App;
 import com.pycca.pycca.util.Constants;
+import com.pycca.pycca.util.Util;
 
 import java.util.ArrayList;
 
@@ -35,12 +43,15 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
     @Inject
     public MoreFragmentMVP.Presenter presenter;
 
+    private LinearLayout ll_root_view;
     private RecyclerView rv_more;
 
     private ArrayList<More> moreArrayList ;
     private MoreFragmentAdapter moreFragmentAdapter;
 
     private boolean animationRunning = true;
+
+    private static final int RC_PERMISSION = 1000;
 
     public MoreFragment() {
 
@@ -50,7 +61,8 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_more, container, false);
         ((App) getActivity().getApplication()).getApplicationComponent().inject(MoreFragment.this);
-        rv_more = view.findViewById(R.id.rv_more);
+        ll_root_view = view.findViewById(R.id.ll_root_view);
+        rv_more      = view.findViewById(R.id.rv_more);
         initRecyclerView();
         return view;
     }
@@ -124,6 +136,22 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
     }
 
     @Override
+    public void goToContactCall() {
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "1122334455"));
+            startActivity(intent);
+        }
+        else {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, RC_PERMISSION);
+        }
+    }
+
+    @Override
+    public void goToContactEmail() {
+
+    }
+
+    @Override
     public void goToNearestShopActivity() {
         Intent nearestShopActivity = new Intent(getActivity(), NearestShopActivity.class);
         startActivity(nearestShopActivity);
@@ -140,6 +168,20 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
         super.onResume();
         presenter.setView(MoreFragment.this);
         presenter.loadMoreArrayList(MoreFragment.this);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case RC_PERMISSION: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    goToContactCall();
+                }
+                else {
+                    Util.showMessage(ll_root_view, getString(R.string.permission_necessary));
+                }
+            }
+        }
     }
 
 }

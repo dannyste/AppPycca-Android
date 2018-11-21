@@ -14,6 +14,10 @@ public interface MoreFragmentMVP {
 
         void goToProfileActivity();
 
+        void goToContactCall();
+
+        void goToContactEmail();
+
         void goToNearestShopActivity();
 
         void goToOurShopsActivity();

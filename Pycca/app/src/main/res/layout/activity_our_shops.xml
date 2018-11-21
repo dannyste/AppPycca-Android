@@ -8,85 +8,94 @@
     android:orientation="vertical"
     tools:context=".ourshops.OurShopsActivity">
 
-    <LinearLayout
-        android:id="@+id/ll_root_view"
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar" />
-
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/ll_root_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_our_shops"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
-            <LinearLayout
-                android:id="@+id/ll_loading"
-                android:gravity="center"
-                android:layout_width="match_parent"
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_loading"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lav_loading"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:orientation="vertical"
-                android:visibility="gone">
+                app:lottie_autoPlay="false"
+                app:lottie_fileName="loading_animation.json"
+                app:lottie_imageAssetsFolder="assets"
+                app:lottie_loop="true" />
 
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/lav_loading"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    app:lottie_autoPlay="false"
-                    app:lottie_fileName="loading_animation.json"
-                    app:lottie_imageAssetsFolder="assets"
-                    app:lottie_loop="true" />
+        </LinearLayout>
 
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_error"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-            <LinearLayout
-                android:id="@+id/ll_error"
-                android:gravity="center"
-                android:layout_width="match_parent"
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lav_error"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:orientation="vertical"
-                android:visibility="gone">
+                app:lottie_autoPlay="false"
+                app:lottie_fileName="error_animation.json"
+                app:lottie_imageAssetsFolder="assets"
+                app:lottie_loop="true" />
 
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/lav_error"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    app:lottie_autoPlay="false"
-                    app:lottie_fileName="error_animation.json"
-                    app:lottie_imageAssetsFolder="assets"
-                    app:lottie_loop="true" />
+            <TextView
+                android:fontFamily="@font/montserrat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/error_unable_connect"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:fontFamily="@font/montserrat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/error_unable_connect"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_small"
-                    android:textStyle="bold" />
+            <TextView
+                android:fontFamily="@font/montserrat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/error_check_internet_connection"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_small" />
 
-                <TextView
-                    android:drawableStart="@drawable/ic_refresh"
-                    android:fontFamily="@font/montserrat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/error_touch_retry"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/text_small" />
+            <TextView
+                android:id="@+id/tv_error_touch_retry"
+                android:drawableStart="@drawable/ic_refresh"
+                android:fontFamily="@font/montserrat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/error_touch_retry"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_small" />
 
-            </LinearLayout>
+        </LinearLayout>
 
-        </RelativeLayout>
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
