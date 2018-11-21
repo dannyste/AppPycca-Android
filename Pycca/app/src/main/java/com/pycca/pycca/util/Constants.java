@@ -25,5 +25,16 @@ public class Constants {
     public static String FIRESTORE_COUPON_TABLE           = "Coupon";
     public static String FIRESTORE_COUPON_CONTENT_TABLE   = "Content";
 
+    //TOPICS
+    public static String PUSH_TOPIC_INVITADO               = "Invitado";
+    public static String PUSH_TOPIC_RED_SOCIAL             = "RedSocial";
+    public static String PUSH_TOPIC_NATIVO                 = "Nativo";
+    public static String PUSH_TOPIC_SOCIO_CLUB_PYCCA       = "SocioClubPycca";
+    public static String PUSH_TOPIC_NO_SOCIO_CLUB_PYCCA    = "NoSocioClubPycca";
+    public static String PUSH_TOPIC_RED_SOCIAL_SOCIO_CP    = PUSH_TOPIC_RED_SOCIAL + "-" + PUSH_TOPIC_SOCIO_CLUB_PYCCA;
+    public static String PUSH_TOPIC_RED_SOCIAL_NO_SOCIO_CP = PUSH_TOPIC_RED_SOCIAL + "-" + PUSH_TOPIC_NO_SOCIO_CLUB_PYCCA;
+    public static String PUSH_TOPIC_NATIVO_SOCIO_CP        = PUSH_TOPIC_NATIVO + "-" + PUSH_TOPIC_SOCIO_CLUB_PYCCA;
+    public static String PUSH_TOPIC_NATIVO_NO_SOCIO_CP     = PUSH_TOPIC_NATIVO + "-" + PUSH_TOPIC_NO_SOCIO_CLUB_PYCCA;
+
 }
 

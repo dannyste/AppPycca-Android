@@ -1,5 +1,6 @@
 package com.pycca.pycca.login;
 
+import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.util.Util;
 
 public class LoginActivityPresenter implements LoginActivityMVP.Presenter, LoginActivityMVP.TaskListener {
@@ -54,6 +55,7 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter, Login
 
     @Override
     public void onSuccess() {
+        Util.subscribeToTopicFCM(Constants.PUSH_TOPIC_NATIVO);
         view.showDoneAnimation();
     }
 

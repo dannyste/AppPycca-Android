@@ -10,6 +10,7 @@ import android.view.animation.CycleInterpolator;
 import android.view.animation.Transformation;
 import android.view.animation.TranslateAnimation;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.pycca.pycca.pojo.CouponImageResource;
 import com.pycca.pycca.pojo.DivisionImageResource;
 import com.pycca.pycca.pojo.ImageResource;
@@ -164,4 +165,11 @@ public class Util {
         return (n<=9) ? ("0"+n) : String.valueOf(n);
     }
 
+    public static void subscribeToTopicFCM(String topic){
+        FirebaseMessaging.getInstance().subscribeToTopic(topic);
+    }
+
+    public static void unSubscribeToTopicFCM(String topic){
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(topic);
+    }
 }
