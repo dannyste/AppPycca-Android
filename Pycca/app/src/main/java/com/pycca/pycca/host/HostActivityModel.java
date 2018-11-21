@@ -63,7 +63,7 @@ public class HostActivityModel implements HostActivityMVP.Model {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        taskListener.onError(R.string.error_update_user);
+                        taskListener.onError(R.string.error_default);
                     }
                 });
     }

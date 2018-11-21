@@ -48,7 +48,7 @@ public class SignUpActivityModel implements SignUpActivityMVP.Model {
                                 errorCode = R.string.error_email_already_use;
                             }
                             else {
-                                errorCode = R.string.error_create_user;
+                                errorCode = R.string.error_default;
                             }
                             listener.onError(errorCode);
                         }
@@ -67,7 +67,7 @@ public class SignUpActivityModel implements SignUpActivityMVP.Model {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        listener.onError(R.string.error_create_user);
+                        listener.onError(R.string.error_default);
                     }
                 });
 

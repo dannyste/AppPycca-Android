@@ -8,6 +8,7 @@
     tools:context=".splash.SplashActivity">
 
     <LinearLayout
+        android:id="@+id/ll_root_view"
         android:background="@drawable/background_splash"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"

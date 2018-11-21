@@ -56,7 +56,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                             getToken(multiLoginActivity, user, taskListener);
                         }
                         else {
-                            taskListener.onError(R.string.error_login_facebook);
+                            taskListener.onError(R.string.error_default);
                         }
                     }
                 });
@@ -80,7 +80,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                             getToken(multiLoginActivity, user, taskListener);
                         }
                         else {
-                            taskListener.onError(R.string.error_login_google);
+                            taskListener.onError(R.string.error_default);
                         }
                     }
                 });
@@ -114,7 +114,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                             }
                         }
                         else {
-                            taskListener.onError(R.string.error_get_user);
+                            taskListener.onError(R.string.error_default);
                         }
                     }
                 });
@@ -132,7 +132,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        taskListener.onError(R.string.error_create_user);
+                        taskListener.onError(R.string.error_default);
                     }
                 });
     }
@@ -150,7 +150,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        taskListener.onError(R.string.error_update_user);
+                        taskListener.onError(R.string.error_default);
                     }
                 });
     }

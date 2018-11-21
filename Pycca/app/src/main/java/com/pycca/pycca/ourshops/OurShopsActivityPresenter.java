@@ -60,7 +60,7 @@ public class OurShopsActivityPresenter implements OurShopsActivityMVP.Presenter,
             }
 
             @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
+            public void onFailure(Call<BaseResponse> call, Throwable throwable) {
                 onError(R.string.error_default);
             }
         });

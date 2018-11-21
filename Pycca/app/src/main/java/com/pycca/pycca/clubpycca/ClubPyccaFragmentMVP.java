@@ -10,9 +10,13 @@ public interface ClubPyccaFragmentMVP {
 
         void updateDataRecyclerView(ArrayList<ClubPycca> clubPyccaArrayList);
 
-        void goToGetBalanceActivity();
+        void goToBalanceActivity();
 
         void goToAccountStatusActivity();
+
+        void goToQuotaIncreaseActivity();
+
+        void goToQuotaCalculatorActivity();
 
         void goToVirtualCardActivity();
 

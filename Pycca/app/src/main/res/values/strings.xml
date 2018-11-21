@@ -43,8 +43,11 @@
 
     <!-- QuotaIncreaseActivity -->
     <string name="choose_increase_apply">Escoja el incremento al que desea aplicar:</string>
+    <string name="increase">Incremento</string>
     <string name="quota_increase_club_pycca_card">Incremento de cupo tarjeta ClubPycca</string>
-    <string name="quota_increase_parallel_super_credit">Incremento de cupo paralelo SúperCrédito.</string>
+    <string name="quota_increase_parallel_super_credit">Incremento de cupo paralelo SúperCrédito</string>
+    <string name="request">Solicitar</string>
+    <string name="tell_us_requested_quota">Indícanos el cupo solicitado</string>
 
     <!-- VirtualCardActivity -->
     <string name="client_since">Cliente desde:</string>
@@ -52,7 +55,7 @@
     <!-- MoreFragment -->
     <string name="club_pycca_partner">Socio ClubPycca</string>
     <string name="profile">Perfil</string>
-    <string name="contact_call">Contáctanos por llamada.</string>
+    <string name="contact_call">Contáctanos por llamada</string>
     <string name="contact_email">Contáctanos por correo electrónico</string>
     <string name="nearest_shop">Tienda más cercana</string>
     <string name="our_shops">Nuestras tiendas</string>
@@ -100,37 +103,33 @@
     <string name="accept">Aceptar</string>
 
     <!-- Error Messages -->
-    <string name="error_create_user">Ocurrió un error al guardar un usuario.</string>
-    <string name="error_default">Ha ocurrido un error.</string>
-    <string name="error_email_already_use">El email ya se encuentra en uso.</string>
-    <string name="error_get_user">Ocurrió un error al consultar un usuario.</string>
-    <string name="error_invalid_credentials">Las credenciales son inválidas.</string>
-    <string name="error_load_images">Ocurrió un error al cargar las imágenes.</string>
-    <string name="error_login_facebook">Ocurrió un error al iniciar sesión con facebook.</string>
-    <string name="error_login_google">Ocurrió un error al iniciar sesión con google.</string>
-    <string name="error_login_instagram">Ocurrió un error al iniciar sesión con instagram.</string>
-    <string name="error_password_least_six_characters">La contraseña debe tener mínimo seis caracteres.</string>
+    <string name="error_check_internet_connection">Revise su conexión a internet</string>
+    <string name="error_default">No se puede conectar, Revise su conexión a internet</string>
+    <string name="error_email_already_use">El correo electrónico ya se encuentra en uso</string>
+    <string name="error_invalid_credentials">Las credenciales son inválidas</string>
+    <string name="error_password_least_six_characters">La contraseña debe tener mínimo seis caracteres</string>
     <string name="error_touch_retry">Toca para reintentar</string>
     <string name="error_unable_connect">No se puede conectar</string>
-    <string name="error_update_user">Ocurrió un error al actualizar un usuario.</string>
-    <string name="error_user_not_exist">El usuario no existe.</string>
+    <string name="error_user_not_exist">El usuario no existe</string>
+
 
     <!-- Confirmation Messages-->
-    <string name="confirmation_link_email_sent">Se ha enviado un enlace a su correo electrónico.</string>
+    <string name="confirmation_link_email_sent">Se ha enviado un enlace a su correo electrónico</string>
 
     <!-- Validations -->
-    <string name="club_pycca_card_number_required">Número de tarjeta ClubPycca requerida.</string>
-    <string name="email_required">Correo electrónico requerido.</string>
-    <string name="error_reset_password">Ocurrió un error al restablecer la contraseña.</string>
-    <string name="identification_card_required">Cédula requerida.</string>
-    <string name="invalid_email">Correo electrónico inválido.</string>
-    <string name="password_required">Contraseña requerida.</string>
-    <string name="link_not_found">No se ha encontrado una url asociada.</string>
-    <string name="all_fields_required">Debe completar todos los campos.</string>
-    <string name="invalid_identification">Cédula inválida.</string>
+    <string name="club_pycca_card_number_required">Número de tarjeta ClubPycca requerida</string>
+    <string name="email_required">Correo electrónico requerido</string>
+    <string name="error_reset_password">Ocurrió un error al restablecer la contraseña</string>
+    <string name="identification_card_required">Cédula requerida</string>
+    <string name="invalid_email">Correo electrónico inválido</string>
+    <string name="password_required">Contraseña requerida</string>
+    <string name="permission_necessary">El permiso es necesario para utilizar esta opción</string>
+    <string name="permissions_necessary">Los permisos son necesarios para utilizar todas las opciones en la aplicación</string>
+    <string name="link_not_found">No se ha encontrado una url asociada</string>
+    <string name="all_fields_required">Debe completar todos los campos</string>
+    <string name="invalid_identification">Cédula inválida</string>
 
     <!-- Facebook -->
     <string name="facebook_app_id">1854965214584839</string>
     <string name="fb_login_protocol_scheme">fb1854965214584839</string>
-    <string name="title_activity_nearest_shop">Map</string>
 </resources>

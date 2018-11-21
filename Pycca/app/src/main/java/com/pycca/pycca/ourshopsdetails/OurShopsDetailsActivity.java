@@ -1,7 +1,5 @@
 package com.pycca.pycca.ourshopsdetails;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -14,14 +12,13 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.pycca.pycca.R;
-import com.pycca.pycca.pojo.OurShops;
 import com.pycca.pycca.pojo.OurShopsDetails;
 import com.pycca.pycca.root.App;
 import com.pycca.pycca.util.Constants;
-import com.pycca.pycca.util.Util;
 
 import java.util.ArrayList;
 
@@ -89,7 +86,7 @@ public class OurShopsDetailsActivity extends AppCompatActivity implements OnMapR
     @Override
     public void addMarkerGoogleMap(OurShopsDetails ourShopsDetails) {
         LatLng latLng = new LatLng(ourShopsDetails.getLatitude(), ourShopsDetails.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(ourShopsDetails.getName());
+        MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(ourShopsDetails.getName()).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_google_map));
         googleMap.addMarker(markerOptions);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, Constants.GOOGLE_MAP_ZOOM));
     }

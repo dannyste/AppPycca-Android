@@ -26,7 +26,7 @@ public class ClubPyccaFragmentPresenter implements ClubPyccaFragmentMVP.Presente
 
     @Override
     public void firstItemClicked() {
-        view.goToGetBalanceActivity();
+        view.goToBalanceActivity();
     }
 
     @Override
@@ -36,12 +36,12 @@ public class ClubPyccaFragmentPresenter implements ClubPyccaFragmentMVP.Presente
 
     @Override
     public void thirdItemClicked() {
-
+        view.goToQuotaIncreaseActivity();
     }
 
     @Override
     public void fourthItemClicked() {
-
+        view.goToQuotaCalculatorActivity();
     }
 
     @Override
