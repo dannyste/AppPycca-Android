@@ -12,6 +12,8 @@ public interface ClubPyccaFragmentMVP {
 
         void goToGetBalanceActivity();
 
+        void goToAccountStatusActivity();
+
         void goToVirtualCardActivity();
 
         void goToCardBlockingActivity();

@@ -31,7 +31,7 @@ public class ClubPyccaFragmentPresenter implements ClubPyccaFragmentMVP.Presente
 
     @Override
     public void secondItemClicked() {
-
+        view.goToAccountStatusActivity();
     }
 
     @Override

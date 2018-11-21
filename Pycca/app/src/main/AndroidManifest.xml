@@ -154,7 +154,12 @@
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".nearestshop.NearestShopActivity"
-            android:label="@string/title_activity_nearest_shop"></activity>
+            android:label="@string/title_activity_nearest_shop" />
+        <activity
+            android:name=".accountstatus.AccountStatusActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"/>
+
     </application>
 
 </manifest>
