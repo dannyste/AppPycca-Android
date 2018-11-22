@@ -2,7 +2,6 @@ package com.pycca.pycca.util;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -15,8 +14,7 @@ import com.pycca.pycca.pojo.DivisionImageResource;
 import com.pycca.pycca.pojo.ImageResource;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.regex.Pattern;
 
 public class Util {
 
@@ -24,13 +22,26 @@ public class Util {
         Snackbar.make(view, text, Snackbar.LENGTH_LONG).show();
     }
 
-    public static boolean checkValidEmail(String email){
-        if (TextUtils.isEmpty(email)) {
+//    public static boolean checkValidEmail(String email){
+//        if (TextUtils.isEmpty(email)) {
+//            return false;
+//        }
+//        else {
+//            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+//        }
+//    }
+
+    public static boolean checkValidEmail(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
             return false;
-        }
-        else {
-            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-        }
+        return pat.matcher(email).matches();
     }
 
     public static void expand(final View v) {
@@ -125,10 +136,10 @@ public class Util {
     }
 
     public enum RegistrationProvider {
-        EMAIL,
         FACEBOOK,
+        INSTAGRAM,
         GOOGLE,
-        INSTAGRAM
+        EMAIL
     }
 
     public static TranslateAnimation getTranslateAnimation() {
@@ -144,6 +155,10 @@ public class Util {
         String subStr2 = cardNumber.substring(6,14);
         String subStr3 = cardNumber.substring(14);
         return subStr1.concat("********").concat(subStr3);
+    }
+
+    public static String twoDigits(int n) {
+        return (n<=9) ? ("0"+n) : String.valueOf(n);
     }
 
 }

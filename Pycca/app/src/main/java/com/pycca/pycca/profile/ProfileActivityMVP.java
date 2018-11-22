@@ -36,6 +36,10 @@ public interface ProfileActivityMVP {
 
         void userLogout(ProfileActivity profileActivity);
 
+        void userSubscribeToTopic(String topic);
+
+        void userUnsubscribeFromTopic(String topic);
+
     }
 
 }

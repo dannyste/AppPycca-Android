@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import com.facebook.AccessToken;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.pycca.pycca.pojo.User;
 
 public interface MultiLoginActivityMVP {
 
@@ -63,11 +64,15 @@ public interface MultiLoginActivityMVP {
 
         void firebaseAuthWithGoogle(MultiLoginActivity multiLoginActivity, GoogleSignInAccount googleSignInAccount, MultiLoginActivityMVP.TaskListener taskListener);
 
+        void userSubscribeToTopic(String topic);
+
+        void userUnsubscribeFromTopic(String topic);
+
     }
 
     interface TaskListener {
 
-        void onSuccess();
+        void onSuccess(User user);
 
         void onError(int error);
 

@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.pycca.pycca.R;
+import com.pycca.pycca.accountstatus.AccountStatusActivity;
 import com.pycca.pycca.balance.BalanceActivity;
 import com.pycca.pycca.cardblocking.CardBlockingActivity;
 import com.pycca.pycca.pojo.ClubPycca;
@@ -119,7 +120,8 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
 
     @Override
     public void goToAccountStatusActivity() {
-
+        Intent accountStatusActivity = new Intent(getActivity(), AccountStatusActivity.class);
+        startActivity(accountStatusActivity);
     }
 
     @Override

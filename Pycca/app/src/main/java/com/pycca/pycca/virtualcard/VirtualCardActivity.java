@@ -49,6 +49,6 @@ public class VirtualCardActivity extends AppCompatActivity implements VirtualCar
 
     @Override
     public void setClientSince(String clientSince) {
-        tv_name.setText(clientSince);
+        tv_client_since.setText(clientSince);
     }
 }

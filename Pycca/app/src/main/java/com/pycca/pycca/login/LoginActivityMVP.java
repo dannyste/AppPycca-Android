@@ -1,5 +1,7 @@
 package com.pycca.pycca.login;
 
+import com.pycca.pycca.pojo.User;
+
 public interface LoginActivityMVP {
 
     interface View {
@@ -32,7 +34,7 @@ public interface LoginActivityMVP {
 
         void setView(LoginActivityMVP.View view);
 
-        void loginClicked();
+        void loginClicked(LoginActivity loginActivity);
 
         void finishedDoneAnimation();
 
@@ -42,13 +44,17 @@ public interface LoginActivityMVP {
 
     interface Model {
 
-        void firebaseAuthWithEmailAndPassword(String email, String password, TaskListener listener);
+        void firebaseAuthWithEmailAndPassword(LoginActivity loginActivity, String email, String password, TaskListener taskListener);
+
+        void userSubscribeToTopic(String topic);
+
+        void userUnsubscribeFromTopic(String topic);
 
     }
 
     interface TaskListener {
 
-        void onSuccess();
+        void onSuccess(User user);
 
         void onError(int errorCode);
     }

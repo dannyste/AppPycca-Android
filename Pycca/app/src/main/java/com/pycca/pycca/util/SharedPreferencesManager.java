@@ -48,7 +48,7 @@ public class SharedPreferencesManager {
 
     public User getUser() {
         Gson gson = new Gson();
-        return gson.fromJson(sharedPreferences.getString(PARAMETER,""), User.class);
+        return gson.fromJson(sharedPreferences.getString(USER,""), User.class);
     }
 
 }

@@ -29,7 +29,6 @@ public class SignUpActivityModel implements SignUpActivityMVP.Model {
     public void saveUserAuthentication(String email, String password, String identificationCard, String clubPyccaCardNumber, final SignUpActivityMVP.TaskListener listener, SignUpActivity signUpActivity) {
         final User user = new User();
         user.setEmail(email);
-        user.setPassword(password);
         user.setIdentificationCard(identificationCard);
         user.setClubPyccaCardNumber(clubPyccaCardNumber);
         firebaseAuth.createUserWithEmailAndPassword(email, password)

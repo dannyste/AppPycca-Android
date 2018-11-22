@@ -50,7 +50,8 @@ public class SplashActivity extends AppCompatActivity implements SplashActivityM
     public void showPyccaAnimation() {
         Animation animation = AnimationUtils.loadAnimation(SplashActivity.this, R.anim.animation_pycca);
         iv_pycca.startAnimation(animation);
-        new Handler().postDelayed(new Runnable() {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 presenter.finishedPyccaAnimation();
@@ -73,7 +74,7 @@ public class SplashActivity extends AppCompatActivity implements SplashActivityM
             }
         }
         else {
-            presenter.getCurrentUser(SplashActivity.this);
+            presenter.configureParameter(SplashActivity.this);
         }
     }
 
@@ -106,11 +107,11 @@ public class SplashActivity extends AppCompatActivity implements SplashActivityM
                     grantResults[0] == PackageManager.PERMISSION_GRANTED &&
                     grantResults[1] == PackageManager.PERMISSION_GRANTED &&
                     grantResults[2] == PackageManager.PERMISSION_GRANTED) {
-                    presenter.getCurrentUser(SplashActivity.this);
+                    presenter.configureParameter(SplashActivity.this);
                 }
                 else {
                     Util.showMessage(ll_root_view, getString(R.string.permissions_necessary));
-                    presenter.getCurrentUser(SplashActivity.this);
+                    presenter.configureParameter(SplashActivity.this);
                 }
             }
         }

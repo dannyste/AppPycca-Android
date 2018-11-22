@@ -7,6 +7,7 @@ import com.pycca.pycca.pojo.User;
 import com.pycca.pycca.restApi.EndpointsApi;
 import com.pycca.pycca.restApi.RestApiAdapter;
 import com.pycca.pycca.restApi.model.BaseResponse;
+import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.util.Util;
 
 import retrofit2.Call;
@@ -32,8 +33,7 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
         if (menuItem.getItemId() == R.id.mi_club_pycca) {
             User user = model.getUser(hostActivity);
             if (!user.isClubPyccaPartner()) {
-                //view.showAlertDialog();
-                view.showFragment(menuItem);
+                view.showAlertDialog();
             }
             else {
                 view.showFragment(menuItem);
@@ -107,7 +107,17 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(User user) {
+        model.userSubscribeToTopic(Constants.TOPIC_CLUB_PYCCA_PARTNER);
+        model.userUnsubscribeFromTopic(Constants.TOPIC_NOT_CLUB_PYCCA_PARTNER);
+        if (user.getRegistrationProvider().equalsIgnoreCase(Util.RegistrationProvider.FACEBOOK.toString()) || user.getRegistrationProvider().equalsIgnoreCase(Util.RegistrationProvider.INSTAGRAM.toString()) || user.getRegistrationProvider().equalsIgnoreCase(Util.RegistrationProvider.GOOGLE.toString())) {
+            model.userSubscribeToTopic(Constants.TOPIC_SOCIAL_NETWORK_CLUB_PYCCA_PARTNER);
+            model.userUnsubscribeFromTopic(Constants.TOPIC_SOCIAL_NETWORK_NOT_CLUB_PYCCA_PARTNER);
+        }
+        else {
+            model.userSubscribeToTopic(Constants.TOPIC_NATIVE_CLUB_PYCCA_PARTNER);
+            model.userUnsubscribeFromTopic(Constants.TOPIC_NATIVE_NOT_CLUB_PYCCA_PARTNER);
+        }
         view.showDoneAnimation();
     }
 

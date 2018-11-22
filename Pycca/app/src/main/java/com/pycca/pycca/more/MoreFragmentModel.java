@@ -2,6 +2,7 @@ package com.pycca.pycca.more;
 
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.More;
+import com.pycca.pycca.pojo.Parameter;
 import com.pycca.pycca.pojo.User;
 import com.pycca.pycca.util.SharedPreferencesManager;
 
@@ -28,6 +29,11 @@ public class MoreFragmentModel implements MoreFragmentMVP.Model {
             moreArrayList.get(4).setColor(R.color.colorOptionFive);
         }
         return moreArrayList;
+    }
+
+    @Override
+    public Parameter getParameter(MoreFragment moreFragment) {
+        return SharedPreferencesManager.getInstance(moreFragment.getActivity()).getParameter();
     }
 
 }

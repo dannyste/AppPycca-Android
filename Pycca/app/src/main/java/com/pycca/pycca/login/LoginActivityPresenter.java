@@ -1,5 +1,7 @@
 package com.pycca.pycca.login;
 
+import com.pycca.pycca.pojo.User;
+import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.util.Util;
 
 public class LoginActivityPresenter implements LoginActivityMVP.Presenter, LoginActivityMVP.TaskListener {
@@ -17,14 +19,14 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter, Login
     }
 
     @Override
-    public void loginClicked() {
-        if (validate()) {
+    public void loginClicked(LoginActivity loginActivity) {
+        if (validateForm()) {
             view.showLoadingAnimation();
-            model.firebaseAuthWithEmailAndPassword(view.getEmail(), view.getPassword(), LoginActivityPresenter.this);
+            model.firebaseAuthWithEmailAndPassword(loginActivity, view.getEmail(), view.getPassword(), LoginActivityPresenter.this);
         }
     }
 
-    public boolean validate () {
+    public boolean validateForm() {
         String email = view.getEmail();
         String password = view.getPassword();
         if (email.isEmpty()) {
@@ -53,7 +55,17 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter, Login
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(User user) {
+        model.userUnsubscribeFromTopic(Constants.TOPIC_INVITED);
+        model.userSubscribeToTopic(Constants.TOPIC_NATIVE);
+        if (user.isClubPyccaPartner()) {
+            model.userSubscribeToTopic(Constants.TOPIC_CLUB_PYCCA_PARTNER);
+            model.userSubscribeToTopic(Constants.TOPIC_NATIVE_CLUB_PYCCA_PARTNER);
+        }
+        else {
+            model.userSubscribeToTopic(Constants.TOPIC_NOT_CLUB_PYCCA_PARTNER);
+            model.userSubscribeToTopic(Constants.TOPIC_NATIVE_NOT_CLUB_PYCCA_PARTNER);
+        }
         view.showDoneAnimation();
     }
 

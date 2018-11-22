@@ -55,11 +55,15 @@ public interface HostActivityMVP {
 
         void setUser(HostActivity hostActivity, String identificationCard, String clubPyccaCardNumber, BaseResponse baseResponse, HostActivityMVP.TaskListener taskListener);
 
+        void userSubscribeToTopic(String topic);
+
+        void userUnsubscribeFromTopic(String topic);
+
     }
 
     interface TaskListener {
 
-        void onSuccess();
+        void onSuccess(User user);
 
         void onError(int error);
 

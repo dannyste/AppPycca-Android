@@ -2,6 +2,7 @@ package com.pycca.pycca.profile;
 
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.User;
+import com.pycca.pycca.util.Constants;
 
 public class ProfileActivityPresenter implements ProfileActivityMVP.Presenter {
 
@@ -30,6 +31,15 @@ public class ProfileActivityPresenter implements ProfileActivityMVP.Presenter {
     @Override
     public void logoutClicked(ProfileActivity profileActivity) {
         model.userLogout(profileActivity);
+        model.userSubscribeToTopic(Constants.TOPIC_INVITED);
+        model.userUnsubscribeFromTopic(Constants.TOPIC_SOCIAL_NETWORK);
+        model.userUnsubscribeFromTopic(Constants.TOPIC_NATIVE);
+        model.userUnsubscribeFromTopic(Constants.TOPIC_CLUB_PYCCA_PARTNER);
+        model.userUnsubscribeFromTopic(Constants.TOPIC_NOT_CLUB_PYCCA_PARTNER);
+        model.userUnsubscribeFromTopic(Constants.TOPIC_SOCIAL_NETWORK_CLUB_PYCCA_PARTNER);
+        model.userUnsubscribeFromTopic(Constants.TOPIC_SOCIAL_NETWORK_NOT_CLUB_PYCCA_PARTNER);
+        model.userUnsubscribeFromTopic(Constants.TOPIC_NATIVE_CLUB_PYCCA_PARTNER);
+        model.userUnsubscribeFromTopic(Constants.TOPIC_NATIVE_NOT_CLUB_PYCCA_PARTNER);
         view.goToMultiLoginActivity();
     }
 

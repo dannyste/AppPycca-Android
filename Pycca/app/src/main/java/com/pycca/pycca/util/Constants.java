@@ -29,4 +29,15 @@ public class Constants {
     public static String FIRESTORE_BUY_HEADER_TABLE       = "Header";
     public static String FIRESTORE_BUY_CONTENT_TABLE      = "Content";
 
+    //TOPICS
+    public static String TOPIC_INVITED                               = "Invitado";
+    public static String TOPIC_SOCIAL_NETWORK                        = "RedSocial";
+    public static String TOPIC_NATIVE                                = "Nativo";
+    public static String TOPIC_CLUB_PYCCA_PARTNER                    = "SocioClubPycca";
+    public static String TOPIC_NOT_CLUB_PYCCA_PARTNER                = "NoSocioClubPycca";
+    public static String TOPIC_SOCIAL_NETWORK_CLUB_PYCCA_PARTNER     = TOPIC_SOCIAL_NETWORK + "-" + TOPIC_CLUB_PYCCA_PARTNER;
+    public static String TOPIC_SOCIAL_NETWORK_NOT_CLUB_PYCCA_PARTNER = TOPIC_SOCIAL_NETWORK + "-" + TOPIC_NOT_CLUB_PYCCA_PARTNER;
+    public static String TOPIC_NATIVE_CLUB_PYCCA_PARTNER             = TOPIC_NATIVE + "-" + TOPIC_CLUB_PYCCA_PARTNER;
+    public static String TOPIC_NATIVE_NOT_CLUB_PYCCA_PARTNER         = TOPIC_NATIVE + "-" + TOPIC_NOT_CLUB_PYCCA_PARTNER;
+
 }

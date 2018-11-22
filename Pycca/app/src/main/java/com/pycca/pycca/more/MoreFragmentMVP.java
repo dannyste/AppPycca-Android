@@ -1,6 +1,7 @@
 package com.pycca.pycca.more;
 
 import com.pycca.pycca.pojo.More;
+import com.pycca.pycca.pojo.Parameter;
 
 import java.util.ArrayList;
 
@@ -42,11 +43,17 @@ public interface MoreFragmentMVP {
 
         void sixthItemClicked();
 
+        String getPhoneNumber(MoreFragment moreFragment);
+
+        String getEmail(MoreFragment moreFragment);
+
     }
 
     interface Model {
 
         ArrayList<More> getMoreArrayList(MoreFragment moreFragment);
+
+        Parameter getParameter(MoreFragment moreFragment);
 
     }
 

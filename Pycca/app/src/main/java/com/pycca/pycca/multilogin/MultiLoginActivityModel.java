@@ -19,10 +19,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.User;
 import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.util.SharedPreferencesManager;
+import com.pycca.pycca.util.Util;
 
 import java.util.Date;
 
@@ -31,11 +33,13 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
     private FirebaseAuth firebaseAuth;
     private FirebaseInstanceId firebaseInstanceId;
     private FirebaseFirestore firebaseFirestore;
+    private FirebaseMessaging firebaseMessaging;
 
     MultiLoginActivityModel() {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseInstanceId = FirebaseInstanceId.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseMessaging = FirebaseMessaging.getInstance();
     }
 
     @Override
@@ -48,9 +52,11 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                         if (task.isSuccessful()) {
                             FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                             User user = new User();
+                            user.setRegistrationProvider(Util.RegistrationProvider.GOOGLE.toString());
                             user.setPhotoUrl(firebaseUser.getPhotoUrl().toString());
                             user.setName(firebaseUser.getDisplayName());
                             user.setEmail(firebaseUser.getEmail());
+                            user.setAccountPhoneNumber(firebaseUser.getPhoneNumber());
                             user.setCreationDate(new Date());
                             user.setModificationDate(new Date());
                             getToken(multiLoginActivity, user, taskListener);
@@ -72,9 +78,11 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                         if (task.isSuccessful()) {
                             FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                             User user = new User();
+                            user.setRegistrationProvider(Util.RegistrationProvider.GOOGLE.toString());
                             user.setPhotoUrl(firebaseUser.getPhotoUrl().toString());
                             user.setName(firebaseUser.getDisplayName());
                             user.setEmail(firebaseUser.getEmail());
+                            user.setAccountPhoneNumber(firebaseUser.getPhoneNumber());
                             user.setCreationDate(new Date());
                             user.setModificationDate(new Date());
                             getToken(multiLoginActivity, user, taskListener);
@@ -86,8 +94,18 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                 });
     }
 
+    @Override
+    public void userSubscribeToTopic(String topic) {
+        firebaseMessaging.subscribeToTopic(topic);
+    }
+
+    @Override
+    public void userUnsubscribeFromTopic(String topic) {
+        firebaseMessaging.unsubscribeFromTopic(topic);
+    }
+
     private void getToken(final MultiLoginActivity multiLoginActivity, final User user, final MultiLoginActivityMVP.TaskListener taskListener) {
-        firebaseInstanceId.getInstanceId().addOnSuccessListener( multiLoginActivity,  new OnSuccessListener<InstanceIdResult>() {
+        firebaseInstanceId.getInstanceId().addOnSuccessListener(multiLoginActivity,  new OnSuccessListener<InstanceIdResult>() {
             @Override
             public void onSuccess(InstanceIdResult instanceIdResult) {
                 user.setToken(instanceIdResult.getToken());
@@ -107,6 +125,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                             if (documentSnapshot.exists()) {
                                 User userFirebaseFirestore = documentSnapshot.toObject(User.class);
                                 userFirebaseFirestore.setToken(user.getToken());
+                                userFirebaseFirestore.setModificationDate(user.getModificationDate());
                                 updateUserFirebaseFirestore(multiLoginActivity, userFirebaseFirestore, taskListener);
                             }
                             else {
@@ -126,7 +145,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                     @Override
                     public void onSuccess(Void aVoid) {
                         SharedPreferencesManager.getInstance(multiLoginActivity).setUser(user);
-                        taskListener.onSuccess();
+                        taskListener.onSuccess(user);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -139,12 +158,15 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
 
     private void updateUserFirebaseFirestore(final MultiLoginActivity multiLoginActivity, final User user, final MultiLoginActivityMVP.TaskListener taskListener) {
         DocumentReference documentReference = firebaseFirestore.collection(Constants.FIRESTORE_USER_TABLE).document(user.getEmail());
-        documentReference.update("token", user.getToken())
+        documentReference.update(
+                "token", user.getToken(),
+                "modificationDate", user.getModificationDate()
+                )
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         SharedPreferencesManager.getInstance(multiLoginActivity).setUser(user);
-                        taskListener.onSuccess();
+                        taskListener.onSuccess(user);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

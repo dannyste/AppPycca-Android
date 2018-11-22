@@ -17,6 +17,8 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.pycca.pycca.R;
+import com.pycca.pycca.pojo.User;
+import com.pycca.pycca.util.Constants;
 
 public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presenter, MultiLoginActivityMVP.TaskListener {
 
@@ -131,7 +133,17 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(User user) {
+        model.userUnsubscribeFromTopic(Constants.TOPIC_INVITED);
+        model.userSubscribeToTopic(Constants.TOPIC_SOCIAL_NETWORK);
+        if (user.isClubPyccaPartner()) {
+            model.userSubscribeToTopic(Constants.TOPIC_CLUB_PYCCA_PARTNER);
+            model.userSubscribeToTopic(Constants.TOPIC_SOCIAL_NETWORK_CLUB_PYCCA_PARTNER);
+        }
+        else {
+            model.userSubscribeToTopic(Constants.TOPIC_NOT_CLUB_PYCCA_PARTNER);
+            model.userSubscribeToTopic(Constants.TOPIC_SOCIAL_NETWORK_NOT_CLUB_PYCCA_PARTNER);
+        }
         view.showDoneAnimation();
     }
 

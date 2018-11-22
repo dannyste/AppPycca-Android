@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.loginClicked();
+                presenter.loginClicked(LoginActivity.this);
             }
         });
         tv_forgot_password.setOnClickListener(new View.OnClickListener() {

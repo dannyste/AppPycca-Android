@@ -6,34 +6,44 @@ import java.util.Map;
 
 public class User {
 
+    private String registrationProvider;
     private String photoUrl;
     private String name;
     private String email;
-    private String password;
+    private String accountPhoneNumber;
+    private String nativePhoneNumber;
     private boolean clubPyccaPartner;
     private String identificationCard;
     private String clubPyccaCardNumber;
     private int accountNumber;
     private String clientSince;
-    private String registrationProvider;
     private String token;
     private Date creationDate;
     private Date modificationDate;
 
     public User() {
+        this.registrationProvider = "";
         this.photoUrl = "";
         this.name = "";
         this.email = "";
-        this.password = "";
+        this.accountPhoneNumber = "";
+        this.nativePhoneNumber = "";
         this.clubPyccaPartner = false;
         this.identificationCard = "";
         this.clubPyccaCardNumber = "";
         this.accountNumber = 0;
         this.clientSince = "";
-        this.registrationProvider = "";
         this.token = "";
         this.creationDate = null;
         this.modificationDate = null;
+    }
+
+    public String getRegistrationProvider() {
+        return registrationProvider;
+    }
+
+    public void setRegistrationProvider(String registrationProvider) {
+        this.registrationProvider = registrationProvider;
     }
 
     public String getPhotoUrl() {
@@ -60,12 +70,20 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getAccountPhoneNumber() {
+        return accountPhoneNumber;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAccountPhoneNumber(String accountPhoneNumber) {
+        this.accountPhoneNumber = accountPhoneNumber;
+    }
+
+    public String getNativePhoneNumber() {
+        return nativePhoneNumber;
+    }
+
+    public void setNativePhoneNumber(String nativePhoneNumber) {
+        this.nativePhoneNumber = nativePhoneNumber;
     }
 
     public boolean isClubPyccaPartner() {
@@ -108,14 +126,6 @@ public class User {
         this.clientSince = clientSince;
     }
 
-    public String getRegistrationProvider() {
-        return registrationProvider;
-    }
-
-    public void setRegistrationProvider(String registrationProvider) {
-        this.registrationProvider = registrationProvider;
-    }
-
     public String getToken() {
         return token;
     }
@@ -142,10 +152,12 @@ public class User {
 
     public Map<String, Object> getMap(){
         Map<String, Object> map = new HashMap<>();
+        map.put("registrationProvider", this.registrationProvider);
         map.put("photoUrl", this.photoUrl);
         map.put("name", this.name);
         map.put("email", this.email);
-        map.put("password", this.password);
+        map.put("accountPhoneNumber", this.accountPhoneNumber);
+        map.put("nativePhoneNumber", this.nativePhoneNumber);
         map.put("clubPyccaPartner", this.clubPyccaPartner);
         map.put("identificationCard", this.identificationCard);
         map.put("clubPyccaCardNumber", this.clubPyccaCardNumber);

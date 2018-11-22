@@ -6,6 +6,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.User;
@@ -19,9 +20,11 @@ import java.util.Date;
 public class HostActivityModel implements HostActivityMVP.Model {
 
     private FirebaseFirestore firebaseFirestore;
+    private FirebaseMessaging firebaseMessaging;
 
     HostActivityModel() {
         firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseMessaging = FirebaseMessaging.getInstance();
     }
 
     @Override
@@ -43,6 +46,16 @@ public class HostActivityModel implements HostActivityMVP.Model {
         updateUserFirebaseFirestore(hostActivity, user, taskListener);
     }
 
+    @Override
+    public void userSubscribeToTopic(String topic) {
+        firebaseMessaging.subscribeToTopic(topic);
+    }
+
+    @Override
+    public void userUnsubscribeFromTopic(String topic) {
+        firebaseMessaging.unsubscribeFromTopic(topic);
+    }
+
     private void updateUserFirebaseFirestore(final HostActivity hostActivity, final User user, final HostActivityMVP.TaskListener taskListener) {
         DocumentReference documentReference = firebaseFirestore.collection(Constants.FIRESTORE_USER_TABLE).document(user.getEmail());
         documentReference.update(
@@ -57,7 +70,7 @@ public class HostActivityModel implements HostActivityMVP.Model {
                     @Override
                     public void onSuccess(Void aVoid) {
                         SharedPreferencesManager.getInstance(hostActivity).setUser(user);
-                        taskListener.onSuccess();
+                        taskListener.onSuccess(user);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

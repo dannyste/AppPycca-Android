@@ -6,6 +6,7 @@ public class Balance {
     private double usedCredit;
     private double aprovedQuota;
     private String payUntil;
+    private double quotaToPay;
 
     public Balance() {
     }
@@ -48,5 +49,13 @@ public class Balance {
 
     public void setPayUntil(String payUntil) {
         this.payUntil = payUntil;
+    }
+
+    public double getQuotaToPay() {
+        return quotaToPay;
+    }
+
+    public void setQuotaToPay(double quotaToPay) {
+        this.quotaToPay = quotaToPay;
     }
 }

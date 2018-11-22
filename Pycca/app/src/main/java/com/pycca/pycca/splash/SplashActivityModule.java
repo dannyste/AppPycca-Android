@@ -16,5 +16,4 @@ public class SplashActivityModule {
         return new SplashActivityModel();
     }
 
-
 }

@@ -76,11 +76,31 @@
     <string name="aproved_quota">Cupo aprobado</string>
     <string name="pay_until">Pagar hasta</string>
 
+    <!-- AccountStatusActivity -->
+    <string name="summary_account_status">Resúmen del estado de cuenta</string>
+    <string name="download_pdf">Descargar PDF</string>
+    <string name="as_card_number">Número de tarjeta</string>
+    <string name="as_quota_to_pay">Cuota a pagar</string>
+    <string name="as_pay_until">Pagar hasta</string>
+
     <!-- AlertDialogClubPyccaPartner -->
     <string name="validate">Validar</string>
     <string name="information_club_pycca_partner">Para acceder a la opción de ClubPycca por favor ingresar la siguiente información:</string>
     <string name="are_you_not_partner">¿No eres socio?</string>
     <string name="request_now">Solicítalo ahora</string>
+
+    <!-- ClubPyccaPartnerActivity -->
+    <string name="name">Nombres</string>
+    <string name="last_name">Apellidos</string>
+    <string name="born_date">Fecha de nacimiento</string>
+    <string name="identification_number">Cédula</string>
+    <string name="cpp_email">Email</string>
+    <string name="phone_number">Teléfono convencional</string>
+    <string name="cellphone_number">Teléfono celular</string>
+    <string name="cpp_address">Dirección</string>
+    <string name="ok_message">En máximo 48 horas nos comunicaremos contigo</string>
+    <string name="request_card">Solicitar tarjeta</string>
+    <string name="accept">Aceptar</string>
 
     <!-- Error Messages -->
     <string name="error_check_internet_connection">Revise su conexión a internet</string>
@@ -106,6 +126,8 @@
     <string name="permission_necessary">El permiso es necesario para utilizar esta opción</string>
     <string name="permissions_necessary">Los permisos son necesarios para utilizar todas las opciones en la aplicación</string>
     <string name="link_not_found">No se ha encontrado una url asociada</string>
+    <string name="all_fields_required">Debe completar todos los campos</string>
+    <string name="invalid_identification">Cédula inválida</string>
 
     <!-- Facebook -->
     <string name="facebook_app_id">1854965214584839</string>

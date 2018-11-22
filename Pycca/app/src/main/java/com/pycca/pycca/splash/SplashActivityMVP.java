@@ -25,17 +25,25 @@ public interface SplashActivityMVP {
 
         void finishedPyccaAnimation();
 
-        void getParameter(SplashActivity splashActivity);
-
-        void getCurrentUser(SplashActivity splashActivity);
+        void configureParameter(SplashActivity splashActivity);
 
     }
 
     interface Model {
 
-        void getParameter(SplashActivity splashActivity);
+        void setParameter(SplashActivity splashActivity, SplashActivityMVP.TaskListener taskListener);
 
-        User getUser(SplashActivity splashActivity);
+        void userSubscribeToTopic(String topic);
+
+        void userUnsubscribeFromTopic(String topic);
+
+    }
+
+    interface TaskListener {
+
+        void onSuccess(User user);
+
+        void onError(int error);
 
     }
 
