@@ -148,7 +148,12 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
 
     @Override
     public void goToContactEmail() {
-
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "dponceld@gmail.com" });
+        if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     @Override

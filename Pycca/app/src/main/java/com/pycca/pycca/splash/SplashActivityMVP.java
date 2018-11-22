@@ -1,5 +1,6 @@
 package com.pycca.pycca.splash;
 
+import com.pycca.pycca.pojo.Parameter;
 import com.pycca.pycca.pojo.User;
 
 public interface SplashActivityMVP {
@@ -24,11 +25,15 @@ public interface SplashActivityMVP {
 
         void finishedPyccaAnimation();
 
+        void getParameter(SplashActivity splashActivity);
+
         void getCurrentUser(SplashActivity splashActivity);
 
     }
 
     interface Model {
+
+        void getParameter(SplashActivity splashActivity);
 
         User getUser(SplashActivity splashActivity);
 

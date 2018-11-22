@@ -36,12 +36,12 @@ public class MoreFragmentPresenter implements MoreFragmentMVP.Presenter {
 
     @Override
     public void thirdItemClicked() {
-
+        view.goToContactCall();
     }
 
     @Override
     public void fourthItemClicked() {
-
+        view.goToContactEmail();
     }
 
     @Override

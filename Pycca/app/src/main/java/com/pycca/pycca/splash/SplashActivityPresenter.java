@@ -27,6 +27,11 @@ public class SplashActivityPresenter implements SplashActivityMVP.Presenter {
     }
 
     @Override
+    public void getParameter(SplashActivity splashActivity) {
+        model.getParameter(splashActivity);
+    }
+
+    @Override
     public void getCurrentUser(SplashActivity splashActivity) {
         User user = model.getUser(splashActivity);
         if (user != null) {

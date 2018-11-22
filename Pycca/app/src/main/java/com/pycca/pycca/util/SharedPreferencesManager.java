@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
+import com.pycca.pycca.pojo.Parameter;
 import com.pycca.pycca.pojo.User;
 
 public class SharedPreferencesManager {
@@ -13,6 +14,7 @@ public class SharedPreferencesManager {
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
 
+    private static final String PARAMETER = "PARAMETER";
     private static final String USER = "USER";
 
     private SharedPreferencesManager() {
@@ -27,6 +29,17 @@ public class SharedPreferencesManager {
         return sharedPreferencesManager;
     }
 
+    public void setParameter(Parameter parameter) {
+        Gson gson = new Gson();
+        editor.putString(PARAMETER, gson.toJson(parameter));
+        editor.apply();
+    }
+
+    public Parameter getParameter() {
+        Gson gson = new Gson();
+        return gson.fromJson(sharedPreferences.getString(PARAMETER,""), Parameter.class);
+    }
+
     public void setUser(User user) {
         Gson gson = new Gson();
         editor.putString(USER, gson.toJson(user));
@@ -35,7 +48,7 @@ public class SharedPreferencesManager {
 
     public User getUser() {
         Gson gson = new Gson();
-        return gson.fromJson(sharedPreferences.getString(USER,""), User.class);
+        return gson.fromJson(sharedPreferences.getString(PARAMETER,""), User.class);
     }
 
 }

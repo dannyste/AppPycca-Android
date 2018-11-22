@@ -28,7 +28,14 @@ public class OurShopsActivityPresenter implements OurShopsActivityMVP.Presenter,
     }
 
     @Override
+    public void errorTouchRetryClicked() {
+        view.hideErrorAnimation();
+        loadOurShopsArrayList();
+    }
+
+    @Override
     public void loadOurShopsArrayList() {
+        view.hideRootView();
         view.showLoadingAnimation();
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
@@ -43,6 +50,7 @@ public class OurShopsActivityPresenter implements OurShopsActivityMVP.Presenter,
                             if (baseResponse.getData().getStatus_error().getCo_error() == 0) {
                                 ArrayList<OurShops> ourShopsArrayList = model.getOurShopsArrayList(baseResponse);
                                 view.hideLoadingAnimation();
+                                view.showRootView();
                                 view.updateDataRecyclerView(ourShopsArrayList);
                             }
                             else {
@@ -78,6 +86,8 @@ public class OurShopsActivityPresenter implements OurShopsActivityMVP.Presenter,
 
     @Override
     public void onError(int error) {
+        view.hideRootView();
+        view.hideLoadingAnimation();
         view.showErrorAnimation();
     }
 

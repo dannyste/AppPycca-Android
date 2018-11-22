@@ -10,11 +10,17 @@ public interface OurShopsActivityMVP {
 
     interface View {
 
+        void showRootView();
+
+        void hideRootView();
+
         void showLoadingAnimation();
 
         void hideLoadingAnimation();
 
         void showErrorAnimation();
+
+        void hideErrorAnimation();
 
         void updateDataRecyclerView(ArrayList<OurShops> ourShopsArrayList);
 
@@ -25,6 +31,8 @@ public interface OurShopsActivityMVP {
     interface Presenter {
 
         void setView(OurShopsActivityMVP.View view);
+
+        void errorTouchRetryClicked();
 
         void loadOurShopsArrayList();
 

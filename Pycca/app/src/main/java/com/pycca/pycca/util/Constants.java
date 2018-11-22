@@ -11,19 +11,22 @@ public class Constants {
     public static int SPLASH_TIME_OUT                   = 3000;
 
     //FIRESTORE
-    public static String FIRESTORE_USER_TABLE           = "User";
-    public static String FIRESTORE_CONTENT_TABLE        = "Content";
+    public static String FIRESTORE_PARAMETER_TABLE        = "Parameter";
+    public static String FIRESTORE_PARAMETER_APP_TABLE    = "App";
 
-    public static String FIRESTORE_HOME_TABLE           = "Home";
-    public static String FIRESTORE_HOME_HEADER_TABLE    = "Header";
-    public static String FIRESTORE_HOME_CONTENT_TABLE   = "Content";
+    public static String FIRESTORE_USER_TABLE             = "User";
 
-    public static String FIRESTORE_BUY_TABLE           = "Buy";
-    public static String FIRESTORE_BUY_HEADER_TABLE    = "Header";
-    public static String FIRESTORE_BUY_CONTENT_TABLE   = "Content";
+    public static String FIRESTORE_CONTENT_TABLE          = "Content";
+
+    public static String FIRESTORE_HOME_TABLE             = "Home";
+    public static String FIRESTORE_HOME_HEADER_TABLE      = "Header";
+    public static String FIRESTORE_HOME_CONTENT_TABLE     = "Content";
 
     public static String FIRESTORE_COUPON_TABLE           = "Coupon";
     public static String FIRESTORE_COUPON_CONTENT_TABLE   = "Content";
 
-}
+    public static String FIRESTORE_BUY_TABLE              = "Buy";
+    public static String FIRESTORE_BUY_HEADER_TABLE       = "Header";
+    public static String FIRESTORE_BUY_CONTENT_TABLE      = "Content";
 
+}

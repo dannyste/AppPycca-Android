@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.pycca.pycca.R;
@@ -32,6 +33,7 @@ public class OurShopsActivity extends AppCompatActivity implements OurShopsActiv
     private LinearLayout ll_root_view, ll_loading, ll_error;
     private RecyclerView rv_our_shops;
     private LottieAnimationView lav_loading, lav_error;
+    private TextView tv_error_touch_retry;
 
     private ArrayList<OurShops> ourShopsArrayList ;
     private OurShopsActivityAdapter ourShopsActivityAdapter;
@@ -45,12 +47,19 @@ public class OurShopsActivity extends AppCompatActivity implements OurShopsActiv
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        ll_root_view = findViewById(R.id.ll_root_view);
-        rv_our_shops = findViewById(R.id.rv_our_shops);
-        ll_loading   = findViewById(R.id.ll_loading);
-        lav_loading  = findViewById(R.id.lav_loading);
-        ll_error     = findViewById(R.id.ll_error);
-        lav_error    = findViewById(R.id.lav_error);
+        ll_root_view         = findViewById(R.id.ll_root_view);
+        rv_our_shops         = findViewById(R.id.rv_our_shops);
+        ll_loading           = findViewById(R.id.ll_loading);
+        lav_loading          = findViewById(R.id.lav_loading);
+        ll_error             = findViewById(R.id.ll_error);
+        lav_error            = findViewById(R.id.lav_error);
+        tv_error_touch_retry = findViewById(R.id.tv_error_touch_retry);
+        tv_error_touch_retry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.errorTouchRetryClicked();
+            }
+        });
         initRecyclerView();
     }
 
@@ -70,25 +79,37 @@ public class OurShopsActivity extends AppCompatActivity implements OurShopsActiv
     }
 
     @Override
-    public void showLoadingAnimation() {
+    public void showRootView() {
+        ll_root_view.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideRootView() {
         ll_root_view.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLoadingAnimation() {
         ll_loading.setVisibility(View.VISIBLE);
         lav_loading.playAnimation();
     }
 
     @Override
     public void hideLoadingAnimation() {
-        lav_loading.pauseAnimation();
         ll_loading.setVisibility(View.GONE);
-        ll_root_view.setVisibility(View.VISIBLE);
+        lav_loading.pauseAnimation();
     }
 
     @Override
     public void showErrorAnimation() {
-        lav_loading.pauseAnimation();
-        ll_loading.setVisibility(View.GONE);
         ll_error.setVisibility(View.VISIBLE);
         lav_error.playAnimation();
+    }
+
+    @Override
+    public void hideErrorAnimation() {
+        ll_error.setVisibility(View.GONE);
+        lav_error.pauseAnimation();
     }
 
     @Override
