@@ -9,6 +9,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -31,7 +32,7 @@ public class SplashActivity extends AppCompatActivity implements SplashActivityM
     @Inject
     public SplashActivityMVP.Presenter presenter;
 
-    private LinearLayout ll_root_view;
+    private LinearLayout ll_root_view, ll_pycca;
     private ImageView iv_pycca;
 
     private static final int RC_PERMISSION = 1000;
@@ -43,39 +44,42 @@ public class SplashActivity extends AppCompatActivity implements SplashActivityM
         ((App) getApplication()).getApplicationComponent().inject(SplashActivity.this);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         ll_root_view  = findViewById(R.id.ll_root_view);
+        ll_pycca      = findViewById(R.id.ll_pycca);
         iv_pycca      = findViewById(R.id.iv_pycca);
+        checkPermission();
     }
 
-    @Override
-    public void showPyccaAnimation() {
-        Animation animation = AnimationUtils.loadAnimation(SplashActivity.this, R.anim.animation_pycca);
-        iv_pycca.startAnimation(animation);
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                presenter.finishedPyccaAnimation();
-            }
-        }, Constants.SPLASH_TIME_OUT);
-    }
-
-    @Override
-    public void checkPermission() {
+    private void checkPermission() {
         if (ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-            ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED ||
-            ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) ||
-                ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this, Manifest.permission.BLUETOOTH) ||
-                ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this, Manifest.permission.CALL_PHONE)) {
-                ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.CALL_PHONE}, RC_PERMISSION);
+                    ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this, Manifest.permission.BLUETOOTH) ||
+                    ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this, Manifest.permission.BLUETOOTH_ADMIN) ||
+                    ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this, Manifest.permission.READ_PHONE_STATE)) {
+                ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.BLUETOOTH_ADMIN, Manifest.permission.READ_PHONE_STATE}, RC_PERMISSION);
             }
             else {
-                ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.CALL_PHONE}, RC_PERMISSION);
+                ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.BLUETOOTH_ADMIN, Manifest.permission.READ_PHONE_STATE}, RC_PERMISSION);
             }
         }
         else {
             presenter.configureParameter(SplashActivity.this);
         }
+    }
+
+    @Override
+    public void showPyccaAnimation() {
+        ll_pycca.setVisibility(View.VISIBLE);
+        Animation animation = AnimationUtils.loadAnimation(SplashActivity.this, R.anim.animation_pycca);
+        iv_pycca.startAnimation(animation);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                presenter.getCurrentUser(SplashActivity.this);
+            }
+        }, Constants.SPLASH_TIME_OUT);
     }
 
     @Override
@@ -96,7 +100,6 @@ public class SplashActivity extends AppCompatActivity implements SplashActivityM
     protected void onResume() {
         super.onResume();
         presenter.setView(SplashActivity.this);
-        presenter.startPyccaAnimation();
     }
 
     @Override
@@ -106,7 +109,8 @@ public class SplashActivity extends AppCompatActivity implements SplashActivityM
                 if (grantResults.length > 0 &&
                     grantResults[0] == PackageManager.PERMISSION_GRANTED &&
                     grantResults[1] == PackageManager.PERMISSION_GRANTED &&
-                    grantResults[2] == PackageManager.PERMISSION_GRANTED) {
+                    grantResults[2] == PackageManager.PERMISSION_GRANTED &&
+                    grantResults[3] == PackageManager.PERMISSION_GRANTED) {
                     presenter.configureParameter(SplashActivity.this);
                 }
                 else {

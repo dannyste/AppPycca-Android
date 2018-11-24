@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="190dp"
+    android:layout_height="180dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -34,12 +34,14 @@
 
                 <TextView
                     android:id="@+id/tv_name"
+                    android:fontFamily="@font/montserrat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/activity_vertical_margin"
                     android:text="Name"
-                    android:textSize="@dimen/text_small"
+                    android:textAllCaps="true"
                     android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_small"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -51,20 +53,23 @@
                 android:paddingTop="@dimen/activity_vertical_margin">
 
                 <TextView
+                    android:fontFamily="@font/montserrat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/address"
-                    android:textSize="@dimen/text_small"
+                    android:textAllCaps="true"
                     android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_small"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_address"
+                    android:fontFamily="@font/montserrat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Dirección"
-                    android:textSize="@dimen/text_tiny"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_tiny" />
 
             </LinearLayout>
 
@@ -75,20 +80,23 @@
                 android:paddingTop="@dimen/activity_vertical_margin">
 
                 <TextView
+                    android:fontFamily="@font/montserrat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/opening_hours"
-                    android:textSize="@dimen/text_small"
+                    android:textAllCaps="true"
                     android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_small"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_opening_hours"
+                    android:fontFamily="@font/montserrat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Horario de atención"
-                    android:textSize="@dimen/text_tiny"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_tiny" />
 
             </LinearLayout>
 
@@ -103,12 +111,13 @@
 
             <ImageView
                 android:id="@+id/iv_how_get"
-                android:layout_width="20dp"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/ic_navigation" />
 
             <TextView
+                android:fontFamily="@font/montserrat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/how_get"

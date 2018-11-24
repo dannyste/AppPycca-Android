@@ -33,7 +33,7 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
         if (menuItem.getItemId() == R.id.mi_club_pycca) {
             User user = model.getUser(hostActivity);
             if (!user.isClubPyccaPartner()) {
-                view.showAlertDialog();
+                view.showAlertDialogClubPyccaPartner();
             }
             else {
                 view.showFragment(menuItem);
@@ -97,7 +97,7 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
 
     @Override
     public void finishedDoneAnimation(MenuItem menuItem) {
-        view.hideAlertDialog();
+        view.hideAlertDialogClubPyccaPartner();
         view.showFragment(menuItem);
     }
 

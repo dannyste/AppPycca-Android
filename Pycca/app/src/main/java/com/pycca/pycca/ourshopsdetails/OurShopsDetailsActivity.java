@@ -87,7 +87,7 @@ public class OurShopsDetailsActivity extends AppCompatActivity implements OnMapR
     public void addMarkerGoogleMap(OurShopsDetails ourShopsDetails) {
         LatLng latLng = new LatLng(ourShopsDetails.getLatitude(), ourShopsDetails.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(ourShopsDetails.getName()).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_google_map));
-        googleMap.addMarker(markerOptions);
+        googleMap.addMarker(markerOptions).showInfoWindow();
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, Constants.GOOGLE_MAP_ZOOM));
     }
 

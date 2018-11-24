@@ -25,8 +25,6 @@ public class MoreFragmentModel implements MoreFragmentMVP.Model {
             moreArrayList.get(0).setColor(R.color.colorOptionOne);
             moreArrayList.get(1).setColor(R.color.colorOptionTwo);
             moreArrayList.get(2).setColor(R.color.colorOptionThree);
-            moreArrayList.get(3).setColor(R.color.colorOptionFour);
-            moreArrayList.get(4).setColor(R.color.colorOptionFive);
         }
         return moreArrayList;
     }

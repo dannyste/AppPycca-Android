@@ -1,6 +1,5 @@
 package com.pycca.pycca.splash;
 
-import com.pycca.pycca.pojo.Parameter;
 import com.pycca.pycca.pojo.User;
 
 public interface SplashActivityMVP {
@@ -8,8 +7,6 @@ public interface SplashActivityMVP {
     interface View {
 
         void showPyccaAnimation();
-
-        void checkPermission();
 
         void goToMultiLoginActivity();
 
@@ -21,17 +18,17 @@ public interface SplashActivityMVP {
 
         void setView(SplashActivityMVP.View view);
 
-        void startPyccaAnimation();
-
-        void finishedPyccaAnimation();
-
         void configureParameter(SplashActivity splashActivity);
+
+        void getCurrentUser(SplashActivity splashActivity);
 
     }
 
     interface Model {
 
         void setParameter(SplashActivity splashActivity, SplashActivityMVP.TaskListener taskListener);
+
+        User getUser(SplashActivity splashActivity);
 
         void userSubscribeToTopic(String topic);
 
@@ -41,7 +38,7 @@ public interface SplashActivityMVP {
 
     interface TaskListener {
 
-        void onSuccess(User user);
+        void onSuccess();
 
         void onError(int error);
 

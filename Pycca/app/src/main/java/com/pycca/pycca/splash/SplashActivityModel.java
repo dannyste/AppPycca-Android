@@ -9,6 +9,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.pycca.pycca.pojo.Parameter;
+import com.pycca.pycca.pojo.User;
 import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.util.SharedPreferencesManager;
 
@@ -25,6 +26,11 @@ public class SplashActivityModel implements SplashActivityMVP.Model {
     @Override
     public void setParameter(SplashActivity splashActivity, SplashActivityMVP.TaskListener taskListener) {
         getParameterFirebaseFirestore(splashActivity, taskListener);
+    }
+
+    @Override
+    public User getUser(SplashActivity splashActivity) {
+        return SharedPreferencesManager.getInstance(splashActivity).getUser();
     }
 
     @Override
@@ -48,14 +54,14 @@ public class SplashActivityModel implements SplashActivityMVP.Model {
                             if (documentSnapshot.exists()) {
                                 Parameter parameter = documentSnapshot.toObject(Parameter.class);
                                 SharedPreferencesManager.getInstance(splashActivity).setParameter(parameter);
-                                getUser(splashActivity, taskListener);
+                                taskListener.onSuccess();
                             }
                             else {
                                 Parameter parameter = new Parameter();
                                 parameter.setPhoneNumber("042592003");
                                 parameter.setEmail("servicioalcliente@pycca.com");
                                 SharedPreferencesManager.getInstance(splashActivity).setParameter(parameter);
-                                getUser(splashActivity, taskListener);
+                                taskListener.onSuccess();
                             }
                         }
                         else {
@@ -63,14 +69,10 @@ public class SplashActivityModel implements SplashActivityMVP.Model {
                             parameter.setPhoneNumber("042592003");
                             parameter.setEmail("servicioalcliente@pycca.com");
                             SharedPreferencesManager.getInstance(splashActivity).setParameter(parameter);
-                            getUser(splashActivity, taskListener);
+                            taskListener.onSuccess();
                         }
                     }
                 });
-    }
-
-    public void getUser(SplashActivity splashActivity, SplashActivityMVP.TaskListener taskListener) {
-        taskListener.onSuccess(SharedPreferencesManager.getInstance(splashActivity).getUser());
     }
 
 }

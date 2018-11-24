@@ -12,7 +12,7 @@ public interface MultiLoginActivityMVP {
 
     interface View {
 
-        void loginInstagram();
+        void loginTwitter();
 
         void loginEmail();
 
@@ -36,9 +36,9 @@ public interface MultiLoginActivityMVP {
 
         void loginFacebookClicked();
 
-        void loginInstagramClicked();
-
         void loginGoogleClicked(MultiLoginActivity multiLoginActivity);
+
+        void loginTwitterClicked();
 
         void loginEmailClicked();
 
@@ -52,7 +52,7 @@ public interface MultiLoginActivityMVP {
 
         void finishedDoneAnimation();
 
-        void registerNowClicked();
+        void newHereRegisterNowClicked();
 
         void termsUseClicked();
 

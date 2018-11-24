@@ -75,17 +75,18 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
     //LoggingHTTP
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    //ParallaxRecyclerView
+    implementation 'com.github.kanytu:android-parallax-recyclerview:v1.7'
     //ParseJSON
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation 'com.google.code.gson:gson:2.8.5'
+    //PhotoView
+    implementation 'com.github.chrisbanes:PhotoView:2.1.0'
     //RatioLayout
     implementation 'com.ritesh:ratiolayout:1.0.0'
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    //ParallaxRecyclerView
-    implementation 'com.github.kanytu:android-parallax-recyclerview:v1.7'
-    //PhotoView
-    implementation 'com.github.chrisbanes:PhotoView:2.1.0'
+    //Twitter
 }
 
 apply plugin: 'com.google.gms.google-services'
