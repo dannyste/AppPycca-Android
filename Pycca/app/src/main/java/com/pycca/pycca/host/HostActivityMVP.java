@@ -11,7 +11,7 @@ public interface HostActivityMVP {
 
         void showFragment(MenuItem menuItem);
 
-        void showAlertDialog();
+        void showAlertDialogClubPyccaPartner();
 
         String getIdentificationCard();
 
@@ -27,7 +27,7 @@ public interface HostActivityMVP {
 
         void showDoneAnimation();
 
-        void hideAlertDialog();
+        void hideAlertDialogClubPyccaPartner();
 
         void goToClubPyccaPartnerActivity();
 

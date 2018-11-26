@@ -15,7 +15,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseUser;
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.User;
 import com.pycca.pycca.util.Constants;
@@ -47,14 +46,14 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     }
 
     @Override
-    public void loginInstagramClicked() {
-        this.view.loginInstagram();
-    }
-
-    @Override
     public void loginGoogleClicked(MultiLoginActivity multiLoginActivity) {
         Intent signInIntent = googleSignInClient.getSignInIntent();
         multiLoginActivity.startActivityForResult(signInIntent, RC_LOGIN_GOOGLE);
+    }
+
+    @Override
+    public void loginTwitterClicked() {
+        this.view.loginTwitter();
     }
 
     @Override
@@ -123,7 +122,7 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     }
 
     @Override
-    public void registerNowClicked() {
+    public void newHereRegisterNowClicked() {
         this.view.registerNow();
     }
 

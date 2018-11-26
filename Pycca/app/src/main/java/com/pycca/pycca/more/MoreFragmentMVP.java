@@ -11,15 +11,15 @@ public interface MoreFragmentMVP {
 
         void updateDataRecyclerView(ArrayList<More> moreArrayList);
 
-        void goToClubPyccaPartner();
+        void showAlertDialogClubPyccaPartner();
 
         void goToProfileActivity();
+
+        void showAlertDialogContactUs();
 
         void goToContactCall();
 
         void goToContactEmail();
-
-        void goToNearestShopActivity();
 
         void goToOurShopsActivity();
 
@@ -38,10 +38,6 @@ public interface MoreFragmentMVP {
         void thirdItemClicked();
 
         void fourthItemClicked();
-
-        void fifthItemClicked();
-
-        void sixthItemClicked();
 
         String getPhoneNumber(MoreFragment moreFragment);
 

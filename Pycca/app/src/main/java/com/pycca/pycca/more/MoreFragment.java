@@ -3,6 +3,7 @@ package com.pycca.pycca.more;
 import android.Manifest;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,8 +25,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.pycca.pycca.R;
-import com.pycca.pycca.clubpyccapartner.ClubPyccaPartnerActivity;
-import com.pycca.pycca.nearestshop.NearestShopActivity;
+import com.pycca.pycca.host.HostActivity;
 import com.pycca.pycca.ourshops.OurShopsActivity;
 import com.pycca.pycca.pojo.More;
 import com.pycca.pycca.profile.ProfileActivity;
@@ -82,7 +83,7 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            int newPosition = moreArrayList.size() < 6 ? position + 1 : position;
+                            int newPosition = moreArrayList.size() < 4 ? position + 1 : position;
                             switch (newPosition) {
                                 case 0:
                                     presenter.firstItemClicked();
@@ -95,12 +96,6 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
                                     break;
                                 case 3:
                                     presenter.fourthItemClicked();
-                                    break;
-                                case 4:
-                                    presenter.fifthItemClicked();
-                                    break;
-                                case 5:
-                                    presenter.sixthItemClicked();
                                     break;
                             }
                             animationRunning = true;
@@ -124,15 +119,29 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
     }
 
     @Override
-    public void goToClubPyccaPartner() {
-        Intent clubPyccaPartnerActivity = new Intent(getActivity(), ClubPyccaPartnerActivity.class);
-        startActivity(clubPyccaPartnerActivity);
+    public void showAlertDialogClubPyccaPartner() {
+        ((HostActivity) getActivity()).showAlertDialogClubPyccaPartner();
     }
 
     @Override
     public void goToProfileActivity() {
         Intent profileActivity = new Intent(getActivity(), ProfileActivity.class);
         startActivity(profileActivity);
+    }
+
+    @Override
+    public void showAlertDialogContactUs() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(R.string.contact_us)
+                .setItems(R.array.contact_us_array, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // The 'which' argument contains the index position
+                        // of the selected item
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.setCancelable(false);
+        alertDialog.show();
     }
 
     @Override
@@ -154,12 +163,6 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
         if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
             startActivity(intent);
         }
-    }
-
-    @Override
-    public void goToNearestShopActivity() {
-        Intent nearestShopActivity = new Intent(getActivity(), NearestShopActivity.class);
-        startActivity(nearestShopActivity);
     }
 
     @Override

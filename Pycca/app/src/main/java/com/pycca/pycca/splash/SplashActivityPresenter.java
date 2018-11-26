@@ -19,22 +19,13 @@ public class SplashActivityPresenter implements SplashActivityMVP.Presenter, Spl
     }
 
     @Override
-    public void startPyccaAnimation() {
-        view.showPyccaAnimation();
-    }
-
-    @Override
-    public void finishedPyccaAnimation() {
-        view.checkPermission();
-    }
-
-    @Override
     public void configureParameter(SplashActivity splashActivity) {
         model.setParameter(splashActivity, SplashActivityPresenter.this);
     }
 
     @Override
-    public void onSuccess(User user) {
+    public void getCurrentUser(SplashActivity splashActivity) {
+        User user = model.getUser(splashActivity);
         if (user != null) {
             if (user.getRegistrationProvider().equalsIgnoreCase(Util.RegistrationProvider.FACEBOOK.toString()) || user.getRegistrationProvider().equalsIgnoreCase(Util.RegistrationProvider.INSTAGRAM.toString()) || user.getRegistrationProvider().equalsIgnoreCase(Util.RegistrationProvider.GOOGLE.toString())) {
                 model.userSubscribeToTopic(Constants.TOPIC_SOCIAL_NETWORK);
@@ -64,6 +55,11 @@ public class SplashActivityPresenter implements SplashActivityMVP.Presenter, Spl
             model.userSubscribeToTopic(Constants.TOPIC_INVITED);
             view.goToMultiLoginActivity();
         }
+    }
+
+    @Override
+    public void onSuccess() {
+        view.showPyccaAnimation();
     }
 
     @Override

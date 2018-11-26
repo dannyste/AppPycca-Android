@@ -29,9 +29,10 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
     public MultiLoginActivityMVP.Presenter presenter;
 
     private LinearLayout ll_root_view, ll_loading, ll_done;
-    private Button btn_login_email, btn_login_google, btn_login_facebook, btn_login_instagram;
     private LoginButton lb_facebook;
-    private TextView tv_register_now, tv_terms_use;
+    private Button btn_login_facebook, btn_login_google, btn_login_twitter, btn_login_email, btn_new_here_register_now;
+    //private TwitterLoginButton tlb_twitter;
+    private TextView tv_terms_use;
     private LottieAnimationView lav_loading, lav_done;
 
     @Override
@@ -40,22 +41,23 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
         setContentView(R.layout.activity_multi_login);
         ((App) getApplication()).getApplicationComponent().inject(MultiLoginActivity.this);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        ll_root_view        = findViewById(R.id.ll_root_view);
-        btn_login_email     = findViewById(R.id.btn_login_email);
-        btn_login_google    = findViewById(R.id.btn_login_google);
-        lb_facebook         = findViewById(R.id.lb_facebook);
-        btn_login_facebook  = findViewById(R.id.btn_login_facebook);
-        btn_login_instagram = findViewById(R.id.btn_login_instagram);
-        tv_register_now     = findViewById(R.id.tv_register_now);
-        tv_terms_use        = findViewById(R.id.tv_terms_use);
-        ll_loading          = findViewById(R.id.ll_loading);
-        lav_loading         = findViewById(R.id.lav_loading);
-        ll_done          = findViewById(R.id.ll_done);
-        lav_done         = findViewById(R.id.lav_done);
-        btn_login_email.setOnClickListener(new View.OnClickListener() {
+        ll_root_view               = findViewById(R.id.ll_root_view);
+        lb_facebook                = findViewById(R.id.lb_facebook);
+        btn_login_facebook         = findViewById(R.id.btn_login_facebook);
+        btn_login_google           = findViewById(R.id.btn_login_google);
+        //tlb_twitter              = findViewById(R.id.tlb_twitter);
+        btn_login_twitter          = findViewById(R.id.btn_login_twitter);
+        btn_login_email            = findViewById(R.id.btn_login_email);
+        btn_new_here_register_now  = findViewById(R.id.btn_new_here_register_now);
+        tv_terms_use               = findViewById(R.id.tv_terms_use);
+        ll_loading                 = findViewById(R.id.ll_loading);
+        lav_loading                = findViewById(R.id.lav_loading);
+        ll_done                    = findViewById(R.id.ll_done);
+        lav_done                   = findViewById(R.id.lav_done);
+        btn_login_facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.loginEmailClicked();
+                presenter.loginFacebookClicked();
             }
         });
         btn_login_google.setOnClickListener(new View.OnClickListener() {
@@ -64,22 +66,22 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
                 presenter.loginGoogleClicked(MultiLoginActivity.this);
             }
         });
-        btn_login_facebook.setOnClickListener(new View.OnClickListener() {
+        btn_login_twitter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.loginFacebookClicked();
+                presenter.loginTwitterClicked();
             }
         });
-        btn_login_instagram.setOnClickListener(new View.OnClickListener() {
+        btn_login_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.loginInstagramClicked();
+                presenter.loginEmailClicked();
             }
         });
-        tv_register_now.setOnClickListener(new View.OnClickListener() {
+        btn_new_here_register_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.registerNowClicked();
+                presenter.newHereRegisterNowClicked();
             }
         });
         tv_terms_use.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +93,7 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
     }
 
     @Override
-    public void loginInstagram() {
+    public void loginTwitter() {
 
     }
 

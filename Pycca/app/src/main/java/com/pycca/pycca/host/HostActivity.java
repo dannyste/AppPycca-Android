@@ -149,7 +149,7 @@ public class HostActivity extends AppCompatActivity implements HostActivityMVP.V
     }
 
     @Override
-    public void showAlertDialog() {
+    public void showAlertDialogClubPyccaPartner() {
         AlertDialog.Builder builder = new AlertDialog.Builder(HostActivity.this);
         viewAlertDialog = getLayoutInflater().inflate(R.layout.alert_dialog_club_pycca_partner, null);
         builder.setView(viewAlertDialog);
@@ -254,7 +254,7 @@ public class HostActivity extends AppCompatActivity implements HostActivityMVP.V
     }
 
     @Override
-    public void hideAlertDialog() {
+    public void hideAlertDialogClubPyccaPartner() {
         alertDialog.dismiss();
     }
 

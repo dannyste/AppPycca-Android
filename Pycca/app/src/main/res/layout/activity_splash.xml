@@ -23,12 +23,14 @@
             android:weightSum="5" />
 
         <LinearLayout
+            android:id="@+id/ll_pycca"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:padding="@dimen/activity_horizontal_margin">
+            android:padding="@dimen/activity_horizontal_margin"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/iv_pycca"
