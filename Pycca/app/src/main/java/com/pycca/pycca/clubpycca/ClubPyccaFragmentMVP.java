@@ -10,8 +10,6 @@ public interface ClubPyccaFragmentMVP {
 
         void updateDataRecyclerView(ArrayList<ClubPycca> clubPyccaArrayList);
 
-        void goToBalanceActivity();
-
         void goToAccountStatusActivity();
 
         void goToQuotaIncreaseActivity();
@@ -39,8 +37,6 @@ public interface ClubPyccaFragmentMVP {
         void fourthItemClicked();
 
         void fifthItemClicked();
-
-        void sixthItemClicked();
 
     }
 

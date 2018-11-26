@@ -2,8 +2,6 @@ package com.pycca.pycca.accountstatus;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.pycca.pycca.balance.BalanceActivity;
-import com.pycca.pycca.balance.BalanceActivityMVP;
 import com.pycca.pycca.pojo.Balance;
 import com.pycca.pycca.pojo.User;
 import com.pycca.pycca.restApi.model.BalanceResponse;

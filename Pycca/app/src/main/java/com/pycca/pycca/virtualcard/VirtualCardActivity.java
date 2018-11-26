@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.pycca.pycca.R;
 import com.pycca.pycca.root.App;
+import com.pycca.pycca.util.Util;
 
 import javax.inject.Inject;
 
@@ -39,7 +40,7 @@ public class VirtualCardActivity extends AppCompatActivity implements VirtualCar
 
     @Override
     public void setClubPyccaCardNumber(String clubPyccaCardNumber) {
-        tv_club_pycca_card_number.setText(clubPyccaCardNumber);
+        tv_club_pycca_card_number.setText(Util.clipCardNumber(clubPyccaCardNumber));
     }
 
     @Override

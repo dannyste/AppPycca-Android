@@ -1,12 +1,11 @@
 package com.pycca.pycca.accountstatus;
 
 import com.pycca.pycca.R;
-import com.pycca.pycca.balance.BalanceActivity;
-import com.pycca.pycca.balance.BalanceActivityMVP;
 import com.pycca.pycca.pojo.User;
 import com.pycca.pycca.restApi.EndpointsApi;
 import com.pycca.pycca.restApi.RestApiAdapter;
 import com.pycca.pycca.restApi.model.BaseResponse;
+import com.pycca.pycca.util.SharedPreferencesManager;
 import com.pycca.pycca.util.Util;
 
 import retrofit2.Call;
@@ -30,11 +29,11 @@ public class AccountStatusActivityPresenter implements AccountStatusActivityMVP.
     @Override
     public void loadData(AccountStatusActivity activity) {
         view.showLoadingAnimation();
-        User user = model.getUser(activity);
+        final User user = model.getUser(activity);
 
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
-        Call<BaseResponse> getBalanceCall = endpointsApi.getBalance("9218101008274040");
+        Call<BaseResponse> getBalanceCall = endpointsApi.getBalance(user.getClubPyccaCardNumber());
         getBalanceCall.enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
@@ -42,7 +41,7 @@ public class AccountStatusActivityPresenter implements AccountStatusActivityMVP.
                     BaseResponse baseResponse = response.body();
                     if (baseResponse.getStatus()) {
                         if (baseResponse.getData().getStatus_error().getCo_error() == 0) {
-                            view.setData(model.getBalance(baseResponse, "9218101008274040"), Util.maskClubPyccaCardNumber("9218101008274040"));
+                            view.setData(model.getBalance(baseResponse, user.getClubPyccaCardNumber()));
                             view.hideLoadingAnimation();
                         }
                         else {

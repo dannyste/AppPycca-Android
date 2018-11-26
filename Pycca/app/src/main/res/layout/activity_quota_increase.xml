@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".quotaincrease.QuotaIncreaseActivity">
 
@@ -43,6 +43,64 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_loading"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lav_loading"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    app:lottie_autoPlay="false"
+                    app:lottie_fileName="loading_animation.json"
+                    app:lottie_imageAssetsFolder="assets"
+                    app:lottie_loop="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_done"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lav_done"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    app:lottie_autoPlay="false"
+                    app:lottie_fileName="done_animation.json"
+                    app:lottie_imageAssetsFolder="assets"
+                    app:lottie_loop="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_error"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lav_error"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    app:lottie_autoPlay="false"
+                    app:lottie_fileName="failure_animation.json"
+                    app:lottie_imageAssetsFolder="assets"
+                    app:lottie_loop="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_form_view"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -51,41 +109,6 @@
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:paddingEnd="@dimen/activity_horizontal_margin">
 
-                <TextView
-                    android:fontFamily="@font/montserrat"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/choose_increase_apply"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/text_medium" />
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_horizontal_margin"
-                    android:orientation="vertical">
-
-                    <RadioButton
-                        android:id="@+id/rb_quota_increase_club_pycca_card"
-                        android:fontFamily="@font/montserrat"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/quota_increase_club_pycca_card"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_medium" />
-
-                    <RadioButton
-                        android:id="@+id/rb_quota_increase_parallel_super_credit"
-                        android:fontFamily="@font/montserrat"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/activity_vertical_margin"
-                        android:text="@string/quota_increase_parallel_super_credit"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_medium" />
-
-                </RadioGroup>
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_tell_us_requested_quota"
@@ -119,6 +142,55 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/text_medium"
                     android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_sended_request"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="9"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin2"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin2"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:weightSum="10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="8"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/ok_message"
+                        android:textSize="20sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical"
+                    android:gravity="bottom"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin">
+
+                    <Button
+                        android:id="@+id/bt_accept"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button_default_style"
+                        android:text="@string/accept"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_small" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 

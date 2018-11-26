@@ -34,9 +34,9 @@ public class ClubPyccaPartnerActivity extends AppCompatActivity implements ClubP
     @Inject
     public ClubPyccaPartnerActivityMVP.Presenter presenter;
 
-    TextInputEditText tiet_name, tiet_last_name, tiet_born_date, tiet_identification_card, tiet_email, tiet_phone_number, tiet_cellphone_number, tiet_address;
-    Button bt_request_card, bt_accept;
-    LinearLayout ll_root_view, ll_form_view, ll_sended_request, ll_loading, ll_done, ll_error;
+    private TextInputEditText tiet_name, tiet_last_name, tiet_born_date, tiet_identification_card, tiet_email, tiet_phone_number, tiet_cellphone_number, tiet_address;
+    private Button bt_request_card, bt_accept;
+    private LinearLayout ll_root_view, ll_form_view, ll_sended_request, ll_loading, ll_done, ll_error;
     private LottieAnimationView lav_loading, lav_done, lav_error;
 
     @Override

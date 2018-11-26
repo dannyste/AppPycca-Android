@@ -1,8 +1,5 @@
 package com.pycca.pycca.accountstatus;
 
-import com.pycca.pycca.balance.BalanceActivityMVP;
-import com.pycca.pycca.balance.BalanceActivityModel;
-import com.pycca.pycca.balance.BalanceActivityPresenter;
 
 import dagger.Module;
 import dagger.Provides;

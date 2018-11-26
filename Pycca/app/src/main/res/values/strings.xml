@@ -78,10 +78,10 @@
 
     <!-- AccountStatusActivity -->
     <string name="summary_account_status">Resúmen del estado de cuenta</string>
-    <string name="download_pdf">Descargar PDF</string>
+    <string name="download_pdf">Estado de cuenta</string>
     <string name="as_card_number">Número de tarjeta</string>
     <string name="as_quota_to_pay">Cuota a pagar</string>
-    <string name="as_pay_until">Pagar hasta</string>
+    <string name="as_pay_until">Pagar</string>
 
     <!-- AlertDialogClubPyccaPartner -->
     <string name="validate">Validar</string>

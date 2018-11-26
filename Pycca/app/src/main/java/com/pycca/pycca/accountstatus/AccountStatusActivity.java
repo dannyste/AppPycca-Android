@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,8 +22,9 @@ public class AccountStatusActivity extends AppCompatActivity implements AccountS
     public AccountStatusActivityMVP.Presenter presenter;
 
     private LinearLayout ll_root_view, ll_loading, ll_error;;
-    private TextView tv_card_number, tv_quota_to_pay, tv_pay_until;
+    private TextView tv_available_credit, tv_used_quota, tv_aproved_quota, tv_pay_until;
     private LottieAnimationView lav_loading, lav_error;
+    private Button bt_download_pdf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +36,23 @@ public class AccountStatusActivity extends AppCompatActivity implements AccountS
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        tv_card_number = findViewById(R.id.tv_card_number);
-        tv_quota_to_pay = findViewById(R.id.tv_quota_to_pay);
+        tv_available_credit = findViewById(R.id.tv_available_credit);
+        tv_used_quota = findViewById(R.id.tv_used_quota);
+        tv_aproved_quota = findViewById(R.id.tv_aproved_quota);
         tv_pay_until = findViewById(R.id.tv_pay_until);
         ll_root_view = findViewById(R.id.ll_root_view);
         ll_loading   = findViewById(R.id.ll_loading);
         lav_loading  = findViewById(R.id.lav_loading);
         ll_error     = findViewById(R.id.ll_error);
         lav_error    = findViewById(R.id.lav_error);
+        bt_download_pdf    = findViewById(R.id.bt_download_pdf);
+
+        bt_download_pdf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.downdloadPDF();
+            }
+        });
     }
 
     @Override
@@ -64,10 +75,11 @@ public class AccountStatusActivity extends AppCompatActivity implements AccountS
     }
 
     @Override
-    public void setData(Balance balance, String clubPyccaNumber) {
-        tv_card_number.setText(clubPyccaNumber);
-        tv_quota_to_pay.setText("$".concat(String.valueOf(balance.getQuotaToPay())));
-        tv_pay_until.setText(balance.getPayUntil());
+    public void setData(Balance balance) {
+        tv_available_credit.setText("$".concat(String.valueOf(balance.getAvailableCredit())));
+        tv_used_quota.setText("$".concat(String.valueOf(balance.getUsedCredit())));
+        tv_aproved_quota.setText("$".concat(String.valueOf(balance.getAprovedQuota())));
+        tv_pay_until.setText(Util.formatStringPayUntil(balance.getPayUntil(),String.valueOf(balance.getQuotaToPay())));
     }
 
     @Override

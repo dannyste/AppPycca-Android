@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.pycca.pycca.accountstatus.AccountStatusActivity;
 import com.pycca.pycca.accountstatus.AccountStatusActivityModule;
-import com.pycca.pycca.balance.BalanceActivityModule;
 import com.pycca.pycca.buy.BuyFragmentModule;
 import com.pycca.pycca.cardblocking.CardBlockingActivityModule;
 import com.pycca.pycca.clubpycca.ClubPyccaFragmentModule;
@@ -57,7 +56,6 @@ public class App extends Application {
                 .ourShopsActivityModule(new OurShopsActivityModule())
                 .ourShopsDetailsActivityModule(new OurShopsDetailsActivityModule())
                 .pictureActivityModule(new PictureActivityModule())
-                .balanceActivityModule(new BalanceActivityModule())
                 .accountStatusActivityModule(new AccountStatusActivityModule())
                 .build();
     }

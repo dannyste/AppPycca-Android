@@ -17,7 +17,7 @@ public interface EndpointsApi {
     @GET(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_GET_OUR_SHOPS)
     Call<BaseResponse> getOurShops();
 
-    @GET(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_GET_BALANCE)
+    @GET(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_GET_ACCOUNT_STATUS)
     Call<BaseResponse> getBalance(@Path("clubPyccaCardNumber") String clubPyccaCardNumber);
 
     @FormUrlEncoded
@@ -25,4 +25,22 @@ public interface EndpointsApi {
     Call<BaseResponse> clubPyccaPartner(@Field("name") String name, @Field("last_name") String last_name, @Field("born_date") String born_date,
                                         @Field("identification") String identification, @Field("email") String email, @Field("phone") String phone,
                                         @Field("cell_phone") String cell_phone, @Field("address") String address);
+
+    @FormUrlEncoded
+    @POST(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_POST_QUOTA_INCREASE)
+    Call<BaseResponse> quotaIncrease(@Field("increase_type") String increase_type, @Field("account_number") String account_number,
+                                     @Field("identification") String identification, @Field("email") String email, @Field("name") String name,
+                                     @Field("last_name") String last_name, @Field("quota") String quota);
+
+    @GET(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_GET_CLUB_PYCCA_CARDS)
+    Call<BaseResponse> getClubPyccaCards(@Path("accountNumber") String accountNumber, @Path("clubPyccaCardNumber") String clubPyccaCardNumber);
+
+    @FormUrlEncoded
+    @POST(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_POST_CARD_BLOCKING)
+    Call<BaseResponse> cardBlocking(@Field("club_pycca_card_number") String club_pycca_card_number, @Field("account_number") String account_number,
+                                     @Field("reason_code") String reason_code, @Field("reason_description") String reason_description);
+
+    @GET(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_GET_QUOTA_CALCULATOR)
+    Call<BaseResponse> getQuotas(@Path("amount") String amount);
+
 }

@@ -14,6 +14,7 @@ import com.pycca.pycca.pojo.DivisionImageResource;
 import com.pycca.pycca.pojo.ImageResource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class Util {
@@ -150,15 +151,31 @@ public class Util {
     }
 
     @NonNull
-    public static String maskClubPyccaCardNumber(String cardNumber){
+    public static String maskClubPyccaCardNumber(String cardNumber, boolean clipCardNumber){
         String subStr1 = cardNumber.substring(0,6);
         String subStr2 = cardNumber.substring(6,14);
         String subStr3 = cardNumber.substring(14);
-        return subStr1.concat("********").concat(subStr3);
+        String maskedCardNumber = subStr1.concat("********").concat(subStr3);
+        if (clipCardNumber){
+            maskedCardNumber = clipCardNumber(maskedCardNumber);
+        }
+        return maskedCardNumber;
+    }
+
+    public static String clipCardNumber(String cardNumber){
+        String subStr1 = cardNumber.substring(0, 4);
+        String subStr2 = cardNumber.substring(4, 8);
+        String subStr3 = cardNumber.substring(8, 12);
+        String subStr4 = cardNumber.substring(12);
+        return subStr1.concat(" ").concat(subStr2).concat(" ").concat(subStr3).concat(" ").concat(subStr4);
     }
 
     public static String twoDigits(int n) {
         return (n<=9) ? ("0"+n) : String.valueOf(n);
+    }
+
+    public static String formatStringPayUntil(String payUntil, String quota){
+        return "$".concat(quota).concat(" hasta ").concat(payUntil);
     }
 
 }
