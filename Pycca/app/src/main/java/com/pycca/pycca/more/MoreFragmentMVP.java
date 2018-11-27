@@ -39,6 +39,10 @@ public interface MoreFragmentMVP {
 
         void fourthItemClicked();
 
+        void alertDialogFirstItemClicked();
+
+        void alertDialogSecondItemClicked();
+
         String getPhoneNumber(MoreFragment moreFragment);
 
         String getEmail(MoreFragment moreFragment);

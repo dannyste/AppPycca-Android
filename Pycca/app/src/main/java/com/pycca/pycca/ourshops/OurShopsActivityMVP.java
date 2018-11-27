@@ -24,6 +24,8 @@ public interface OurShopsActivityMVP {
 
         void updateDataRecyclerView(ArrayList<OurShops> ourShopsArrayList);
 
+        void goToNearestShopActivity();
+
         void goToOurShopsDetailsActivity(ArrayList<OurShopsDetails> ourShopsDetailsArrayList);
 
     }
@@ -32,11 +34,13 @@ public interface OurShopsActivityMVP {
 
         void setView(OurShopsActivityMVP.View view);
 
-        void errorTouchRetryClicked();
-
         void loadOurShopsArrayList();
 
+        void goNearestShopClicked();
+
         void itemClicked(ArrayList<OurShopsDetails> ourShopsDetailsArrayList);
+
+        void errorTouchRetryClicked();
 
     }
 

@@ -134,13 +134,20 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.contact_us)
                 .setItems(R.array.contact_us_array, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // The 'which' argument contains the index position
-                        // of the selected item
+                    public void onClick(DialogInterface dialog, int position) {
+                        dialog.dismiss();
+                        switch (position) {
+                            case 0:
+                                presenter.alertDialogFirstItemClicked();
+                                break;
+                            case 1:
+                                presenter.alertDialogSecondItemClicked();
+                                break;
+                        }
                     }
                 });
         AlertDialog alertDialog = builder.create();
-        alertDialog.setCancelable(false);
+        alertDialog.setCancelable(true);
         alertDialog.show();
     }
 

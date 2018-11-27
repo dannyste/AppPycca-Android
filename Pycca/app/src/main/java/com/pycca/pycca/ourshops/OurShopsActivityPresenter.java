@@ -28,12 +28,6 @@ public class OurShopsActivityPresenter implements OurShopsActivityMVP.Presenter,
     }
 
     @Override
-    public void errorTouchRetryClicked() {
-        view.hideErrorAnimation();
-        loadOurShopsArrayList();
-    }
-
-    @Override
     public void loadOurShopsArrayList() {
         view.hideRootView();
         view.showLoadingAnimation();
@@ -75,8 +69,19 @@ public class OurShopsActivityPresenter implements OurShopsActivityMVP.Presenter,
     }
 
     @Override
+    public void goNearestShopClicked() {
+        view.goToNearestShopActivity();
+    }
+
+    @Override
     public void itemClicked(ArrayList<OurShopsDetails> ourShopsDetailsArrayList) {
         view.goToOurShopsDetailsActivity(ourShopsDetailsArrayList);
+    }
+
+    @Override
+    public void errorTouchRetryClicked() {
+        view.hideErrorAnimation();
+        loadOurShopsArrayList();
     }
 
     @Override

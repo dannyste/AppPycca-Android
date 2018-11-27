@@ -46,6 +46,16 @@ public class MoreFragmentPresenter implements MoreFragmentMVP.Presenter {
     }
 
     @Override
+    public void alertDialogFirstItemClicked() {
+        view.goToContactCall();
+    }
+
+    @Override
+    public void alertDialogSecondItemClicked() {
+        view.goToContactEmail();
+    }
+
+    @Override
     public String getPhoneNumber(MoreFragment moreFragment) {
         Parameter parameter = model.getParameter(moreFragment);
         return parameter.getPhoneNumber();

@@ -10,10 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.pycca.pycca.R;
+import com.pycca.pycca.nearestshop.NearestShopActivity;
 import com.pycca.pycca.ourshopsdetails.OurShopsDetailsActivity;
 import com.pycca.pycca.pojo.OurShops;
 import com.pycca.pycca.pojo.OurShopsDetails;
@@ -31,6 +33,7 @@ public class OurShopsActivity extends AppCompatActivity implements OurShopsActiv
     public OurShopsActivityMVP.Presenter presenter;
 
     private LinearLayout ll_root_view, ll_loading, ll_error;
+    private RelativeLayout rl_go_nearest_shop;
     private RecyclerView rv_our_shops;
     private LottieAnimationView lav_loading, lav_error;
     private TextView tv_error_touch_retry;
@@ -48,12 +51,19 @@ public class OurShopsActivity extends AppCompatActivity implements OurShopsActiv
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         ll_root_view         = findViewById(R.id.ll_root_view);
+        rl_go_nearest_shop   = findViewById(R.id.rl_go_nearest_shop);
         rv_our_shops         = findViewById(R.id.rv_our_shops);
         ll_loading           = findViewById(R.id.ll_loading);
         lav_loading          = findViewById(R.id.lav_loading);
         ll_error             = findViewById(R.id.ll_error);
         lav_error            = findViewById(R.id.lav_error);
         tv_error_touch_retry = findViewById(R.id.tv_error_touch_retry);
+        rl_go_nearest_shop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.goNearestShopClicked();
+            }
+        });
         tv_error_touch_retry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,6 +127,12 @@ public class OurShopsActivity extends AppCompatActivity implements OurShopsActiv
         this.ourShopsArrayList.clear();
         this.ourShopsArrayList.addAll(ourShopsArrayList);
         ourShopsActivityAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void goToNearestShopActivity() {
+        Intent nearestShopActivity = new Intent(OurShopsActivity.this, NearestShopActivity.class);
+        startActivity(nearestShopActivity);
     }
 
     @Override
