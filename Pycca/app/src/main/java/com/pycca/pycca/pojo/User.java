@@ -15,6 +15,8 @@ public class User {
     private boolean clubPyccaPartner;
     private String identificationCard;
     private String clubPyccaCardNumber;
+    private String namesClubPyccaPartner;
+    private String surnamesClubPyccaPartner;
     private int accountNumber;
     private String clientSince;
     private String token;
@@ -31,6 +33,8 @@ public class User {
         this.clubPyccaPartner = false;
         this.identificationCard = "";
         this.clubPyccaCardNumber = "";
+        this.namesClubPyccaPartner = "";
+        this.surnamesClubPyccaPartner = "";
         this.accountNumber = 0;
         this.clientSince = "";
         this.token = "";
@@ -110,6 +114,22 @@ public class User {
         this.clubPyccaCardNumber = clubPyccaCardNumber;
     }
 
+    public String getNamesClubPyccaPartner() {
+        return namesClubPyccaPartner;
+    }
+
+    public void setNamesClubPyccaPartner(String namesClubPyccaPartner) {
+        this.namesClubPyccaPartner = namesClubPyccaPartner;
+    }
+
+    public String getSurnamesClubPyccaPartner() {
+        return surnamesClubPyccaPartner;
+    }
+
+    public void setSurnamesClubPyccaPartner(String surnamesClubPyccaPartner) {
+        this.surnamesClubPyccaPartner = surnamesClubPyccaPartner;
+    }
+
     public int getAccountNumber() {
         return accountNumber;
     }
@@ -161,6 +181,8 @@ public class User {
         map.put("clubPyccaPartner", this.clubPyccaPartner);
         map.put("identificationCard", this.identificationCard);
         map.put("clubPyccaCardNumber", this.clubPyccaCardNumber);
+        map.put("namesClubPyccaPartner", this.namesClubPyccaPartner);
+        map.put("surnamesClubPyccaPartner", this.surnamesClubPyccaPartner);
         map.put("accountNumber", this.accountNumber);
         map.put("clientSince", this.clientSince);
         map.put("token", this.token);

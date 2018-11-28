@@ -12,9 +12,9 @@ public interface MultiLoginActivityMVP {
 
     interface View {
 
-        void loginTwitter();
+        void showRootView();
 
-        void loginEmail();
+        void hideRootView();
 
         void showLoadingAnimation();
 
@@ -22,9 +22,17 @@ public interface MultiLoginActivityMVP {
 
         void showDoneAnimation();
 
+        void showFailureAnimation();
+
+        void hideFailureAnimation();
+
+        void showMessageError(int error);
+
         void goToHostActivity();
 
-        void registerNow();
+        void goToLoginActivity();
+
+        void goToSignUpActivity();
 
         void termsUse();
 
@@ -42,6 +50,10 @@ public interface MultiLoginActivityMVP {
 
         void loginEmailClicked();
 
+        void newHereRegisterNowClicked();
+
+        void termsUseClicked();
+
         void configureFacebookSignIn(MultiLoginActivity multiLoginActivity, LoginButton loginButton);
 
         void configureGoogleSignIn(MultiLoginActivity multiLoginActivity);
@@ -52,9 +64,7 @@ public interface MultiLoginActivityMVP {
 
         void finishedDoneAnimation();
 
-        void newHereRegisterNowClicked();
-
-        void termsUseClicked();
+        void finishedFailureAnimation();
 
     }
 

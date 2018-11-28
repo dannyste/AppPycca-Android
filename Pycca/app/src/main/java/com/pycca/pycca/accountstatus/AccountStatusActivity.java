@@ -21,7 +21,7 @@ public class AccountStatusActivity extends AppCompatActivity implements AccountS
     @Inject
     public AccountStatusActivityMVP.Presenter presenter;
 
-    private LinearLayout ll_root_view, ll_loading, ll_error;;
+    private LinearLayout ll_root_view, ll_loading, ll_error;
     private TextView tv_available_credit, tv_used_quota, tv_aproved_quota, tv_pay_until;
     private LottieAnimationView lav_loading, lav_error;
     private Button bt_download_pdf;
