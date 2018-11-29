@@ -13,8 +13,8 @@
         android:orientation="vertical"
         android:paddingTop="@dimen/alert_dialog_vertical_margin"
         android:paddingBottom="@dimen/alert_dialog_vertical_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:paddingEnd="@dimen/activity_horizontal_margin">
+        android:paddingStart="@dimen/activity_horizontal_small_margin"
+        android:paddingEnd="@dimen/activity_horizontal_small_margin">
 
         <ImageView
             android:id="@+id/iv_close"
@@ -26,15 +26,15 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:padding="@dimen/activity_vertical_margin"
+            android:padding="@dimen/activity_vertical_small_margin"
             android:src="@drawable/ic_pycca" />
 
         <TextView
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_small_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_small_margin"
             android:text="@string/information_club_pycca_partner"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@android:color/black" />
@@ -61,7 +61,7 @@
                 android:id="@+id/til_club_pycca_card_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingTop="@dimen/activity_vertical_small_margin"
                 android:textColorHint="@android:color/black">
 
                 <android.support.design.widget.TextInputEditText
@@ -81,7 +81,7 @@
                 android:background="@drawable/button_default_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_small_margin"
                 android:text="@string/validate"
                 android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -93,8 +93,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingTop="@dimen/activity_horizontal_margin"
-                android:paddingBottom="@dimen/activity_horizontal_margin">
+                android:paddingTop="@dimen/activity_horizontal_small_margin"
+                android:paddingBottom="@dimen/activity_horizontal_small_margin">
 
                 <TextView
                     android:layout_width="wrap_content"

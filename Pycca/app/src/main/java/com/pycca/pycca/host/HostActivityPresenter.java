@@ -48,28 +48,32 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
     public void validateClicked(final HostActivity hostActivity) {
         if (validateFields()) {
             view.showLoadingAnimation();
-            String documentType = "C";
             final String identificationCard = view.getIdentificationCard();
             final String clubPyccaCardNumber = view.getClubPyccaCardNumber();
             final RestApiAdapter restApiAdapter = new RestApiAdapter();
             EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
-            Call<BaseResponse> getValidateClientCall = endpointsApi.getValidateClient(documentType, identificationCard, clubPyccaCardNumber);
+            Call<BaseResponse> getValidateClientCall = endpointsApi.getValidateClient("C", identificationCard, clubPyccaCardNumber);
             getValidateClientCall.enqueue(new Callback<BaseResponse>() {
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                    if (response.isSuccessful()) {
-                        BaseResponse baseResponse = response.body();
-                        if (baseResponse.getStatus()) {
-                            if (baseResponse.getData().getStatus_error().getCo_error() == 0) {
-                                model.setUser(hostActivity, identificationCard, clubPyccaCardNumber, baseResponse, HostActivityPresenter.this);
+                    try {
+                        if (response.isSuccessful()) {
+                            BaseResponse baseResponse = response.body();
+                            if (baseResponse.getStatus()) {
+                                if (baseResponse.getData().getStatus_error().getCo_error() == 0) {
+                                    model.setUser(hostActivity, identificationCard, clubPyccaCardNumber, baseResponse, HostActivityPresenter.this);
+                                }
+                                else {
+                                    onError(R.string.error_default);
+                                }
                             }
                             else {
                                 onError(R.string.error_default);
                             }
                         }
-                        else {
-                            onError(R.string.error_default);
-                        }
+                    }
+                    catch (Exception exception) {
+                        onError(R.string.error_default);
                     }
                 }
 

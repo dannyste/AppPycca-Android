@@ -20,10 +20,10 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_small_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_small_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_small_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_small_margin"
             cardview:cardCornerRadius="@dimen/corner_radius">
 
             <LinearLayout
@@ -38,7 +38,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="3"
                     android:orientation="vertical"
-                    android:paddingTop="@dimen/activity_horizontal_margin">
+                    android:paddingTop="@dimen/activity_horizontal_small_margin">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/civ_photo"
@@ -56,7 +56,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:paddingBottom="@dimen/activity_vertical_margin">
+                    android:paddingBottom="@dimen/activity_vertical_small_margin">
 
                     <TextView
                         android:id="@+id/tv_name"
@@ -75,7 +75,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="6"
                     android:orientation="vertical"
-                    android:padding="@dimen/activity_horizontal_margin">
+                    android:padding="@dimen/activity_horizontal_small_margin">
 
                     <TextView
                         android:fontFamily="@font/montserrat"
@@ -98,7 +98,7 @@
                         android:fontFamily="@font/montserrat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="@dimen/activity_horizontal_small_margin"
                         android:text="@string/identification_card"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@color/colorPrimary"
@@ -116,7 +116,7 @@
                         android:fontFamily="@font/montserrat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="@dimen/activity_horizontal_small_margin"
                         android:text="@string/club_pycca_card_number"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@color/colorPrimary"

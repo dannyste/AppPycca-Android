@@ -26,7 +26,7 @@ public interface MultiLoginActivityMVP {
 
         void hideFailureAnimation();
 
-        void showMessageError(int error);
+        void showErrorMessage(int error);
 
         void goToHostActivity();
 
@@ -45,8 +45,6 @@ public interface MultiLoginActivityMVP {
         void loginFacebookClicked();
 
         void loginGoogleClicked(MultiLoginActivity multiLoginActivity);
-
-        void loginTwitterClicked();
 
         void loginEmailClicked();
 

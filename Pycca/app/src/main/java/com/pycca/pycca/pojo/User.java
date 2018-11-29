@@ -10,6 +10,7 @@ public class User {
     private String photoUrl;
     private String name;
     private String email;
+    private String password;
     private String accountPhoneNumber;
     private String nativePhoneNumber;
     private boolean clubPyccaPartner;
@@ -28,6 +29,7 @@ public class User {
         this.photoUrl = "";
         this.name = "";
         this.email = "";
+        this.password = "";
         this.accountPhoneNumber = "";
         this.nativePhoneNumber = "";
         this.clubPyccaPartner = false;
@@ -72,6 +74,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getAccountPhoneNumber() {
@@ -176,6 +186,7 @@ public class User {
         map.put("photoUrl", this.photoUrl);
         map.put("name", this.name);
         map.put("email", this.email);
+        map.put("password", this.password);
         map.put("accountPhoneNumber", this.accountPhoneNumber);
         map.put("nativePhoneNumber", this.nativePhoneNumber);
         map.put("clubPyccaPartner", this.clubPyccaPartner);

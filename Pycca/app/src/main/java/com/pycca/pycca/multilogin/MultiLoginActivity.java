@@ -18,6 +18,7 @@ import com.pycca.pycca.host.HostActivity;
 import com.pycca.pycca.login.LoginActivity;
 import com.pycca.pycca.root.App;
 import com.pycca.pycca.signup.SignUpActivity;
+import com.pycca.pycca.util.Util;
 
 import javax.inject.Inject;
 
@@ -30,7 +31,7 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
 
     private LinearLayout ll_root_view, ll_loading, ll_done, ll_failure;
     private LoginButton lb_facebook;
-    private Button btn_login_facebook, btn_login_google, btn_login_twitter, btn_login_email, btn_new_here_register_now;
+    private Button btn_login_facebook, btn_login_google, btn_login_email, btn_new_here_register_now;
     private TextView tv_terms_use;
     private LottieAnimationView lav_loading, lav_done, lav_failure;
 
@@ -44,7 +45,6 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
         lb_facebook                = findViewById(R.id.lb_facebook);
         btn_login_facebook         = findViewById(R.id.btn_login_facebook);
         btn_login_google           = findViewById(R.id.btn_login_google);
-        btn_login_twitter          = findViewById(R.id.btn_login_twitter);
         btn_login_email            = findViewById(R.id.btn_login_email);
         btn_new_here_register_now  = findViewById(R.id.btn_new_here_register_now);
         tv_terms_use               = findViewById(R.id.tv_terms_use);
@@ -64,12 +64,6 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
             @Override
             public void onClick(View v) {
                 presenter.loginGoogleClicked(MultiLoginActivity.this);
-            }
-        });
-        btn_login_twitter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.loginTwitterClicked();
             }
         });
         btn_login_email.setOnClickListener(new View.OnClickListener() {
@@ -175,8 +169,8 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
     }
 
     @Override
-    public void showMessageError(int error) {
-
+    public void showErrorMessage(int error) {
+        Util.showMessage(ll_root_view, getString(error));
     }
 
     @Override

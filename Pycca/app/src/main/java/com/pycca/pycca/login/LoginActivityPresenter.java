@@ -21,12 +21,54 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter, Login
     @Override
     public void loginClicked(LoginActivity loginActivity) {
         if (validateForm()) {
+            view.hideRootView();
             view.showLoadingAnimation();
-            model.firebaseAuthWithEmailAndPassword(loginActivity, view.getEmail(), view.getPassword(), LoginActivityPresenter.this);
+            String email = view.getEmail();
+            String password = view.getPassword();
+            model.firebaseAuthWithEmailAndPassword(loginActivity, email, password, LoginActivityPresenter.this);
         }
     }
 
-    public boolean validateForm() {
+    @Override
+    public void forgotPasswordClicked() {
+        view.goToForgotPasswordActivity();
+    }
+
+    @Override
+    public void finishedDoneAnimation() {
+        view.goToHostActivity();
+    }
+
+    @Override
+    public void finishedFailureAnimation() {
+        view.hideFailureAnimation();
+        view.showRootView();
+    }
+
+    @Override
+    public void onSuccess(User user) {
+        model.userUnsubscribeFromTopic(Constants.TOPIC_INVITED);
+        model.userSubscribeToTopic(Constants.TOPIC_NATIVE);
+        if (user.isClubPyccaPartner()) {
+            model.userSubscribeToTopic(Constants.TOPIC_CLUB_PYCCA_PARTNER);
+            model.userSubscribeToTopic(Constants.TOPIC_NATIVE_CLUB_PYCCA_PARTNER);
+        }
+        else {
+            model.userSubscribeToTopic(Constants.TOPIC_NOT_CLUB_PYCCA_PARTNER);
+            model.userSubscribeToTopic(Constants.TOPIC_NATIVE_NOT_CLUB_PYCCA_PARTNER);
+        }
+        view.hideLoadingAnimation();
+        view.showDoneAnimation();
+    }
+
+    @Override
+    public void onError(int error) {
+        view.hideLoadingAnimation();
+        view.showFailureAnimation();
+        view.showErrorMessage(error);
+    }
+
+    private boolean validateForm() {
         String email = view.getEmail();
         String password = view.getPassword();
         if (email.isEmpty()) {
@@ -42,37 +84,6 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter, Login
             return false;
         }
         return true;
-    }
-
-    @Override
-    public void finishedDoneAnimation() {
-        view.goToHostActivity();
-    }
-
-    @Override
-    public void forgotPasswordClicked() {
-        view.goToForgotPasswordActivity();
-    }
-
-    @Override
-    public void onSuccess(User user) {
-        model.userUnsubscribeFromTopic(Constants.TOPIC_INVITED);
-        model.userSubscribeToTopic(Constants.TOPIC_NATIVE);
-        if (user.isClubPyccaPartner()) {
-            model.userSubscribeToTopic(Constants.TOPIC_CLUB_PYCCA_PARTNER);
-            model.userSubscribeToTopic(Constants.TOPIC_NATIVE_CLUB_PYCCA_PARTNER);
-        }
-        else {
-            model.userSubscribeToTopic(Constants.TOPIC_NOT_CLUB_PYCCA_PARTNER);
-            model.userSubscribeToTopic(Constants.TOPIC_NATIVE_NOT_CLUB_PYCCA_PARTNER);
-        }
-        view.showDoneAnimation();
-    }
-
-    @Override
-    public void onError(int error) {
-        view.hideLoadingAnimation();
-        view.showErrorMessage(error);
     }
 
 }

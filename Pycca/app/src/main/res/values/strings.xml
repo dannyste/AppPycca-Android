@@ -136,4 +136,5 @@
     <!-- Facebook -->
     <string name="facebook_app_id">1854965214584839</string>
     <string name="fb_login_protocol_scheme">fb1854965214584839</string>
+    <string name="or">o</string>
 </resources>

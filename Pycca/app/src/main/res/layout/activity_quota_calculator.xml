@@ -48,8 +48,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="9"
                 android:orientation="vertical"
-                android:paddingStart="@dimen/activity_horizontal_margin"
-                android:paddingEnd="@dimen/activity_horizontal_margin">
+                android:paddingStart="@dimen/activity_horizontal_small_margin"
+                android:paddingEnd="@dimen/activity_horizontal_small_margin">
 
             </LinearLayout>
 

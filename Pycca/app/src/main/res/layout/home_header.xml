@@ -13,7 +13,7 @@
         app:fixed_attribute="WIDTH"
         app:horizontal_ratio="1"
         app:vertical_ratio="1"
-        android:layout_marginBottom="@dimen/activity_vertical_margin" >
+        android:layout_marginBottom="@dimen/activity_vertical_small_margin" >
 
         <com.glide.slider.library.SliderLayout
             android:id="@+id/sl_home_fragment"

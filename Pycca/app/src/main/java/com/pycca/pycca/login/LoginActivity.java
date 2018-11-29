@@ -27,12 +27,12 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     @Inject
     public LoginActivityMVP.Presenter presenter;
 
-    private LinearLayout ll_root_view, ll_loading, ll_done;
+    private LinearLayout ll_root_view, ll_loading, ll_done, ll_failure;
     private TextInputLayout til_email, til_password;
     private TextInputEditText tiet_email, tiet_password;
     private Button btn_login;
     private TextView tv_forgot_password;
-    private LottieAnimationView lav_loading, lav_done;
+    private LottieAnimationView lav_loading, lav_done, lav_failure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,8 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
         lav_loading         = findViewById(R.id.lav_loading);
         ll_done             = findViewById(R.id.ll_done);
         lav_done            = findViewById(R.id.lav_done);
+        ll_failure          = findViewById(R.id.ll_failure);
+        lav_failure         = findViewById(R.id.lav_failure);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,23 +95,29 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     }
 
     @Override
-    public void showLoadingAnimation() {
+    public void showRootView() {
+        ll_root_view.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideRootView() {
         ll_root_view.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLoadingAnimation() {
         ll_loading.setVisibility(View.VISIBLE);
         lav_loading.playAnimation();
     }
 
     @Override
     public void hideLoadingAnimation() {
-        lav_loading.pauseAnimation();
         ll_loading.setVisibility(View.GONE);
-        ll_root_view.setVisibility(View.VISIBLE);
+        lav_loading.pauseAnimation();
     }
 
     @Override
     public void showDoneAnimation() {
-        lav_loading.pauseAnimation();
-        ll_loading.setVisibility(View.GONE);
         ll_done.setVisibility(View.VISIBLE);
         lav_done.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
@@ -136,6 +144,44 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     }
 
     @Override
+    public void showFailureAnimation() {
+        ll_failure.setVisibility(View.VISIBLE);
+        lav_failure.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                presenter.finishedFailureAnimation();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+        lav_failure.playAnimation();
+    }
+
+    @Override
+    public void hideFailureAnimation() {
+        ll_failure.setVisibility(View.GONE);
+        lav_failure.pauseAnimation();
+    }
+
+    @Override
+    public void showErrorMessage(int error) {
+        Util.showMessage(ll_root_view, getString(error));
+    }
+
+    @Override
     public void goToHostActivity() {
         Intent hostActivity = new Intent(LoginActivity.this, HostActivity.class);
         startActivity(hostActivity);
@@ -147,11 +193,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
         Intent forgotPasswordActivity = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
         startActivity(forgotPasswordActivity);
         finish();
-    }
-
-    @Override
-    public void showErrorMessage(int error) {
-        Util.showMessage(ll_root_view, getString(error));
     }
 
     @Override

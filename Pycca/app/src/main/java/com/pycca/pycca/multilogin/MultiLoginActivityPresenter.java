@@ -52,10 +52,6 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     }
 
     @Override
-    public void loginTwitterClicked() {
-    }
-
-    @Override
     public void loginEmailClicked() {
         view.goToLoginActivity();
     }
@@ -158,7 +154,7 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     public void onError(int error) {
         view.hideLoadingAnimation();
         view.showFailureAnimation();
-        view.showMessageError(error);
+        view.showErrorMessage(error);
     }
 
 }

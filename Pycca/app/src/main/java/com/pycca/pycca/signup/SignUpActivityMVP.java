@@ -1,8 +1,7 @@
 package com.pycca.pycca.signup;
 
-import android.app.Activity;
-
 import com.pycca.pycca.pojo.User;
+import com.pycca.pycca.restApi.model.BaseResponse;
 
 public interface SignUpActivityMVP {
 
@@ -12,23 +11,25 @@ public interface SignUpActivityMVP {
 
         String getPassword();
 
-        String getIdentification();
+        boolean isClubPyccaPartner();
 
-        String getCardNumber();
+        String getIdentificationCard();
 
-        boolean isClubPyccaMember();
-
-        void showInvalidEmail();
+        String getClubPyccaCardNumber();
 
         void showEmailRequired();
 
+        void showInvalidEmail();
+
         void showPasswordRequired();
 
-        void showIdentificationRequired();
+        void showIdentificationCardRequired();
 
-        void showCardNumberRequired();
+        void showClubPyccaCardNumberRequired();
 
-        void goToLoginActivity();
+        void showRootView();
+
+        void hideRootView();
 
         void showLoadingAnimation();
 
@@ -36,32 +37,44 @@ public interface SignUpActivityMVP {
 
         void showDoneAnimation();
 
-        void showErrorMessage(int errorCode);
+        void showFailureAnimation();
 
-        SignUpActivity getActivity();
+        void hideFailureAnimation();
+
+        void showErrorMessage(int error);
+
+        void goToHostActivity();
+
     }
 
     interface Presenter {
 
         void setView(SignUpActivityMVP.View view);
 
-        void registerClicked();
+        void signUpClicked(SignUpActivity signUpActivity);
 
         void finishedDoneAnimation();
+
+        void finishedFailureAnimation();
 
     }
 
     interface Model {
 
-        void saveUserAuthentication(String email, String password, String identificationCard, String clubPyccaCardNumber, TaskListener listener, SignUpActivity signUpActivity);
+        void firebaseCreateUserWithEmailAndPassword(final SignUpActivity signUpActivity, String email, String password, boolean clubPyccaPartner, String identificationCard, String clubPyccaCardNumber, BaseResponse baseResponse, final SignUpActivityMVP.TaskListener taskListener);
+
+        void userSubscribeToTopic(String topic);
+
+        void userUnsubscribeFromTopic(String topic);
 
     }
 
     interface TaskListener {
 
-        void onSuccess();
+        void onSuccess(User user);
 
         void onError(int errorCode);
+
     }
 
 }
