@@ -50,13 +50,15 @@ public class HostActivity extends AppCompatActivity implements HostActivityMVP.V
 
     private HashMap<Integer, Fragment> fragments;
 
-    private View viewAlertDialog;
-    private AlertDialog alertDialog;
-
-    private LinearLayout ll_root_view, ll_loading, ll_done;
+    private View view_alert_dialog;
+    private AlertDialog alert_dialog;
+    private LinearLayout ll_root_view, ll_loading, ll_done, ll_failure;
+    private ImageView iv_close;
     private TextInputLayout til_identification_card, til_club_pycca_card_number;
     private TextInputEditText tiet_identification_card, tiet_club_pycca_card_number;
-    private LottieAnimationView lav_loading, lav_done;
+    private Button btn_validate;
+    private TextView tv_request_now;
+    private LottieAnimationView lav_loading, lav_done, lav_failure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,42 +152,52 @@ public class HostActivity extends AppCompatActivity implements HostActivityMVP.V
 
     @Override
     public void showAlertDialogClubPyccaPartner() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(HostActivity.this);
-        viewAlertDialog = getLayoutInflater().inflate(R.layout.alert_dialog_club_pycca_partner, null);
-        builder.setView(viewAlertDialog);
-        alertDialog                 = builder.create();
-        ll_root_view                = viewAlertDialog.findViewById(R.id.ll_root_view);
-        ImageView iv_close          = viewAlertDialog.findViewById(R.id.iv_close);
-        til_identification_card     = viewAlertDialog.findViewById(R.id.til_identification_card);
-        tiet_identification_card    = viewAlertDialog.findViewById(R.id.tiet_identification_card);
-        til_club_pycca_card_number  = viewAlertDialog.findViewById(R.id.til_club_pycca_card_number);
-        tiet_club_pycca_card_number = viewAlertDialog.findViewById(R.id.tiet_club_pycca_card_number);
-        Button btn_validate         = viewAlertDialog.findViewById(R.id.btn_validate);
-        TextView tv_request_now     = viewAlertDialog.findViewById(R.id.tv_request_now);
-        ll_loading                  = viewAlertDialog.findViewById(R.id.ll_loading);
-        lav_loading                 = viewAlertDialog.findViewById(R.id.lav_loading);
-        ll_done                     = viewAlertDialog.findViewById(R.id.ll_done);
-        lav_done                    = viewAlertDialog.findViewById(R.id.lav_done);
-        iv_close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
-        btn_validate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.validateClicked(HostActivity.this);
-            }
-        });
-        tv_request_now.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.requestNowClicked();
-            }
-        });
-        alertDialog.setCancelable(false);
-        alertDialog.show();
+        if (alert_dialog == null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(HostActivity.this);
+            view_alert_dialog = getLayoutInflater().inflate(R.layout.alert_dialog_club_pycca_partner, null);
+            builder.setView(view_alert_dialog);
+            alert_dialog = builder.create();
+            ll_root_view                = view_alert_dialog.findViewById(R.id.ll_root_view);
+            iv_close                    = view_alert_dialog.findViewById(R.id.iv_close);
+            til_identification_card     = view_alert_dialog.findViewById(R.id.til_identification_card);
+            tiet_identification_card    = view_alert_dialog.findViewById(R.id.tiet_identification_card);
+            til_club_pycca_card_number  = view_alert_dialog.findViewById(R.id.til_club_pycca_card_number);
+            tiet_club_pycca_card_number = view_alert_dialog.findViewById(R.id.tiet_club_pycca_card_number);
+            btn_validate                = view_alert_dialog.findViewById(R.id.btn_validate);
+            tv_request_now              = view_alert_dialog.findViewById(R.id.tv_request_now);
+            ll_loading                  = view_alert_dialog.findViewById(R.id.ll_loading);
+            lav_loading                 = view_alert_dialog.findViewById(R.id.lav_loading);
+            ll_done                     = view_alert_dialog.findViewById(R.id.ll_done);
+            lav_done                    = view_alert_dialog.findViewById(R.id.lav_done);
+            ll_failure                  = view_alert_dialog.findViewById(R.id.ll_failure);
+            lav_failure                 = view_alert_dialog.findViewById(R.id.lav_failure);
+            iv_close.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alert_dialog.dismiss();
+                    alert_dialog = null;
+                }
+            });
+            btn_validate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.validateClicked(HostActivity.this);
+                }
+            });
+            tv_request_now.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.requestNowClicked();
+                }
+            });
+            alert_dialog.setCancelable(false);
+            alert_dialog.show();
+        }
+    }
+
+    @Override
+    public void hideAlertDialogClubPyccaPartner() {
+        alert_dialog.dismiss();
     }
 
     @Override
@@ -201,33 +213,39 @@ public class HostActivity extends AppCompatActivity implements HostActivityMVP.V
     @Override
     public void showIdentificationCardRequired() {
         til_identification_card.startAnimation(Util.getTranslateAnimation());
-        Util.showMessage(viewAlertDialog, getString(R.string.identification_card_required));
+        Util.showMessage(view_alert_dialog, getString(R.string.identification_card_required));
     }
 
     @Override
     public void clubPyccaCardNumberRequired() {
         til_club_pycca_card_number.startAnimation(Util.getTranslateAnimation());
-        Util.showMessage(viewAlertDialog, getString(R.string.club_pycca_card_number_required));
+        Util.showMessage(view_alert_dialog, getString(R.string.club_pycca_card_number_required));
+    }
+
+    @Override
+    public void showRootView() {
+        ll_root_view.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideRootView() {
+        ll_root_view.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void showLoadingAnimation() {
-        ll_root_view.setVisibility(View.INVISIBLE);
         ll_loading.setVisibility(View.VISIBLE);
         lav_loading.playAnimation();
     }
 
     @Override
     public void hideLoadingAnimation() {
-        lav_loading.pauseAnimation();
         ll_loading.setVisibility(View.GONE);
-        ll_root_view.setVisibility(View.VISIBLE);
+        lav_loading.pauseAnimation();
     }
 
     @Override
     public void showDoneAnimation() {
-        lav_loading.pauseAnimation();
-        ll_loading.setVisibility(View.GONE);
         ll_done.setVisibility(View.VISIBLE);
         lav_done.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
@@ -254,19 +272,47 @@ public class HostActivity extends AppCompatActivity implements HostActivityMVP.V
     }
 
     @Override
-    public void hideAlertDialogClubPyccaPartner() {
-        alertDialog.dismiss();
+    public void showFailureAnimation() {
+        ll_failure.setVisibility(View.VISIBLE);
+        lav_failure.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                presenter.finishedFailureAnimation();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+        lav_failure.playAnimation();
+    }
+
+    @Override
+    public void hideFailureAnimation() {
+        ll_failure.setVisibility(View.GONE);
+        lav_failure.pauseAnimation();
+    }
+
+    @Override
+    public void showErrorMessage(int error) {
+        Util.showMessage(ll_root_view, getString(error));
     }
 
     @Override
     public void goToClubPyccaPartnerActivity() {
         Intent clubPyccaPartnerActivity = new Intent(HostActivity.this, ClubPyccaPartnerActivity.class);
         startActivity(clubPyccaPartnerActivity);
-    }
-
-    @Override
-    public void showErrorMessage(int error) {
-        Util.showMessage(viewAlertDialog, getString(error));
     }
 
     @Override

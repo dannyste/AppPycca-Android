@@ -1,6 +1,5 @@
 package com.pycca.pycca.forgotpassword;
 
-import com.pycca.pycca.R;
 import com.pycca.pycca.util.Util;
 
 public class ForgotPasswordActivityPresenter implements ForgotPasswordActivityMVP.Presenter, ForgotPasswordActivityMVP.TaskListener{
@@ -8,7 +7,7 @@ public class ForgotPasswordActivityPresenter implements ForgotPasswordActivityMV
     private ForgotPasswordActivityMVP.View view;
     private ForgotPasswordActivityMVP.Model model;
 
-    public ForgotPasswordActivityPresenter(ForgotPasswordActivityMVP.Model model){
+    ForgotPasswordActivityPresenter(ForgotPasswordActivityMVP.Model model){
         this.model = model;
     }
 
@@ -19,38 +18,49 @@ public class ForgotPasswordActivityPresenter implements ForgotPasswordActivityMV
 
     @Override
     public void resetPasswordClicked() {
-        if(validate()){
+        if (validateForm()) {
+            view.hideRootView();
             view.showLoadingAnimation();
-            model.resetPasswordAuthentication(view.getEmail(),this);
+            String email = view.getEmail();
+            model.firebaseSendPasswordResetEmail(email,ForgotPasswordActivityPresenter.this);
         }
     }
 
     @Override
     public void finishedDoneAnimation() {
-        view.goToMultilogin();
+        view.goToMultiLoginActivity();
     }
 
-    public boolean validate (){
+    @Override
+    public void finishedFailureAnimation() {
+        view.hideFailureAnimation();
+        view.showRootView();
+    }
+
+    @Override
+    public void onSuccess() {
+        view.hideLoadingAnimation();
+        view.showDoneAnimation();
+    }
+
+    @Override
+    public void onError(int error) {
+        view.hideLoadingAnimation();
+        view.showFailureAnimation();
+        view.showErrorMessage(error);
+    }
+
+    private boolean validateForm() {
         String email = view.getEmail();
-        if(email.isEmpty()){
+        if (email.isEmpty()) {
             view.showEmailRequired();
             return false;
-        }else if (!Util.checkValidEmail(email)){
+        }
+        else if (!Util.checkValidEmail(email)) {
             view.showInvalidEmail();
             return false;
         }
         return true;
     }
 
-    @Override
-    public void onSuccess() {
-        view.showMessage(R.string.confirmation_link_email_sent);
-        view.showDoneAnimation();
-    }
-
-    @Override
-    public void onError(int errorCode) {
-        view.hideLoadingAnimation();
-        view.showMessage(errorCode);
-    }
 }

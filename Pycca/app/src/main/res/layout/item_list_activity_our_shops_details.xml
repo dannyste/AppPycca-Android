@@ -68,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Dirección"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorBlack"
                     android:textSize="@dimen/text_tiny" />
 
             </LinearLayout>
@@ -95,7 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Horario de atención"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorBlack"
                     android:textSize="@dimen/text_tiny" />
 
             </LinearLayout>
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/how_get"
                 android:textSize="@dimen/text_tiny"
-                android:textColor="@android:color/black" />
+                android:textColor="@color/colorBlack" />
 
         </LinearLayout>
 

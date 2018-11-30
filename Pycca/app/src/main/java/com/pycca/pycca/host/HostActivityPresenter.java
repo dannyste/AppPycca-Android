@@ -46,7 +46,8 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
 
     @Override
     public void validateClicked(final HostActivity hostActivity) {
-        if (validateFields()) {
+        if (validateForm()) {
+            view.hideRootView();
             view.showLoadingAnimation();
             final String identificationCard = view.getIdentificationCard();
             final String clubPyccaCardNumber = view.getClubPyccaCardNumber();
@@ -85,18 +86,9 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
         }
     }
 
-    private boolean validateFields() {
-        String identificationCard = view.getIdentificationCard();
-        String clubPyccaCardNumber = view.getClubPyccaCardNumber();
-        if (identificationCard.isEmpty()) {
-            view.showIdentificationCardRequired();
-            return false;
-        }
-        else if (clubPyccaCardNumber.isEmpty()) {
-            view.clubPyccaCardNumberRequired();
-            return false;
-        }
-        return true;
+    @Override
+    public void requestNowClicked() {
+        view.goToClubPyccaPartnerActivity();
     }
 
     @Override
@@ -106,8 +98,9 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
     }
 
     @Override
-    public void requestNowClicked() {
-        view.goToClubPyccaPartnerActivity();
+    public void finishedFailureAnimation() {
+        view.hideFailureAnimation();
+        view.showRootView();
     }
 
     @Override
@@ -122,13 +115,29 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
             model.userSubscribeToTopic(Constants.TOPIC_NATIVE_CLUB_PYCCA_PARTNER);
             model.userUnsubscribeFromTopic(Constants.TOPIC_NATIVE_NOT_CLUB_PYCCA_PARTNER);
         }
+        view.hideLoadingAnimation();
         view.showDoneAnimation();
     }
 
     @Override
     public void onError(int error) {
         view.hideLoadingAnimation();
+        view.showFailureAnimation();
         view.showErrorMessage(error);
+    }
+
+    private boolean validateForm() {
+        String identificationCard = view.getIdentificationCard();
+        String clubPyccaCardNumber = view.getClubPyccaCardNumber();
+        if (identificationCard.isEmpty()) {
+            view.showIdentificationCardRequired();
+            return false;
+        }
+        else if (clubPyccaCardNumber.isEmpty()) {
+            view.clubPyccaCardNumberRequired();
+            return false;
+        }
+        return true;
     }
 
 }

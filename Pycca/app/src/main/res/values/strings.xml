@@ -8,6 +8,7 @@
     <string name="login_google">Inicia sesión con Google</string>
     <string name="login_twitter">Inicia sesión con Twitter</string>
     <string name="new_here_register_now">¿Eres nuevo aquí? Regístrate ahora</string>
+    <string name="or">o</string>
     <string name="terms_use">Condiciones de uso</string>
 
     <!-- SignUpActivity -->
@@ -89,7 +90,7 @@
 
     <!-- AlertDialogClubPyccaPartner -->
     <string name="validate">Validar</string>
-    <string name="information_club_pycca_partner">Para acceder a la opción de ClubPycca por favor ingresar la siguiente información:</string>
+    <string name="information_club_pycca_partner">Si eres Socio ClubPycca por favor ingresa la siguiente información:</string>
     <string name="are_you_not_partner">¿No eres socio?</string>
     <string name="request_now">Solicítalo ahora</string>
 
@@ -136,5 +137,4 @@
     <!-- Facebook -->
     <string name="facebook_app_id">1854965214584839</string>
     <string name="fb_login_protocol_scheme">fb1854965214584839</string>
-    <string name="or">o</string>
 </resources>

@@ -67,6 +67,7 @@ public interface LoginActivityMVP {
         void onSuccess(User user);
 
         void onError(int errorCode);
+
     }
 
 }

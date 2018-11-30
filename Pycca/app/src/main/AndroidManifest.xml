@@ -54,6 +54,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:name=".accountstatus.AccountStatusActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"/>
+        <activity
             android:name=".quotaincrease.QuotaIncreaseActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
@@ -89,10 +93,6 @@
             android:name=".ourshopsdetails.OurShopsDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".accountstatus.AccountStatusActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar"/>
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"

@@ -68,7 +68,7 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View, Base
         requestOptions
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.DATA)
-                .error(R.drawable.ic_broken_image);
+                .error(R.drawable.ic_pycca);
         sl_promotions.removeAllSliders();
         for (int i = 0; i < headerList.size(); i++) {
             addPageToSlider(headerList.get(i).getPath(), requestOptions, i);
@@ -153,4 +153,5 @@ public class HomeFragment extends Fragment implements HomeFragmentMVP.View, Base
         this.baseSliderView = baseSliderView;
         presenter.clickOnBanner(headerList.get(i));
     }
+
 }

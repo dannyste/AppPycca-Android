@@ -43,10 +43,10 @@ public class SignUpActivityModel implements SignUpActivityMVP.Model {
         final User user = new User();
         user.setEmail(email);
         user.setPassword(password);
+        user.setClubPyccaPartner(clubPyccaPartner);
         if (clubPyccaPartner) {
             Gson gson = new Gson();
             ClientResponse clientResponse = gson.fromJson(gson.toJson(baseResponse.getData().getResult()), ClientResponse.class);
-            user.setClubPyccaPartner(clubPyccaPartner);
             user.setIdentificationCard(identificationCard);
             user.setClubPyccaCardNumber(clubPyccaCardNumber);
             user.setNamesClubPyccaPartner(clientResponse.getCl_nombres());

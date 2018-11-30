@@ -13,6 +13,8 @@ public interface HostActivityMVP {
 
         void showAlertDialogClubPyccaPartner();
 
+        void hideAlertDialogClubPyccaPartner();
+
         String getIdentificationCard();
 
         String getClubPyccaCardNumber();
@@ -21,17 +23,23 @@ public interface HostActivityMVP {
 
         void clubPyccaCardNumberRequired();
 
+        void showRootView();
+
+        void hideRootView();
+
         void showLoadingAnimation();
 
         void hideLoadingAnimation();
 
         void showDoneAnimation();
 
-        void hideAlertDialogClubPyccaPartner();
+        void showFailureAnimation();
 
-        void goToClubPyccaPartnerActivity();
+        void hideFailureAnimation();
 
         void showErrorMessage(int error);
+
+        void goToClubPyccaPartnerActivity();
 
     }
 
@@ -43,9 +51,11 @@ public interface HostActivityMVP {
 
         void validateClicked(HostActivity hostActivity);
 
+        void requestNowClicked();
+
         void finishedDoneAnimation(MenuItem menuItem);
 
-        void requestNowClicked();
+        void finishedFailureAnimation();
 
     }
 

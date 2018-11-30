@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="Name"
             android:textSize="@dimen/text_small"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/colorBlack" />
 
     </LinearLayout>
 
