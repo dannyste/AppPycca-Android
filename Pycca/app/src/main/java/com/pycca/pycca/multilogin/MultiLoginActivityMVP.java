@@ -12,6 +12,8 @@ public interface MultiLoginActivityMVP {
 
     interface View {
 
+        String getNativePhoneNumber();
+
         void showRootView();
 
         void hideRootView();
@@ -68,9 +70,9 @@ public interface MultiLoginActivityMVP {
 
     interface Model {
 
-        void firebaseAuthWithFacebook(MultiLoginActivity multiLoginActivity, AccessToken accessToken, MultiLoginActivityMVP.TaskListener taskListener);
+        void firebaseAuthWithFacebook(MultiLoginActivity multiLoginActivity, AccessToken accessToken, String nativePhoneNumber, MultiLoginActivityMVP.TaskListener taskListener);
 
-        void firebaseAuthWithGoogle(MultiLoginActivity multiLoginActivity, GoogleSignInAccount googleSignInAccount, MultiLoginActivityMVP.TaskListener taskListener);
+        void firebaseAuthWithGoogle(MultiLoginActivity multiLoginActivity, GoogleSignInAccount googleSignInAccount, String nativePhoneNumber, MultiLoginActivityMVP.TaskListener taskListener);
 
         void userSubscribeToTopic(String topic);
 

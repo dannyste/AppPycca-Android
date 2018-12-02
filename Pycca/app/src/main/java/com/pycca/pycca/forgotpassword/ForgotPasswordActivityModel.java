@@ -25,7 +25,7 @@ public class ForgotPasswordActivityModel implements ForgotPasswordActivityMVP.Mo
                             taskListener.onSuccess();
                         }
                         else {
-                            taskListener.onError(R.string.error_reset_password);
+                            taskListener.onError(R.string.error_default);
                         }
                     }
                 });

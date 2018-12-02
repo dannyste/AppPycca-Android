@@ -1,10 +1,12 @@
 package com.pycca.pycca.multilogin;
 
 import android.animation.Animator;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -84,6 +86,12 @@ public class MultiLoginActivity extends AppCompatActivity implements MultiLoginA
                 presenter.termsUseClicked();
             }
         });
+    }
+
+    @Override
+    public String getNativePhoneNumber() {
+        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        return telephonyManager.getLine1Number();
     }
 
     @Override

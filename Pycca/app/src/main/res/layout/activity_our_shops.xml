@@ -120,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/error_check_internet_connection"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_small" />
 
             <TextView
@@ -130,7 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/error_touch_retry"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_small" />
 
         </LinearLayout>

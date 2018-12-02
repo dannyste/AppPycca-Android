@@ -74,7 +74,8 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
         this.loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                model.firebaseAuthWithFacebook(multiLoginActivity, loginResult.getAccessToken(), MultiLoginActivityPresenter.this);
+                String nativePhoneNumber = view.getNativePhoneNumber();
+                model.firebaseAuthWithFacebook(multiLoginActivity, loginResult.getAccessToken(), nativePhoneNumber, MultiLoginActivityPresenter.this);
             }
 
             @Override
@@ -115,7 +116,8 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount googleSignInAccount = task.getResult(ApiException.class);
-                model.firebaseAuthWithGoogle(multiLoginActivity, googleSignInAccount, MultiLoginActivityPresenter.this);
+                String nativePhoneNumber = view.getNativePhoneNumber();
+                model.firebaseAuthWithGoogle(multiLoginActivity, googleSignInAccount, nativePhoneNumber, MultiLoginActivityPresenter.this);
             }
             catch (ApiException apiException) {
                 onError(R.string.error_default);

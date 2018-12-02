@@ -91,9 +91,6 @@ public class ClubPyccaPartnerActivityPresenter implements ClubPyccaPartnerActivi
         }else if(!Util.checkValidEmail(view.getEmail())){
             view.showErrorMessage(R.string.invalid_email);
             return false;
-        }else if(view.getIdentification().length() != 10){
-            view.showErrorMessage(R.string.invalid_identification);
-            return false;
         }
         return true;
     }

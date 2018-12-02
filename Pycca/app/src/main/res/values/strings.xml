@@ -52,6 +52,12 @@
     <!-- VirtualCardActivity -->
     <string name="client_since">Cliente desde:</string>
 
+    <!-- CardBlockingActivity -->
+    <string name="additional_cards">Tarjetas adicionales</string>
+    <string name="principal_card">Tarjeta principal</string>
+    <string name="block">Bloquear</string>
+    <string name="reason">Motivo</string>
+
     <!-- MoreFragment -->
     <string name="club_pycca_partner">Socio ClubPycca</string>
     <string name="not">No</string>
@@ -107,32 +113,30 @@
     <string name="request_card">Solicitar tarjeta</string>
     <string name="accept">Aceptar</string>
 
+    <!-- Validations -->
+    <string name="club_pycca_card_number_required">Número de tarjeta ClubPycca requerida</string>
+    <string name="email_required">Correo electrónico requerido</string>
+    <string name="identification_card_required">Cédula requerida</string>
+    <string name="invalid_email">Correo electrónico inválido</string>
+    <string name="password_required">Contraseña requerida</string>
+    <string name="permission_necessary">El permiso es necesario para utilizar esta opción</string>
+    <string name="permissions_necessary">Los permisos son necesarios para utilizar todas las opciones en la aplicación</string>
+    <string name="reason_required">Motivo requerido</string>
+    <string name="link_not_found">No se ha encontrado una url asociada</string>
+    <string name="all_fields_required">Debe completar todos los campos</string>
+
+    <!-- Confirmation Messages-->
+    <string name="confirmation_link_email_sent">Se ha enviado un enlace a su correo electrónico</string>
+
     <!-- Error Messages -->
     <string name="error_check_internet_connection">Revise su conexión a internet</string>
-    <string name="error_default">No se puede conectar, Revise su conexión a internet</string>
+    <string name="error_default">Por favor revise su conexión a internet</string>
     <string name="error_email_already_use">El correo electrónico ya se encuentra en uso</string>
     <string name="error_invalid_credentials">Las credenciales son inválidas</string>
     <string name="error_password_least_six_characters">La contraseña debe tener mínimo seis caracteres</string>
     <string name="error_touch_retry">Toca para reintentar</string>
     <string name="error_unable_connect">No se puede conectar</string>
     <string name="error_user_not_exist">El usuario no existe</string>
-
-
-    <!-- Confirmation Messages-->
-    <string name="confirmation_link_email_sent">Se ha enviado un enlace a su correo electrónico</string>
-
-    <!-- Validations -->
-    <string name="club_pycca_card_number_required">Número de tarjeta ClubPycca requerida</string>
-    <string name="email_required">Correo electrónico requerido</string>
-    <string name="error_reset_password">Ocurrió un error al restablecer la contraseña</string>
-    <string name="identification_card_required">Cédula requerida</string>
-    <string name="invalid_email">Correo electrónico inválido</string>
-    <string name="password_required">Contraseña requerida</string>
-    <string name="permission_necessary">El permiso es necesario para utilizar esta opción</string>
-    <string name="permissions_necessary">Los permisos son necesarios para utilizar todas las opciones en la aplicación</string>
-    <string name="link_not_found">No se ha encontrado una url asociada</string>
-    <string name="all_fields_required">Debe completar todos los campos</string>
-    <string name="invalid_identification">Cédula inválida</string>
 
     <!-- Facebook -->
     <string name="facebook_app_id">1854965214584839</string>
