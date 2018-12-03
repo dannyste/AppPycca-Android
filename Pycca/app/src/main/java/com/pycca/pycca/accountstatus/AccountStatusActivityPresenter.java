@@ -33,7 +33,7 @@ public class AccountStatusActivityPresenter implements AccountStatusActivityMVP.
 
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
-        Call<BaseResponse> getBalanceCall = endpointsApi.getBalance(user.getClubPyccaCardNumber());
+        Call<BaseResponse> getBalanceCall = endpointsApi.getAccountStatus(user.getClubPyccaCardNumber());
         getBalanceCall.enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {

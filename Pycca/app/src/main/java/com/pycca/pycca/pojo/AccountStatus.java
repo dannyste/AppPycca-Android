@@ -1,6 +1,7 @@
 package com.pycca.pycca.pojo;
 
-public class Balance {
+public class AccountStatus {
+
     private String clubPyccaCardNumber;
     private double availableCredit;
     private double usedCredit;
@@ -8,7 +9,8 @@ public class Balance {
     private String payUntil;
     private double quotaToPay;
 
-    public Balance() {
+    public AccountStatus() {
+
     }
 
     public String getClubPyccaCardNumber() {
@@ -58,4 +60,5 @@ public class Balance {
     public void setQuotaToPay(double quotaToPay) {
         this.quotaToPay = quotaToPay;
     }
+
 }

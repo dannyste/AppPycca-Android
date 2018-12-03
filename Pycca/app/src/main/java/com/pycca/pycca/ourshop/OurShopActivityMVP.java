@@ -1,12 +1,12 @@
-package com.pycca.pycca.ourshops;
+package com.pycca.pycca.ourshop;
 
-import com.pycca.pycca.pojo.OurShops;
-import com.pycca.pycca.pojo.OurShopsDetails;
+import com.pycca.pycca.pojo.OurShop;
+import com.pycca.pycca.pojo.OurShopDetail;
 import com.pycca.pycca.restApi.model.BaseResponse;
 
 import java.util.ArrayList;
 
-public interface OurShopsActivityMVP {
+public interface OurShopActivityMVP {
 
     interface View {
 
@@ -22,23 +22,23 @@ public interface OurShopsActivityMVP {
 
         void hideErrorAnimation();
 
-        void updateDataRecyclerView(ArrayList<OurShops> ourShopsArrayList);
+        void updateDataRecyclerView(ArrayList<OurShop> ourShopArrayList);
 
         void goToNearestShopActivity();
 
-        void goToOurShopsDetailsActivity(ArrayList<OurShopsDetails> ourShopsDetailsArrayList);
+        void goToOurShopsDetailsActivity(ArrayList<OurShopDetail> ourShopDetailArrayList);
 
     }
 
     interface Presenter {
 
-        void setView(OurShopsActivityMVP.View view);
+        void setView(OurShopActivityMVP.View view);
 
         void loadOurShopsArrayList();
 
         void goNearestShopClicked();
 
-        void itemClicked(ArrayList<OurShopsDetails> ourShopsDetailsArrayList);
+        void itemClicked(ArrayList<OurShopDetail> ourShopDetailArrayList);
 
         void errorTouchRetryClicked();
 
@@ -46,7 +46,7 @@ public interface OurShopsActivityMVP {
 
     interface Model {
 
-        ArrayList<OurShops> getOurShopsArrayList(BaseResponse baseResponse);
+        ArrayList<OurShop> getOurShopsArrayList(BaseResponse baseResponse);
 
     }
 

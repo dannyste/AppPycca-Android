@@ -1,6 +1,6 @@
 package com.pycca.pycca.accountstatus;
 
-import com.pycca.pycca.pojo.Balance;
+import com.pycca.pycca.pojo.AccountStatus;
 import com.pycca.pycca.pojo.User;
 import com.pycca.pycca.restApi.model.BaseResponse;
 
@@ -8,7 +8,7 @@ public interface AccountStatusActivityMVP {
 
     interface View {
 
-        void setData(Balance balance);
+        void setData(AccountStatus accountStatus);
 
         void showMessage(int strCode);
 
@@ -37,6 +37,6 @@ public interface AccountStatusActivityMVP {
 
         User getUser(AccountStatusActivity activity);
 
-        Balance getBalance(BaseResponse baseResponse, String clubPyccaCardNumber);
+        AccountStatus getBalance(BaseResponse baseResponse, String clubPyccaCardNumber);
     }
 }

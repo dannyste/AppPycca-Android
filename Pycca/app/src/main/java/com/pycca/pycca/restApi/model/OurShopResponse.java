@@ -1,6 +1,6 @@
 package com.pycca.pycca.restApi.model;
 
-public class OurShopsResponse {
+public class OurShopResponse {
 
     private String ciudad;
     private String descripcion;
@@ -11,11 +11,11 @@ public class OurShopsResponse {
     private double longitud;
     private String horario_atencion;
 
-    public OurShopsResponse() {
+    public OurShopResponse() {
 
     }
 
-    public OurShopsResponse(String ciudad, String descripcion, String telefono1, String telefono2, String direccion, double latitud, double longitud, String horario_atencion) {
+    public OurShopResponse(String ciudad, String descripcion, String telefono1, String telefono2, String direccion, double latitud, double longitud, String horario_atencion) {
         this.ciudad = ciudad;
         this.descripcion = descripcion;
         this.telefono1 = telefono1;

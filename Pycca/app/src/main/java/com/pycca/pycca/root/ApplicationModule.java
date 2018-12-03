@@ -13,7 +13,7 @@ public class ApplicationModule {
 
     private Application application;
 
-    public ApplicationModule(Application application) {
+    ApplicationModule(Application application) {
         this.application = application;
     }
 

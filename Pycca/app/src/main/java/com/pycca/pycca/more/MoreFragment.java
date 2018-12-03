@@ -26,7 +26,7 @@ import android.widget.LinearLayout;
 
 import com.pycca.pycca.R;
 import com.pycca.pycca.host.HostActivity;
-import com.pycca.pycca.ourshops.OurShopsActivity;
+import com.pycca.pycca.ourshop.OurShopActivity;
 import com.pycca.pycca.pojo.More;
 import com.pycca.pycca.profile.ProfileActivity;
 import com.pycca.pycca.root.App;
@@ -174,7 +174,7 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
 
     @Override
     public void goToOurShopsActivity() {
-        Intent ourShopsActivity = new Intent(getActivity(), OurShopsActivity.class);
+        Intent ourShopsActivity = new Intent(getActivity(), OurShopActivity.class);
         startActivity(ourShopsActivity);
     }
 

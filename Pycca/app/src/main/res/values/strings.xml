@@ -35,7 +35,7 @@
 
     <!-- ClubPyccaFragment -->
     <string name="account_status">Estado de cuenta</string>
-    <string name="balance">Consulta de saldo</string>
+    <string name="accountStatus">Consulta de saldo</string>
     <string name="card_blocking">Bloquear tarjeta</string>
     <string name="quota_calculator">Calculadora de cuotas</string>
     <string name="quota_increase">Incremento de cupo</string>
@@ -75,7 +75,7 @@
     <string name="logout">Cerrar sesión</string>
     <string name="not_registered">No registrada</string>
 
-    <!-- OurShopsDetailsActivity -->
+    <!-- OurShopDetailActivity -->
     <string name="address">Dirección</string>
     <string name="how_get">Cómo llegar</string>
     <string name="opening_hours">Horario de atención</string>

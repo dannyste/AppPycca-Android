@@ -86,11 +86,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".ourshops.OurShopsActivity"
+            android:name=".ourshop.OurShopActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".ourshopsdetails.OurShopsDetailsActivity"
+            android:name=".ourshopdetail.OurShopDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity

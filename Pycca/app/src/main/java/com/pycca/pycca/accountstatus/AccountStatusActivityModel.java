@@ -2,9 +2,9 @@ package com.pycca.pycca.accountstatus;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.pycca.pycca.pojo.Balance;
+import com.pycca.pycca.pojo.AccountStatus;
 import com.pycca.pycca.pojo.User;
-import com.pycca.pycca.restApi.model.BalanceResponse;
+import com.pycca.pycca.restApi.model.AccountStatusResponse;
 import com.pycca.pycca.restApi.model.BaseResponse;
 import com.pycca.pycca.util.SharedPreferencesManager;
 
@@ -15,19 +15,19 @@ public class AccountStatusActivityModel implements AccountStatusActivityMVP.Mode
     }
 
     @Override
-    public Balance getBalance(BaseResponse baseResponse, String clubPyccaCardNumber) {
+    public AccountStatus getBalance(BaseResponse baseResponse, String clubPyccaCardNumber) {
         Gson gson = new Gson();
-        TypeToken<BalanceResponse> typeToken = new TypeToken<BalanceResponse>() {};
-        BalanceResponse balanceResponse = gson.fromJson(gson.toJson(baseResponse.getData().getResult()), typeToken.getType());
+        TypeToken<AccountStatusResponse> typeToken = new TypeToken<AccountStatusResponse>() {};
+        AccountStatusResponse accountStatusResponse = gson.fromJson(gson.toJson(baseResponse.getData().getResult()), typeToken.getType());
 
-        Balance balance = new Balance();
-        balance.setAprovedQuota(balanceResponse.getCupo());
-        balance.setAvailableCredit(balanceResponse.getDisponibleCuenta());
-        balance.setClubPyccaCardNumber(clubPyccaCardNumber);
-        balance.setUsedCredit(balanceResponse.getCupo() - balanceResponse.getDisponibleCuenta());
-        balance.setPayUntil(balanceResponse.getFechaTopePago().replaceAll("(\\r|\\n|\\t)",""));
-        balance.setQuotaToPay(balanceResponse.getMinimoPagar());
+        AccountStatus accountStatus = new AccountStatus();
+        accountStatus.setAprovedQuota(accountStatusResponse.getCupo());
+        accountStatus.setAvailableCredit(accountStatusResponse.getDisponibleCuenta());
+        accountStatus.setClubPyccaCardNumber(clubPyccaCardNumber);
+        accountStatus.setUsedCredit(accountStatusResponse.getCupo() - accountStatusResponse.getDisponibleCuenta());
+        accountStatus.setPayUntil(accountStatusResponse.getFechaTopePago().replaceAll("(\\r|\\n|\\t)",""));
+        accountStatus.setQuotaToPay(accountStatusResponse.getMinimoPagar());
 
-        return balance;
+        return accountStatus;
     }
 }

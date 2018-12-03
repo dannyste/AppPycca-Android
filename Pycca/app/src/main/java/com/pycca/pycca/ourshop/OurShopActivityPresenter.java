@@ -1,8 +1,8 @@
-package com.pycca.pycca.ourshops;
+package com.pycca.pycca.ourshop;
 
 import com.pycca.pycca.R;
-import com.pycca.pycca.pojo.OurShops;
-import com.pycca.pycca.pojo.OurShopsDetails;
+import com.pycca.pycca.pojo.OurShop;
+import com.pycca.pycca.pojo.OurShopDetail;
 import com.pycca.pycca.restApi.EndpointsApi;
 import com.pycca.pycca.restApi.RestApiAdapter;
 import com.pycca.pycca.restApi.model.BaseResponse;
@@ -13,17 +13,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OurShopsActivityPresenter implements OurShopsActivityMVP.Presenter, OurShopsActivityMVP.TaskListener {
+public class OurShopActivityPresenter implements OurShopActivityMVP.Presenter, OurShopActivityMVP.TaskListener {
 
-    private OurShopsActivityMVP.View view;
-    private OurShopsActivityMVP.Model model;
+    private OurShopActivityMVP.View view;
+    private OurShopActivityMVP.Model model;
 
-    OurShopsActivityPresenter(OurShopsActivityMVP.Model model) {
+    OurShopActivityPresenter(OurShopActivityMVP.Model model) {
         this.model  = model;
     }
 
     @Override
-    public void setView(OurShopsActivityMVP.View view) {
+    public void setView(OurShopActivityMVP.View view) {
         this.view = view;
     }
 
@@ -42,10 +42,10 @@ public class OurShopsActivityPresenter implements OurShopsActivityMVP.Presenter,
                         BaseResponse baseResponse = response.body();
                         if (baseResponse.getStatus()) {
                             if (baseResponse.getData().getStatus_error().getCo_error() == 0) {
-                                ArrayList<OurShops> ourShopsArrayList = model.getOurShopsArrayList(baseResponse);
+                                ArrayList<OurShop> ourShopArrayList = model.getOurShopsArrayList(baseResponse);
                                 view.hideLoadingAnimation();
                                 view.showRootView();
-                                view.updateDataRecyclerView(ourShopsArrayList);
+                                view.updateDataRecyclerView(ourShopArrayList);
                             }
                             else {
                                 onError(R.string.error_default);
@@ -74,8 +74,8 @@ public class OurShopsActivityPresenter implements OurShopsActivityMVP.Presenter,
     }
 
     @Override
-    public void itemClicked(ArrayList<OurShopsDetails> ourShopsDetailsArrayList) {
-        view.goToOurShopsDetailsActivity(ourShopsDetailsArrayList);
+    public void itemClicked(ArrayList<OurShopDetail> ourShopDetailArrayList) {
+        view.goToOurShopsDetailsActivity(ourShopDetailArrayList);
     }
 
     @Override

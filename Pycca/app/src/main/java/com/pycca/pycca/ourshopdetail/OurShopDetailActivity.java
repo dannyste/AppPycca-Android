@@ -1,4 +1,4 @@
-package com.pycca.pycca.ourshopsdetails;
+package com.pycca.pycca.ourshopdetail;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +16,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.pycca.pycca.R;
-import com.pycca.pycca.pojo.OurShopsDetails;
+import com.pycca.pycca.pojo.OurShopDetail;
 import com.pycca.pycca.root.App;
 import com.pycca.pycca.util.Constants;
 
@@ -24,32 +24,32 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-public class OurShopsDetailsActivity extends AppCompatActivity implements OnMapReadyCallback, OurShopsDetailsActivityMVP.View {
+public class OurShopDetailActivity extends AppCompatActivity implements OnMapReadyCallback, OurShopDetailActivityMVP.View {
 
     @Inject
-    public OurShopsDetailsActivityMVP.Presenter presenter;
+    public OurShopDetailActivityMVP.Presenter presenter;
 
     private GoogleMap googleMap;
 
     private RecyclerView rv_our_shops_details;
 
-    private ArrayList<OurShopsDetails> ourShopsDetailsArrayList ;
-    private OurShopsDetailsActivityAdapter ourShopsDetailsActivityAdapter;
+    private ArrayList<OurShopDetail> ourShopDetailArrayList;
+    private OurShopDetailActivityAdapter ourShopDetailActivityAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_our_shops_details);
-        ((App) getApplication()).getApplicationComponent().inject(OurShopsDetailsActivity.this);
+        setContentView(R.layout.activity_our_shop_detail);
+        ((App) getApplication()).getApplicationComponent().inject(OurShopDetailActivity.this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(OurShopsDetailsActivity.this);
+        mapFragment.getMapAsync(OurShopDetailActivity.this);
         rv_our_shops_details = findViewById(R.id.rv_our_shops_details);
         Bundle bundle = getIntent().getExtras();
-        ourShopsDetailsArrayList = bundle.getParcelableArrayList("ourShopsDetailsArrayList");
+        ourShopDetailArrayList = bundle.getParcelableArrayList("ourShopDetailArrayList");
         initRecyclerView();
     }
 
@@ -61,21 +61,21 @@ public class OurShopsDetailsActivity extends AppCompatActivity implements OnMapR
     }
 
     public void initMarkerGoogleMap() {
-        addMarkerGoogleMap(ourShopsDetailsArrayList.get(0));
+        addMarkerGoogleMap(ourShopDetailArrayList.get(0));
     }
 
     public void initRecyclerView() {
-        ourShopsDetailsActivityAdapter = new OurShopsDetailsActivityAdapter(OurShopsDetailsActivity.this, ourShopsDetailsArrayList, new OurShopsDetailsActivityAdapter.OnItemClickListener() {
+        ourShopDetailActivityAdapter = new OurShopDetailActivityAdapter(OurShopDetailActivity.this, ourShopDetailArrayList, new OurShopDetailActivityAdapter.OnItemClickListener() {
             @Override
-            public void onClick(OurShopsDetailsActivityAdapter.OurShopsDetailsViewHolder ourShopsDetailsViewHolder, OurShopsDetails ourShopsDetails) {
-                presenter.itemClicked(ourShopsDetails);
+            public void onClick(OurShopDetailActivityAdapter.OurShopDetailViewHolder ourShopDetailViewHolder, OurShopDetail ourShopDetail) {
+                presenter.itemClicked(ourShopDetail);
             }
         });
-        rv_our_shops_details.setAdapter(ourShopsDetailsActivityAdapter);
-        rv_our_shops_details.addItemDecoration(new DividerItemDecoration(OurShopsDetailsActivity.this, DividerItemDecoration.VERTICAL));
+        rv_our_shops_details.setAdapter(ourShopDetailActivityAdapter);
+        rv_our_shops_details.addItemDecoration(new DividerItemDecoration(OurShopDetailActivity.this, DividerItemDecoration.VERTICAL));
         rv_our_shops_details.setItemAnimator(new DefaultItemAnimator());
         rv_our_shops_details.setHasFixedSize(false);
-        rv_our_shops_details.setLayoutManager(new LinearLayoutManager(OurShopsDetailsActivity.this));
+        rv_our_shops_details.setLayoutManager(new LinearLayoutManager(OurShopDetailActivity.this));
     }
 
     @Override
@@ -84,9 +84,9 @@ public class OurShopsDetailsActivity extends AppCompatActivity implements OnMapR
     }
 
     @Override
-    public void addMarkerGoogleMap(OurShopsDetails ourShopsDetails) {
-        LatLng latLng = new LatLng(ourShopsDetails.getLatitude(), ourShopsDetails.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(ourShopsDetails.getName()).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_google_map));
+    public void addMarkerGoogleMap(OurShopDetail ourShopDetail) {
+        LatLng latLng = new LatLng(ourShopDetail.getLatitude(), ourShopDetail.getLongitude());
+        MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(ourShopDetail.getName()).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_google_map));
         googleMap.addMarker(markerOptions).showInfoWindow();
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, Constants.GOOGLE_MAP_ZOOM));
     }
@@ -94,7 +94,7 @@ public class OurShopsDetailsActivity extends AppCompatActivity implements OnMapR
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.setView(OurShopsDetailsActivity.this);
+        presenter.setView(OurShopDetailActivity.this);
     }
 
     @Override
