@@ -34,7 +34,7 @@ public class OurShopActivity extends AppCompatActivity implements OurShopActivit
 
     private LinearLayout ll_root_view, ll_loading, ll_error;
     private RelativeLayout rl_go_nearest_shop;
-    private RecyclerView rv_our_shops;
+    private RecyclerView rv_our_shop;
     private LottieAnimationView lav_loading, lav_error;
     private TextView tv_error_touch_retry;
 
@@ -52,7 +52,7 @@ public class OurShopActivity extends AppCompatActivity implements OurShopActivit
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         ll_root_view         = findViewById(R.id.ll_root_view);
         rl_go_nearest_shop   = findViewById(R.id.rl_go_nearest_shop);
-        rv_our_shops         = findViewById(R.id.rv_our_shops);
+        rv_our_shop          = findViewById(R.id.rv_our_shop);
         ll_loading           = findViewById(R.id.ll_loading);
         lav_loading          = findViewById(R.id.lav_loading);
         ll_error             = findViewById(R.id.ll_error);
@@ -81,11 +81,11 @@ public class OurShopActivity extends AppCompatActivity implements OurShopActivit
                 presenter.itemClicked(ourShop.getOurShopDetailArrayList());
             }
         });
-        rv_our_shops.setAdapter(ourShopActivityAdapter);
-        rv_our_shops.addItemDecoration(new DividerItemDecoration(OurShopActivity.this, DividerItemDecoration.VERTICAL));
-        rv_our_shops.setItemAnimator(new DefaultItemAnimator());
-        rv_our_shops.setHasFixedSize(false);
-        rv_our_shops.setLayoutManager(new LinearLayoutManager(OurShopActivity.this));
+        rv_our_shop.setAdapter(ourShopActivityAdapter);
+        rv_our_shop.addItemDecoration(new DividerItemDecoration(OurShopActivity.this, DividerItemDecoration.VERTICAL));
+        rv_our_shop.setItemAnimator(new DefaultItemAnimator());
+        rv_our_shop.setHasFixedSize(false);
+        rv_our_shop.setLayoutManager(new LinearLayoutManager(OurShopActivity.this));
     }
 
     @Override

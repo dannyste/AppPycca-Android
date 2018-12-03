@@ -89,9 +89,10 @@
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/tiet_reason"
                     android:drawableEnd="@drawable/ic_arrow_drop_down"
+                    android:focusable="false"
                     android:fontFamily="@font/montserrat"
                     android:hint="@string/reason"
-                    android:inputType="text"
+                    android:inputType="none"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"

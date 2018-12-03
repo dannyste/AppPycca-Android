@@ -86,16 +86,16 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
                             int newPosition = moreArrayList.size() < 4 ? position + 1 : position;
                             switch (newPosition) {
                                 case 0:
-                                    presenter.firstItemClicked();
+                                    presenter.moreFirstItemClicked();
                                     break;
                                 case 1:
-                                    presenter.secondItemClicked();
+                                    presenter.moreSecondItemClicked();
                                     break;
                                 case 2:
-                                    presenter.thirdItemClicked();
+                                    presenter.moreThirdItemClicked();
                                     break;
                                 case 3:
-                                    presenter.fourthItemClicked();
+                                    presenter.moreFourthItemClicked();
                                     break;
                             }
                             animationRunning = true;
@@ -138,10 +138,10 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
                         dialog.dismiss();
                         switch (position) {
                             case 0:
-                                presenter.alertDialogFirstItemClicked();
+                                presenter.contactUsFirstItemClicked();
                                 break;
                             case 1:
-                                presenter.alertDialogSecondItemClicked();
+                                presenter.contactUsSecondItemClicked();
                                 break;
                         }
                     }

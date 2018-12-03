@@ -46,7 +46,13 @@ public class CardBlockingActivityPresenter implements CardBlockingActivityMVP.Pr
                                 ArrayList<Card> cardArrayList = model.getCardArrayList(baseResponse);
                                 view.hideLoadingAnimation();
                                 view.showRootView();
-                                view.updateDataRadioButton(cardArrayList);
+                                if (cardArrayList.size() == 1) {
+                                    view.updateTextPrincipalCardRadioButton(cardArrayList.get(0));
+                                }
+                                else {
+                                    view.showAdditionalCardsTextView();
+                                    view.addAdditionalCardsRadioButton(cardArrayList);
+                                }
                             }
                             else {
                                 onError(R.string.error_default);
@@ -70,10 +76,26 @@ public class CardBlockingActivityPresenter implements CardBlockingActivityMVP.Pr
     }
 
     @Override
+    public void reasonClicked() {
+        view.showAlertDialogReason();
+    }
+
+    @Override
+    public void reasonItemClicked(String reason) {
+        view.setReason(reason);
+    }
+
+    @Override
     public void blockClicked() {
         view.hideRootView();
         view.showLoadingAnimation();
 
+    }
+
+    @Override
+    public void blockPositiveButtonClicked() {
+        view.hideRootView();
+        view.showLoadingAnimation();
     }
 
     @Override
@@ -83,7 +105,8 @@ public class CardBlockingActivityPresenter implements CardBlockingActivityMVP.Pr
 
     @Override
     public void finishedFailureAnimation() {
-
+        view.hideFailureAnimation();
+        view.showRootView();
     }
 
     @Override

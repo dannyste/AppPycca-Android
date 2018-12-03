@@ -31,7 +31,7 @@ public class OurShopDetailActivity extends AppCompatActivity implements OnMapRea
 
     private GoogleMap googleMap;
 
-    private RecyclerView rv_our_shops_details;
+    private RecyclerView rv_our_shop_detail;
 
     private ArrayList<OurShopDetail> ourShopDetailArrayList;
     private OurShopDetailActivityAdapter ourShopDetailActivityAdapter;
@@ -47,7 +47,7 @@ public class OurShopDetailActivity extends AppCompatActivity implements OnMapRea
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(OurShopDetailActivity.this);
-        rv_our_shops_details = findViewById(R.id.rv_our_shops_details);
+        rv_our_shop_detail = findViewById(R.id.rv_our_shop_detail);
         Bundle bundle = getIntent().getExtras();
         ourShopDetailArrayList = bundle.getParcelableArrayList("ourShopDetailArrayList");
         initRecyclerView();
@@ -71,11 +71,11 @@ public class OurShopDetailActivity extends AppCompatActivity implements OnMapRea
                 presenter.itemClicked(ourShopDetail);
             }
         });
-        rv_our_shops_details.setAdapter(ourShopDetailActivityAdapter);
-        rv_our_shops_details.addItemDecoration(new DividerItemDecoration(OurShopDetailActivity.this, DividerItemDecoration.VERTICAL));
-        rv_our_shops_details.setItemAnimator(new DefaultItemAnimator());
-        rv_our_shops_details.setHasFixedSize(false);
-        rv_our_shops_details.setLayoutManager(new LinearLayoutManager(OurShopDetailActivity.this));
+        rv_our_shop_detail.setAdapter(ourShopDetailActivityAdapter);
+        rv_our_shop_detail.addItemDecoration(new DividerItemDecoration(OurShopDetailActivity.this, DividerItemDecoration.VERTICAL));
+        rv_our_shop_detail.setItemAnimator(new DefaultItemAnimator());
+        rv_our_shop_detail.setHasFixedSize(false);
+        rv_our_shop_detail.setLayoutManager(new LinearLayoutManager(OurShopDetailActivity.this));
     }
 
     @Override

@@ -31,17 +31,17 @@ public interface MoreFragmentMVP {
 
         void loadMoreArrayList(MoreFragment moreFragment);
 
-        void firstItemClicked();
+        void moreFirstItemClicked();
 
-        void secondItemClicked();
+        void moreSecondItemClicked();
 
-        void thirdItemClicked();
+        void moreThirdItemClicked();
 
-        void fourthItemClicked();
+        void moreFourthItemClicked();
 
-        void alertDialogFirstItemClicked();
+        void contactUsFirstItemClicked();
 
-        void alertDialogSecondItemClicked();
+        void contactUsSecondItemClicked();
 
         String getPhoneNumber(MoreFragment moreFragment);
 

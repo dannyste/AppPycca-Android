@@ -30,7 +30,17 @@ public interface CardBlockingActivityMVP {
 
         void hideErrorAnimation();
 
-        void updateDataRadioButton(ArrayList<Card> cardArrayList);
+        void updateTextPrincipalCardRadioButton(Card card);
+
+        void showAdditionalCardsTextView();
+
+        void addAdditionalCardsRadioButton(ArrayList<Card> cardArrayList);
+
+        void showAlertDialogReason();
+
+        void setReason(String reason);
+
+        void showAlertDialogBlock();
 
     }
 
@@ -40,7 +50,13 @@ public interface CardBlockingActivityMVP {
 
         void loadCardsArrayList(CardBlockingActivity cardBlockingActivity);
 
+        void reasonClicked();
+
+        void reasonItemClicked(String reason);
+
         void blockClicked();
+
+        void blockPositiveButtonClicked();
 
         void finishedDoneAnimation();
 

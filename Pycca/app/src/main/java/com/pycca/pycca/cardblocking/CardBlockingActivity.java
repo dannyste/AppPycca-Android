@@ -1,9 +1,11 @@
 package com.pycca.pycca.cardblocking;
 
 import android.animation.Animator;
-import android.content.res.Resources;
-import android.support.v4.content.ContextCompat;
+import android.content.DialogInterface;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -37,8 +39,12 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
     private RadioGroup rg_cards;
     private RadioButton rb_principal_card;
     private TextView tv_additional_cards, tv_error_touch_retry;
+    private TextInputLayout til_reason;
+    private TextInputEditText tiet_reason;
     private Button btn_block;
     private LottieAnimationView lav_loading, lav_done, lav_failure, lav_error;
+
+    private int reasonCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,9 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
         ll_root_view         = findViewById(R.id.ll_root_view);
         rg_cards             = findViewById(R.id.rg_cards);
         rb_principal_card    = findViewById(R.id.rb_principal_card);
+        tv_additional_cards  = findViewById(R.id.tv_additional_cards);
+        til_reason           = findViewById(R.id.til_reason);
+        tiet_reason          = findViewById(R.id.tiet_reason);
         btn_block            = findViewById(R.id.btn_block);
         ll_loading           = findViewById(R.id.ll_loading);
         lav_loading          = findViewById(R.id.lav_loading);
@@ -63,6 +72,12 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
         ll_error             = findViewById(R.id.ll_error);
         lav_error            = findViewById(R.id.lav_error);
         tv_error_touch_retry = findViewById(R.id.tv_error_touch_retry);
+        tiet_reason.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.reasonClicked();
+            }
+        });
         btn_block.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,17 +192,77 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
     }
 
     @Override
-    public void updateDataRadioButton(ArrayList<Card> cardArrayList) {
+    public void updateTextPrincipalCardRadioButton(Card card) {
+        rb_principal_card.setText(card.getClubPyccaCardNumber() + "\n" + card.getName());
+    }
+
+    @Override
+    public void showAdditionalCardsTextView() {
+        tv_additional_cards.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void addAdditionalCardsRadioButton(ArrayList<Card> cardArrayList) {
         ViewGroup.LayoutParams layoutParams = rb_principal_card.getLayoutParams();
-        for (Card card : cardArrayList) {
+        for (int i = 0; i < cardArrayList.size(); i++) {
             RadioButton radioButton = new RadioButton(CardBlockingActivity.this);
+            radioButton.setId(i);
             radioButton.setLayoutParams(layoutParams);
-            radioButton.setText(card.getClubPyccaCardNumber() + "\n" + card.getName());
+            radioButton.setText(cardArrayList.get(i).getClubPyccaCardNumber() + "\n" + cardArrayList.get(i).getName());
             radioButton.setTextColor(getResources().getColor(R.color.colorBlack));
             radioButton.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_medium));
             radioButton.setTypeface(ResourcesCompat.getFont(CardBlockingActivity.this, R.font.montserrat));
             rg_cards.addView(radioButton);
         }
+    }
+
+    @Override
+    public void showAlertDialogReason() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(CardBlockingActivity.this);
+        builder.setTitle(R.string.reason)
+                .setItems(R.array.reason_array, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int position) {
+                        dialog.dismiss();
+                        switch (position) {
+                            case 0:
+                                reasonCode = 4;
+                                presenter.reasonItemClicked(getString(R.string.lost));
+                                break;
+                            case 1:
+                                reasonCode = 5;
+                                presenter.reasonItemClicked(getString(R.string.stole));
+                                break;
+                        }
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.setCancelable(true);
+        alertDialog.show();
+    }
+
+    @Override
+    public void setReason(String reason) {
+        tiet_reason.setText(reason);
+    }
+
+    @Override
+    public void showAlertDialogBlock() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(CardBlockingActivity.this);
+        builder.setMessage(R.string.sure_block_card)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                        presenter.blockPositiveButtonClicked();
+                    }
+                })
+                .setNegativeButton(R.string.not, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.setCancelable(false);
+        alertDialog.show();
     }
 
     @Override

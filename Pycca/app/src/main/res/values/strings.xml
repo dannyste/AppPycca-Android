@@ -54,9 +54,16 @@
 
     <!-- CardBlockingActivity -->
     <string name="additional_cards">Tarjetas adicionales</string>
-    <string name="principal_card">Tarjeta principal</string>
     <string name="block">Bloquear</string>
+    <string name="lost">Extraviada</string>
+    <string name="principal_card">Tarjeta principal</string>
     <string name="reason">Motivo</string>
+    <string name="stole">Robo</string>
+    <string name="sure_block_card">¿Está seguro de bloquear la tarjeta?</string>
+    <string-array name="reason_array">
+        <item>Extraviada</item>
+        <item>Robo</item>
+    </string-array>
 
     <!-- MoreFragment -->
     <string name="club_pycca_partner">Socio ClubPycca</string>
