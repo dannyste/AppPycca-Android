@@ -52,7 +52,7 @@ public class SignUpActivityModel implements SignUpActivityMVP.Model {
             user.setNamesClubPyccaPartner(clientResponse.getCl_nombres());
             user.setSurnamesClubPyccaPartner(clientResponse.getCl_apellidos());
             user.setAccountNumber(clientResponse.getMa_cuenta());
-            user.setClientSince(clientResponse.getMa_fapertura());
+            user.setClientSince(clientResponse.getFe_apertura());
         }
         user.setCreationDate(new Date());
         user.setModificationDate(new Date());

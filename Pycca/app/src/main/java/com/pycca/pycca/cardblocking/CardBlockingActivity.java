@@ -13,6 +13,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -35,16 +36,17 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
     @Inject
     public CardBlockingActivityMVP.Presenter presenter;
 
-    private LinearLayout ll_root_view, ll_loading, ll_done, ll_failure, ll_error;
+    private LinearLayout ll_root_view, ll_confirmation_message, ll_loading, ll_done, ll_failure, ll_error;
     private RadioGroup rg_cards;
     private RadioButton rb_principal_card;
-    private TextView tv_additional_cards, tv_error_touch_retry;
+    private TextView tv_additional_cards, tv_confirmation_message, tv_error_touch_retry;
     private TextInputLayout til_reason;
     private TextInputEditText tiet_reason;
     private Button btn_block;
     private LottieAnimationView lav_loading, lav_done, lav_failure, lav_error;
 
-    private int reasonCode;
+    private String clubPyccaCardNumber;
+    private String clubPyccaCardName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,22 +58,24 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         findViewById(R.id.tv_additional_cards).setVisibility(View.VISIBLE);
-        ll_root_view         = findViewById(R.id.ll_root_view);
-        rg_cards             = findViewById(R.id.rg_cards);
-        rb_principal_card    = findViewById(R.id.rb_principal_card);
-        tv_additional_cards  = findViewById(R.id.tv_additional_cards);
-        til_reason           = findViewById(R.id.til_reason);
-        tiet_reason          = findViewById(R.id.tiet_reason);
-        btn_block            = findViewById(R.id.btn_block);
-        ll_loading           = findViewById(R.id.ll_loading);
-        lav_loading          = findViewById(R.id.lav_loading);
-        ll_done              = findViewById(R.id.ll_done);
-        lav_done             = findViewById(R.id.lav_done);
-        ll_failure           = findViewById(R.id.ll_failure);
-        lav_failure          = findViewById(R.id.lav_failure);
-        ll_error             = findViewById(R.id.ll_error);
-        lav_error            = findViewById(R.id.lav_error);
-        tv_error_touch_retry = findViewById(R.id.tv_error_touch_retry);
+        ll_root_view            = findViewById(R.id.ll_root_view);
+        rg_cards                = findViewById(R.id.rg_cards);
+        rb_principal_card       = findViewById(R.id.rb_principal_card);
+        tv_additional_cards     = findViewById(R.id.tv_additional_cards);
+        til_reason              = findViewById(R.id.til_reason);
+        tiet_reason             = findViewById(R.id.tiet_reason);
+        btn_block               = findViewById(R.id.btn_block);
+        ll_confirmation_message = findViewById(R.id.ll_confirmation_message);
+        tv_confirmation_message = findViewById(R.id.tv_confirmation_message);
+        ll_loading              = findViewById(R.id.ll_loading);
+        lav_loading             = findViewById(R.id.lav_loading);
+        ll_done                 = findViewById(R.id.ll_done);
+        lav_done                = findViewById(R.id.lav_done);
+        ll_failure              = findViewById(R.id.ll_failure);
+        lav_failure             = findViewById(R.id.lav_failure);
+        ll_error                = findViewById(R.id.ll_error);
+        lav_error               = findViewById(R.id.lav_error);
+        tv_error_touch_retry    = findViewById(R.id.tv_error_touch_retry);
         tiet_reason.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +97,27 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
     }
 
     @Override
+    public String getClubPyccaCardNumber() {
+        return clubPyccaCardNumber;
+    }
+
+    @Override
+    public String getReason() {
+        return tiet_reason.getText().toString();
+    }
+
+    @Override
+    public void setReason(String reason) {
+        tiet_reason.setText(reason);
+    }
+
+    @Override
+    public void showReasonRequired() {
+        til_reason.startAnimation(Util.getTranslateAnimation());
+        Util.showMessage(ll_root_view, getString(R.string.reason_required));
+    }
+
+    @Override
     public void showRootView() {
         ll_root_view.setVisibility(View.VISIBLE);
     }
@@ -100,6 +125,12 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
     @Override
     public void hideRootView() {
         ll_root_view.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showConfirmationMessage() {
+        ll_confirmation_message.setVisibility(View.VISIBLE);
+        tv_confirmation_message.setText("De acuerdo a su solicitud, su Tarjeta ClubPycca " + clubPyccaCardName + " fue bloqueada.\nLe pedimos visitar nuestras tiendas o comunicarse con nuestro Servicio de Atención Telefónico 1800-1PYCCA (179222) para coordinar el envío de su nueva Tarjeta ClubPycca");
     }
 
     @Override
@@ -192,8 +223,20 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
     }
 
     @Override
-    public void updateTextPrincipalCardRadioButton(Card card) {
-        rb_principal_card.setText(card.getClubPyccaCardNumber() + "\n" + card.getName());
+    public void updateTextPrincipalCardRadioButton(ArrayList<Card> cardArrayList) {
+        final Card card = cardArrayList.get(0);
+        clubPyccaCardNumber = card.getClubPyccaCardNumber();
+        clubPyccaCardName = card.getClubPyccaCardName();
+        rb_principal_card.setText(card.getClubPyccaCardName());
+        rb_principal_card.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    clubPyccaCardNumber = card.getClubPyccaCardNumber();
+                    clubPyccaCardName = card.getClubPyccaCardName();
+                }
+            }
+        });
     }
 
     @Override
@@ -202,16 +245,25 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
     }
 
     @Override
-    public void addAdditionalCardsRadioButton(ArrayList<Card> cardArrayList) {
+    public void addAdditionalCardsRadioButton(final ArrayList<Card> cardArrayList) {
         ViewGroup.LayoutParams layoutParams = rb_principal_card.getLayoutParams();
-        for (int i = 0; i < cardArrayList.size(); i++) {
+        for (int i = 1; i < cardArrayList.size(); i++) {
+            final Card card = cardArrayList.get(i);
             RadioButton radioButton = new RadioButton(CardBlockingActivity.this);
-            radioButton.setId(i);
             radioButton.setLayoutParams(layoutParams);
-            radioButton.setText(cardArrayList.get(i).getClubPyccaCardNumber() + "\n" + cardArrayList.get(i).getName());
+            radioButton.setText(card.getClubPyccaCardName());
             radioButton.setTextColor(getResources().getColor(R.color.colorBlack));
             radioButton.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_medium));
             radioButton.setTypeface(ResourcesCompat.getFont(CardBlockingActivity.this, R.font.montserrat));
+            radioButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        clubPyccaCardNumber = card.getClubPyccaCardNumber();
+                        clubPyccaCardName = card.getClubPyccaCardName();
+                    }
+                }
+            });
             rg_cards.addView(radioButton);
         }
     }
@@ -225,11 +277,9 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
                         dialog.dismiss();
                         switch (position) {
                             case 0:
-                                reasonCode = 4;
                                 presenter.reasonItemClicked(getString(R.string.lost));
                                 break;
                             case 1:
-                                reasonCode = 5;
                                 presenter.reasonItemClicked(getString(R.string.stole));
                                 break;
                         }
@@ -241,18 +291,13 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
     }
 
     @Override
-    public void setReason(String reason) {
-        tiet_reason.setText(reason);
-    }
-
-    @Override
     public void showAlertDialogBlock() {
         AlertDialog.Builder builder = new AlertDialog.Builder(CardBlockingActivity.this);
-        builder.setMessage(R.string.sure_block_card)
+        builder.setMessage("¿" + getString(R.string.sure_block_card) + " " + clubPyccaCardName + "?")
                 .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
-                        presenter.blockPositiveButtonClicked();
+                        presenter.blockPositiveButtonClicked(CardBlockingActivity.this);
                     }
                 })
                 .setNegativeButton(R.string.not, new DialogInterface.OnClickListener() {
@@ -263,6 +308,10 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
         AlertDialog alertDialog = builder.create();
         alertDialog.setCancelable(false);
         alertDialog.show();
+        Button positiveButton = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        positiveButton.setTextColor(getResources().getColor(R.color.colorPrimary));
+        Button negativeButton = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+        negativeButton.setTextColor(getResources().getColor(R.color.colorPrimary));
     }
 
     @Override

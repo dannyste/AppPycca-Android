@@ -10,9 +10,19 @@ public interface CardBlockingActivityMVP {
 
     interface View {
 
+        String getClubPyccaCardNumber();
+
+        String getReason();
+
+        void setReason(String reason);
+
+        void showReasonRequired();
+
         void showRootView();
 
         void hideRootView();
+
+        void showConfirmationMessage();
 
         void showLoadingAnimation();
 
@@ -30,15 +40,13 @@ public interface CardBlockingActivityMVP {
 
         void hideErrorAnimation();
 
-        void updateTextPrincipalCardRadioButton(Card card);
+        void updateTextPrincipalCardRadioButton(ArrayList<Card> cardArrayList);
 
         void showAdditionalCardsTextView();
 
         void addAdditionalCardsRadioButton(ArrayList<Card> cardArrayList);
 
         void showAlertDialogReason();
-
-        void setReason(String reason);
 
         void showAlertDialogBlock();
 
@@ -56,7 +64,7 @@ public interface CardBlockingActivityMVP {
 
         void blockClicked();
 
-        void blockPositiveButtonClicked();
+        void blockPositiveButtonClicked(CardBlockingActivity cardBlockingActivity);
 
         void finishedDoneAnimation();
 
@@ -70,13 +78,15 @@ public interface CardBlockingActivityMVP {
 
         User getUser(CardBlockingActivity cardBlockingActivity);
 
+        void setUser(CardBlockingActivity cardBlockingActivity, User user, TaskListener taskListener);
+
         ArrayList<Card> getCardArrayList(BaseResponse baseResponse);
 
     }
 
     interface TaskListener {
 
-        void onSuccess();
+        void onSuccess(User user);
 
         void onError(int error);
 

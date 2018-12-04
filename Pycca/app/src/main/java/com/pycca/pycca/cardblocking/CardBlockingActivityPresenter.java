@@ -8,6 +8,7 @@ import com.pycca.pycca.restApi.RestApiAdapter;
 import com.pycca.pycca.restApi.model.BaseResponse;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,10 +47,8 @@ public class CardBlockingActivityPresenter implements CardBlockingActivityMVP.Pr
                                 ArrayList<Card> cardArrayList = model.getCardArrayList(baseResponse);
                                 view.hideLoadingAnimation();
                                 view.showRootView();
-                                if (cardArrayList.size() == 1) {
-                                    view.updateTextPrincipalCardRadioButton(cardArrayList.get(0));
-                                }
-                                else {
+                                view.updateTextPrincipalCardRadioButton(cardArrayList);
+                                if (cardArrayList.size() > 1) {
                                     view.showAdditionalCardsTextView();
                                     view.addAdditionalCardsRadioButton(cardArrayList);
                                 }
@@ -87,15 +86,62 @@ public class CardBlockingActivityPresenter implements CardBlockingActivityMVP.Pr
 
     @Override
     public void blockClicked() {
-        view.hideRootView();
-        view.showLoadingAnimation();
-
+        view.showAlertDialogBlock();
     }
 
     @Override
-    public void blockPositiveButtonClicked() {
-        view.hideRootView();
-        view.showLoadingAnimation();
+    public void blockPositiveButtonClicked(final CardBlockingActivity cardBlockingActivity) {
+        if (validateForm()) {
+            view.hideRootView();
+            view.showLoadingAnimation();
+            final String clubPyccaCardNumber = view.getClubPyccaCardNumber();
+            String reason = view.getReason();
+            int reasonCode = reason.equalsIgnoreCase(cardBlockingActivity.getString(R.string.lost)) ? 4 : 5;
+            final User user = model.getUser(cardBlockingActivity);
+            RestApiAdapter restApiAdapter = new RestApiAdapter();
+            EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
+            Call<BaseResponse> getCardsCall = endpointsApi.postCardBlocking(clubPyccaCardNumber, user.getAccountNumber(), reasonCode, "");
+            getCardsCall.enqueue(new Callback<BaseResponse>() {
+                @Override
+                public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                    try {
+                        if (response.isSuccessful()) {
+                            BaseResponse baseResponse = response.body();
+                            if (baseResponse.getStatus()) {
+                                if (baseResponse.getData().getStatus_error().getCo_error() == 0) {
+                                    if (user.getClubPyccaCardNumber().equalsIgnoreCase(clubPyccaCardNumber)) {
+                                        user.setClubPyccaPartner(false);
+                                        user.setClubPyccaCardNumber("");
+                                        user.setNamesClubPyccaPartner("");
+                                        user.setSurnamesClubPyccaPartner("");
+                                        user.setAccountNumber(0);
+                                        user.setClientSince("");
+                                        user.setModificationDate(new Date());
+                                        model.setUser(cardBlockingActivity, user, CardBlockingActivityPresenter.this);
+                                    }
+                                    else {
+                                        view.showConfirmationMessage();
+                                    }
+                                }
+                                else {
+                                    onError(R.string.error_default);
+                                }
+                            }
+                            else {
+                                onError(R.string.error_default);
+                            }
+                        }
+                    } catch (Exception exception) {
+                        onError(R.string.error_default);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<BaseResponse> call, Throwable throwable) {
+                    onError(R.string.error_default);
+                }
+            });
+        }
     }
 
     @Override
@@ -116,7 +162,7 @@ public class CardBlockingActivityPresenter implements CardBlockingActivityMVP.Pr
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(User user) {
 
     }
 
@@ -125,6 +171,15 @@ public class CardBlockingActivityPresenter implements CardBlockingActivityMVP.Pr
         view.hideRootView();
         view.hideLoadingAnimation();
         view.showErrorAnimation();
+    }
+
+    private boolean validateForm() {
+        String reason = view.getReason();
+        if (reason.isEmpty()) {
+            view.showReasonRequired();
+            return false;
+        }
+        return true;
     }
 
 }

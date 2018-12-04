@@ -3,16 +3,16 @@ package com.pycca.pycca.pojo;
 public class Card {
 
     private String clubPyccaCardNumber;
-    private String name;
+    private String clubPyccaCardName;
     private boolean holder;
 
     public Card() {
 
     }
 
-    public Card(String clubPyccaCardNumber, String name, boolean holder) {
+    public Card(String clubPyccaCardNumber, String clubPyccaCardName, boolean holder) {
         this.clubPyccaCardNumber = clubPyccaCardNumber;
-        this.name = name;
+        this.clubPyccaCardName = clubPyccaCardName;
         this.holder = holder;
     }
 
@@ -24,12 +24,12 @@ public class Card {
         this.clubPyccaCardNumber = clubPyccaCardNumber;
     }
 
-    public String getName() {
-        return name;
+    public String getClubPyccaCardName() {
+        return clubPyccaCardName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setClubPyccaCardName(String clubPyccaCardName) {
+        this.clubPyccaCardName = clubPyccaCardName;
     }
 
     public boolean isHolder() {

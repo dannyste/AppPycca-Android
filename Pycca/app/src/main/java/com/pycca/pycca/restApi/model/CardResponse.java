@@ -2,7 +2,7 @@ package com.pycca.pycca.restApi.model;
 
 public class CardResponse {
 
-    private int tarjeta;
+    private String tarjeta;
     private String ta_plnombre1;
     private String ta_princiadicio;
 
@@ -10,17 +10,17 @@ public class CardResponse {
 
     }
 
-    public CardResponse(int tarjeta, String ta_plnombre1, String ta_princiadicio) {
+    public CardResponse(String tarjeta, String ta_plnombre1, String ta_princiadicio) {
         this.tarjeta = tarjeta;
         this.ta_plnombre1 = ta_plnombre1;
         this.ta_princiadicio = ta_princiadicio;
     }
 
-    public int getTarjeta() {
+    public String getTarjeta() {
         return tarjeta;
     }
 
-    public void setTarjeta(int tarjeta) {
+    public void setTarjeta(String tarjeta) {
         this.tarjeta = tarjeta;
     }
 

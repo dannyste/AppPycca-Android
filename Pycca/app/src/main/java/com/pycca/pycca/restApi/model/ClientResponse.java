@@ -6,18 +6,18 @@ public class ClientResponse {
     private String cl_nombres;
     private String cl_apellidos;
     private String no_estados;
-    private String ma_fapertura;
+    private String fe_apertura;
 
     public ClientResponse() {
 
     }
 
-    public ClientResponse(int ma_cuenta, String cl_nombres, String cl_apellidos, String no_estados, String ma_fapertura) {
+    public ClientResponse(int ma_cuenta, String cl_nombres, String cl_apellidos, String no_estados, String fe_apertura) {
         this.ma_cuenta = ma_cuenta;
         this.cl_nombres = cl_nombres;
         this.cl_apellidos = cl_apellidos;
         this.no_estados = no_estados;
-        this.ma_fapertura = ma_fapertura;
+        this.fe_apertura = fe_apertura;
     }
 
     public int getMa_cuenta() {
@@ -52,12 +52,12 @@ public class ClientResponse {
         this.no_estados = no_estados;
     }
 
-    public String getMa_fapertura() {
-        return ma_fapertura;
+    public String getFe_apertura() {
+        return fe_apertura;
     }
 
-    public void setMa_fapertura(String ma_fapertura) {
-        this.ma_fapertura = ma_fapertura;
+    public void setFe_apertura(String fe_apertura) {
+        this.fe_apertura = fe_apertura;
     }
 
 }
