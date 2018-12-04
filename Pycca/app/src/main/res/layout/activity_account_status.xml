@@ -13,6 +13,26 @@
         layout="@layout/toolbar" />
 
     <LinearLayout
+        android:id="@+id/ll_downloading_pdf"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lav_downloading_pdf"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            app:lottie_autoPlay="false"
+            app:lottie_fileName="download_animation.json"
+            app:lottie_imageAssetsFolder="assets"
+            app:lottie_loop="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/ll_loading"
         android:gravity="center"
         android:layout_width="match_parent"

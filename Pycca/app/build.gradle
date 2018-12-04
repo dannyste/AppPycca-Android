@@ -86,7 +86,8 @@ dependencies {
     implementation 'com.ritesh:ratiolayout:1.0.0'
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    //Twitter
+    //Download file
+    implementation 'com.mindorks.android:prdownloader:0.4.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -1,8 +1,8 @@
 package com.pycca.pycca.restApi;
 
-final class RestApiConstants {
+public final class RestApiConstants {
 
-    static final String SERVER_ROOT_URL = "http://pagos.pycca.com:7654/";
+    public static final String SERVER_ROOT_URL = "http://pagos.pycca.com:7654/";
 
     //CONTROLLERS
     private static final String CLIENT                          = "client/";
@@ -28,6 +28,11 @@ final class RestApiConstants {
     private static final String ACTION_GET_QUOTA_CALCULATOR        = "quota_calculator/";
     private static final String PARAMETER_GET_QUOTA_CALCULATOR    = "{amount}";
 
+    private static final String ACTION_GET_PDF_ACCOUNT_STATUS        = "pdf_account_status/";
+    private static final String PARAMETER_GET_PDF_ACCOUNT_STATUS  = "{accountNumber}/{cutDate}";
+
+
+
     static final String SERVER_URL_GET_VALIDATE_CLIENT      = CLIENT + ACTION_VALIDATE_CLIENT + PARAMETER_VALIDATE_CLIENT;
 
     static final String SERVER_URL_GET_OUR_SHOPS            = PYCCA + ACTION_OUR_SHOPS;
@@ -43,4 +48,6 @@ final class RestApiConstants {
     static final String SERVER_URL_POST_CARD_BLOCKING      = CLIENT + ACTION_POST_CARD_BLOCKING;
 
     static final String SERVER_URL_GET_QUOTA_CALCULATOR           = CLIENT + ACTION_GET_QUOTA_CALCULATOR + PARAMETER_GET_QUOTA_CALCULATOR;
+
+    public static final String SERVER_URL_GET_PDF_ACCOUNT_STATUS           = CLIENT + ACTION_GET_PDF_ACCOUNT_STATUS + PARAMETER_GET_PDF_ACCOUNT_STATUS;
 }

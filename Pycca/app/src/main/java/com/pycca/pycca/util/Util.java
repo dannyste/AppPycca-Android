@@ -1,7 +1,10 @@
 package com.pycca.pycca.util;
 
+import android.content.Context;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -12,7 +15,10 @@ import android.view.animation.TranslateAnimation;
 import com.pycca.pycca.pojo.CouponImageResource;
 import com.pycca.pycca.pojo.DivisionImageResource;
 import com.pycca.pycca.pojo.ImageResource;
+import com.pycca.pycca.restApi.RestApiConstants;
+import com.pycca.pycca.restApi.model.QuotaCalculatorResponse;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Pattern;
@@ -176,6 +182,30 @@ public class Util {
 
     public static String formatStringPayUntil(String payUntil, String quota){
         return "$".concat(quota).concat(" hasta ").concat(payUntil);
+    }
+
+    public static ArrayList<String> getStringListQuotas(ArrayList<QuotaCalculatorResponse> list){
+        ArrayList<String> stringArrayList = new ArrayList<>();
+        for (QuotaCalculatorResponse quota: list) {
+            stringArrayList.add(String.valueOf(quota.getNPlazo()));
+        }
+        return stringArrayList;
+    }
+
+    public static String getRootDirPath(Context context) {
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            File file = ContextCompat.getExternalFilesDirs(context.getApplicationContext(),
+                    null)[0];
+            return file.getAbsolutePath();
+        } else {
+            return context.getApplicationContext().getFilesDir().getAbsolutePath();
+        }
+    }
+
+    public static String getUrlDownloadPDF(String accountNumber, String cutDate){
+        String url = RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_GET_PDF_ACCOUNT_STATUS;
+        url = url.replace("{accountNumber}",accountNumber).replace("{cutDate}",cutDate);
+        return url;
     }
 
 }

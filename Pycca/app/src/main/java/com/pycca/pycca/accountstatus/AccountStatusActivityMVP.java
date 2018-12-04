@@ -21,6 +21,10 @@ public interface AccountStatusActivityMVP {
         void finishActivity();
 
         AccountStatusActivity getActivity();
+
+        void showDownloadAnimation();
+
+        void hideDownloadAnimation();
     }
 
     interface Presenter {
