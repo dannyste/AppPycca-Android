@@ -52,13 +52,18 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     }
 
     @Override
-    public void loginTwitterClicked() {
-        this.view.loginTwitter();
+    public void loginEmailClicked() {
+        view.goToLoginActivity();
     }
 
     @Override
-    public void loginEmailClicked() {
-        this.view.loginEmail();
+    public void newHereRegisterNowClicked() {
+        view.goToSignUpActivity();
+    }
+
+    @Override
+    public void termsUseClicked() {
+        view.termsUse();
     }
 
     @Override
@@ -69,17 +74,18 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
         this.loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                model.firebaseAuthWithFacebook(multiLoginActivity, loginResult.getAccessToken(), MultiLoginActivityPresenter.this);
+                String nativePhoneNumber = view.getNativePhoneNumber();
+                model.firebaseAuthWithFacebook(multiLoginActivity, loginResult.getAccessToken(), nativePhoneNumber, MultiLoginActivityPresenter.this);
             }
 
             @Override
             public void onCancel() {
-                view.hideLoadingAnimation();
+                MultiLoginActivityPresenter.this.onError(R.string.error_default);
             }
 
             @Override
             public void onError(FacebookException error) {
-                view.hideLoadingAnimation();
+                MultiLoginActivityPresenter.this.onError(R.string.error_default);
             }
         });
     }
@@ -96,6 +102,7 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     @Override
     public void onActivityResultFacebook(int requestCode, int resultCode, @Nullable Intent data) {
         if (FacebookSdk.isFacebookRequestCode(requestCode)) {
+            view.hideRootView();
             view.showLoadingAnimation();
             callbackManager.onActivityResult(requestCode, resultCode, data);
         }
@@ -104,14 +111,16 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     @Override
     public void onActivityResultGoogle(MultiLoginActivity multiLoginActivity, int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == RC_LOGIN_GOOGLE) {
+            view.hideRootView();
             view.showLoadingAnimation();
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount googleSignInAccount = task.getResult(ApiException.class);
-                model.firebaseAuthWithGoogle(multiLoginActivity, googleSignInAccount, MultiLoginActivityPresenter.this);
+                String nativePhoneNumber = view.getNativePhoneNumber();
+                model.firebaseAuthWithGoogle(multiLoginActivity, googleSignInAccount, nativePhoneNumber, MultiLoginActivityPresenter.this);
             }
             catch (ApiException apiException) {
-                view.hideLoadingAnimation();
+                onError(R.string.error_default);
             }
         }
     }
@@ -122,13 +131,9 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
     }
 
     @Override
-    public void newHereRegisterNowClicked() {
-        this.view.registerNow();
-    }
-
-    @Override
-    public void termsUseClicked() {
-        this.view.termsUse();
+    public void finishedFailureAnimation() {
+        view.hideFailureAnimation();
+        view.showRootView();
     }
 
     @Override
@@ -143,12 +148,15 @@ public class MultiLoginActivityPresenter implements MultiLoginActivityMVP.Presen
             model.userSubscribeToTopic(Constants.TOPIC_NOT_CLUB_PYCCA_PARTNER);
             model.userSubscribeToTopic(Constants.TOPIC_SOCIAL_NETWORK_NOT_CLUB_PYCCA_PARTNER);
         }
+        view.hideLoadingAnimation();
         view.showDoneAnimation();
     }
 
     @Override
     public void onError(int error) {
         view.hideLoadingAnimation();
+        view.showFailureAnimation();
+        view.showErrorMessage(error);
     }
 
 }

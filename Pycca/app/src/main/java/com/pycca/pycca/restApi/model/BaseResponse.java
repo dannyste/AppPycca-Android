@@ -42,8 +42,8 @@ public class BaseResponse {
 
     public class Data {
 
-        public status_error status_error;
-        public Object result;
+        private status_error status_error;
+        private Object result;
 
         public Data() {
 

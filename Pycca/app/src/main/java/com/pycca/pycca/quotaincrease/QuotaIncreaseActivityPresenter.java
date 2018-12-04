@@ -33,7 +33,7 @@ public class QuotaIncreaseActivityPresenter implements QuotaIncreaseActivityMVP.
             User user = model.getUser(view.getContext());
             RestApiAdapter restApiAdapter = new RestApiAdapter();
             EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
-            Call<BaseResponse> quotaIncreaseCall = endpointsApi.quotaIncrease("1", String.valueOf(user.getAccountNumber()), user.getIdentificationCard(), user.getEmail(), user.getName(), user.getName(), view.getQuotaWanted());
+            Call<BaseResponse> quotaIncreaseCall = endpointsApi.postQuotaIncrease("1", String.valueOf(user.getAccountNumber()), user.getIdentificationCard(), user.getEmail(), user.getName(), user.getName(), view.getQuotaWanted());
             quotaIncreaseCall.enqueue(new Callback<BaseResponse>() {
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {

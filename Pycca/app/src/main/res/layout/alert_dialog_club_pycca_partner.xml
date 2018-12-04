@@ -1,59 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/ll_root_view"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/alert_dialog_vertical_margin"
-        android:paddingBottom="@dimen/alert_dialog_vertical_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:paddingEnd="@dimen/activity_horizontal_margin">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iv_close"
-            android:layout_gravity="end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_close" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:padding="@dimen/activity_vertical_margin"
-            android:src="@drawable/ic_pycca" />
-
-        <TextView
-            android:gravity="center"
+        <LinearLayout
+            android:id="@+id/ll_root_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:text="@string/information_club_pycca_partner"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="@android:color/black" />
+            android:orientation="vertical"
+            android:paddingTop="@dimen/alert_dialog_vertical_margin"
+            android:paddingBottom="@dimen/alert_dialog_vertical_margin"
+            android:paddingStart="@dimen/activity_horizontal_small_margin"
+            android:paddingEnd="@dimen/activity_horizontal_small_margin">
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:padding="@dimen/activity_vertical_small_margin"
+                android:src="@drawable/ic_pycca" />
+
+            <TextView
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_small_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_small_margin"
+                android:text="@string/information_club_pycca_partner"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_small" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/til_identification_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@android:color/black">
+                android:textColorHint="@color/colorBlack">
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/tiet_identification_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
                     android:hint="@string/identification_card"
                     android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:maxLines="1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_small" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -61,31 +67,33 @@
                 android:id="@+id/til_club_pycca_card_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:textColorHint="@android:color/black">
+                android:paddingTop="@dimen/activity_vertical_small_margin"
+                android:textColorHint="@color/colorBlack">
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/tiet_club_pycca_card_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
                     android:hint="@string/club_pycca_card_number"
                     android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:maxLines="1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_small" />
 
             </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_validate"
                 android:background="@drawable/button_default_style"
+                android:fontFamily="@font/montserrat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_small_margin"
                 android:text="@string/validate"
-                android:textAllCaps="true"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textAllCaps="false"
                 android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -93,69 +101,93 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingTop="@dimen/activity_horizontal_margin"
-                android:paddingBottom="@dimen/activity_horizontal_margin">
+                android:paddingTop="@dimen/activity_horizontal_small_margin"
+                android:paddingBottom="@dimen/activity_horizontal_small_margin">
 
                 <TextView
+                    android:fontFamily="@font/montserrat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/text_margin"
                     android:paddingEnd="@dimen/text_margin"
                     android:text="@string/are_you_not_partner"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_small" />
 
                 <TextView
                     android:id="@+id/tv_request_now"
+                    android:fontFamily="@font/montserrat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/request_now"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_small"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_loading"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lav_loading"
-            android:layout_width="130dp"
+        <LinearLayout
+            android:id="@+id/ll_loading"
+            android:gravity="center"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:lottie_autoPlay="false"
-            app:lottie_fileName="loading_animation.json"
-            app:lottie_imageAssetsFolder="assets"
-            app:lottie_loop="true" />
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-    </LinearLayout>
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lav_loading"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                app:lottie_autoPlay="false"
+                app:lottie_fileName="loading_animation.json"
+                app:lottie_imageAssetsFolder="assets"
+                app:lottie_loop="true" />
 
-    <LinearLayout
-        android:id="@+id/ll_done"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:visibility="gone">
+        </LinearLayout>
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lav_done"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            app:lottie_autoPlay="false"
-            app:lottie_fileName="done_animation.json"
-            app:lottie_imageAssetsFolder="assets"
-            app:lottie_loop="false" />
+        <LinearLayout
+            android:id="@+id/ll_done"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-    </LinearLayout>
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lav_done"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                app:lottie_autoPlay="false"
+                app:lottie_fileName="done_animation.json"
+                app:lottie_imageAssetsFolder="assets"
+                app:lottie_loop="false" />
 
-</RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_failure"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lav_failure"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                app:lottie_autoPlay="false"
+                app:lottie_fileName="failure_animation.json"
+                app:lottie_imageAssetsFolder="assets"
+                app:lottie_loop="false" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

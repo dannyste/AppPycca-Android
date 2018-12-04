@@ -3,7 +3,7 @@ package com.pycca.pycca.pojo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class OurShopsDetails implements Parcelable {
+public class OurShopDetail implements Parcelable {
 
     private String name;
     private String address;
@@ -11,7 +11,7 @@ public class OurShopsDetails implements Parcelable {
     private double latitude;
     private double longitude;
 
-    public OurShopsDetails() {
+    public OurShopDetail() {
 
     }
 
@@ -69,16 +69,16 @@ public class OurShopsDetails implements Parcelable {
         parcel.writeDouble(longitude);
     }
 
-    public static final Parcelable.Creator<OurShopsDetails> CREATOR = new Parcelable.Creator<OurShopsDetails>() {
-        public OurShopsDetails createFromParcel(Parcel in) {
-            return new OurShopsDetails(in);
+    public static final Parcelable.Creator<OurShopDetail> CREATOR = new Parcelable.Creator<OurShopDetail>() {
+        public OurShopDetail createFromParcel(Parcel in) {
+            return new OurShopDetail(in);
         }
-        public OurShopsDetails[] newArray(int size) {
-            return new OurShopsDetails[size];
+        public OurShopDetail[] newArray(int size) {
+            return new OurShopDetail[size];
         }
     };
 
-    private OurShopsDetails(Parcel in) {
+    private OurShopDetail(Parcel in) {
         name = in.readString();
         address = in.readString();
         openingHours = in.readString();

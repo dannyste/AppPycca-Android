@@ -12,9 +12,11 @@ public interface MultiLoginActivityMVP {
 
     interface View {
 
-        void loginTwitter();
+        String getNativePhoneNumber();
 
-        void loginEmail();
+        void showRootView();
+
+        void hideRootView();
 
         void showLoadingAnimation();
 
@@ -22,9 +24,17 @@ public interface MultiLoginActivityMVP {
 
         void showDoneAnimation();
 
+        void showFailureAnimation();
+
+        void hideFailureAnimation();
+
+        void showErrorMessage(int error);
+
         void goToHostActivity();
 
-        void registerNow();
+        void goToLoginActivity();
+
+        void goToSignUpActivity();
 
         void termsUse();
 
@@ -38,9 +48,11 @@ public interface MultiLoginActivityMVP {
 
         void loginGoogleClicked(MultiLoginActivity multiLoginActivity);
 
-        void loginTwitterClicked();
-
         void loginEmailClicked();
+
+        void newHereRegisterNowClicked();
+
+        void termsUseClicked();
 
         void configureFacebookSignIn(MultiLoginActivity multiLoginActivity, LoginButton loginButton);
 
@@ -52,17 +64,15 @@ public interface MultiLoginActivityMVP {
 
         void finishedDoneAnimation();
 
-        void newHereRegisterNowClicked();
-
-        void termsUseClicked();
+        void finishedFailureAnimation();
 
     }
 
     interface Model {
 
-        void firebaseAuthWithFacebook(MultiLoginActivity multiLoginActivity, AccessToken accessToken, MultiLoginActivityMVP.TaskListener taskListener);
+        void firebaseAuthWithFacebook(MultiLoginActivity multiLoginActivity, AccessToken accessToken, String nativePhoneNumber, MultiLoginActivityMVP.TaskListener taskListener);
 
-        void firebaseAuthWithGoogle(MultiLoginActivity multiLoginActivity, GoogleSignInAccount googleSignInAccount, MultiLoginActivityMVP.TaskListener taskListener);
+        void firebaseAuthWithGoogle(MultiLoginActivity multiLoginActivity, GoogleSignInAccount googleSignInAccount, String nativePhoneNumber, MultiLoginActivityMVP.TaskListener taskListener);
 
         void userSubscribeToTopic(String topic);
 

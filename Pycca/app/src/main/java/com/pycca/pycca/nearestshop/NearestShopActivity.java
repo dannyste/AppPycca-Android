@@ -39,7 +39,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.pycca.pycca.R;
-import com.pycca.pycca.pojo.OurShopsDetails;
+import com.pycca.pycca.pojo.OurShopDetail;
 import com.pycca.pycca.root.App;
 import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.util.Util;
@@ -184,12 +184,12 @@ public class NearestShopActivity extends AppCompatActivity implements OnMapReady
     }
 
     @Override
-    public void showMarkersGoogleMap(ArrayList<OurShopsDetails> ourShopsDetailsArrayList) {
-        for (OurShopsDetails ourShopsDetails: ourShopsDetailsArrayList) {
-            LatLng latLng = new LatLng(ourShopsDetails.getLatitude(), ourShopsDetails.getLongitude());
+    public void showMarkersGoogleMap(ArrayList<OurShopDetail> ourShopDetailArrayList) {
+        for (OurShopDetail ourShopDetail : ourShopDetailArrayList) {
+            LatLng latLng = new LatLng(ourShopDetail.getLatitude(), ourShopDetail.getLongitude());
             float distance = LatLngUtils.distanceBetween(latLng, centerLatLng);
             if (distance < Constants.GOOGLE_MAP_RADIUS) {
-                MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(ourShopsDetails.getName()).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_google_map));
+                MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(ourShopDetail.getName()).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_google_map));
                 googleMap.addMarker(markerOptions);
             }
         }

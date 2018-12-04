@@ -53,5 +53,4 @@ public class ImageResource implements Serializable {
         this.url = url;
     }
 
-
 }

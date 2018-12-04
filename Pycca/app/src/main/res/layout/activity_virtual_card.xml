@@ -39,7 +39,7 @@
                 android:fontFamily="@font/montserrat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingTop="@dimen/activity_vertical_small_margin"
                 android:textAllCaps="true"
                 android:textSize="@dimen/text_large"
                 android:textStyle="bold" />
@@ -51,9 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:paddingStart="@dimen/activity_horizontal_margin"
-            android:paddingEnd="@dimen/activity_horizontal_margin">
+            android:paddingBottom="@dimen/activity_horizontal_small_margin"
+            android:paddingStart="@dimen/activity_horizontal_small_margin"
+            android:paddingEnd="@dimen/activity_horizontal_small_margin">
 
             <TextView
                 android:fontFamily="@font/montserrat"

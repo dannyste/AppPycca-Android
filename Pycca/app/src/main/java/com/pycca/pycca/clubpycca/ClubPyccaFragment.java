@@ -73,19 +73,19 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
                         public void run() {
                             switch (position) {
                                 case 0:
-                                    presenter.firstItemClicked();
+                                    presenter.clubPyccaFirstItemClicked();
                                     break;
                                 case 1:
-                                    presenter.secondItemClicked();
+                                    presenter.clubPyccaSecondItemClicked();
                                     break;
                                 case 2:
-                                    presenter.thirdItemClicked();
+                                    presenter.clubPyccaThirdItemClicked();
                                     break;
                                 case 3:
-                                    presenter.fourthItemClicked();
+                                    presenter.clubPyccaFourthItemClicked();
                                     break;
                                 case 4:
-                                    presenter.fifthItemClicked();
+                                    presenter.clubPyccaFifthItemClicked();
                                     break;
                             }
                             animationRunning = true;

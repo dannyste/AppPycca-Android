@@ -2,6 +2,7 @@ package com.pycca.pycca.root;
 
 import android.app.Application;
 
+
 import com.downloader.PRDownloader;
 import com.pycca.pycca.accountstatus.AccountStatusActivity;
 import com.pycca.pycca.accountstatus.AccountStatusActivityModule;
@@ -17,8 +18,8 @@ import com.pycca.pycca.login.LoginActivityModule;
 import com.pycca.pycca.more.MoreFragmentModule;
 import com.pycca.pycca.multilogin.MultiLoginActivityModule;
 import com.pycca.pycca.nearestshop.NearestShopActivityModule;
-import com.pycca.pycca.ourshops.OurShopsActivityModule;
-import com.pycca.pycca.ourshopsdetails.OurShopsDetailsActivityModule;
+import com.pycca.pycca.ourshop.OurShopActivityModule;
+import com.pycca.pycca.ourshopdetail.OurShopDetailActivityModule;
 import com.pycca.pycca.picture.PictureActivityModule;
 import com.pycca.pycca.profile.ProfileActivityModule;
 import com.pycca.pycca.quotacalculator.QuotaCalculatorActivityModule;
@@ -45,6 +46,7 @@ public class App extends Application {
                 .homeFragmentModule(new HomeFragmentModule())
                 .couponFragmentModule(new CouponFragmentModule())
                 .clubPyccaFragmentModule(new ClubPyccaFragmentModule())
+                .accountStatusActivityModule(new AccountStatusActivityModule())
                 .quotaIncreaseActivityModule(new QuotaIncreaseActivityModule())
                 .quotaCalculatorActivityModule(new QuotaCalculatorActivityModule())
                 .virtualCardActivityModule(new VirtualCardActivityModule())
@@ -54,10 +56,9 @@ public class App extends Application {
                 .clubPyccaPartnerActivityModule(new ClubPyccaPartnerActivityModule())
                 .profileActivityModule(new ProfileActivityModule())
                 .nearestShopActivityModule(new NearestShopActivityModule())
-                .ourShopsActivityModule(new OurShopsActivityModule())
-                .ourShopsDetailsActivityModule(new OurShopsDetailsActivityModule())
+                .ourShopActivityModule(new OurShopActivityModule())
+                .ourShopDetailActivityModule(new OurShopDetailActivityModule())
                 .pictureActivityModule(new PictureActivityModule())
-                .accountStatusActivityModule(new AccountStatusActivityModule())
                 .build();
         PRDownloader.initialize(getApplicationContext());
     }

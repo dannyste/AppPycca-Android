@@ -1,58 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".cardblocking.CardBlockingActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
     <LinearLayout
-        android:id="@+id/ll_root_view"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar" />
+        <TextView
+            android:fontFamily="@font/montserrat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_blocking"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_medium" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/ll_root_view"
+            android:background="@color/colorGray"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:weightSum="10">
+            android:paddingStart="@dimen/activity_horizontal_small_margin"
+            android:paddingEnd="@dimen/activity_horizontal_small_margin">
 
-            <LinearLayout
-                android:background="@color/colorPrimary"
-                android:gravity="center"
+            <RadioGroup
+                android:id="@+id/rg_cards"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
                     android:fontFamily="@font/montserrat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/card_blocking"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorAccent"
+                    android:text="@string/principal_card"
+                    android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/text_medium" />
 
-            </LinearLayout>
+                <RadioButton
+                    android:id="@+id/rb_principal_card"
+                    android:checked="true"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_medium_margin"
+                    android:textSize="@dimen/text_medium" />
 
-            <LinearLayout
+                <TextView
+                    android:id="@+id/tv_additional_cards"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_medium_margin"
+                    android:text="@string/additional_cards"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/text_medium"
+                    android:visibility="gone"/>
+
+            </RadioGroup>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_reason"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="9"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_small_margin"
+                android:textColorHint="@color/colorBlack">
 
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/tiet_reason"
+                    android:cursorVisible="false"
+                    android:drawableEnd="@drawable/ic_arrow_drop_down"
+                    android:focusable="false"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/reason"
+                    android:inputType="none"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_medium" />
 
-            </LinearLayout>
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_block"
+                android:background="@drawable/button_default_style"
+                android:fontFamily="@font/montserrat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_small_margin"
+                android:text="@string/block"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_medium"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_confirmation_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_confirmation_message"
+                android:fontFamily="@font/montserrat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_medium" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_loading"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lav_loading"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                app:lottie_autoPlay="false"
+                app:lottie_fileName="loading_animation.json"
+                app:lottie_imageAssetsFolder="assets"
+                app:lottie_loop="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_done"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lav_done"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                app:lottie_autoPlay="false"
+                app:lottie_fileName="done_animation.json"
+                app:lottie_imageAssetsFolder="assets"
+                app:lottie_loop="false" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_failure"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lav_failure"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                app:lottie_autoPlay="false"
+                app:lottie_fileName="failure_animation.json"
+                app:lottie_imageAssetsFolder="assets"
+                app:lottie_loop="false" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_error"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lav_error"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                app:lottie_autoPlay="false"
+                app:lottie_fileName="error_animation.json"
+                app:lottie_imageAssetsFolder="assets"
+                app:lottie_loop="true" />
+
+            <TextView
+                android:fontFamily="@font/montserrat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/error_unable_connect"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+
+            <TextView
+                android:fontFamily="@font/montserrat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/error_check_internet_connection"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_small" />
+
+            <TextView
+                android:id="@+id/tv_error_touch_retry"
+                android:drawableStart="@drawable/ic_refresh"
+                android:fontFamily="@font/montserrat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/error_touch_retry"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_small" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </LinearLayout>

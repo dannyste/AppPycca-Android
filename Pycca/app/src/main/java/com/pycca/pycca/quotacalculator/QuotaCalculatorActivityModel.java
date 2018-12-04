@@ -5,7 +5,6 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.pycca.pycca.pojo.User;
-import com.pycca.pycca.restApi.model.BalanceResponse;
 import com.pycca.pycca.restApi.model.BaseResponse;
 import com.pycca.pycca.restApi.model.QuotaCalculatorResponse;
 import com.pycca.pycca.util.SharedPreferencesManager;

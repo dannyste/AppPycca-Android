@@ -6,19 +6,27 @@ public interface ForgotPasswordActivityMVP {
 
         String getEmail();
 
-        void showInvalidEmail();
-
         void showEmailRequired();
 
-        void showMessage(int code);
+        void showInvalidEmail();
 
-        void goToMultilogin();
+        void showRootView();
+
+        void hideRootView();
 
         void showLoadingAnimation();
 
         void hideLoadingAnimation();
 
         void showDoneAnimation();
+
+        void showFailureAnimation();
+
+        void hideFailureAnimation();
+
+        void showErrorMessage(int error);
+
+        void goToMultiLoginActivity();
 
     }
 
@@ -30,11 +38,13 @@ public interface ForgotPasswordActivityMVP {
 
         void finishedDoneAnimation();
 
+        void finishedFailureAnimation();
+
     }
 
     interface Model {
 
-        void resetPasswordAuthentication(String email, TaskListener listener);
+        void firebaseSendPasswordResetEmail(String email, TaskListener taskListener);
 
     }
 
@@ -42,7 +52,7 @@ public interface ForgotPasswordActivityMVP {
 
         void onSuccess();
 
-        void onError(int errorCode);
+        void onError(int error);
     }
 
 }

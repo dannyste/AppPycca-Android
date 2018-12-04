@@ -26,23 +26,33 @@ public class MoreFragmentPresenter implements MoreFragmentMVP.Presenter {
     }
 
     @Override
-    public void firstItemClicked() {
+    public void moreFirstItemClicked() {
         view.showAlertDialogClubPyccaPartner();
     }
 
     @Override
-    public void secondItemClicked() {
+    public void moreSecondItemClicked() {
         view.goToProfileActivity();
     }
 
     @Override
-    public void thirdItemClicked() {
+    public void moreThirdItemClicked() {
         view.showAlertDialogContactUs();
     }
 
     @Override
-    public void fourthItemClicked() {
+    public void moreFourthItemClicked() {
         view.goToOurShopsActivity();
+    }
+
+    @Override
+    public void contactUsFirstItemClicked() {
+        view.goToContactCall();
+    }
+
+    @Override
+    public void contactUsSecondItemClicked() {
+        view.goToContactEmail();
     }
 
     @Override

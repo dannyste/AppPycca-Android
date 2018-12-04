@@ -26,10 +26,10 @@ import com.pycca.pycca.multilogin.MultiLoginActivity;
 import com.pycca.pycca.multilogin.MultiLoginActivityModule;
 import com.pycca.pycca.nearestshop.NearestShopActivity;
 import com.pycca.pycca.nearestshop.NearestShopActivityModule;
-import com.pycca.pycca.ourshops.OurShopsActivity;
-import com.pycca.pycca.ourshops.OurShopsActivityModule;
-import com.pycca.pycca.ourshopsdetails.OurShopsDetailsActivity;
-import com.pycca.pycca.ourshopsdetails.OurShopsDetailsActivityModule;
+import com.pycca.pycca.ourshop.OurShopActivity;
+import com.pycca.pycca.ourshop.OurShopActivityModule;
+import com.pycca.pycca.ourshopdetail.OurShopDetailActivity;
+import com.pycca.pycca.ourshopdetail.OurShopDetailActivityModule;
 import com.pycca.pycca.picture.PictureActivity;
 import com.pycca.pycca.picture.PictureActivityModule;
 import com.pycca.pycca.profile.ProfileActivity;
@@ -61,6 +61,7 @@ import dagger.Component;
                             HomeFragmentModule.class,
                             CouponFragmentModule.class,
                             ClubPyccaFragmentModule.class,
+                            AccountStatusActivityModule.class,
                             QuotaIncreaseActivityModule.class,
                             QuotaCalculatorActivityModule.class,
                             VirtualCardActivityModule.class,
@@ -70,10 +71,9 @@ import dagger.Component;
                             ClubPyccaPartnerActivityModule.class,
                             ProfileActivityModule.class,
                             NearestShopActivityModule.class,
-                            OurShopsActivityModule.class,
-                            OurShopsDetailsActivityModule.class,
-                            PictureActivityModule.class,
-                            AccountStatusActivityModule.class
+                            OurShopActivityModule.class,
+                            OurShopDetailActivityModule.class,
+                            PictureActivityModule.class
                      })
 public interface ApplicationComponent {
 
@@ -113,9 +113,9 @@ public interface ApplicationComponent {
 
     void inject(NearestShopActivity nearestShopActivity);
 
-    void inject(OurShopsActivity ourShopsActivity);
+    void inject(OurShopActivity ourShopActivity);
 
-    void inject(OurShopsDetailsActivity ourShopsDetailsActivity);
+    void inject(OurShopDetailActivity ourShopDetailActivity);
 
     void inject(PictureActivity pictureActivity);
 

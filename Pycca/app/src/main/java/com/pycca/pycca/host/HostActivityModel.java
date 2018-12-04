@@ -40,8 +40,10 @@ public class HostActivityModel implements HostActivityMVP.Model {
         user.setClubPyccaPartner(true);
         user.setIdentificationCard(identificationCard);
         user.setClubPyccaCardNumber(clubPyccaCardNumber);
+        user.setNamesClubPyccaPartner(clientResponse.getCl_nombres());
+        user.setSurnamesClubPyccaPartner(clientResponse.getCl_apellidos());
         user.setAccountNumber(clientResponse.getMa_cuenta());
-        user.setClientSince(clientResponse.getMa_fapertura());
+        user.setClientSince(clientResponse.getFe_apertura());
         user.setModificationDate(new Date());
         updateUserFirebaseFirestore(hostActivity, user, taskListener);
     }

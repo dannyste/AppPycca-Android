@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ourshops.OurShopsActivity">
+    tools:context=".ourshop.OurShopActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -20,12 +20,51 @@
             android:id="@+id/ll_root_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="10">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_our_shops"
+            <RelativeLayout
+                android:id="@+id/rl_go_nearest_shop"
+                android:background="@color/colorGray"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="0dp"
+                android:layout_weight="2.5">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="@dimen/activity_vertical_small_margin"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="location_animation.json"
+                    app:lottie_imageAssetsFolder="assets"
+                    app:lottie_loop="true" />
+
+                <TextView
+                    android:gravity="center"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="@string/go_nearest_shop"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="7.5"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_our_shop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -81,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/error_check_internet_connection"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_small" />
 
             <TextView
@@ -91,7 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/error_touch_retry"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/text_small" />
 
         </LinearLayout>

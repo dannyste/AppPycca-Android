@@ -16,17 +16,25 @@ public interface LoginActivityMVP {
 
         void showPasswordRequired();
 
+        void showRootView();
+
+        void hideRootView();
+
         void showLoadingAnimation();
 
         void hideLoadingAnimation();
 
         void showDoneAnimation();
 
+        void showFailureAnimation();
+
+        void hideFailureAnimation();
+
+        void showErrorMessage(int error);
+
         void goToHostActivity();
 
         void goToForgotPasswordActivity();
-
-        void showErrorMessage(int error);
 
     }
 
@@ -36,9 +44,11 @@ public interface LoginActivityMVP {
 
         void loginClicked(LoginActivity loginActivity);
 
+        void forgotPasswordClicked();
+
         void finishedDoneAnimation();
 
-        void forgotPasswordClicked();
+        void finishedFailureAnimation();
 
     }
 
@@ -57,6 +67,7 @@ public interface LoginActivityMVP {
         void onSuccess(User user);
 
         void onError(int errorCode);
+
     }
 
 }

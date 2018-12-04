@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.pycca.pycca.R;
-import com.pycca.pycca.pojo.Balance;
+import com.pycca.pycca.pojo.AccountStatus;
 import com.pycca.pycca.root.App;
 import com.pycca.pycca.util.Util;
 
@@ -83,11 +83,11 @@ public class AccountStatusActivity extends AppCompatActivity implements AccountS
     }
 
     @Override
-    public void setData(Balance balance) {
-        tv_available_credit.setText("$".concat(String.valueOf(balance.getAvailableCredit())));
-        tv_used_quota.setText("$".concat(String.valueOf(balance.getUsedCredit())));
-        tv_aproved_quota.setText("$".concat(String.valueOf(balance.getAprovedQuota())));
-        tv_pay_until.setText(Util.formatStringPayUntil(balance.getPayUntil(),String.valueOf(balance.getQuotaToPay())));
+    public void setData(AccountStatus accountStatus) {
+        tv_available_credit.setText("$".concat(String.valueOf(accountStatus.getAvailableCredit())));
+        tv_used_quota.setText("$".concat(String.valueOf(accountStatus.getUsedCredit())));
+        tv_aproved_quota.setText("$".concat(String.valueOf(accountStatus.getAprovedQuota())));
+        tv_pay_until.setText(Util.formatStringPayUntil(accountStatus.getPayUntil(),String.valueOf(accountStatus.getQuotaToPay())));
     }
 
     @Override

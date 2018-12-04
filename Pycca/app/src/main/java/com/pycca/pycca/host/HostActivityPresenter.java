@@ -46,30 +46,35 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
 
     @Override
     public void validateClicked(final HostActivity hostActivity) {
-        if (validateFields()) {
+        if (validateForm()) {
+            view.hideRootView();
             view.showLoadingAnimation();
-            String documentType = "C";
             final String identificationCard = view.getIdentificationCard();
             final String clubPyccaCardNumber = view.getClubPyccaCardNumber();
             final RestApiAdapter restApiAdapter = new RestApiAdapter();
             EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
-            Call<BaseResponse> getValidateClientCall = endpointsApi.getValidateClient(documentType, identificationCard, clubPyccaCardNumber);
+            Call<BaseResponse> getValidateClientCall = endpointsApi.getValidateClient("C", identificationCard, clubPyccaCardNumber);
             getValidateClientCall.enqueue(new Callback<BaseResponse>() {
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                    if (response.isSuccessful()) {
-                        BaseResponse baseResponse = response.body();
-                        if (baseResponse.getStatus()) {
-                            if (baseResponse.getData().getStatus_error().getCo_error() == 0) {
-                                model.setUser(hostActivity, identificationCard, clubPyccaCardNumber, baseResponse, HostActivityPresenter.this);
+                    try {
+                        if (response.isSuccessful()) {
+                            BaseResponse baseResponse = response.body();
+                            if (baseResponse.getStatus()) {
+                                if (baseResponse.getData().getStatus_error().getCo_error() == 0) {
+                                    model.setUser(hostActivity, identificationCard, clubPyccaCardNumber, baseResponse, HostActivityPresenter.this);
+                                }
+                                else {
+                                    onError(R.string.error_default);
+                                }
                             }
                             else {
                                 onError(R.string.error_default);
                             }
                         }
-                        else {
-                            onError(R.string.error_default);
-                        }
+                    }
+                    catch (Exception exception) {
+                        onError(R.string.error_default);
                     }
                 }
 
@@ -81,18 +86,9 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
         }
     }
 
-    private boolean validateFields() {
-        String identificationCard = view.getIdentificationCard();
-        String clubPyccaCardNumber = view.getClubPyccaCardNumber();
-        if (identificationCard.isEmpty()) {
-            view.showIdentificationCardRequired();
-            return false;
-        }
-        else if (clubPyccaCardNumber.isEmpty()) {
-            view.clubPyccaCardNumberRequired();
-            return false;
-        }
-        return true;
+    @Override
+    public void requestNowClicked() {
+        view.goToClubPyccaPartnerActivity();
     }
 
     @Override
@@ -102,8 +98,9 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
     }
 
     @Override
-    public void requestNowClicked() {
-        view.goToClubPyccaPartnerActivity();
+    public void finishedFailureAnimation() {
+        view.hideFailureAnimation();
+        view.showRootView();
     }
 
     @Override
@@ -118,13 +115,29 @@ public class HostActivityPresenter implements HostActivityMVP.Presenter, HostAct
             model.userSubscribeToTopic(Constants.TOPIC_NATIVE_CLUB_PYCCA_PARTNER);
             model.userUnsubscribeFromTopic(Constants.TOPIC_NATIVE_NOT_CLUB_PYCCA_PARTNER);
         }
+        view.hideLoadingAnimation();
         view.showDoneAnimation();
     }
 
     @Override
     public void onError(int error) {
         view.hideLoadingAnimation();
+        view.showFailureAnimation();
         view.showErrorMessage(error);
+    }
+
+    private boolean validateForm() {
+        String identificationCard = view.getIdentificationCard();
+        String clubPyccaCardNumber = view.getClubPyccaCardNumber();
+        if (identificationCard.isEmpty()) {
+            view.showIdentificationCardRequired();
+            return false;
+        }
+        else if (clubPyccaCardNumber.isEmpty()) {
+            view.clubPyccaCardNumberRequired();
+            return false;
+        }
+        return true;
     }
 
 }

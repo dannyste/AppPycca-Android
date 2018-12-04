@@ -25,27 +25,27 @@ public class ClubPyccaFragmentPresenter implements ClubPyccaFragmentMVP.Presente
     }
 
     @Override
-    public void firstItemClicked() {
+    public void clubPyccaFirstItemClicked() {
         view.goToAccountStatusActivity();
     }
 
     @Override
-    public void secondItemClicked() {
+    public void clubPyccaSecondItemClicked() {
         view.goToQuotaIncreaseActivity();
     }
 
     @Override
-    public void thirdItemClicked() {
+    public void clubPyccaThirdItemClicked() {
         view.goToQuotaCalculatorActivity();
     }
 
     @Override
-    public void fourthItemClicked() {
+    public void clubPyccaFourthItemClicked() {
         view.goToVirtualCardActivity();
     }
 
     @Override
-    public void fifthItemClicked() {
+    public void clubPyccaFifthItemClicked() {
         view.goToCardBlockingActivity();
     }
 

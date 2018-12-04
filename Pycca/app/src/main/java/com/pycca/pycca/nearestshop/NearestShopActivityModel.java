@@ -2,9 +2,9 @@ package com.pycca.pycca.nearestshop;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.pycca.pycca.pojo.OurShopsDetails;
+import com.pycca.pycca.pojo.OurShopDetail;
 import com.pycca.pycca.restApi.model.BaseResponse;
-import com.pycca.pycca.restApi.model.OurShopsResponse;
+import com.pycca.pycca.restApi.model.OurShopResponse;
 
 import java.util.ArrayList;
 
@@ -15,21 +15,21 @@ public class NearestShopActivityModel implements NearestShopActivityMVP.Model {
     }
 
     @Override
-    public ArrayList<OurShopsDetails> getOurShopsDetailsArrayList(BaseResponse baseResponse) {
+    public ArrayList<OurShopDetail> getOurShopsDetailsArrayList(BaseResponse baseResponse) {
         Gson gson = new Gson();
-        TypeToken<ArrayList<OurShopsResponse>> typeToken = new TypeToken<ArrayList<OurShopsResponse>>() {};
-        ArrayList<OurShopsResponse> ourShopsResponseArrayList = gson.fromJson(gson.toJson(baseResponse.getData().getResult()), typeToken.getType());
-        ArrayList<OurShopsDetails> ourShopsDetailsArrayList = new ArrayList<>();
-        for (OurShopsResponse ourShopsResponse: ourShopsResponseArrayList) {
-            OurShopsDetails ourShopsDetails = new OurShopsDetails();
-            ourShopsDetails.setName(ourShopsResponse.getDescripcion());
-            ourShopsDetails.setAddress(ourShopsResponse.getDireccion());
-            ourShopsDetails.setOpeningHours(ourShopsResponse.getHorario_atencion());
-            ourShopsDetails.setLatitude(ourShopsResponse.getLatitud());
-            ourShopsDetails.setLongitude(ourShopsResponse.getLongitud());
-            ourShopsDetailsArrayList.add(ourShopsDetails);
+        TypeToken<ArrayList<OurShopResponse>> typeToken = new TypeToken<ArrayList<OurShopResponse>>() {};
+        ArrayList<OurShopResponse> ourShopResponseArrayList = gson.fromJson(gson.toJson(baseResponse.getData().getResult()), typeToken.getType());
+        ArrayList<OurShopDetail> ourShopDetailArrayList = new ArrayList<>();
+        for (OurShopResponse ourShopResponse : ourShopResponseArrayList) {
+            OurShopDetail ourShopDetail = new OurShopDetail();
+            ourShopDetail.setName(ourShopResponse.getDescripcion());
+            ourShopDetail.setAddress(ourShopResponse.getDireccion());
+            ourShopDetail.setOpeningHours(ourShopResponse.getHorario_atencion());
+            ourShopDetail.setLatitude(ourShopResponse.getLatitud());
+            ourShopDetail.setLongitude(ourShopResponse.getLongitud());
+            ourShopDetailArrayList.add(ourShopDetail);
         }
-        return ourShopsDetailsArrayList;
+        return ourShopDetailArrayList;
     }
 
 }

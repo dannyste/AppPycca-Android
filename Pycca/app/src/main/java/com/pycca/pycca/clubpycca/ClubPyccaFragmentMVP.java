@@ -28,15 +28,15 @@ public interface ClubPyccaFragmentMVP {
 
         void loadClubPyccaArrayList();
 
-        void firstItemClicked();
+        void clubPyccaFirstItemClicked();
 
-        void secondItemClicked();
+        void clubPyccaSecondItemClicked();
 
-        void thirdItemClicked();
+        void clubPyccaThirdItemClicked();
 
-        void fourthItemClicked();
+        void clubPyccaFourthItemClicked();
 
-        void fifthItemClicked();
+        void clubPyccaFifthItemClicked();
 
     }
 

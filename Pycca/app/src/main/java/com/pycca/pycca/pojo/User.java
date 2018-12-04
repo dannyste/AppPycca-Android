@@ -10,11 +10,14 @@ public class User {
     private String photoUrl;
     private String name;
     private String email;
+    private String password;
     private String accountPhoneNumber;
     private String nativePhoneNumber;
     private boolean clubPyccaPartner;
     private String identificationCard;
     private String clubPyccaCardNumber;
+    private String namesClubPyccaPartner;
+    private String surnamesClubPyccaPartner;
     private int accountNumber;
     private String clientSince;
     private String token;
@@ -26,11 +29,14 @@ public class User {
         this.photoUrl = "";
         this.name = "";
         this.email = "";
+        this.password = "";
         this.accountPhoneNumber = "";
         this.nativePhoneNumber = "";
         this.clubPyccaPartner = false;
         this.identificationCard = "";
         this.clubPyccaCardNumber = "";
+        this.namesClubPyccaPartner = "";
+        this.surnamesClubPyccaPartner = "";
         this.accountNumber = 0;
         this.clientSince = "";
         this.token = "";
@@ -68,6 +74,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getAccountPhoneNumber() {
@@ -108,6 +122,22 @@ public class User {
 
     public void setClubPyccaCardNumber(String clubPyccaCardNumber) {
         this.clubPyccaCardNumber = clubPyccaCardNumber;
+    }
+
+    public String getNamesClubPyccaPartner() {
+        return namesClubPyccaPartner;
+    }
+
+    public void setNamesClubPyccaPartner(String namesClubPyccaPartner) {
+        this.namesClubPyccaPartner = namesClubPyccaPartner;
+    }
+
+    public String getSurnamesClubPyccaPartner() {
+        return surnamesClubPyccaPartner;
+    }
+
+    public void setSurnamesClubPyccaPartner(String surnamesClubPyccaPartner) {
+        this.surnamesClubPyccaPartner = surnamesClubPyccaPartner;
     }
 
     public int getAccountNumber() {
@@ -156,11 +186,14 @@ public class User {
         map.put("photoUrl", this.photoUrl);
         map.put("name", this.name);
         map.put("email", this.email);
+        map.put("password", this.password);
         map.put("accountPhoneNumber", this.accountPhoneNumber);
         map.put("nativePhoneNumber", this.nativePhoneNumber);
         map.put("clubPyccaPartner", this.clubPyccaPartner);
         map.put("identificationCard", this.identificationCard);
         map.put("clubPyccaCardNumber", this.clubPyccaCardNumber);
+        map.put("namesClubPyccaPartner", this.namesClubPyccaPartner);
+        map.put("surnamesClubPyccaPartner", this.surnamesClubPyccaPartner);
         map.put("accountNumber", this.accountNumber);
         map.put("clientSince", this.clientSince);
         map.put("token", this.token);

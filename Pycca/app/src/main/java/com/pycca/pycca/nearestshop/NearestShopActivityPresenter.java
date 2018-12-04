@@ -1,7 +1,7 @@
 package com.pycca.pycca.nearestshop;
 
 import com.pycca.pycca.R;
-import com.pycca.pycca.pojo.OurShopsDetails;
+import com.pycca.pycca.pojo.OurShopDetail;
 import com.pycca.pycca.restApi.EndpointsApi;
 import com.pycca.pycca.restApi.RestApiAdapter;
 import com.pycca.pycca.restApi.model.BaseResponse;
@@ -39,8 +39,8 @@ public class NearestShopActivityPresenter implements NearestShopActivityMVP.Pres
                         BaseResponse baseResponse = response.body();
                         if (baseResponse.getStatus()) {
                             if (baseResponse.getData().getStatus_error().getCo_error() == 0) {
-                                ArrayList<OurShopsDetails> ourShopsDetailsArrayList = model.getOurShopsDetailsArrayList(baseResponse);
-                                view.showMarkersGoogleMap(ourShopsDetailsArrayList);
+                                ArrayList<OurShopDetail> ourShopDetailArrayList = model.getOurShopsDetailsArrayList(baseResponse);
+                                view.showMarkersGoogleMap(ourShopDetailArrayList);
                             }
                             else {
                                 onError(R.string.error_default);

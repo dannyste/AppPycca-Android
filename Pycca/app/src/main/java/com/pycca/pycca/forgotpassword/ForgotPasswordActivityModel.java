@@ -9,24 +9,23 @@ import com.pycca.pycca.R;
 
 public class ForgotPasswordActivityModel implements ForgotPasswordActivityMVP.Model {
 
-    private FirebaseAuth mAuth;
+    private FirebaseAuth firebaseAuth;
 
-    public ForgotPasswordActivityModel() {
-        mAuth = FirebaseAuth.getInstance();
+    ForgotPasswordActivityModel() {
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     @Override
-    public void resetPasswordAuthentication(String email, final ForgotPasswordActivityMVP.TaskListener listener) {
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-
-        auth.sendPasswordResetEmail(email)
+    public void firebaseSendPasswordResetEmail(String email, final ForgotPasswordActivityMVP.TaskListener taskListener) {
+        firebaseAuth.sendPasswordResetEmail(email)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            listener.onSuccess();
-                        }else {
-                            listener.onError(R.string.error_reset_password);
+                            taskListener.onSuccess();
+                        }
+                        else {
+                            taskListener.onError(R.string.error_default);
                         }
                     }
                 });

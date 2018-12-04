@@ -26,7 +26,7 @@ import android.widget.LinearLayout;
 
 import com.pycca.pycca.R;
 import com.pycca.pycca.host.HostActivity;
-import com.pycca.pycca.ourshops.OurShopsActivity;
+import com.pycca.pycca.ourshop.OurShopActivity;
 import com.pycca.pycca.pojo.More;
 import com.pycca.pycca.profile.ProfileActivity;
 import com.pycca.pycca.root.App;
@@ -86,16 +86,16 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
                             int newPosition = moreArrayList.size() < 4 ? position + 1 : position;
                             switch (newPosition) {
                                 case 0:
-                                    presenter.firstItemClicked();
+                                    presenter.moreFirstItemClicked();
                                     break;
                                 case 1:
-                                    presenter.secondItemClicked();
+                                    presenter.moreSecondItemClicked();
                                     break;
                                 case 2:
-                                    presenter.thirdItemClicked();
+                                    presenter.moreThirdItemClicked();
                                     break;
                                 case 3:
-                                    presenter.fourthItemClicked();
+                                    presenter.moreFourthItemClicked();
                                     break;
                             }
                             animationRunning = true;
@@ -134,13 +134,20 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.contact_us)
                 .setItems(R.array.contact_us_array, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // The 'which' argument contains the index position
-                        // of the selected item
+                    public void onClick(DialogInterface dialog, int position) {
+                        dialog.dismiss();
+                        switch (position) {
+                            case 0:
+                                presenter.contactUsFirstItemClicked();
+                                break;
+                            case 1:
+                                presenter.contactUsSecondItemClicked();
+                                break;
+                        }
                     }
                 });
         AlertDialog alertDialog = builder.create();
-        alertDialog.setCancelable(false);
+        alertDialog.setCancelable(true);
         alertDialog.show();
     }
 
@@ -167,7 +174,7 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
 
     @Override
     public void goToOurShopsActivity() {
-        Intent ourShopsActivity = new Intent(getActivity(), OurShopsActivity.class);
+        Intent ourShopsActivity = new Intent(getActivity(), OurShopActivity.class);
         startActivity(ourShopsActivity);
     }
 

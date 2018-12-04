@@ -1,17 +1,17 @@
 package com.pycca.pycca.restApi.model;
 
-public class BalanceResponse {
+public class AccountStatusResponse {
 
     private double cupo;
     private int minimoPagar;
     private String fechaTopePago;
     private double disponibleCuenta;
-    //private double deudaTotal;
 
-    public BalanceResponse() {
+    public AccountStatusResponse() {
+
     }
 
-    public BalanceResponse(double cupo, int minimoPagar, String fechaTopePago, double disponibleCuenta) {
+    public AccountStatusResponse(double cupo, int minimoPagar, String fechaTopePago, double disponibleCuenta) {
         this.cupo = cupo;
         this.minimoPagar = minimoPagar;
         this.fechaTopePago = fechaTopePago;
@@ -49,4 +49,5 @@ public class BalanceResponse {
     public void setDisponibleCuenta(double disponibleCuenta) {
         this.disponibleCuenta = disponibleCuenta;
     }
+
 }

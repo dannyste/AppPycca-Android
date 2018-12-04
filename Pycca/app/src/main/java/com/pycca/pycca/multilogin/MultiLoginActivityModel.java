@@ -43,7 +43,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
     }
 
     @Override
-    public void firebaseAuthWithFacebook(final MultiLoginActivity multiLoginActivity, AccessToken accessToken, final MultiLoginActivityMVP.TaskListener taskListener) {
+    public void firebaseAuthWithFacebook(final MultiLoginActivity multiLoginActivity, AccessToken accessToken, final String nativePhoneNumber, final MultiLoginActivityMVP.TaskListener taskListener) {
         AuthCredential authCredential = FacebookAuthProvider.getCredential(accessToken.getToken());
         firebaseAuth.signInWithCredential(authCredential)
                 .addOnCompleteListener(multiLoginActivity, new OnCompleteListener<AuthResult>() {
@@ -57,6 +57,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                             user.setName(firebaseUser.getDisplayName());
                             user.setEmail(firebaseUser.getEmail());
                             user.setAccountPhoneNumber(firebaseUser.getPhoneNumber());
+                            user.setNativePhoneNumber(nativePhoneNumber);
                             user.setCreationDate(new Date());
                             user.setModificationDate(new Date());
                             getToken(multiLoginActivity, user, taskListener);
@@ -69,7 +70,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
     }
 
     @Override
-    public void firebaseAuthWithGoogle(final MultiLoginActivity multiLoginActivity, GoogleSignInAccount googleSignInAccount, final MultiLoginActivityMVP.TaskListener taskListener) {
+    public void firebaseAuthWithGoogle(final MultiLoginActivity multiLoginActivity, GoogleSignInAccount googleSignInAccount, final String nativePhoneNumber, final MultiLoginActivityMVP.TaskListener taskListener) {
         AuthCredential authCredential = GoogleAuthProvider.getCredential(googleSignInAccount.getIdToken(), null);
         firebaseAuth.signInWithCredential(authCredential)
                 .addOnCompleteListener(multiLoginActivity, new OnCompleteListener<AuthResult>() {
@@ -83,6 +84,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                             user.setName(firebaseUser.getDisplayName());
                             user.setEmail(firebaseUser.getEmail());
                             user.setAccountPhoneNumber(firebaseUser.getPhoneNumber());
+                            user.setNativePhoneNumber(nativePhoneNumber);
                             user.setCreationDate(new Date());
                             user.setModificationDate(new Date());
                             getToken(multiLoginActivity, user, taskListener);
@@ -124,6 +126,12 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                             DocumentSnapshot documentSnapshot = task.getResult();
                             if (documentSnapshot.exists()) {
                                 User userFirebaseFirestore = documentSnapshot.toObject(User.class);
+                                userFirebaseFirestore.setRegistrationProvider(user.getRegistrationProvider());
+                                userFirebaseFirestore.setPhotoUrl(user.getPhotoUrl());
+                                userFirebaseFirestore.setName(user.getName());
+                                userFirebaseFirestore.setEmail(user.getEmail());
+                                userFirebaseFirestore.setAccountPhoneNumber(user.getAccountPhoneNumber());
+                                userFirebaseFirestore.setNativePhoneNumber(user.getNativePhoneNumber());
                                 userFirebaseFirestore.setToken(user.getToken());
                                 userFirebaseFirestore.setModificationDate(user.getModificationDate());
                                 updateUserFirebaseFirestore(multiLoginActivity, userFirebaseFirestore, taskListener);
@@ -150,7 +158,7 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onFailure(@NonNull Exception e) {
+                    public void onFailure(@NonNull Exception exception) {
                         taskListener.onError(R.string.error_default);
                     }
                 });
@@ -159,8 +167,14 @@ public class MultiLoginActivityModel implements MultiLoginActivityMVP.Model {
     private void updateUserFirebaseFirestore(final MultiLoginActivity multiLoginActivity, final User user, final MultiLoginActivityMVP.TaskListener taskListener) {
         DocumentReference documentReference = firebaseFirestore.collection(Constants.FIRESTORE_USER_TABLE).document(user.getEmail());
         documentReference.update(
-                "token", user.getToken(),
-                "modificationDate", user.getModificationDate()
+                    "registrationProvider", user.getRegistrationProvider(),
+                    "photoUrl", user.getPhotoUrl(),
+                    "name", user.getName(),
+                    "email", user.getEmail(),
+                    "accountPhoneNumber", user.getAccountPhoneNumber(),
+                    "nativePhoneNumber", user.getNativePhoneNumber(),
+                    "token", user.getToken(),
+                    "modificationDate", user.getModificationDate()
                 )
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
