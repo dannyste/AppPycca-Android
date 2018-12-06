@@ -27,6 +27,8 @@ public class AccountStatusActivityModel implements AccountStatusActivityMVP.Mode
         accountStatus.setUsedCredit(accountStatusResponse.getCupo() - accountStatusResponse.getDisponibleCuenta());
         accountStatus.setPayUntil(accountStatusResponse.getFechaTopePago().replaceAll("(\\r|\\n|\\t)",""));
         accountStatus.setQuotaToPay(accountStatusResponse.getMinimoPagar());
+        accountStatus.setOverdue(accountStatusResponse.isVencido());
+        accountStatus.setCutDate(accountStatusResponse.getFechaUltimoCorte());
 
         return accountStatus;
     }

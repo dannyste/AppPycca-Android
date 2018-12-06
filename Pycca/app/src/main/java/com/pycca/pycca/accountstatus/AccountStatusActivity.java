@@ -39,8 +39,8 @@ public class AccountStatusActivity extends AppCompatActivity implements AccountS
     @Inject
     public AccountStatusActivityMVP.Presenter presenter;
 
-    private LinearLayout ll_root_view, ll_loading, ll_error, ll_downloading_pdf;
-    private TextView tv_available_credit, tv_used_quota, tv_aproved_quota, tv_pay_until;
+    private LinearLayout ll_root_view, ll_loading, ll_error, ll_downloading_pdf, ll_overdue_balance;
+    private TextView tv_available_credit, tv_used_quota, tv_aproved_quota, tv_pay_until, tv_overdue_balance;
     private LottieAnimationView lav_loading, lav_error, lav_downloading_pdf;
     private Button bt_download_pdf;
     private static final int RC_PERMISSION = 1000;
@@ -61,12 +61,14 @@ public class AccountStatusActivity extends AppCompatActivity implements AccountS
         tv_pay_until = findViewById(R.id.tv_pay_until);
         ll_root_view = findViewById(R.id.ll_root_view);
         ll_loading   = findViewById(R.id.ll_loading);
+        ll_overdue_balance   = findViewById(R.id.ll_overdue_balance);
         lav_loading  = findViewById(R.id.lav_loading);
         ll_error     = findViewById(R.id.ll_error);
         lav_error    = findViewById(R.id.lav_error);
         bt_download_pdf    = findViewById(R.id.bt_download_pdf);
         ll_downloading_pdf     = findViewById(R.id.ll_downloading_pdf);
         lav_downloading_pdf    = findViewById(R.id.lav_downloading_pdf);
+        tv_overdue_balance    = findViewById(R.id.tv_overdue_balance);
 
         bt_download_pdf.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +103,11 @@ public class AccountStatusActivity extends AppCompatActivity implements AccountS
         tv_used_quota.setText("$".concat(String.valueOf(accountStatus.getUsedCredit())));
         tv_aproved_quota.setText("$".concat(String.valueOf(accountStatus.getAprovedQuota())));
         tv_pay_until.setText(Util.formatStringPayUntil(accountStatus.getPayUntil(),String.valueOf(accountStatus.getQuotaToPay())));
+        ll_overdue_balance.setVisibility(View.INVISIBLE);
+        if(accountStatus.isOverdue()){
+            ll_overdue_balance.setVisibility(View.VISIBLE);
+            tv_overdue_balance.setText(getResources().getString(R.string.overdue_balance).concat(" $").concat(String.valueOf(accountStatus.getQuotaToPay())));
+        }
     }
 
     @Override
