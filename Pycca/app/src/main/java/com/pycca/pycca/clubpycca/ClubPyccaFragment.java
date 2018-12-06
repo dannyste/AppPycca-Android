@@ -2,10 +2,12 @@ package com.pycca.pycca.clubpycca;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,11 +15,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.pycca.pycca.R;
 import com.pycca.pycca.accountstatus.AccountStatusActivity;
 import com.pycca.pycca.cardlocking.CardLockingActivity;
+import com.pycca.pycca.host.HostActivity;
 import com.pycca.pycca.pojo.ClubPycca;
 import com.pycca.pycca.quotacalculator.QuotaCalculatorActivity;
 import com.pycca.pycca.quotaincrease.QuotaIncreaseActivity;
@@ -109,6 +113,11 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
     }
 
     @Override
+    public void showAlertDialogClubPyccaPartner() {
+        ((HostActivity) getActivity()).showAlertDialogClubPyccaPartner();
+    }
+
+    @Override
     public void goToAccountStatusActivity() {
         Intent accountStatusActivity = new Intent(getActivity(), AccountStatusActivity.class);
         startActivity(accountStatusActivity);
@@ -140,7 +149,26 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
 
     @Override
     public void showAlertDialogClubPyccaCardLocked() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(R.string.club_pycca_card_locked_enter_another)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
 
+                    }
+                })
+                .setNegativeButton(R.string.not, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.setCancelable(false);
+        alertDialog.show();
+        Button positiveButton = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        positiveButton.setTextColor(getResources().getColor(R.color.colorPrimary));
+        Button negativeButton = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+        negativeButton.setTextColor(getResources().getColor(R.color.colorPrimary));
     }
 
     @Override
