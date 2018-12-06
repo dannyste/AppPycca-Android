@@ -36,7 +36,7 @@
     <!-- ClubPyccaFragment -->
     <string name="account_status">Estado de cuenta</string>
     <string name="accountStatus">Consulta de saldo</string>
-    <string name="card_blocking">Bloquear tarjeta</string>
+    <string name="card_locking">Bloquear tarjeta</string>
     <string name="quota_calculator">Calculadora de cuotas</string>
     <string name="quota_increase">Incremento de cupo</string>
     <string name="virtual_card">Tarjeta virtual</string>
@@ -52,14 +52,14 @@
     <!-- VirtualCardActivity -->
     <string name="client_since">Cliente desde:</string>
 
-    <!-- CardBlockingActivity -->
+    <!-- CardLockingActivity -->
     <string name="additional_cards">Tarjetas adicionales</string>
-    <string name="block">Bloquear</string>
+    <string name="lock">Bloquear</string>
     <string name="lost">Extraviada</string>
     <string name="principal_card">Tarjeta principal</string>
     <string name="reason">Motivo</string>
     <string name="stole">Robo</string>
-    <string name="sure_block_card">Está seguro de bloquear la tarjeta</string>
+    <string name="sure_lock_card">Está seguro de bloquear la tarjeta</string>
     <string-array name="reason_array">
         <item>Extraviada</item>
         <item>Robo</item>

@@ -1,4 +1,4 @@
-package com.pycca.pycca.cardblocking;
+package com.pycca.pycca.cardlocking;
 
 import com.pycca.pycca.pojo.Card;
 import com.pycca.pycca.pojo.User;
@@ -6,7 +6,7 @@ import com.pycca.pycca.restApi.model.BaseResponse;
 
 import java.util.ArrayList;
 
-public interface CardBlockingActivityMVP {
+public interface CardLockingActivityMVP {
 
     interface View {
 
@@ -48,37 +48,37 @@ public interface CardBlockingActivityMVP {
 
         void showAlertDialogReason();
 
-        void showAlertDialogBlock();
+        void showAlertDialogLock();
 
     }
 
     interface Presenter {
 
-        void setView(CardBlockingActivityMVP.View view);
+        void setView(CardLockingActivityMVP.View view);
 
-        void loadCardsArrayList(CardBlockingActivity cardBlockingActivity);
+        void loadCardsArrayList(CardLockingActivity cardLockingActivity);
 
         void reasonClicked();
 
         void reasonItemClicked(String reason);
 
-        void blockClicked();
+        void lockClicked();
 
-        void blockPositiveButtonClicked(CardBlockingActivity cardBlockingActivity);
+        void lockPositiveButtonClicked(CardLockingActivity cardLockingActivity);
 
         void finishedDoneAnimation();
 
         void finishedFailureAnimation();
 
-        void errorTouchRetryClicked(CardBlockingActivity cardBlockingActivity);
+        void errorTouchRetryClicked(CardLockingActivity cardLockingActivity);
 
     }
 
     interface Model {
 
-        User getUser(CardBlockingActivity cardBlockingActivity);
+        User getUser(CardLockingActivity cardLockingActivity);
 
-        void setUser(CardBlockingActivity cardBlockingActivity, User user, TaskListener taskListener);
+        void setUser(CardLockingActivity cardLockingActivity, User user, TaskListener taskListener);
 
         ArrayList<Card> getCardArrayList(BaseResponse baseResponse);
 

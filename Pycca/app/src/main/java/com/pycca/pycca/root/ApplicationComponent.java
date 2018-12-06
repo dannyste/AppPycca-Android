@@ -4,8 +4,8 @@ import com.pycca.pycca.accountstatus.AccountStatusActivity;
 import com.pycca.pycca.accountstatus.AccountStatusActivityModule;
 import com.pycca.pycca.buy.BuyFragment;
 import com.pycca.pycca.buy.BuyFragmentModule;
-import com.pycca.pycca.cardblocking.CardBlockingActivity;
-import com.pycca.pycca.cardblocking.CardBlockingActivityModule;
+import com.pycca.pycca.cardlocking.CardLockingActivity;
+import com.pycca.pycca.cardlocking.CardLockingActivityModule;
 import com.pycca.pycca.clubpycca.ClubPyccaFragment;
 import com.pycca.pycca.clubpycca.ClubPyccaFragmentModule;
 import com.pycca.pycca.clubpyccapartner.ClubPyccaPartnerActivity;
@@ -65,7 +65,7 @@ import dagger.Component;
                             QuotaIncreaseActivityModule.class,
                             QuotaCalculatorActivityModule.class,
                             VirtualCardActivityModule.class,
-                            CardBlockingActivityModule.class,
+                            CardLockingActivityModule.class,
                             BuyFragmentModule.class,
                             MoreFragmentModule.class,
                             ClubPyccaPartnerActivityModule.class,
@@ -101,7 +101,7 @@ public interface ApplicationComponent {
 
     void inject(VirtualCardActivity virtualCardActivity);
 
-    void inject(CardBlockingActivity cardBlockingActivity);
+    void inject(CardLockingActivity cardLockingActivity);
 
     void inject(BuyFragment buyFragment);
 

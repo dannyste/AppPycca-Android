@@ -17,7 +17,7 @@ import android.widget.ImageView;
 
 import com.pycca.pycca.R;
 import com.pycca.pycca.accountstatus.AccountStatusActivity;
-import com.pycca.pycca.cardblocking.CardBlockingActivity;
+import com.pycca.pycca.cardlocking.CardLockingActivity;
 import com.pycca.pycca.pojo.ClubPycca;
 import com.pycca.pycca.quotacalculator.QuotaCalculatorActivity;
 import com.pycca.pycca.quotaincrease.QuotaIncreaseActivity;
@@ -76,13 +76,13 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
                                     presenter.clubPyccaFirstItemClicked();
                                     break;
                                 case 1:
-                                    presenter.clubPyccaSecondItemClicked();
+                                    presenter.clubPyccaSecondItemClicked(ClubPyccaFragment.this);
                                     break;
                                 case 2:
                                     presenter.clubPyccaThirdItemClicked();
                                     break;
                                 case 3:
-                                    presenter.clubPyccaFourthItemClicked();
+                                    presenter.clubPyccaFourthItemClicked(ClubPyccaFragment.this);
                                     break;
                                 case 4:
                                     presenter.clubPyccaFifthItemClicked();
@@ -134,8 +134,13 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
 
     @Override
     public void goToCardBlockingActivity() {
-        Intent cardBlockingActivity = new Intent(getActivity(), CardBlockingActivity.class);
+        Intent cardBlockingActivity = new Intent(getActivity(), CardLockingActivity.class);
         startActivity(cardBlockingActivity);
+    }
+
+    @Override
+    public void showAlertDialogClubPyccaCardLocked() {
+
     }
 
     @Override

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".cardblocking.CardBlockingActivity">
+    tools:context=".cardlocking.CardLockingActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -23,7 +23,7 @@
             android:fontFamily="@font/montserrat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/card_blocking"
+            android:text="@string/card_locking"
             android:textAllCaps="true"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/text_medium" />
@@ -104,13 +104,13 @@
             </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:id="@+id/btn_block"
+                android:id="@+id/btn_lock"
                 android:background="@drawable/button_default_style"
                 android:fontFamily="@font/montserrat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_horizontal_small_margin"
-                android:text="@string/block"
+                android:text="@string/lock"
                 android:textAllCaps="false"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/text_medium"

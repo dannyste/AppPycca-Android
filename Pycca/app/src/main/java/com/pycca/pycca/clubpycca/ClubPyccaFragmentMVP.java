@@ -1,6 +1,7 @@
 package com.pycca.pycca.clubpycca;
 
 import com.pycca.pycca.pojo.ClubPycca;
+import com.pycca.pycca.pojo.User;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,8 @@ public interface ClubPyccaFragmentMVP {
 
         void goToCardBlockingActivity();
 
+        void showAlertDialogClubPyccaCardLocked();
+
     }
 
     interface Presenter {
@@ -30,11 +33,11 @@ public interface ClubPyccaFragmentMVP {
 
         void clubPyccaFirstItemClicked();
 
-        void clubPyccaSecondItemClicked();
+        void clubPyccaSecondItemClicked(ClubPyccaFragment clubPyccaFragment);
 
         void clubPyccaThirdItemClicked();
 
-        void clubPyccaFourthItemClicked();
+        void clubPyccaFourthItemClicked(ClubPyccaFragment clubPyccaFragment);
 
         void clubPyccaFifthItemClicked();
 
@@ -43,6 +46,8 @@ public interface ClubPyccaFragmentMVP {
     interface Model {
 
         ArrayList<ClubPycca> getClubPyccaArrayList();
+
+        User getUser(ClubPyccaFragment clubPyccaFragment);
 
     }
 

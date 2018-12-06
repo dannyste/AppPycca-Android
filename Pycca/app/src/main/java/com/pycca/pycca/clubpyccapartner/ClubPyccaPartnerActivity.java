@@ -48,7 +48,6 @@ public class ClubPyccaPartnerActivity extends AppCompatActivity implements ClubP
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         tiet_name = findViewById(R.id.tiet_name);
         tiet_last_name = findViewById(R.id.tiet_last_name);
         tiet_born_date = findViewById(R.id.tiet_born_date);

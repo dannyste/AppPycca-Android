@@ -20,6 +20,7 @@ public class User {
     private String surnamesClubPyccaPartner;
     private int accountNumber;
     private String clientSince;
+    private boolean clubPyccaCardLocked;
     private String token;
     private Date creationDate;
     private Date modificationDate;
@@ -39,6 +40,7 @@ public class User {
         this.surnamesClubPyccaPartner = "";
         this.accountNumber = 0;
         this.clientSince = "";
+        this.clubPyccaCardLocked = false;
         this.token = "";
         this.creationDate = null;
         this.modificationDate = null;
@@ -156,6 +158,14 @@ public class User {
         this.clientSince = clientSince;
     }
 
+    public boolean isClubPyccaCardLocked() {
+        return clubPyccaCardLocked;
+    }
+
+    public void setClubPyccaCardLocked(boolean clubPyccaCardLocked) {
+        this.clubPyccaCardLocked = clubPyccaCardLocked;
+    }
+
     public String getToken() {
         return token;
     }
@@ -196,6 +206,7 @@ public class User {
         map.put("surnamesClubPyccaPartner", this.surnamesClubPyccaPartner);
         map.put("accountNumber", this.accountNumber);
         map.put("clientSince", this.clientSince);
+        map.put("clubPyccaCardLocked", this.clubPyccaCardLocked);
         map.put("token", this.token);
         map.put("creationDate", this.creationDate);
         map.put("modificationDate", this.modificationDate);

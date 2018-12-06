@@ -1,4 +1,4 @@
-package com.pycca.pycca.cardblocking;
+package com.pycca.pycca.cardlocking;
 
 import android.support.annotation.NonNull;
 
@@ -18,22 +18,22 @@ import com.pycca.pycca.util.SharedPreferencesManager;
 
 import java.util.ArrayList;
 
-public class CardBlockingActivityModel implements CardBlockingActivityMVP.Model {
+public class CardLockingActivityModel implements CardLockingActivityMVP.Model {
 
     private FirebaseFirestore firebaseFirestore;
 
-    CardBlockingActivityModel() {
+    CardLockingActivityModel() {
         firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
     @Override
-    public User getUser(CardBlockingActivity cardBlockingActivity) {
-        return SharedPreferencesManager.getInstance(cardBlockingActivity).getUser();
+    public User getUser(CardLockingActivity cardLockingActivity) {
+        return SharedPreferencesManager.getInstance(cardLockingActivity).getUser();
     }
 
     @Override
-    public void setUser(CardBlockingActivity cardBlockingActivity, User user, CardBlockingActivityMVP.TaskListener taskListener) {
-        updateUserFirebaseFirestore(cardBlockingActivity, user, taskListener);
+    public void setUser(CardLockingActivity cardLockingActivity, User user, CardLockingActivityMVP.TaskListener taskListener) {
+        updateUserFirebaseFirestore(cardLockingActivity, user, taskListener);
     }
 
     @Override
@@ -52,21 +52,16 @@ public class CardBlockingActivityModel implements CardBlockingActivityMVP.Model 
         return cardArrayList;
     }
 
-    private void updateUserFirebaseFirestore(final CardBlockingActivity cardBlockingActivity, final User user, final CardBlockingActivityMVP.TaskListener taskListener) {
+    private void updateUserFirebaseFirestore(final CardLockingActivity cardLockingActivity, final User user, final CardLockingActivityMVP.TaskListener taskListener) {
         DocumentReference documentReference = firebaseFirestore.collection(Constants.FIRESTORE_USER_TABLE).document(user.getEmail());
         documentReference.update(
-                    "clubPyccaPartner", user.isClubPyccaPartner(),
-                    "clubPyccaCardNumber", user.getClubPyccaCardNumber(),
-                    "namesClubPyccaPartner", user.getNamesClubPyccaPartner(),
-                    "surnamesClubPyccaPartner", user.getSurnamesClubPyccaPartner(),
-                    "accountNumber", user.getAccountNumber(),
-                    "clientSince", user.getClientSince(),
+                    "clubPyccaCardLocked", user.isClubPyccaCardLocked(),
                     "modificationDate", user.getModificationDate()
                 )
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        SharedPreferencesManager.getInstance(cardBlockingActivity).setUser(user);
+                        SharedPreferencesManager.getInstance(cardLockingActivity).setUser(user);
                         taskListener.onSuccess(user);
                     }
                 })

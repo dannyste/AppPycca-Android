@@ -2,12 +2,9 @@ package com.pycca.pycca.root;
 
 import android.app.Application;
 
-
-import com.downloader.PRDownloader;
-import com.pycca.pycca.accountstatus.AccountStatusActivity;
 import com.pycca.pycca.accountstatus.AccountStatusActivityModule;
 import com.pycca.pycca.buy.BuyFragmentModule;
-import com.pycca.pycca.cardblocking.CardBlockingActivityModule;
+import com.pycca.pycca.cardlocking.CardLockingActivityModule;
 import com.pycca.pycca.clubpycca.ClubPyccaFragmentModule;
 import com.pycca.pycca.clubpyccapartner.ClubPyccaPartnerActivityModule;
 import com.pycca.pycca.coupon.CouponFragmentModule;
@@ -50,7 +47,7 @@ public class App extends Application {
                 .quotaIncreaseActivityModule(new QuotaIncreaseActivityModule())
                 .quotaCalculatorActivityModule(new QuotaCalculatorActivityModule())
                 .virtualCardActivityModule(new VirtualCardActivityModule())
-                .cardBlockingActivityModule(new CardBlockingActivityModule())
+                .cardLockingActivityModule(new CardLockingActivityModule())
                 .buyFragmentModule(new BuyFragmentModule())
                 .moreFragmentModule(new MoreFragmentModule())
                 .clubPyccaPartnerActivityModule(new ClubPyccaPartnerActivityModule())
@@ -60,7 +57,6 @@ public class App extends Application {
                 .ourShopDetailActivityModule(new OurShopDetailActivityModule())
                 .pictureActivityModule(new PictureActivityModule())
                 .build();
-        PRDownloader.initialize(getApplicationContext());
     }
 
     public ApplicationComponent getApplicationComponent() {
