@@ -1,6 +1,7 @@
 package com.pycca.pycca.clubpycca;
 
 import com.pycca.pycca.pojo.ClubPycca;
+import com.pycca.pycca.pojo.User;
 
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ public class ClubPyccaFragmentPresenter implements ClubPyccaFragmentMVP.Presente
     private ClubPyccaFragmentMVP.View view;
     private ClubPyccaFragmentMVP.Model model;
 
-    public ClubPyccaFragmentPresenter(ClubPyccaFragmentMVP.Model model) {
+    ClubPyccaFragmentPresenter(ClubPyccaFragmentMVP.Model model) {
         this.model = model;
     }
 
@@ -30,8 +31,14 @@ public class ClubPyccaFragmentPresenter implements ClubPyccaFragmentMVP.Presente
     }
 
     @Override
-    public void clubPyccaSecondItemClicked() {
-        view.goToQuotaIncreaseActivity();
+    public void clubPyccaSecondItemClicked(ClubPyccaFragment clubPyccaFragment) {
+        User user = model.getUser(clubPyccaFragment);
+        if (user.isClubPyccaCardLocked()) {
+
+        }
+        else {
+            view.goToQuotaIncreaseActivity();
+        }
     }
 
     @Override
@@ -40,8 +47,14 @@ public class ClubPyccaFragmentPresenter implements ClubPyccaFragmentMVP.Presente
     }
 
     @Override
-    public void clubPyccaFourthItemClicked() {
-        view.goToVirtualCardActivity();
+    public void clubPyccaFourthItemClicked(ClubPyccaFragment clubPyccaFragment) {
+        User user = model.getUser(clubPyccaFragment);
+        if (user.isClubPyccaCardLocked()) {
+
+        }
+        else {
+            view.goToVirtualCardActivity();
+        }
     }
 
     @Override

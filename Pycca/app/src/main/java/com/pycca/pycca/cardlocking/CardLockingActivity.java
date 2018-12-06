@@ -1,4 +1,4 @@
-package com.pycca.pycca.cardblocking;
+package com.pycca.pycca.cardlocking;
 
 import android.animation.Animator;
 import android.content.DialogInterface;
@@ -29,12 +29,12 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-public class CardBlockingActivity extends AppCompatActivity implements CardBlockingActivityMVP.View {
+public class CardLockingActivity extends AppCompatActivity implements CardLockingActivityMVP.View {
 
-    private static final String TAG = CardBlockingActivity.class.getName();
+    private static final String TAG = CardLockingActivity.class.getName();
 
     @Inject
-    public CardBlockingActivityMVP.Presenter presenter;
+    public CardLockingActivityMVP.Presenter presenter;
 
     private LinearLayout ll_root_view, ll_confirmation_message, ll_loading, ll_done, ll_failure, ll_error;
     private RadioGroup rg_cards;
@@ -42,7 +42,7 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
     private TextView tv_additional_cards, tv_confirmation_message, tv_error_touch_retry;
     private TextInputLayout til_reason;
     private TextInputEditText tiet_reason;
-    private Button btn_block;
+    private Button btn_lock;
     private LottieAnimationView lav_loading, lav_done, lav_failure, lav_error;
 
     private String clubPyccaCardNumber;
@@ -51,8 +51,8 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card_blocking);
-        ((App) getApplication()).getApplicationComponent().inject(CardBlockingActivity.this);
+        setContentView(R.layout.activity_card_locking);
+        ((App) getApplication()).getApplicationComponent().inject(CardLockingActivity.this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -64,7 +64,7 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
         tv_additional_cards     = findViewById(R.id.tv_additional_cards);
         til_reason              = findViewById(R.id.til_reason);
         tiet_reason             = findViewById(R.id.tiet_reason);
-        btn_block               = findViewById(R.id.btn_block);
+        btn_lock                = findViewById(R.id.btn_lock);
         ll_confirmation_message = findViewById(R.id.ll_confirmation_message);
         tv_confirmation_message = findViewById(R.id.tv_confirmation_message);
         ll_loading              = findViewById(R.id.ll_loading);
@@ -82,16 +82,16 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
                 presenter.reasonClicked();
             }
         });
-        btn_block.setOnClickListener(new View.OnClickListener() {
+        btn_lock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.blockClicked();
+                presenter.lockClicked();
             }
         });
         tv_error_touch_retry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.errorTouchRetryClicked(CardBlockingActivity.this);
+                presenter.errorTouchRetryClicked(CardLockingActivity.this);
             }
         });
     }
@@ -249,12 +249,12 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
         ViewGroup.LayoutParams layoutParams = rb_principal_card.getLayoutParams();
         for (int i = 1; i < cardArrayList.size(); i++) {
             final Card card = cardArrayList.get(i);
-            RadioButton radioButton = new RadioButton(CardBlockingActivity.this);
+            RadioButton radioButton = new RadioButton(CardLockingActivity.this);
             radioButton.setLayoutParams(layoutParams);
             radioButton.setText(card.getClubPyccaCardName());
             radioButton.setTextColor(getResources().getColor(R.color.colorBlack));
             radioButton.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_medium));
-            radioButton.setTypeface(ResourcesCompat.getFont(CardBlockingActivity.this, R.font.montserrat));
+            radioButton.setTypeface(ResourcesCompat.getFont(CardLockingActivity.this, R.font.montserrat));
             radioButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -270,7 +270,7 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
 
     @Override
     public void showAlertDialogReason() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(CardBlockingActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(CardLockingActivity.this);
         builder.setTitle(R.string.reason)
                 .setItems(R.array.reason_array, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int position) {
@@ -291,13 +291,13 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
     }
 
     @Override
-    public void showAlertDialogBlock() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(CardBlockingActivity.this);
-        builder.setMessage("¿" + getString(R.string.sure_block_card) + " " + clubPyccaCardName + "?")
+    public void showAlertDialogLock() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(CardLockingActivity.this);
+        builder.setMessage("¿" + getString(R.string.sure_lock_card) + " " + clubPyccaCardName + "?")
                 .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
-                        presenter.blockPositiveButtonClicked(CardBlockingActivity.this);
+                        presenter.lockPositiveButtonClicked(CardLockingActivity.this);
                     }
                 })
                 .setNegativeButton(R.string.not, new DialogInterface.OnClickListener() {
@@ -317,8 +317,8 @@ public class CardBlockingActivity extends AppCompatActivity implements CardBlock
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.setView(CardBlockingActivity.this);
-        presenter.loadCardsArrayList(CardBlockingActivity.this);
+        presenter.setView(CardLockingActivity.this);
+        presenter.loadCardsArrayList(CardLockingActivity.this);
     }
 
     @Override

@@ -38,11 +38,11 @@ public interface EndpointsApi {
                                 @Path("clubPyccaCardNumber") String clubPyccaCardNumber);
 
     @FormUrlEncoded
-    @POST(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_POST_CARD_BLOCKING)
-    Call<BaseResponse> postCardBlocking(@Field("clubPyccaCardNumber") String clubPyccaCardNumber,
-                                        @Field("accountNumber") int accountNumber,
-                                        @Field("reasonCode") int reasonCode,
-                                        @Field("reasonDescription") String reasonDescription);
+    @POST(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_POST_CARD_LOCKING)
+    Call<BaseResponse> postCardLocking(@Field("clubPyccaCardNumber") String clubPyccaCardNumber,
+                                       @Field("accountNumber") int accountNumber,
+                                       @Field("reasonCode") int reasonCode,
+                                       @Field("reasonDescription") String reasonDescription);
 
     @FormUrlEncoded
     @POST(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_POST_CLUB_PYCCA_PARTNER)

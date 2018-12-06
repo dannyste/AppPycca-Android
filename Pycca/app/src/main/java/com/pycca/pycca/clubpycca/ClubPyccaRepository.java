@@ -16,7 +16,7 @@ public class ClubPyccaRepository implements ClubPyccaFragmentRepository {
         clubPyccaArrayList.add(new ClubPycca(R.color.colorOptionThree, R.drawable.ic_quota_increase, R.string.quota_increase));
         clubPyccaArrayList.add(new ClubPycca(R.color.colorOptionFour, R.drawable.ic_quota_calculator, R.string.quota_calculator));
         clubPyccaArrayList.add(new ClubPycca(R.color.colorOptionFive, R.drawable.ic_virtual_card, R.string.virtual_card));
-        clubPyccaArrayList.add(new ClubPycca(R.color.colorOptionSix, R.drawable.ic_card_blocking, R.string.card_blocking));
+        clubPyccaArrayList.add(new ClubPycca(R.color.colorOptionSix, R.drawable.ic_card_locking, R.string.card_locking));
         return clubPyccaArrayList;
     }
 

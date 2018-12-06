@@ -1,4 +1,4 @@
-package com.pycca.pycca.cardblocking;
+package com.pycca.pycca.cardlocking;
 
 import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.Card;
@@ -8,31 +8,30 @@ import com.pycca.pycca.restApi.RestApiAdapter;
 import com.pycca.pycca.restApi.model.BaseResponse;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CardBlockingActivityPresenter implements CardBlockingActivityMVP.Presenter, CardBlockingActivityMVP.TaskListener {
+public class CardLockingActivityPresenter implements CardLockingActivityMVP.Presenter, CardLockingActivityMVP.TaskListener {
 
-    private CardBlockingActivityMVP.View view;
-    private CardBlockingActivityMVP.Model model;
+    private CardLockingActivityMVP.View view;
+    private CardLockingActivityMVP.Model model;
 
-    CardBlockingActivityPresenter(CardBlockingActivityMVP.Model model) {
+    CardLockingActivityPresenter(CardLockingActivityMVP.Model model) {
         this.model = model;
     }
 
     @Override
-    public void setView(CardBlockingActivityMVP.View view) {
+    public void setView(CardLockingActivityMVP.View view) {
         this.view = view;
     }
 
     @Override
-    public void loadCardsArrayList(CardBlockingActivity cardBlockingActivity) {
+    public void loadCardsArrayList(CardLockingActivity cardLockingActivity) {
         view.hideRootView();
         view.showLoadingAnimation();
-        User user = model.getUser(cardBlockingActivity);
+        User user = model.getUser(cardLockingActivity);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
         Call<BaseResponse> getCardsCall = endpointsApi.getCards(user.getAccountNumber(), user.getClubPyccaCardNumber());
@@ -85,22 +84,22 @@ public class CardBlockingActivityPresenter implements CardBlockingActivityMVP.Pr
     }
 
     @Override
-    public void blockClicked() {
-        view.showAlertDialogBlock();
+    public void lockClicked() {
+        view.showAlertDialogLock();
     }
 
     @Override
-    public void blockPositiveButtonClicked(final CardBlockingActivity cardBlockingActivity) {
+    public void lockPositiveButtonClicked(final CardLockingActivity cardLockingActivity) {
         if (validateForm()) {
             view.hideRootView();
             view.showLoadingAnimation();
             final String clubPyccaCardNumber = view.getClubPyccaCardNumber();
             String reason = view.getReason();
-            int reasonCode = reason.equalsIgnoreCase(cardBlockingActivity.getString(R.string.lost)) ? 4 : 5;
-            final User user = model.getUser(cardBlockingActivity);
+            int reasonCode = reason.equalsIgnoreCase(cardLockingActivity.getString(R.string.lost)) ? 4 : 5;
+            final User user = model.getUser(cardLockingActivity);
             RestApiAdapter restApiAdapter = new RestApiAdapter();
             EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
-            Call<BaseResponse> getCardsCall = endpointsApi.postCardBlocking(clubPyccaCardNumber, user.getAccountNumber(), reasonCode, "");
+            Call<BaseResponse> getCardsCall = endpointsApi.postCardLocking(clubPyccaCardNumber, user.getAccountNumber(), reasonCode, "");
             getCardsCall.enqueue(new Callback<BaseResponse>() {
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
@@ -110,17 +109,11 @@ public class CardBlockingActivityPresenter implements CardBlockingActivityMVP.Pr
                             if (baseResponse.getStatus()) {
                                 if (baseResponse.getData().getStatus_error().getCo_error() == 0) {
                                     if (user.getClubPyccaCardNumber().equalsIgnoreCase(clubPyccaCardNumber)) {
-                                        user.setClubPyccaPartner(false);
-                                        user.setClubPyccaCardNumber("");
-                                        user.setNamesClubPyccaPartner("");
-                                        user.setSurnamesClubPyccaPartner("");
-                                        user.setAccountNumber(0);
-                                        user.setClientSince("");
-                                        user.setModificationDate(new Date());
-                                        model.setUser(cardBlockingActivity, user, CardBlockingActivityPresenter.this);
+                                        user.setClubPyccaCardLocked(true);
+                                        model.setUser(cardLockingActivity, user, CardLockingActivityPresenter.this);
                                     }
                                     else {
-                                        view.showConfirmationMessage();
+                                        onSuccess(user);
                                     }
                                 }
                                 else {
@@ -146,7 +139,7 @@ public class CardBlockingActivityPresenter implements CardBlockingActivityMVP.Pr
 
     @Override
     public void finishedDoneAnimation() {
-
+        view.showConfirmationMessage();
     }
 
     @Override
@@ -156,14 +149,15 @@ public class CardBlockingActivityPresenter implements CardBlockingActivityMVP.Pr
     }
 
     @Override
-    public void errorTouchRetryClicked(CardBlockingActivity cardBlockingActivity) {
+    public void errorTouchRetryClicked(CardLockingActivity cardLockingActivity) {
         view.hideErrorAnimation();
-        loadCardsArrayList(cardBlockingActivity);
+        loadCardsArrayList(cardLockingActivity);
     }
 
     @Override
     public void onSuccess(User user) {
-
+        view.hideLoadingAnimation();
+        view.showDoneAnimation();
     }
 
     @Override
