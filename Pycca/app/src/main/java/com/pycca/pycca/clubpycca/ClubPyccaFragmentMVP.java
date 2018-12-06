@@ -11,6 +11,10 @@ public interface ClubPyccaFragmentMVP {
 
         void updateDataRecyclerView(ArrayList<ClubPycca> clubPyccaArrayList);
 
+        void showAlertDialogClubPyccaCardLocked();
+
+        void showAlertDialogClubPyccaPartner();
+
         void goToAccountStatusActivity();
 
         void goToQuotaIncreaseActivity();
@@ -21,8 +25,6 @@ public interface ClubPyccaFragmentMVP {
 
         void goToCardBlockingActivity();
 
-        void showAlertDialogClubPyccaCardLocked();
-
     }
 
     interface Presenter {
@@ -30,6 +32,8 @@ public interface ClubPyccaFragmentMVP {
         void setView(ClubPyccaFragmentMVP.View view);
 
         void loadClubPyccaArrayList();
+
+        void lockPositiveButtonClicked();
 
         void clubPyccaFirstItemClicked();
 

@@ -57,7 +57,6 @@ public class CardLockingActivity extends AppCompatActivity implements CardLockin
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        findViewById(R.id.tv_additional_cards).setVisibility(View.VISIBLE);
         ll_root_view            = findViewById(R.id.ll_root_view);
         rg_cards                = findViewById(R.id.rg_cards);
         rb_principal_card       = findViewById(R.id.rb_principal_card);

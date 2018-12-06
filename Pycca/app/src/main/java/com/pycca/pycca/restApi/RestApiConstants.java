@@ -21,7 +21,7 @@ public final class RestApiConstants {
     private static final String ACTION_GET_CARDS                  = "cards/";
     private static final String PARAMETER_GET_CARDS               = "{accountNumber}/{clubPyccaCardNumber}";
 
-    private static final String ACTION_POST_CARD_LOCKING          = "card_blocking/";
+    private static final String ACTION_POST_CARD_LOCKING          = "card_locking/";
 
     private static final String ACTION_POST_CLUB_PYCCA_PARTNER    = "club_pycca_partner/";
 

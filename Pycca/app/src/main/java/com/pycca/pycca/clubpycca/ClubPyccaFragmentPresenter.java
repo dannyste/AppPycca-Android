@@ -26,6 +26,11 @@ public class ClubPyccaFragmentPresenter implements ClubPyccaFragmentMVP.Presente
     }
 
     @Override
+    public void lockPositiveButtonClicked() {
+        view.showAlertDialogClubPyccaPartner();
+    }
+
+    @Override
     public void clubPyccaFirstItemClicked() {
         view.goToAccountStatusActivity();
     }
@@ -34,7 +39,7 @@ public class ClubPyccaFragmentPresenter implements ClubPyccaFragmentMVP.Presente
     public void clubPyccaSecondItemClicked(ClubPyccaFragment clubPyccaFragment) {
         User user = model.getUser(clubPyccaFragment);
         if (user.isClubPyccaCardLocked()) {
-
+            view.showAlertDialogClubPyccaCardLocked();
         }
         else {
             view.goToQuotaIncreaseActivity();
@@ -50,7 +55,7 @@ public class ClubPyccaFragmentPresenter implements ClubPyccaFragmentMVP.Presente
     public void clubPyccaFourthItemClicked(ClubPyccaFragment clubPyccaFragment) {
         User user = model.getUser(clubPyccaFragment);
         if (user.isClubPyccaCardLocked()) {
-
+            view.showAlertDialogClubPyccaCardLocked();
         }
         else {
             view.goToVirtualCardActivity();
