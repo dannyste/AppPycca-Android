@@ -1,10 +1,21 @@
 package com.pycca.pycca.accountstatus;
 
 import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +29,8 @@ import com.pycca.pycca.R;
 import com.pycca.pycca.pojo.AccountStatus;
 import com.pycca.pycca.root.App;
 import com.pycca.pycca.util.Util;
+
+import java.io.File;
 
 import javax.inject.Inject;
 
@@ -139,6 +152,65 @@ public class AccountStatusActivity extends AppCompatActivity implements AccountS
         lav_downloading_pdf.pauseAnimation();
         ll_downloading_pdf.setVisibility(View.GONE);
         ll_root_view.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showSuccesfullNotification() {
+        File file = new File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath(),"EstadoDeCuentaPycca.pdf");
+        Uri pdfUri = FileProvider.getUriForFile(getApplicationContext(),"com.pycca.pycca.fileprovider", file);
+
+        Intent actionView = new Intent(Intent.ACTION_VIEW);
+        actionView.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        actionView.setDataAndType(pdfUri, "application/pdf");
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, actionView, 0);
+
+
+        String channelId = getString(R.string.app_name);
+        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+        NotificationCompat.Builder notificationBuilder =
+                new NotificationCompat.Builder(getApplicationContext(), channelId)
+                        .setSmallIcon(R.drawable.ic_download)
+                        .setContentTitle(getString(R.string.app_name))
+                        .setContentText(getActivity().getResources().getString(R.string.download_succesfull))
+                        .setSound(defaultSoundUri)
+                        .setContentIntent(pendingIntent)
+                        .setAutoCancel(true);
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // Since android Oreo notification channel is needed.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(channelId, getString(R.string.app_name), NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+    }
+
+    @Override
+    public void showErrorNotification() {
+        String channelId = getString(R.string.app_name);
+        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+        NotificationCompat.Builder notificationBuilder =
+                new NotificationCompat.Builder(getApplicationContext(), channelId)
+                        .setSmallIcon(R.drawable.ic_download)
+                        .setContentTitle(getString(R.string.app_name))
+                        .setContentText(getResources().getString(R.string.download_error))
+                        .setSound(defaultSoundUri)
+                        .setAutoCancel(true);
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // Since android Oreo notification channel is needed.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(channelId, getString(R.string.app_name), NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
 
     @Override

@@ -100,6 +100,8 @@
     <string name="as_card_number">Número de tarjeta</string>
     <string name="as_quota_to_pay">Cuota a pagar</string>
     <string name="as_pay_until">Pagar</string>
+    <string name="download_succesfull">Estado de cuenta descargado</string>
+    <string name="download_error">No se pudo descargar el archivo</string>
 
     <!-- AlertDialogClubPyccaPartner -->
     <string name="validate">Validar</string>

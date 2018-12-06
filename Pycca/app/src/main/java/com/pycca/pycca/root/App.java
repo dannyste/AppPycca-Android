@@ -3,7 +3,6 @@ package com.pycca.pycca.root;
 import android.app.Application;
 
 
-import com.downloader.PRDownloader;
 import com.pycca.pycca.accountstatus.AccountStatusActivity;
 import com.pycca.pycca.accountstatus.AccountStatusActivityModule;
 import com.pycca.pycca.buy.BuyFragmentModule;
@@ -60,7 +59,6 @@ public class App extends Application {
                 .ourShopDetailActivityModule(new OurShopDetailActivityModule())
                 .pictureActivityModule(new PictureActivityModule())
                 .build();
-        PRDownloader.initialize(getApplicationContext());
     }
 
     public ApplicationComponent getApplicationComponent() {
