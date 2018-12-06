@@ -2,6 +2,7 @@ package com.pycca.pycca.restApi;
 
 import com.pycca.pycca.restApi.model.BaseResponse;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -57,4 +58,6 @@ public interface EndpointsApi {
     @GET(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_GET_OUR_SHOPS)
     Call<BaseResponse> getOurShops();
 
+    @GET(RestApiConstants.SERVER_ROOT_URL + RestApiConstants.SERVER_URL_GET_PDF_ACCOUNT_STATUS)
+    Call<ResponseBody> getPdfAccountStatus(@Path("accountNumber") String accountNumber, @Path("cutDate") String cutDate);
 }

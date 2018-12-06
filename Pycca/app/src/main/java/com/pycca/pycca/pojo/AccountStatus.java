@@ -8,6 +8,8 @@ public class AccountStatus {
     private double aprovedQuota;
     private String payUntil;
     private double quotaToPay;
+    private boolean isOverdue;
+    private String cutDate;
 
     public AccountStatus() {
 
@@ -61,4 +63,19 @@ public class AccountStatus {
         this.quotaToPay = quotaToPay;
     }
 
+    public boolean isOverdue() {
+        return isOverdue;
+    }
+
+    public void setOverdue(boolean overdue) {
+        isOverdue = overdue;
+    }
+
+    public String getCutDate() {
+        return cutDate;
+    }
+
+    public void setCutDate(String cutDate) {
+        this.cutDate = cutDate;
+    }
 }
