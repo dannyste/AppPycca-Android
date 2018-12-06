@@ -23,8 +23,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 import okhttp3.ResponseBody;
@@ -34,15 +37,6 @@ public class Util {
     public static void showMessage(View view, String text){
         Snackbar.make(view, text, Snackbar.LENGTH_LONG).show();
     }
-
-//    public static boolean checkValidEmail(String email){
-//        if (TextUtils.isEmpty(email)) {
-//            return false;
-//        }
-//        else {
-//            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-//        }
-//    }
 
     public static boolean checkValidEmail(String email)
     {
@@ -235,6 +229,30 @@ public class Util {
         catch (IOException e) {
             return false;
         }
+    }
+
+    public static boolean validateDate(String dateToValidate, String dateFromat){
+
+        if(dateToValidate == null){
+            return false;
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat(dateFromat);
+        sdf.setLenient(false);
+
+        try {
+
+            //if not valid, it will throw ParseException
+            Date date = sdf.parse(dateToValidate);
+            System.out.println(date);
+
+        } catch (ParseException e) {
+
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
     }
 
 }

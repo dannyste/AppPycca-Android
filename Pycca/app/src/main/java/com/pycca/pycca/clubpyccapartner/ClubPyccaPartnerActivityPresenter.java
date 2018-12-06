@@ -91,6 +91,9 @@ public class ClubPyccaPartnerActivityPresenter implements ClubPyccaPartnerActivi
         }else if(!Util.checkValidEmail(view.getEmail())){
             view.showErrorMessage(R.string.invalid_email);
             return false;
+        }else if(!Util.validateDate(view.getBornDate(),"YYYY-MM-dd")){
+            view.showErrorMessage(R.string.invalid_date);
+            return false;
         }
         return true;
     }

@@ -15,6 +15,8 @@ import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.util.Util;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.annotation.Nullable;
 
@@ -45,6 +47,12 @@ public class BuyFragmentModel implements BuyFragmentMVP.Model {
                         }
                     }
                 }
+//                Collections.sort(list, new Comparator<ImageResource>() {
+//                    @Override
+//                    public int compare(ImageResource ir1, ImageResource ir2) {
+//                        return ir1.get.compareTo(u1.getCreatedOn());
+//                    }
+//                });
                 listener.onSuccessHeader(list);
             }
 
@@ -69,6 +77,12 @@ public class BuyFragmentModel implements BuyFragmentMVP.Model {
                         }
                     }
                 }
+                Collections.sort(list, new Comparator<DivisionImageResource>() {
+                    @Override
+                    public int compare(DivisionImageResource dir1, DivisionImageResource dir2) {
+                        return Integer.valueOf(dir1.getOrder()) - Integer.valueOf(dir2.getOrder());
+                    }
+                });
                 listener.onSuccessContent(list);
             }
 

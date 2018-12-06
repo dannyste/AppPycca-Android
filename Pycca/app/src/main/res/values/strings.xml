@@ -113,7 +113,7 @@
     <!-- ClubPyccaPartnerActivity -->
     <string name="name">Nombres</string>
     <string name="last_name">Apellidos</string>
-    <string name="born_date">Fecha de nacimiento</string>
+    <string name="born_date">Fecha de nacimiento (AAAA-MM-DD)</string>
     <string name="identification_number">Cédula</string>
     <string name="cpp_email">Email</string>
     <string name="phone_number">Teléfono convencional</string>
@@ -142,6 +142,7 @@
     <string name="reason_required">Motivo requerido</string>
     <string name="link_not_found">No se ha encontrado una url asociada</string>
     <string name="all_fields_required">Debe completar todos los campos</string>
+    <string name="invalid_date">La fecha es inválida</string>
 
     <!-- Confirmation Messages-->
     <string name="confirmation_link_email_sent">Se ha enviado un enlace a su correo electrónico</string>

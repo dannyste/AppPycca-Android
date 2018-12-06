@@ -163,8 +163,6 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/born_date"
                         android:inputType="date"
-                        android:focusable="false"
-                        android:clickable="true"
                         android:maxLines="1"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@android:color/black" />
