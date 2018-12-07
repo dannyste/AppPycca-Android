@@ -20,7 +20,7 @@ public class VirtualCardActivityPresenter implements VirtualCardActivityMVP.Pres
     public void getCurrentUser(VirtualCardActivity virtualCardActivity) {
         User user = model.getUser(virtualCardActivity);
         view.setClubPyccaCardNumber(user.getClubPyccaCardNumber());
-        view.setName(user.getName());
+        view.setName(user.getNamesClubPyccaPartner() + " " + user.getSurnamesClubPyccaPartner());
         view.setClientSince(user.getClientSince());
     }
 

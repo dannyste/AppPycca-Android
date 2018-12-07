@@ -332,6 +332,12 @@ public class CardLockingActivity extends AppCompatActivity implements CardLockin
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        presenter.cancelServiceCall();
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;

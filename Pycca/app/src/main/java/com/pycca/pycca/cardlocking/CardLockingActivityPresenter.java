@@ -18,6 +18,8 @@ public class CardLockingActivityPresenter implements CardLockingActivityMVP.Pres
     private CardLockingActivityMVP.View view;
     private CardLockingActivityMVP.Model model;
 
+    private Call<BaseResponse> getCardsCall, postCardLockingCall;
+
     CardLockingActivityPresenter(CardLockingActivityMVP.Model model) {
         this.model = model;
     }
@@ -35,7 +37,7 @@ public class CardLockingActivityPresenter implements CardLockingActivityMVP.Pres
         User user = model.getUser(cardLockingActivity);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
-        Call<BaseResponse> getCardsCall = endpointsApi.getCards(user.getAccountNumber(), user.getClubPyccaCardNumber());
+        getCardsCall = endpointsApi.getCards(user.getAccountNumber(), user.getClubPyccaCardNumber());
         getCardsCall.enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
@@ -69,7 +71,9 @@ public class CardLockingActivityPresenter implements CardLockingActivityMVP.Pres
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable throwable) {
-                onError(R.string.error_default);
+                if (getCardsCall.isCanceled()) {
+                    onError(R.string.error_default);
+                }
             }
         });
     }
@@ -100,7 +104,7 @@ public class CardLockingActivityPresenter implements CardLockingActivityMVP.Pres
             final User user = model.getUser(cardLockingActivity);
             RestApiAdapter restApiAdapter = new RestApiAdapter();
             EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
-            Call<BaseResponse> postCardLockingCall = endpointsApi.postCardLocking(clubPyccaCardNumber, user.getAccountNumber(), reasonCode, "", user.getEmail());
+            postCardLockingCall = endpointsApi.postCardLocking(clubPyccaCardNumber, user.getAccountNumber(), reasonCode, "", user.getEmail());
             postCardLockingCall.enqueue(new Callback<BaseResponse>() {
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
@@ -136,7 +140,9 @@ public class CardLockingActivityPresenter implements CardLockingActivityMVP.Pres
 
                 @Override
                 public void onFailure(Call<BaseResponse> call, Throwable throwable) {
-                    onError(R.string.error_default);
+                    if (!postCardLockingCall.isCanceled()) {
+                        onError(R.string.error_default);
+                    }
                 }
             });
         }
@@ -158,6 +164,16 @@ public class CardLockingActivityPresenter implements CardLockingActivityMVP.Pres
     public void errorTouchRetryClicked(CardLockingActivity cardLockingActivity) {
         view.hideErrorAnimation();
         loadCardsArrayList(cardLockingActivity);
+    }
+
+    @Override
+    public void cancelServiceCall() {
+        if (getCardsCall != null) {
+            getCardsCall.cancel();
+        }
+        if (postCardLockingCall != null) {
+            postCardLockingCall.cancel();
+        }
     }
 
     @Override

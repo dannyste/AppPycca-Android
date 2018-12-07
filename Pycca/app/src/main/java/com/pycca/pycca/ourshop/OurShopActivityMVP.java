@@ -42,6 +42,8 @@ public interface OurShopActivityMVP {
 
         void errorTouchRetryClicked();
 
+        void cancelServiceCall();
+
     }
 
     interface Model {

@@ -65,8 +65,11 @@ public class HostActivityModel implements HostActivityMVP.Model {
                     "clubPyccaPartner", user.isClubPyccaPartner(),
                     "identificationCard", user.getIdentificationCard(),
                     "clubPyccaCardNumber", user.getClubPyccaCardNumber(),
+                    "namesClubPyccaPartner", user.getNamesClubPyccaPartner(),
+                    "surnamesClubPyccaPartner", user.getSurnamesClubPyccaPartner(),
                     "accountNumber", user.getAccountNumber(),
                     "clientSince", user.getClientSince(),
+                    "clubPyccaCardLocked", user.isClubPyccaCardLocked(),
                     "modificationDate", user.getModificationDate()
                 )
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

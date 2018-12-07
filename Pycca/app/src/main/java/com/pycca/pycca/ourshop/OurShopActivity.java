@@ -150,6 +150,12 @@ public class OurShopActivity extends AppCompatActivity implements OurShopActivit
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        presenter.cancelServiceCall();
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;

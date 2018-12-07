@@ -18,6 +18,8 @@ public class OurShopActivityPresenter implements OurShopActivityMVP.Presenter, O
     private OurShopActivityMVP.View view;
     private OurShopActivityMVP.Model model;
 
+    private Call<BaseResponse> getOurShopsCall;
+
     OurShopActivityPresenter(OurShopActivityMVP.Model model) {
         this.model  = model;
     }
@@ -33,7 +35,7 @@ public class OurShopActivityPresenter implements OurShopActivityMVP.Presenter, O
         view.showLoadingAnimation();
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
-        Call<BaseResponse> getOurShopsCall = endpointsApi.getOurShops();
+        getOurShopsCall = endpointsApi.getOurShops();
         getOurShopsCall.enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
@@ -63,7 +65,9 @@ public class OurShopActivityPresenter implements OurShopActivityMVP.Presenter, O
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable throwable) {
-                onError(R.string.error_default);
+                if (!getOurShopsCall.isCanceled()) {
+                    onError(R.string.error_default);
+                }
             }
         });
     }
@@ -82,6 +86,13 @@ public class OurShopActivityPresenter implements OurShopActivityMVP.Presenter, O
     public void errorTouchRetryClicked() {
         view.hideErrorAnimation();
         loadOurShopsArrayList();
+    }
+
+    @Override
+    public void cancelServiceCall() {
+        if (getOurShopsCall != null) {
+            getOurShopsCall.cancel();
+        }
     }
 
     @Override

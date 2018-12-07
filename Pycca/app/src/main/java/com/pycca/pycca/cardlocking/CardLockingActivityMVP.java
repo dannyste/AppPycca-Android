@@ -76,6 +76,8 @@ public interface CardLockingActivityMVP {
 
         void errorTouchRetryClicked(CardLockingActivity cardLockingActivity);
 
+        void cancelServiceCall();
+
     }
 
     interface Model {
