@@ -153,7 +153,7 @@ public class MoreFragment extends Fragment implements MoreFragmentMVP.View {
 
     @Override
     public void goToContactCall() {
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
             Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + presenter.getPhoneNumber(MoreFragment.this)));
             startActivity(intent);
         }

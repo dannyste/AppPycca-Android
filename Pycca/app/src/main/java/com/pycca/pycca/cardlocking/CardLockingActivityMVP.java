@@ -24,11 +24,15 @@ public interface CardLockingActivityMVP {
 
         void showConfirmationMessage();
 
+        void hideConfirmationMessage();
+
         void showLoadingAnimation();
 
         void hideLoadingAnimation();
 
         void showDoneAnimation();
+
+        void hideDoneAnimation();
 
         void showFailureAnimation();
 

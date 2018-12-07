@@ -133,6 +133,11 @@ public class CardLockingActivity extends AppCompatActivity implements CardLockin
     }
 
     @Override
+    public void hideConfirmationMessage() {
+        ll_confirmation_message.setVisibility(View.GONE);
+    }
+
+    @Override
     public void showLoadingAnimation() {
         ll_loading.setVisibility(View.VISIBLE);
         lav_loading.playAnimation();
@@ -169,6 +174,12 @@ public class CardLockingActivity extends AppCompatActivity implements CardLockin
             }
         });
         lav_done.playAnimation();
+    }
+
+    @Override
+    public void hideDoneAnimation() {
+        ll_done.setVisibility(View.GONE);
+        lav_done.pauseAnimation();
     }
 
     @Override

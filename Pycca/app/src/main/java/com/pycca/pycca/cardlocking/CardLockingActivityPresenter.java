@@ -29,6 +29,7 @@ public class CardLockingActivityPresenter implements CardLockingActivityMVP.Pres
 
     @Override
     public void loadCardsArrayList(CardLockingActivity cardLockingActivity) {
+        view.hideConfirmationMessage();
         view.hideRootView();
         view.showLoadingAnimation();
         User user = model.getUser(cardLockingActivity);
@@ -99,8 +100,8 @@ public class CardLockingActivityPresenter implements CardLockingActivityMVP.Pres
             final User user = model.getUser(cardLockingActivity);
             RestApiAdapter restApiAdapter = new RestApiAdapter();
             EndpointsApi endpointsApi = restApiAdapter.setConnectionRestApiServer();
-            Call<BaseResponse> getCardsCall = endpointsApi.postCardLocking(clubPyccaCardNumber, user.getAccountNumber(), reasonCode, "");
-            getCardsCall.enqueue(new Callback<BaseResponse>() {
+            Call<BaseResponse> postCardLockingCall = endpointsApi.postCardLocking(clubPyccaCardNumber, user.getAccountNumber(), reasonCode, "", user.getEmail());
+            postCardLockingCall.enqueue(new Callback<BaseResponse>() {
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                     try {
@@ -124,7 +125,11 @@ public class CardLockingActivityPresenter implements CardLockingActivityMVP.Pres
                                 onError(R.string.error_default);
                             }
                         }
-                    } catch (Exception exception) {
+                        else {
+                            onError(R.string.error_default);
+                        }
+                    }
+                    catch (Exception exception) {
                         onError(R.string.error_default);
                     }
                 }
@@ -139,6 +144,7 @@ public class CardLockingActivityPresenter implements CardLockingActivityMVP.Pres
 
     @Override
     public void finishedDoneAnimation() {
+        view.hideDoneAnimation();
         view.showConfirmationMessage();
     }
 
