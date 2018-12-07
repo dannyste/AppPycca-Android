@@ -1,26 +1,18 @@
 package com.pycca.pycca.clubpyccapartner;
 
 import android.animation.Animator;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.LinearLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.pycca.pycca.R;
 import com.pycca.pycca.root.App;
 import com.pycca.pycca.util.Util;
-
-import java.util.Calendar;
 
 import javax.inject.Inject;
 

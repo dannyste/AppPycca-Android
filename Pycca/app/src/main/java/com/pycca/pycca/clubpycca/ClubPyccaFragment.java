@@ -154,7 +154,7 @@ public class ClubPyccaFragment extends Fragment implements ClubPyccaFragmentMVP.
                 .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
-
+                        presenter.clubPyccaCardLockedPositiveButtonClicked();
                     }
                 })
                 .setNegativeButton(R.string.not, new DialogInterface.OnClickListener() {

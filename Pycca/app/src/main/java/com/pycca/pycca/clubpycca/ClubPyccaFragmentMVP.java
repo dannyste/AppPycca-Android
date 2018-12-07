@@ -33,7 +33,7 @@ public interface ClubPyccaFragmentMVP {
 
         void loadClubPyccaArrayList();
 
-        void lockPositiveButtonClicked();
+        void clubPyccaCardLockedPositiveButtonClicked();
 
         void clubPyccaFirstItemClicked();
 
