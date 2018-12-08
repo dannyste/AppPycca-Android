@@ -8,16 +8,18 @@ public class CouponImageResource implements Serializable {
     private String path;
     private String url;
     private String code;
+    private String order;
 
     public CouponImageResource() {
     }
 
-    public CouponImageResource(String name, String description, String path, String url, String code) {
+    public CouponImageResource(String name, String description, String path, String url, String code, String order) {
         this.name = name;
         this.description = description;
         this.path = path;
         this.url = url;
         this.code = code;
+        this.order = order;
     }
 
     public String getName() {
@@ -58,5 +60,13 @@ public class CouponImageResource implements Serializable {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getOrder() {
+        return order;
+    }
+
+    public void setOrder(String order) {
+        this.order = order;
     }
 }

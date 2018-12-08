@@ -13,6 +13,8 @@ import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.util.Util;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.annotation.Nullable;
 
@@ -43,6 +45,16 @@ public class HomeFragmentModel implements HomeFragmentMVP.Model {
                         }
                     }
                 }
+                try {
+                    Collections.sort(list, new Comparator<ImageResource>() {
+                        @Override
+                        public int compare(ImageResource img1, ImageResource img2) {
+                            return Integer.valueOf(img1.getOrder()) - Integer.valueOf(img2.getOrder());
+                        }
+                    });
+                }catch (Exception e1){
+                    e1.printStackTrace();
+                }
                 listener.onSuccess(list, true);
             }
 
@@ -66,6 +78,16 @@ public class HomeFragmentModel implements HomeFragmentMVP.Model {
                             list.add(imageResource);
                         }
                     }
+                }
+                try {
+                    Collections.sort(list, new Comparator<ImageResource>() {
+                        @Override
+                        public int compare(ImageResource img1, ImageResource img2) {
+                            return Integer.valueOf(img1.getOrder()) - Integer.valueOf(img2.getOrder());
+                        }
+                    });
+                }catch (Exception e1){
+                    e1.printStackTrace();
                 }
                 listener.onSuccess(list, false);
             }

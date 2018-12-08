@@ -13,6 +13,8 @@ import com.pycca.pycca.util.Constants;
 import com.pycca.pycca.util.Util;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class CouponFragmentModel implements CouponFragmentMVP.Model {
@@ -40,6 +42,16 @@ public class CouponFragmentModel implements CouponFragmentMVP.Model {
                             list.add(imageResource);
                         }
                     }
+                }
+                try {
+                    Collections.sort(list, new Comparator<CouponImageResource>() {
+                        @Override
+                        public int compare(CouponImageResource img1, CouponImageResource img2) {
+                            return Integer.valueOf(img1.getOrder()) - Integer.valueOf(img2.getOrder());
+                        }
+                    });
+                }catch (Exception e1){
+                    e1.printStackTrace();
                 }
                 listener.onSuccess(list);
             }

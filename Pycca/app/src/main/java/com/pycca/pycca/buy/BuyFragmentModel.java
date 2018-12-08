@@ -47,12 +47,16 @@ public class BuyFragmentModel implements BuyFragmentMVP.Model {
                         }
                     }
                 }
-//                Collections.sort(list, new Comparator<ImageResource>() {
-//                    @Override
-//                    public int compare(ImageResource ir1, ImageResource ir2) {
-//                        return ir1.get.compareTo(u1.getCreatedOn());
-//                    }
-//                });
+                try {
+                    Collections.sort(list, new Comparator<ImageResource>() {
+                        @Override
+                        public int compare(ImageResource img1, ImageResource img2) {
+                            return Integer.valueOf(img1.getOrder()) - Integer.valueOf(img2.getOrder());
+                        }
+                    });
+                }catch (Exception e1){
+                    e1.printStackTrace();
+                }
                 listener.onSuccessHeader(list);
             }
 
@@ -77,12 +81,17 @@ public class BuyFragmentModel implements BuyFragmentMVP.Model {
                         }
                     }
                 }
-                Collections.sort(list, new Comparator<DivisionImageResource>() {
-                    @Override
-                    public int compare(DivisionImageResource dir1, DivisionImageResource dir2) {
-                        return Integer.valueOf(dir1.getOrder()) - Integer.valueOf(dir2.getOrder());
-                    }
-                });
+                try {
+                    Collections.sort(list, new Comparator<DivisionImageResource>() {
+                        @Override
+                        public int compare(DivisionImageResource dir1, DivisionImageResource dir2) {
+                            return Integer.valueOf(dir1.getOrder()) - Integer.valueOf(dir2.getOrder());
+                        }
+                    });
+                }catch (Exception e1){
+                    e1.printStackTrace();
+                }
+
                 listener.onSuccessContent(list);
             }
 

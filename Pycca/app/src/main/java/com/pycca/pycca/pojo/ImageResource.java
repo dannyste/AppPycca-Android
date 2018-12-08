@@ -10,15 +10,17 @@ public class ImageResource implements Serializable {
     private String description;
     private String path;
     private String url;
+    private String order;
 
     public ImageResource() {
     }
 
-    public ImageResource(String name, String description, String path, String url) {
+    public ImageResource(String name, String description, String path, String url, String order) {
         this.name = name;
         this.description = description;
         this.path = path;
         this.url = url;
+        this.order = order;
     }
 
     public String getName() {
@@ -53,4 +55,11 @@ public class ImageResource implements Serializable {
         this.url = url;
     }
 
+    public String getOrder() {
+        return order;
+    }
+
+    public void setOrder(String order) {
+        this.order = order;
+    }
 }
